@@ -2,7 +2,7 @@
 
 This is the source code for the [Rekluz Labs](https://rekluzlabs.github.io) website.
 
-## 🚀 Technologies
+##  Technologies
 - HTML5 / CSS3
 - JavaScript
 - GitHub Pages (Hosting)
