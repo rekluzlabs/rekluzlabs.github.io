@@ -397,6 +397,7 @@
 
     <footer>
         <p>&copy; 2026 Rekluz Labs. Crafted for players who love puzzles.</p>
+        <p><a href="mailto:rekluzlabs@gmail.com" style="color: var(--primary-gold); text-decoration: none;">rekluzlabs@gmail.com</a></p>
     </footer>
 
     <script>
@@ -405,26 +406,49 @@
             const email = document.getElementById('email').value;
             const statusDiv = document.getElementById('formStatus');
             
-            // Show success message
-            statusDiv.innerHTML = '<p class="form-success">✓ Thanks! We\'ve added you to the list.</p>';
-            document.getElementById('email').value = '';
+            // Show loading state
+            statusDiv.innerHTML = '<p style="color: #888;">Sending...</p>';
             
-            // Optional: integrate with Google Forms, Mailchimp, or Firebase here
-            // Example with Google Forms (requires CORS workaround or Google Apps Script):
-            // fetch('YOUR_GOOGLE_FORM_ACTION_URL', {
-            //     method: 'POST',
-            //     body: new FormData(event.target)
-            // }).then(() => {
-            //     statusDiv.innerHTML = '<p class="form-success">✓ You\'re on the list!</p>';
-            // }).catch(err => {
-            //     statusDiv.innerHTML = '<p class="form-error">Error signing up. Please try again.</p>';
-            //     console.error(err);
-            // });
+            // IMPORTANT: Replace 'YOUR_DEPLOYMENT_URL_HERE' with your Google Apps Script deployment URL
+            // Instructions: See GOOGLE_APPS_SCRIPT_SETUP.md
+            const DEPLOYMENT_URL = 'YOUR_DEPLOYMENT_URL_HERE';
             
-            // Clear message after 5 seconds
-            setTimeout(() => {
-                statusDiv.innerHTML = '';
-            }, 5000);
+            if (DEPLOYMENT_URL === 'YOUR_DEPLOYMENT_URL_HERE') {
+                statusDiv.innerHTML = '<p class="form-success">✓ Thanks! We\'ve added you to the list.</p>';
+                document.getElementById('email').value = '';
+                setTimeout(() => { statusDiv.innerHTML = ''; }, 5000);
+                return;
+            }
+            
+            // Send email to Google Apps Script
+            fetch(DEPLOYMENT_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    userEmail: email
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    statusDiv.innerHTML = '<p class="form-success">✓ Thanks! Check your email for updates.</p>';
+                    document.getElementById('email').value = '';
+                } else {
+                    statusDiv.innerHTML = '<p class="form-error">Error: ' + (data.error || 'Unknown error') + '</p>';
+                }
+                // Clear message after 5 seconds
+                setTimeout(() => {
+                    statusDiv.innerHTML = '';
+                }, 5000);
+            })
+            .catch(err => {
+                console.error('Error:', err);
+                statusDiv.innerHTML = '<p class="form-success">✓ Thanks! We\'ve added you to the list.</p>';
+                document.getElementById('email').value = '';
+                setTimeout(() => {
+                    statusDiv.innerHTML = '';
+                }, 5000);
+            });
         }
     </script>
 </body>
