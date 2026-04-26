@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rekluz Labs - Game Development Studio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #fafafa;
+        }
+
+        body.dark-mode {
+            background: #0a0a0a;
+            color: #e0e0e0;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        header nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header .logo {
+            font-size: 1.5rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        header ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        header a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.2s;
+            font-size: 0.95rem;
+        }
+
+        header a:hover {
+            opacity: 0.8;
+        }
+
+        .theme-toggle {
+            background: rgba(255,255,255,0.2);
+            border: 1px solid rgba(255,255,255,0.3);
+            color: white;
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background 0.2s;
+        }
+
+        .theme-toggle:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 4rem 0;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            padding: 6rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="30" r="15" fill="white" opacity="0.1"/><circle cx="80" cy="70" r="25" fill="white" opacity="0.05"/></svg>');
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .hero small {
+            display: block;
+            font-size: 1rem;
+            margin-top: 1rem;
+            opacity: 0.85;
+        }
+
+        .game-showcase {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .game-image {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            color: white;
+            min-height: 350px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        body.dark-mode .game-image {
+            background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%);
+        }
+
+        .game-icon {
+            font-size: 5rem;
+            margin-bottom: 1rem;
+        }
+
+        .game-image h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .game-info h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #667eea;
+        }
+
+        body.dark-mode .game-info h2 {
+            color: #a78bfa;
+        }
+
+        .game-info p {
+            margin-bottom: 1rem;
+            color: #666;
+            line-height: 1.8;
+        }
+
+        body.dark-mode .game-info p {
+            color: #b0b0b0;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .feature {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+
+        body.dark-mode .feature {
+            background: #1a1a1a;
+            border-left-color: #a78bfa;
+        }
+
+        .feature h3 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        body.dark-mode .feature h3 {
+            color: #a78bfa;
+        }
+
+        .feature p {
+            font-size: 0.95rem;
+            color: #666;
+        }
+
+        body.dark-mode .feature p {
+            color: #999;
+        }
+
+        .blog-section h2 {
+            font-size: 2rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            color: #333;
+        }
+
+        body.dark-mode .blog-section h2 {
+            color: #e0e0e0;
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .blog-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+        }
+
+        body.dark-mode .blog-card {
+            background: #1a1a1a;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+        }
+
+        .blog-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        body.dark-mode .blog-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+        }
+
+        .blog-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            min-height: 120px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .blog-date {
+            font-size: 0.85rem;
+            opacity: 0.8;
+            margin-bottom: 0.5rem;
+        }
+
+        .blog-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .blog-content {
+            padding: 1.5rem;
+        }
+
+        .blog-excerpt {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        body.dark-mode .blog-excerpt {
+            color: #999;
+        }
+
+        .read-more {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s;
+            cursor: pointer;
+        }
+
+        body.dark-mode .read-more {
+            color: #a78bfa;
+        }
+
+        .read-more:hover {
+            color: #764ba2;
+        }
+
+        body.dark-mode .read-more:hover {
+            color: #d8b4fe;
+        }
+
+        .contact-section {
+            text-align: center;
+            background: white;
+            border-radius: 12px;
+            padding: 3rem;
+        }
+
+        body.dark-mode .contact-section {
+            background: #1a1a1a;
+        }
+
+        .contact-section h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        body.dark-mode .contact-section h2 {
+            color: #e0e0e0;
+        }
+
+        .contact-section p {
+            color: #666;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        body.dark-mode .contact-section p {
+            color: #b0b0b0;
+        }
+
+        .signup-form {
+            display: flex;
+            gap: 0.5rem;
+            max-width: 500px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .signup-form input {
+            flex: 1;
+            min-width: 200px;
+            padding: 0.75rem 1rem;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: border-color 0.2s;
+        }
+
+        body.dark-mode .signup-form input {
+            background: #2a2a2a;
+            border-color: #444;
+            color: #e0e0e0;
+        }
+
+        .signup-form input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .signup-form button {
+            padding: 0.75rem 1.5rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .signup-form button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+
+        .signup-form button:active {
+            transform: translateY(0);
+        }
+
+        .form-message {
+            margin-top: 1rem;
+            padding: 0.75rem 1rem;
+            border-radius: 6px;
+            display: none;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .form-message.success {
+            background: #d4edda;
+            color: #155724;
+            display: block;
+        }
+
+        body.dark-mode .form-message.success {
+            background: #1e4620;
+            color: #4ade80;
+        }
+
+        .form-message.error {
+            background: #f8d7da;
+            color: #721c24;
+            display: block;
+        }
+
+        body.dark-mode .form-message.error {
+            background: #4a1f1f;
+            color: #f87171;
+        }
+
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+        body.dark-mode footer {
+            background: #1a1a1a;
+        }
+
+        .socials {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+
+        .socials a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.2s;
+        }
+
+        .socials a:hover {
+            opacity: 0.7;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            animation: fadeIn 0.2s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background: white;
+            margin: 5% auto;
+            padding: 2rem;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 700px;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            animation: slideIn 0.3s;
+        }
+
+        body.dark-mode .modal-content {
+            background: #1a1a1a;
+            color: #e0e0e0;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .close:hover {
+            color: #000;
+        }
+
+        body.dark-mode .close:hover {
+            color: #fff;
+        }
+
+        .modal h2 {
+            margin-bottom: 1rem;
+            color: #667eea;
+        }
+
+        body.dark-mode .modal h2 {
+            color: #a78bfa;
+        }
+
+        .modal p {
+            line-height: 1.8;
+            color: #666;
+        }
+
+        body.dark-mode .modal p {
+            color: #b0b0b0;
+        }
+
+        .modal ul {
+            margin-left: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .modal li {
+            margin-bottom: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .game-showcase {
+                grid-template-columns: 1fr;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            header ul {
+                gap: 1rem;
+            }
+
+            header a {
+                font-size: 0.85rem;
+            }
+
+            .signup-form {
+                flex-direction: column;
+            }
+
+            .signup-form input,
+            .signup-form button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">🎮 Rekluz Labs</div>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#game">Game</a></li>
+                <li><a href="#blog">Dev Blog</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><button class="theme-toggle" onclick="toggleTheme()">🌙 Dark</button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Welcome to Rekluz Labs</h1>
+                <p>Crafting thoughtful games and interactive experiences</p>
+                <small>Currently developing Nikakudori Mahjong V5 for Android</small>
+            </div>
+        </div>
+    </section>
+
+    <section id="game">
+        <div class="container">
+            <div class="game-showcase">
+                <div class="game-image">
+                    <div class="game-icon">🀄</div>
+                    <h3>Nikakudori Mahjong V5</h3>
+                </div>
+                <div class="game-info">
+                    <h2>Nikakudori Mahjong</h2>
+                    <p>A beautiful, puzzle-focused mahjong solitaire game designed for Android. Featuring 3D tile boards, smooth animations, and carefully crafted challenges.</p>
+                    <p><strong>Latest version:</strong> V5 (In development)</p>
+                    
+                    <div class="features">
+                        <div class="feature">
+                            <h3>3D Boards</h3>
+                            <p>Play on layered pyramid, fortress, dragon, and more unique 3D layouts.</p>
+                        </div>
+                        <div class="feature">
+                            <h3>Pinch & Zoom</h3>
+                            <p>Full control over camera with intuitive pinch-to-zoom and pan controls.</p>
+                        </div>
+                        <div class="feature">
+                            <h3>Polish & Feel</h3>
+                            <p>Attention to detail in animations, sounds, and game flow.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="blog-section" id="blog">
+        <div class="container">
+            <h2>Development Log</h2>
+            <div class="blog-grid">
+                <div class="blog-card" onclick="openBlogPost('post1')">
+                    <div class="blog-header">
+                        <div class="blog-date">April 2025</div>
+                        <div class="blog-title">MVVM Architecture Refactor</div>
+                    </div>
+                    <div class="blog-content">
+                        <p class="blog-excerpt">Refactored GameViewModel into a cleaner MVVM pattern with extracted UseCases and a dedicated GameSessionController for better separation of concerns.</p>
+                        <span class="read-more">Read more →</span>
+                    </div>
+                </div>
+
+                <div class="blog-card" onclick="openBlogPost('post2')">
+                    <div class="blog-header">
+                        <div class="blog-date">March 2025</div>
+                        <div class="blog-title">3D Board Generator Fix</div>
+                    </div>
+                    <div class="blog-content">
+                        <p class="blog-excerpt">Fixed critical bug in LayeredBoardGenerator where 3D boards were sometimes fully unsolvable. Rewrote using backward generation matching the 2D approach.</p>
+                        <span class="read-more">Read more →</span>
+                    </div>
+                </div>
+
+                <div class="blog-card" onclick="openBlogPost('post3')">
+                    <div class="blog-header">
+                        <div class="blog-date">February 2025</div>
+                        <div class="blog-title">Camera Controls & Board Interaction</div>
+                    </div>
+                    <div class="blog-content">
+                        <p class="blog-excerpt">Implemented pinch-to-zoom and pan for the game board with careful pointer event conflict resolution to ensure smooth, responsive gameplay.</p>
+                        <span class="read-more">Read more →</span>
+                    </div>
+                </div>
+
+                <div class="blog-card" onclick="openBlogPost('post4')">
+                    <div class="blog-header">
+                        <div class="blog-date">January 2025</div>
+                        <div class="blog-title">Welcome Screen & Cherry Blossoms</div>
+                    </div>
+                    <div class="blog-content">
+                        <p class="blog-excerpt">Designed and implemented a beautiful WelcomeScreen with falling cherry blossom petal animations and "Tap to Play" prompt for an elegant first impression.</p>
+                        <span class="read-more">Read more →</span>
+                    </div>
+                </div>
+
+                <div class="blog-card" onclick="openBlogPost('post5')">
+                    <div class="blog-header">
+                        <div class="blog-date">December 2024</div>
+                        <div class="blog-title">Background Location System</div>
+                    </div>
+                    <div class="blog-content">
+                        <p class="blog-excerpt">Built a location metadata system for beautiful background images with on-screen overlays showing where each board photo was taken.</p>
+                        <span class="read-more">Read more →</span>
+                    </div>
+                </div>
+
+                <div class="blog-card" onclick="openBlogPost('post6')">
+                    <div class="blog-header">
+                        <div class="blog-date">November 2024</div>
+                        <div class="blog-title">Play Store Roadmap Complete</div>
+                    </div>
+                    <div class="blog-content">
+                        <p class="blog-excerpt">Completed comprehensive Google Play Store launch roadmap and checklist to guide final polish and release preparation for Nikakudori Mahjong V5.</p>
+                        <span class="read-more">Read more →</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <div class="contact-section">
+                <h2>Stay Updated</h2>
+                <p>Get notified when Nikakudori Mahjong launches on Google Play Store, plus exclusive dev updates and behind-the-scenes content.</p>
+                
+                <form class="signup-form" onsubmit="handleSignup(event)">
+                    <input 
+                        type="email" 
+                        id="email" 
+                        placeholder="your@email.com" 
+                        required
+                    >
+                    <button type="submit">Join Beta</button>
+                </form>
+                
+                <div id="formMessage" class="form-message"></div>
+
+                <div class="socials" style="margin-top: 2rem;">
+                    <a href="https://github.com/rekluzlabs" target="_blank">GitHub</a>
+                    <a href="mailto:hi@rekluzlabs.dev">Email</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Post Modals -->
+    <div id="post1Modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeBlogPost('post1')">&times;</span>
+            <h2>MVVM Architecture Refactor</h2>
+            <p><strong>April 2025</strong></p>
+            <p>Refactored GameViewModel into a cleaner MVVM pattern with extracted UseCases and a dedicated GameSessionController for better separation of concerns.</p>
+            <p>The architecture now cleanly separates:</p>
+            <ul>
+                <li><strong>UndoUseCase</strong> - Handles undo/redo logic independently</li>
+                <li><strong>InteractionCoordinator</strong> - Manages tile selection and board interaction</li>
+                <li><strong>AutoCompleteUseCase</strong> - Powers hint and autocomplete features</li>
+                <li><strong>GameSessionController</strong> - Orchestrates the overall game session state</li>
+            </ul>
+            <p style="margin-top: 1rem;">This separation makes the codebase more testable, maintainable, and easier to extend with new features without touching core game logic.</p>
+        </div>
+    </div>
+
+    <div id="post2Modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeBlogPost('post2')">&times;</span>
+            <h2>3D Board Generator Fix</h2>
+            <p><strong>March 2025</strong></p>
+            <p>Fixed a critical bug in LayeredBoardGenerator where 3D boards were sometimes generated as fully unsolvable puzzles. This was causing frustration for players who would occasionally hit unwinnable games.</p>
+            <p>The solution was to rewrite the 3D generation algorithm to use backward generation—the same proven approach that works reliably for 2D boards. Instead of placing tiles forward and hoping they're solvable, we now:</p>
+            <ul>
+                <li>Start with a completely clear board</li>
+                <li>Remove tiles backward from a solved state</li>
+                <li>Guarantee every generated board has a solution</li>
+            </ul>
+            <p style="margin-top: 1rem;">Tested across all 3D layouts (PYRAMID, FORTRESS, DRAGON, TURTLE, BRIDGE, CASTLE) with a complete tile count audit to ensure balance.</p>
+        </div>
+    </div>
+
+    <div id="post3Modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeBlogPost('post3')">&times;</span>
+            <h2>Camera Controls & Board Interaction</h2>
+            <p><strong>February 2025</strong></p>
+            <p>Implemented full pinch-to-zoom and pan controls for the 3D game board, giving players complete freedom to position the board however they like.</p>
+            <p>The tricky part was handling pointer event conflicts—ensuring that pinch gestures don't interfere with tile selection, and that single-tap remains responsive while supporting multi-touch zoom.</p>
+            <p>The final implementation:</p>
+            <ul>
+                <li>Detects zoom intent based on pointer count and movement distance</li>
+                <li>Switches gesture mode cleanly mid-interaction</li>
+                <li>Respects a 3D ray-cast hit test to select tiles even at odd camera angles</li>
+                <li>Provides smooth deceleration on pan release</li>
+            </ul>
+            <p style="margin-top: 1rem;">Players can now explore 3D boards from any angle while maintaining snappy, responsive gameplay.</p>
+        </div>
+    </div>
+
+    <div id="post4Modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeBlogPost('post4')">&times;</span>
+            <h2>Welcome Screen & Cherry Blossoms</h2>
+            <p><strong>January 2025</strong></p>
+            <p>Designed and implemented a beautiful WelcomeScreen with falling cherry blossom petal animations and "Tap to Play" prompt for an elegant first impression.</p>
+            <p>The animation system uses particle physics to:</p>
+            <ul>
+                <li>Generate petals at random positions and times</li>
+                <li>Apply gentle gravity and wind drift</li>
+                <li>Rotate petals naturally as they fall</li>
+                <li>Recycle petals smoothly without visual pop-in</li>
+            </ul>
+            <p style="margin-top: 1rem;">The result is a serene, polished first experience that sets the tone for a thoughtful, crafted game. The animation runs at 60fps without impacting battery life on mobile devices.</p>
+        </div>
+    </div>
+
+    <div id="post5Modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeBlogPost('post5')">&times;</span>
+            <h2>Background Location System</h2>
+            <p><strong>December 2024</strong></p>
+            <p>Built a location metadata system for beautiful background images with on-screen overlays showing where each board photo was taken.</p>
+            <p>Each background board now carries metadata including:</p>
+            <ul>
+                <li>Photographer credit</li>
+                <li>Location name and coordinates</li>
+                <li>Shooting date and camera settings</li>
+                <li>Optional description or story</li>
+            </ul>
+            <p style="margin-top: 1rem;">During gameplay, a subtle overlay displays the location, turning each board into a window to somewhere beautiful in the world. This adds a contemplative, travel-inspired dimension to the puzzle experience.</p>
+        </div>
+    </div>
+
+    <div id="post6Modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeBlogPost('post6')">&times;</span>
+            <h2>Play Store Roadmap Complete</h2>
+            <p><strong>November 2024</strong></p>
+            <p>Completed a comprehensive Google Play Store launch roadmap and detailed checklist to guide final polish and release preparation for Nikakudori Mahjong V5.</p>
+            <p>The roadmap covers:</p>
+            <ul>
+                <li><strong>Store Assets</strong> - Icon, screenshots, feature graphics, descriptions in multiple languages</li>
+                <li><strong>Technical Requirements</strong> - Permissions, minimum SDK, testing on multiple devices</li>
+                <li><strong>Polish Phase</strong> - Bug fixes, performance optimization, user testing feedback</li>
+                <li><strong>Release Strategy</strong> - Beta testing timeline, phased rollout, review monitoring</li>
+            </ul>
+            <p style="margin-top: 1rem;">This systematic approach ensures we ship a polished, professional game that meets Google Play's standards and makes a great first impression on players.</p>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Rekluz Labs. All rights reserved.</p>
+            <p>Nikakudori Mahjong is in active development.</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleTheme() {
+            document.body.classList.toggle('dark-mode');
+            localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+        }
+
+        function initTheme() {
+            const darkMode = localStorage.getItem('darkMode') === 'true';
+            if (darkMode) {
+                document.body.classList.add('dark-mode');
+            }
+        }
+
+        function handleSignup(event) {
+            event.preventDefault();
+            const email = document.getElementById('email').value;
+            const messageDiv = document.getElementById('formMessage');
+
+            // Validate email
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                messageDiv.className = 'form-message error';
+                messageDiv.textContent = 'Please enter a valid email address.';
+                return;
+            }
+
+            // For now, just show a success message
+            // In production, you'd send this to a backend or email service (like Mailchimp, Forms endpoint, etc.)
+            messageDiv.className = 'form-message success';
+            messageDiv.textContent = '✓ Thanks for signing up! We\'ll reach out soon.';
+            document.getElementById('email').value = '';
+
+            // Optional: Log to console (replace with real backend call)
+            console.log('Email signup:', email);
+        }
+
+        function openBlogPost(postId) {
+            document.getElementById(postId + 'Modal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeBlogPost(postId) {
+            document.getElementById(postId + 'Modal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Initialize theme on page load
+        document.addEventListener('DOMContentLoaded', initTheme);
+    </script>
+</body>
+</html>
