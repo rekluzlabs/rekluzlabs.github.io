@@ -7,7 +7,7 @@ This is the source code for the [Rekluz Labs](https://rekluzlabs.github.io) webs
 - JavaScript
 - GitHub Pages (Hosting)
 
-## 📄 License
+##  License
 Copyright (c) 2026 Rekluz Labs. All rights reserved.
 
 This software and all associated files (the "Software") are the exclusive 
