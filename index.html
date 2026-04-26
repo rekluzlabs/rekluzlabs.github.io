@@ -401,55 +401,41 @@
     </footer>
 
     <script>
-        function handleSignup(event) {
-            event.preventDefault();
-            const email = document.getElementById('email').value;
-            const statusDiv = document.getElementById('formStatus');
-            
-            // Show loading state
-            statusDiv.innerHTML = '<p style="color: #888;">Sending...</p>';
-            
-            // IMPORTANT: Replace 'YOUR_DEPLOYMENT_URL_HERE' with your Google Apps Script deployment URL
-            // Instructions: See GOOGLE_APPS_SCRIPT_SETUP.md
-            const DEPLOYMENT_URL = 'YOUR_DEPLOYMENT_URL_HERE';
-            
-            if (DEPLOYMENT_URL === 'YOUR_DEPLOYMENT_URL_HERE') {
-                statusDiv.innerHTML = '<p class="form-success">✓ Thanks! We\'ve added you to the list.</p>';
-                document.getElementById('email').value = '';
-                setTimeout(() => { statusDiv.innerHTML = ''; }, 5000);
-                return;
-            }
-            
-            // Send email to Google Apps Script
-            fetch(DEPLOYMENT_URL, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    userEmail: email
-                })
+    function handleSignup(event) {
+        event.preventDefault();
+        const email = document.getElementById('email').value;
+        const statusDiv = document.getElementById('formStatus');
+        
+        // Show loading state
+        statusDiv.innerHTML = '<p style="color: #888;">Sending...</p>';
+        
+        // UPDATED: Your live Google Apps Script deployment URL
+        const DEPLOYMENT_URL = 'https://script.google.com/macros/s/AKfycbxrJv7CcNy3quPRgKVGb-qgh7Byx9JmZf5aMyUK7Y98mFN4a7EqQ9ZaDvj2f7bNWbia/exec';
+        
+        // Send email to Google Apps Script
+        fetch(DEPLOYMENT_URL, {
+            method: 'POST',
+            mode: 'no-cors', // This prevents CORS errors from stopping the process
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                userEmail: email
             })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    statusDiv.innerHTML = '<p class="form-success">✓ Thanks! Check your email for updates.</p>';
-                    document.getElementById('email').value = '';
-                } else {
-                    statusDiv.innerHTML = '<p class="form-error">Error: ' + (data.error || 'Unknown error') + '</p>';
-                }
-                // Clear message after 5 seconds
-                setTimeout(() => {
-                    statusDiv.innerHTML = '';
-                }, 5000);
-            })
-            .catch(err => {
-                console.error('Error:', err);
-                statusDiv.innerHTML = '<p class="form-success">✓ Thanks! We\'ve added you to the list.</p>';
-                document.getElementById('email').value = '';
-                setTimeout(() => {
-                    statusDiv.innerHTML = '';
-                }, 5000);
-            });
-        }
-    </script>
+        })
+        .then(() => {
+            // Because we use 'no-cors', we assume success if the request sends
+            statusDiv.innerHTML = '<p class="form-success">✓ Thanks! Check your email for updates.</p>';
+            document.getElementById('email').value = '';
+            
+            // Clear message after 5 seconds
+            setTimeout(() => {
+                statusDiv.innerHTML = '';
+            }, 5000);
+        })
+        .catch(err => {
+            console.error('Error:', err);
+            statusDiv.innerHTML = '<p class="form-error">Something went wrong. Please try again.</p>';
+        });
+    }
+</script>
 </body>
 </html>
