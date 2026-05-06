@@ -16,7 +16,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
 
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
             color: var(--text-main);
             background: var(--dark-bg);
@@ -24,6 +24,7 @@
 
         header {
             background: rgba(15, 17, 21, 0.95);
+            backdrop-filter: blur(10px);
             padding: 1rem 0;
             position: sticky;
             top: 0;
@@ -47,27 +48,26 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            letter-spacing: 1px;
         }
 
         .hero {
-            padding: 80px 2rem;
+            padding: 100px 2rem;
             text-align: center;
             background: radial-gradient(circle at center, #1a1e26 0%, #0f1115 100%);
         }
 
         .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
 
-        section { padding: 60px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        section { padding: 80px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
 
         .game-showcase {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 4rem;
             align-items: center;
-            margin-bottom: 4rem;
         }
 
-        /* Flips every other game row for visual interest */
         .game-showcase.reverse { direction: rtl; }
         .game-showcase.reverse .game-info { direction: ltr; }
 
@@ -78,7 +78,6 @@
             box-shadow: 0 20px 40px rgba(0,0,0,0.4);
         }
 
-        /* Specific border for Akachan's Adventures */
         .akachan-border { background: linear-gradient(135deg, var(--akachan-blue), #764ba2); }
 
         .game-screenshot-container img {
@@ -87,23 +86,68 @@
             border-radius: 10px;
         }
 
-        .game-info h2 { font-size: 2.2rem; margin-bottom: 1rem; color: var(--primary-gold); }
+        .game-info h2 { font-size: 2.5rem; margin-bottom: 1.5rem; color: var(--primary-gold); }
         .akachan-text { color: var(--akachan-blue) !important; }
 
-        .feature-list { margin-top: 1.5rem; }
         .feature-item {
             background: var(--card-bg);
-            padding: 1rem;
-            border-radius: 8px;
-            margin-bottom: 10px;
-            border-left: 3px solid var(--primary-gold);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary-gold);
+            transition: transform 0.3s;
         }
+
+        .feature-item:hover { transform: translateX(10px); }
         .akachan-item { border-left-color: var(--akachan-blue); }
 
-        footer { padding: 3rem; text-align: center; color: #666; }
+        /* --- Beta Signup Section --- */
+        .contact-section {
+            background: var(--card-bg);
+            border: 1px solid var(--primary-gold);
+            padding: 4rem;
+            border-radius: 20px;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .signup-form {
+            display: flex;
+            gap: 1rem;
+            max-width: 500px;
+            margin: 2.5rem auto;
+        }
+
+        .signup-form input {
+            flex: 1;
+            background: #2a2d35;
+            border: 1px solid #444;
+            padding: 1rem;
+            border-radius: 8px;
+            color: white;
+            font-size: 1rem;
+        }
+
+        .signup-form button {
+            background: var(--primary-gold);
+            color: black;
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.2s, opacity 0.3s;
+        }
+
+        .signup-form button:hover { opacity: 0.9; transform: scale(1.02); }
+
+        .form-success { color: #4ade80; margin-top: 10px; }
+
+        footer { padding: 4rem; text-align: center; color: #666; font-size: 0.9rem; }
 
         @media (max-width: 768px) {
             .game-showcase, .game-showcase.reverse { grid-template-columns: 1fr; direction: ltr; }
+            .signup-form { flex-direction: column; }
         }
     </style>
 </head>
@@ -112,59 +156,107 @@
     <header>
         <nav>
             <a href="#" class="nav-logo">REKLUZ LABS</a>
-            <div style="display:flex; gap: 20px;">
-                <a href="#nikakudori" style="color:white; text-decoration:none; font-size:0.8rem;">NIKAKUDORI</a>
-                <a href="#akachan" style="color:white; text-decoration:none; font-size:0.8rem;">AKACHAN</a>
-            </div>
+            <ul style="list-style:none; display:flex; gap:20px;">
+                <li><a href="#nikakudori" style="color:white; text-decoration:none; font-size:0.8rem; letter-spacing:1px;">NIKAKUDORI</a></li>
+                <li><a href="#akachan" style="color:white; text-decoration:none; font-size:0.8rem; letter-spacing:1px;">AKACHAN</a></li>
+                <li><a href="#signup" style="color:var(--primary-gold); text-decoration:none; font-size:0.8rem; letter-spacing:1px;">JOIN BETA</a></li>
+            </ul>
         </nav>
     </header>
 
     <section class="hero">
-        <h1>Our Games</h1>
-        <p style="color:#888; margin-top:10px;">Experience thoughtful gameplay and vibrant Japanese aesthetics.</p>
+        <div class="container">
+            <h1>Thoughtful Gaming</h1>
+            <p style="color:#888; max-width:600px; margin:20px auto;">Crafting immersive puzzle experiences and interactive stories for Android.</p>
+        </div>
     </section>
 
-    <!-- Game 1: Nikakudori Mahjong -->
+    <!-- Nikakudori Mahjong -->
     <section id="nikakudori">
         <div class="container">
             <div class="game-showcase">
                 <div class="game-screenshot-container">
-                    <img src="https://raw.githubusercontent.com/rekluzlabs/rekluzlabs.github.io/main/NikakudoriMahjong/gameplay.jpg" alt="Nikakudori Gameplay">
+                    <img src="https://raw.githubusercontent.com/rekluzlabs/rekluzlabs.github.io/main/NikakudoriMahjong/gameplay.jpg" alt="Nikakudori Mahjong">
                 </div>
                 <div class="game-info">
                     <h2>Nikakudori Mahjong</h2>
-                    <p>Experience the timeless art of Japanese tile-matching. This is an elegant take on the classic mahjong solitaire format, designed for strategic calm.</p>
-                    <div class="feature-list">
-                        <div class="feature-item"><strong>Traditional Aesthetics:</strong> Beautiful Japanese-themed boards and serene soundscapes.</div>
-                        <div class="feature-item"><strong>Meditative Flow:</strong> Uncover hidden tiles and match pairs in a world of peaceful gameplay.</div>
+                    <p>Experience the timeless art of Japanese tile-matching with Nikakudori Mahjong, a captivating solitaire game rooted in tradition and designed for peaceful, meditative gameplay.</p>
+                    <div style="margin-top:20px;">
+                        <div class="feature-item">
+                            <h3 style="color:var(--primary-gold);">Strategic Calm</h3>
+                            <p>Uncover hidden tiles and match pairs while surrounded by beautiful Japanese aesthetics and serene soundscapes.</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Game 2: Akachan's Adventures -->
+    <!-- Akachan's Adventures -->
     <section id="akachan">
         <div class="container">
             <div class="game-showcase reverse">
                 <div class="game-screenshot-container akachan-border">
-                    <img src="https://raw.githubusercontent.com/rekluzlabs/rekluzlabs.github.io/main/AkachansAdventures/akachan_screenshot.jpg" alt="Akachan Gameplay">
+                    <img src="https://raw.githubusercontent.com/rekluzlabs/rekluzlabs.github.io/main/AkachansAdventures/akachan_screenshot.jpg" alt="Akachan's Adventures">
                 </div>
                 <div class="game-info">
                     <h2 class="akachan-text">Akachan's Adventures</h2>
-                    <p>Help a little girl navigate her Japanese home! Burst magical bubbles with her rattle to collect milk power-ups before naptime arrives.</p>
-                    <div class="feature-list">
-                        <div class="feature-item akachan-item"><strong>Magical Bubbles:</strong> Pop bubbles to release rewards and special power-ups.</div>
-                        <div class="feature-item akachan-item"><strong>The Nemesis:</strong> Watch out for the robot vacuum—it's fast and will slow you down!</div>
+                    <p>A baby girl crawling through her Japanese home bursting magical bubbles! Can you help her make it all the way through the house before naptime?</p>
+                    <div style="margin-top:20px;">
+                        <div class="feature-item akachan-item">
+                            <h3 class="akachan-text">Power-ups & Nemesis</h3>
+                            <p>Throw your rattle at bubbles to release milk bottles, but stay away from the robot vacuum—it's always in the way!</p>
+                        </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Beta Signup Box -->
+    <section id="signup">
+        <div class="container">
+            <div class="contact-section">
+                <h2 style="color:var(--primary-gold);">Join the Beta</h2>
+                <p>Be the first to play our new releases. Sign up to get early access and development updates.</p>
+                <form class="signup-form" onsubmit="handleSignup(event)">
+                    <input type="email" id="email" placeholder="Enter your email address" required>
+                    <button type="submit">Get Access</button>
+                </form>
+                <div id="formStatus"></div>
             </div>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2026 Rekluz Labs. Crafted for players who love puzzles.</p>
+        <p>&copy; 2026 Rekluz Labs. "Crafted for players who love puzzles."</p>
+        <p>Contact: rekluzlabs@gmail.com</p>
     </footer>
 
+    <script>
+    function handleSignup(event) {
+        event.preventDefault();
+        const email = document.getElementById('email').value;
+        const statusDiv = document.getElementById('formStatus');
+        statusDiv.innerHTML = '<p style="color: #888;">Adding you to the list...</p>';
+        
+        const DEPLOYMENT_URL = 'https://script.google.com/macros/s/AKfycbxrJv7CcNy3quPRgKVGb-qgh7Byx9JmZf5aMyUK7Y98mFN4a7EqQ9ZaDvj2f7bNWbia/exec';
+        
+        fetch(DEPLOYMENT_URL, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ userEmail: email })
+        })
+        .then(() => {
+            statusDiv.innerHTML = '<p class="form-success">✓ You are on the list! Check your inbox soon.</p>';
+            document.getElementById('email').value = '';
+            setTimeout(() => { statusDiv.innerHTML = ''; }, 5000);
+        })
+        .catch(err => {
+            statusDiv.innerHTML = '<p style="color:#f87171;">Something went wrong. Please try again.</p>';
+        });
+    }
+    </script>
 </body>
 </html>
