@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rekluz Labs - Games</title>
+    <title>Rekluz Labs - Game Development Studio</title>
     <style>
         :root {
             --primary-gold: #d4af37;
@@ -22,8 +22,9 @@
             background: var(--dark-bg);
         }
 
+        /* --- Header restored to original style --- */
         header {
-            background: rgba(15, 17, 21, 0.95);
+            background: rgba(15, 17, 21, 0.9);
             backdrop-filter: blur(10px);
             padding: 1rem 0;
             position: sticky;
@@ -42,24 +43,70 @@
         }
 
         .nav-logo {
-            text-decoration: none;
-            color: var(--primary-gold);
-            font-weight: 700;
+            height: 40px;
             display: flex;
             align-items: center;
             gap: 10px;
+            text-decoration: none;
+            color: var(--primary-gold);
+            font-weight: 700;
             letter-spacing: 1px;
         }
 
+        .nav-logo img { height: 100%; border-radius: 4px; }
+
+        header ul { list-style: none; display: flex; gap: 2rem; }
+
+        header a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        header a:hover { color: var(--primary-gold); }
+
+        /* --- Hero restored with Animation & Logo --- */
         .hero {
             padding: 100px 2rem;
             text-align: center;
             background: radial-gradient(circle at center, #1a1e26 0%, #0f1115 100%);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
         }
 
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+        .hero-logo-main {
+            width: 180px;
+            margin-bottom: 2rem;
+            filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.3));
+            animation: float 6s ease-in-out infinite;
+        }
 
-        section { padding: 80px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, #fff, var(--primary-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #888;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        /* --- Game Showcases --- */
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+        section { padding: 80px 0; }
 
         .game-showcase {
             display: grid;
@@ -73,49 +120,42 @@
 
         .game-screenshot-container {
             border-radius: 15px;
-            padding: 8px;
+            padding: 10px;
             background: linear-gradient(135deg, var(--primary-gold), #222);
             box-shadow: 0 20px 40px rgba(0,0,0,0.4);
         }
 
         .akachan-border { background: linear-gradient(135deg, var(--akachan-blue), #764ba2); }
 
-        .game-screenshot-container img {
-            width: 100%;
-            display: block;
-            border-radius: 10px;
-        }
+        .game-screenshot-container img { width: 100%; display: block; border-radius: 10px; }
 
-        .game-info h2 { font-size: 2.5rem; margin-bottom: 1.5rem; color: var(--primary-gold); }
+        .game-info h2 { font-size: 2.5rem; color: var(--primary-gold); margin-bottom: 1.5rem; }
         .akachan-text { color: var(--akachan-blue) !important; }
 
         .feature-item {
             background: var(--card-bg);
             padding: 1.5rem;
             border-radius: 12px;
-            margin-bottom: 1.5rem;
+            border: 1px solid rgba(255,255,255,0.05);
+            margin-top: 2rem;
             border-left: 4px solid var(--primary-gold);
-            transition: transform 0.3s;
         }
-
-        .feature-item:hover { transform: translateX(10px); }
         .akachan-item { border-left-color: var(--akachan-blue); }
 
-        /* --- Beta Signup Section --- */
+        /* --- Signup Section restored --- */
         .contact-section {
             background: var(--card-bg);
             border: 1px solid var(--primary-gold);
             padding: 4rem;
             border-radius: 20px;
             text-align: center;
-            margin-top: 4rem;
         }
 
         .signup-form {
             display: flex;
             gap: 1rem;
             max-width: 500px;
-            margin: 2.5rem auto;
+            margin: 2rem auto;
         }
 
         .signup-form input {
@@ -125,28 +165,23 @@
             padding: 1rem;
             border-radius: 8px;
             color: white;
-            font-size: 1rem;
         }
 
         .signup-form button {
             background: var(--primary-gold);
             color: black;
-            padding: 1rem 2.5rem;
+            padding: 1rem 2rem;
             border: none;
             border-radius: 8px;
             font-weight: 700;
             cursor: pointer;
-            transition: transform 0.2s, opacity 0.3s;
         }
 
-        .signup-form button:hover { opacity: 0.9; transform: scale(1.02); }
-
-        .form-success { color: #4ade80; margin-top: 10px; }
-
-        footer { padding: 4rem; text-align: center; color: #666; font-size: 0.9rem; }
+        footer { padding: 4rem; text-align: center; color: #666; border-top: 1px solid rgba(255,255,255,0.05); }
 
         @media (max-width: 768px) {
             .game-showcase, .game-showcase.reverse { grid-template-columns: 1fr; direction: ltr; }
+            .hero h1 { font-size: 2.5rem; }
             .signup-form { flex-direction: column; }
         }
     </style>
@@ -155,23 +190,28 @@
 
     <header>
         <nav>
-            <a href="#" class="nav-logo">REKLUZ LABS</a>
-            <ul style="list-style:none; display:flex; gap:20px;">
-                <li><a href="#nikakudori" style="color:white; text-decoration:none; font-size:0.8rem; letter-spacing:1px;">NIKAKUDORI</a></li>
-                <li><a href="#akachan" style="color:white; text-decoration:none; font-size:0.8rem; letter-spacing:1px;">AKACHAN</a></li>
-                <li><a href="#signup" style="color:var(--primary-gold); text-decoration:none; font-size:0.8rem; letter-spacing:1px;">JOIN BETA</a></li>
+            <a href="#home" class="nav-logo">
+                <img src="REKLUZLABS_goldlogo.png" alt="Rekluz Labs Logo">
+                REKLUZ LABS
+            </a>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#nikakudori">Nikakudori</a></li>
+                <li><a href="#akachan">Akachan</a></li>
+                <li><a href="#contact">Join Beta</a></li>
             </ul>
         </nav>
     </header>
 
-    <section class="hero">
+    <section class="hero" id="home">
         <div class="container">
+            <img src="REKLUZLABS_goldlogo.png" alt="Rekluz Labs" class="hero-logo-main">
             <h1>Thoughtful Gaming</h1>
-            <p style="color:#888; max-width:600px; margin:20px auto;">Crafting immersive puzzle experiences and interactive stories for Android.</p>
+            <p>Crafting immersive puzzle experiences and interactive stories. Experience vibrant Japanese aesthetics and strategic gameplay.</p>
         </div>
     </section>
 
-    <!-- Nikakudori Mahjong -->
+    <!-- Nikakudori Section -->
     <section id="nikakudori">
         <div class="container">
             <div class="game-showcase">
@@ -181,18 +221,16 @@
                 <div class="game-info">
                     <h2>Nikakudori Mahjong</h2>
                     <p>Experience the timeless art of Japanese tile-matching with Nikakudori Mahjong, a captivating solitaire game rooted in tradition and designed for peaceful, meditative gameplay.</p>
-                    <div style="margin-top:20px;">
-                        <div class="feature-item">
-                            <h3 style="color:var(--primary-gold);">Strategic Calm</h3>
-                            <p>Uncover hidden tiles and match pairs while surrounded by beautiful Japanese aesthetics and serene soundscapes.</p>
-                        </div>
+                    <div class="feature-item">
+                        <h3>Strategic Calm</h3>
+                        <p>Uncover hidden tiles, match pairs, and clear the board while surrounded by beautiful Japanese aesthetics and serene soundscapes.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Akachan's Adventures -->
+    <!-- Akachan Section -->
     <section id="akachan">
         <div class="container">
             <div class="game-showcase reverse">
@@ -201,26 +239,24 @@
                 </div>
                 <div class="game-info">
                     <h2 class="akachan-text">Akachan's Adventures</h2>
-                    <p>A baby girl crawling through her Japanese home bursting magical bubbles! Can you help her make it all the way through the house before naptime?</p>
-                    <div style="margin-top:20px;">
-                        <div class="feature-item akachan-item">
-                            <h3 class="akachan-text">Power-ups & Nemesis</h3>
-                            <p>Throw your rattle at bubbles to release milk bottles, but stay away from the robot vacuum—it's always in the way!</p>
-                        </div>
+                    <p>Follow a baby girl crawling through her Japanese home, bursting magical bubbles with her rattle to find power-ups before naptime!</p>
+                    <div class="feature-item akachan-item">
+                        <h3 class="akachan-text">Avoid the Nemesis</h3>
+                        <p>The robot vacuum is constantly in the way—don't let it get too close or it will slow her down. Can you make it through the house?</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Beta Signup Box -->
-    <section id="signup">
+    <!-- Contact/Signup Section -->
+    <section id="contact">
         <div class="container">
             <div class="contact-section">
-                <h2 style="color:var(--primary-gold);">Join the Beta</h2>
-                <p>Be the first to play our new releases. Sign up to get early access and development updates.</p>
+                <h2>Join the Beta</h2>
+                <p>Sign up to be first to know when our new games drop in the Play Store.</p>
                 <form class="signup-form" onsubmit="handleSignup(event)">
-                    <input type="email" id="email" placeholder="Enter your email address" required>
+                    <input type="email" id="email" placeholder="Enter your email" required>
                     <button type="submit">Get Access</button>
                 </form>
                 <div id="formStatus"></div>
@@ -230,7 +266,7 @@
 
     <footer>
         <p>&copy; 2026 Rekluz Labs. "Crafted for players who love puzzles."</p>
-        <p>Contact: rekluzlabs@gmail.com</p>
+        <p>rekluzlabs@gmail.com</p>
     </footer>
 
     <script>
@@ -238,7 +274,7 @@
         event.preventDefault();
         const email = document.getElementById('email').value;
         const statusDiv = document.getElementById('formStatus');
-        statusDiv.innerHTML = '<p style="color: #888;">Adding you to the list...</p>';
+        statusDiv.innerHTML = '<p style="color: #888;">Sending...</p>';
         
         const DEPLOYMENT_URL = 'https://script.google.com/macros/s/AKfycbxrJv7CcNy3quPRgKVGb-qgh7Byx9JmZf5aMyUK7Y98mFN4a7EqQ9ZaDvj2f7bNWbia/exec';
         
@@ -249,12 +285,12 @@
             body: JSON.stringify({ userEmail: email })
         })
         .then(() => {
-            statusDiv.innerHTML = '<p class="form-success">✓ You are on the list! Check your inbox soon.</p>';
+            statusDiv.innerHTML = '<p style="color: #4ade80;">✓ Thanks! Check your email for updates.</p>';
             document.getElementById('email').value = '';
             setTimeout(() => { statusDiv.innerHTML = ''; }, 5000);
         })
         .catch(err => {
-            statusDiv.innerHTML = '<p style="color:#f87171;">Something went wrong. Please try again.</p>';
+            statusDiv.innerHTML = '<p style="color: #f87171;">Something went wrong. Please try again.</p>';
         });
     }
     </script>
