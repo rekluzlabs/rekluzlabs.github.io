@@ -22,7 +22,6 @@
             background: var(--dark-bg);
         }
 
-        /* --- Header restored to original style --- */
         header {
             background: rgba(15, 17, 21, 0.9);
             backdrop-filter: blur(10px);
@@ -68,7 +67,6 @@
 
         header a:hover { color: var(--primary-gold); }
 
-        /* --- Hero restored with Animation & Logo --- */
         .hero {
             padding: 100px 2rem;
             text-align: center;
@@ -104,7 +102,6 @@
             margin: 0 auto 2rem;
         }
 
-        /* --- Game Showcases --- */
         .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
         section { padding: 80px 0; }
 
@@ -142,7 +139,6 @@
         }
         .akachan-item { border-left-color: var(--akachan-blue); }
 
-        /* --- Signup Section restored --- */
         .contact-section {
             background: var(--card-bg);
             border: 1px solid var(--primary-gold);
@@ -176,6 +172,17 @@
             font-weight: 700;
             cursor: pointer;
         }
+
+        .play-store-link {
+            display: inline-block;
+            margin-top: 1rem;
+            color: var(--primary-gold);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.05rem;
+            transition: opacity 0.3s;
+        }
+        .play-store-link:hover { opacity: 0.7; }
 
         footer { padding: 4rem; text-align: center; color: #666; border-top: 1px solid rgba(255,255,255,0.05); }
 
@@ -219,8 +226,9 @@
                 </div>
                 <div class="game-info">
                     <h2>Nikakudori Mahjong</h2>
-                     <p style="font-size: 1.3em; font-weight: bold;">Beta version now available. Sign up and download it today!</p>
+                    <p style="font-size: 1.3em; font-weight: bold;">Now live on the Google Play Store!</p>
                     <p>Experience the timeless art of Japanese tile-matching with Nikakudori Mahjong, a captivating solitaire game rooted in tradition and designed for peaceful, meditative gameplay. Completely free with zero ads!</p>
+                    <p><a href="https://play.google.com/store/apps/details?id=com.rekluzlabs.nikaku_dori_mahjong" class="play-store-link" target="_blank" rel="noopener noreferrer">Download it today on Google Play →</a></p>
                     <div class="feature-item">
                         <h3>Strategic Calm</h3>
                         <p>Uncover hidden tiles, match pairs, and clear the board while surrounded by beautiful Japanese aesthetics and serene soundscapes.</p>
@@ -229,7 +237,8 @@
             </div>
         </div>
     </section>
-<!-- Akachan Section -->
+
+    <!-- Akachan Section -->
     <section id="akachan">
         <div class="container">
             <div class="game-showcase reverse">
@@ -238,7 +247,7 @@
                 </div>
                 <div class="game-info">
                     <h2 class="akachan-text">Akachan's Adventures</h2>
-                    <p style="font-size: 1.3em; font-weight: bold;">Currently in development. Alpha version available</p>
+                    <p style="font-size: 1.3em; font-weight: bold;">Currently in development — coming soon to the Google Play Store!</p>
                     <p>Follow a baby girl crawling through her Japanese home, bursting magical bubbles with her rattle to find power-ups before naptime!</p>
                     <p><a href="https://rekluzlabs.itch.io/akachans-adventures" style="color: var(--akachan-blue); text-decoration: none; font-weight: 600; transition: opacity 0.3s;" onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'">Download it from itch.io →</a></p>
                     <div class="feature-item akachan-item">
@@ -249,6 +258,7 @@
             </div>
         </div>
     </section>
+
     <!-- Contact/Signup Section -->
     <section id="contact">
         <div class="container">
