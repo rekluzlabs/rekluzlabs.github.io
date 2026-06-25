@@ -1,389 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rekluz Labs — Solo Android Games & Tools</title>
-<meta name="description" content="Rekluz Labs: solo-built Android games and tools, designed and shipped by one person in Vancouver, BC.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;700&family=Work+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --sumi:#161512;
-    --sumi-2:#1d1b17;
-    --washi:#EDE6D6;
-    --bamboo:#4F7942;
-    --gold:#C9A227;
-    --vermilion:#B23A2E;
-    --stone:#8C8678;
-    --hairline: rgba(201,162,39,0.22);
-    --display: 'Shippori Mincho', serif;
-    --body: 'Work Sans', sans-serif;
-    --mono: 'JetBrains Mono', monospace;
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rekluz Labs – Privacy‑First Android Games & Apps</title>
+  <meta name="description" content="Rekluz Labs is a solo indie Android development studio based in Vancouver, BC. We build privacy‑first, ad‑free games with a Japanese aesthetic – Nikakudori Mahjong, Akachan's Adventures – and intelligent apps like NarraWeave and MakoRevive." />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Rekluz Labs" />
+  <link rel="icon" href="RekluzLabs_bluemetal.png" type="image/png" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Rekluz Labs – Privacy‑First Android Games & Apps" />
+  <meta property="og:description" content="Indie studio behind Nikakudori Mahjong, Akachan's Adventures, NarraWeave and MakoRevive." />
+  <meta property="og:image" content="RekluzLabs_bluemetal.png" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://rekluzlabs.com" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Rekluz Labs",
+    "url": "https://rekluzlabs.com",
+    "logo": "RekluzLabs_bluemetal.png",
+    "description": "Solo indie Android development studio based in Vancouver, BC, building privacy‑first, ad‑free games with a Japanese aesthetic and intelligent apps."
   }
-
-  *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{
-    margin:0;
-    background:var(--sumi);
-    color:var(--washi);
-    font-family:var(--body);
-    line-height:1.6;
-    -webkit-font-smoothing:antialiased;
-  }
-
-  @media (prefers-reduced-motion: reduce){
-    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important;}
-  }
-
-  a{color:inherit;}
-  a:focus-visible, button:focus-visible{outline:2px solid var(--gold); outline-offset:3px;}
-
-  .wrap{max-width:1080px; margin:0 auto; padding:0 28px;}
-
-  /* texture */
-  body::before{
-    content:"";
-    position:fixed; inset:0;
-    background-image:
-      radial-gradient(ellipse at 20% 0%, rgba(201,162,39,0.05), transparent 50%),
-      radial-gradient(ellipse at 90% 30%, rgba(79,121,66,0.05), transparent 45%);
-    pointer-events:none;
-    z-index:0;
-  }
-
-  /* header */
-  header{
-    position:sticky; top:0; z-index:10;
-    backdrop-filter:blur(8px);
-    background:rgba(22,21,18,0.82);
-    border-bottom:1px solid var(--hairline);
-  }
-  .nav{
-    display:flex; align-items:center; justify-content:space-between;
-    padding:18px 0;
-  }
-  .wordmark{
-    font-family:var(--display);
-    font-size:1.15rem;
-    letter-spacing:0.04em;
-    display:flex; align-items:center; gap:10px;
-    text-decoration:none;
-  }
-  .wordmark .seal-dot{
-    width:9px; height:9px; border-radius:50%;
-    background:var(--vermilion);
-    display:inline-block;
-  }
-  .nav-links{display:flex; gap:28px; font-size:0.92rem;}
-  .nav-links a{text-decoration:none; color:var(--stone); transition:color 0.2s;}
-  .nav-links a:hover{color:var(--washi);}
-
-  /* hero */
-  .hero{
-    position:relative; z-index:1;
-    padding:120px 0 90px;
-    text-align:center;
-  }
-  .hanko{
-    width:72px; height:72px;
-    margin:0 auto 36px;
-    opacity:0;
-    animation:rise 0.9s ease-out 0.1s forwards;
-  }
-  .hero h1{
-    font-family:var(--display);
-    font-weight:700;
-    font-size:clamp(2.4rem, 6vw, 4.2rem);
-    margin:0 0 18px;
-    letter-spacing:0.01em;
-    opacity:0;
-    animation:rise 0.9s ease-out 0.25s forwards;
-  }
-  .hero .tagline{
-    color:var(--stone);
-    font-size:1.05rem;
-    max-width:520px;
-    margin:0 auto;
-    opacity:0;
-    animation:rise 0.9s ease-out 0.4s forwards;
-  }
-  .hero .locale{
-    margin-top:28px;
-    font-family:var(--mono);
-    font-size:0.78rem;
-    color:var(--bamboo);
-    letter-spacing:0.06em;
-    text-transform:uppercase;
-    opacity:0;
-    animation:rise 0.9s ease-out 0.55s forwards;
-  }
-  @keyframes rise{
-    from{opacity:0; transform:translateY(14px);}
-    to{opacity:1; transform:translateY(0);}
-  }
-
-  .rule{
-    height:1px;
-    background:linear-gradient(90deg, transparent, var(--hairline) 20%, var(--hairline) 80%, transparent);
-    margin:0;
-  }
-
-  /* games section */
-  .section{padding:80px 0; position:relative; z-index:1;}
-  .section-head{
-    display:flex; align-items:baseline; justify-content:space-between;
-    margin-bottom:48px; flex-wrap:wrap; gap:10px;
-  }
-  .section-head h2{
-    font-family:var(--display);
-    font-size:1.8rem;
-    margin:0;
-  }
-  .section-head .count{
-    font-family:var(--mono);
-    font-size:0.8rem;
-    color:var(--stone);
-  }
-
-  .games{
-    display:grid;
-    grid-template-columns:repeat(2, 1fr);
-    gap:1px;
-    background:var(--hairline);
-    border:1px solid var(--hairline);
-  }
-  @media (max-width:720px){ .games{grid-template-columns:1fr;} }
-
-  .game{
-    background:var(--sumi);
-    padding:36px 32px;
-    position:relative;
-    transition:background 0.35s ease;
-    opacity:0;
-    transform:translateY(16px);
-  }
-  .game.in-view{opacity:1; transform:translateY(0); transition:opacity 0.6s ease, transform 0.6s ease, background 0.35s ease;}
-  .game:hover{background:var(--sumi-2);}
-
-  .game-top{display:flex; align-items:flex-start; justify-content:space-between; gap:16px; margin-bottom:18px;}
-  .seal{
-    flex-shrink:0;
-    width:46px; height:46px;
-    border:1.5px solid var(--vermilion);
-    border-radius:6px;
-    display:flex; align-items:center; justify-content:center;
-    font-family:var(--display);
-    font-size:1.1rem;
-    color:var(--vermilion);
-    transform:rotate(-2deg);
-  }
-  .status{
-    font-family:var(--mono);
-    font-size:0.68rem;
-    letter-spacing:0.08em;
-    text-transform:uppercase;
-    padding:4px 9px;
-    border-radius:3px;
-    white-space:nowrap;
-    margin-top:4px;
-  }
-  .status.live{color:var(--bamboo); border:1px solid rgba(79,121,66,0.4);}
-  .status.dev{color:var(--gold); border:1px solid rgba(201,162,39,0.35);}
-
-  .game h3{
-    font-family:var(--display);
-    font-size:1.3rem;
-    margin:0 0 10px;
-  }
-  .game p{
-    color:var(--stone);
-    font-size:0.94rem;
-    margin:0 0 20px;
-  }
-  .game-links{display:flex; gap:14px; flex-wrap:wrap;}
-  .game-links a{
-    font-size:0.84rem;
-    text-decoration:none;
-    color:var(--washi);
-    border-bottom:1px solid var(--gold);
-    padding-bottom:2px;
-    transition:opacity 0.2s;
-  }
-  .game-links a:hover{opacity:0.7;}
-  .game-links .soon{
-    font-size:0.84rem;
-    color:var(--stone);
-    font-style:italic;
-  }
-
-  /* about */
-  .about{
-    padding:70px 0 90px;
-    position:relative; z-index:1;
-  }
-  .about-grid{
-    display:grid; grid-template-columns:1fr 1.3fr; gap:48px;
-  }
-  @media (max-width:720px){ .about-grid{grid-template-columns:1fr;} }
-  .about h2{font-family:var(--display); font-size:1.6rem; margin:0 0 8px;}
-  .about-grid p{color:var(--stone); font-size:0.96rem;}
-  .principles{list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:18px;}
-  .principles li{
-    border-left:2px solid var(--hairline);
-    padding-left:18px;
-    font-size:0.94rem;
-    color:var(--washi);
-  }
-  .principles li span{
-    display:block;
-    font-family:var(--mono);
-    font-size:0.7rem;
-    color:var(--gold);
-    letter-spacing:0.08em;
-    text-transform:uppercase;
-    margin-bottom:4px;
-  }
-
-  /* footer */
-  footer{
-    border-top:1px solid var(--hairline);
-    padding:40px 0;
-    position:relative; z-index:1;
-  }
-  .foot-row{
-    display:flex; justify-content:space-between; align-items:center;
-    flex-wrap:wrap; gap:16px;
-    font-size:0.85rem;
-    color:var(--stone);
-  }
-  .foot-row a{text-decoration:none; color:var(--washi); border-bottom:1px solid transparent;}
-  .foot-row a:hover{border-bottom-color:var(--gold);}
-  .foot-links{display:flex; gap:20px;}
-</style>
+  </script>
 </head>
 <body>
-
-<header>
-  <div class="wrap nav">
-    <a href="#top" class="wordmark"><span class="seal-dot"></span> Rekluz Labs</a>
-    <nav class="nav-links">
-      <a href="#games">Games</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </div>
-</header>
-
-<main id="top">
-  <section class="hero wrap">
-    <svg class="hanko" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Rekluz Labs seal">
-      <rect x="6" y="6" width="88" height="88" rx="10" fill="none" stroke="#B23A2E" stroke-width="3"/>
-      <text x="50" y="62" text-anchor="middle" font-family="Shippori Mincho, serif" font-size="40" fill="#B23A2E">録</text>
-    </svg>
+  <section class="hero fade">
+    <img src="RekluzLabs_bluemetal.png" alt="Rekluz Labs logo" class="hero-logo" loading="lazy" style="width: 8em; height: auto; display: block; margin: 0 auto 0.5em;" />
     <h1>Rekluz Labs</h1>
-    <p class="tagline">Android games and tools, designed, built, and shipped by one person — no studio, no ads, no shortcuts.</p>
-    <p class="locale">Vancouver, BC · Est. solo dev</p>
+    <p class="tagline">Privacy‑first, ad‑free Android games and intelligent apps, crafted with a distinct Japanese aesthetic.</p>
   </section>
 
-  <div class="rule wrap"></div>
-
-  <section class="section wrap" id="games">
-    <div class="section-head">
-      <h2>Games &amp; Tools</h2>
-      <span class="count">04 releases</span>
-    </div>
-
-    <div class="games">
-      <article class="game">
-        <div class="game-top">
-          <div class="seal">二</div>
-          <span class="status live">Live</span>
+  <!-- Games Section -->
+  <section id="games" class="section fade">
+    <h2>Games</h2>
+    <div class="grid">
+      <div class="card">
+        <img src="Screenshot_20260510_111443_Nikakudori Mahjong.jpg" alt="Nikakudori Mahjong screenshot" class="icon" loading="lazy" />
+        <div class="info">
+          <h3>Nikakudori Mahjong</h3>
+          <p>Tile‑matching solitaire with a serene Japanese vibe.</p>
         </div>
-        <h3>Nikakudori Mahjong</h3>
-        <p>Traditional mahjong solitaire with hand-built 3D board layouts, guaranteed solvable, and a quiet, lantern-lit aesthetic. Available in seven languages.</p>
-        <div class="game-links">
-          <a href="https://play.google.com/store/apps/details?id=com.rekluzlabs.nikaku_dori_mahjong" target="_blank" rel="noopener">Google Play</a>
-          <a href="#" target="_blank" rel="noopener">Galaxy Store</a>
-          <a href="#" target="_blank" rel="noopener">ONE Store</a>
-        </div>
-      </article>
-
-      <article class="game">
-        <div class="game-top">
-          <div class="seal">赤</div>
-          <span class="status live">Live</span>
-        </div>
-        <h3>Akachan's Adventures</h3>
-        <p>A playful arcade game built to mark a family milestone — bounce, pop three tiers of bubbles, and spin for power-ups along the way.</p>
-        <div class="game-links">
-          <a href="https://play.google.com/store/apps/details?id=com.rekluzlabs.akachan" target="_blank" rel="noopener">Google Play</a>
-          <a href="#" target="_blank" rel="noopener">Galaxy Store</a>
-        </div>
-      </article>
-
-      <article class="game">
-        <div class="game-top">
-          <div class="seal">織</div>
-          <span class="status dev">In development</span>
-        </div>
-        <h3>NarraWeave</h3>
-        <p>Bring-your-own-key AI serial fiction. Pick your provider, write chapter by chapter, and keep full ownership of your story and your keys.</p>
-        <div class="game-links">
-          <span class="soon">Coming to Google Play</span>
-        </div>
-      </article>
-
-      <article class="game">
-        <div class="game-top">
-          <div class="seal">復</div>
-          <span class="status dev">In development</span>
-        </div>
-        <h3>MakoRevive</h3>
-        <p>AI-powered photo restoration — colorizing, upscaling, and repairing old photographs through a multi-stage on-device pipeline.</p>
-        <div class="game-links">
-          <span class="soon">Coming to Google Play</span>
-        </div>
-      </article>
-    </div>
-  </section>
-
-  <div class="rule wrap"></div>
-
-  <section class="about wrap" id="about">
-    <div class="about-grid">
-      <div>
-        <h2>About</h2>
-        <p>Rekluz Labs is the solo studio name of Enrico Luzi, an indie Android developer based in Vancouver, BC. Every release is designed, coded, and shipped by one person — Kotlin, Jetpack Compose, and a lot of late evenings.</p>
+        <a href="https://play.google.com/store/apps/details?id=com.rekluzlabs.nikaku_dori_mahjong" class="btn" target="_blank" rel="noopener">Play</a>
       </div>
-      <ul class="principles">
-        <li><span>Ownership</span>Bring-your-own-key tools so your data and your costs stay yours.</li>
-        <li><span>Honesty</span>Store listings and legal copy describe exactly what the apps do — nothing inflated.</li>
-        <li><span>No ads</span>None of these apps run advertising. If a feature isn't worth paying for, it isn't worth building.</li>
-      </ul>
+      <div class="card">
+        <img src="Screenshot_20260624_152543_Akachans Adventures.jpg" alt="Akachan's Adventures screenshot" class="icon" loading="lazy" />
+        <div class="info">
+          <h3>Akachan's Adventures</h3>
+          <p>Bubble‑popping arcade adventure for quick, fun sessions.</p>
+        </div>
+        <a href="https://play.google.com/store/apps/details?id=com.rekluzlabs.akachan" class="btn" target="_blank" rel="noopener">Play</a>
+      </div>
     </div>
   </section>
-</main>
 
-<footer id="contact">
-  <div class="wrap foot-row">
-    <span>© 2026 Rekluz Labs. Built solo.</span>
-    <div class="foot-links">
-      <a href="mailto:rekluzlabs@gmail.com">rekluzlabs@gmail.com</a>
-      <a href="https://github.com/rekluzlabs" target="_blank" rel="noopener">GitHub</a>
+  <!-- Apps Section -->
+  <section id="apps" class="section fade">
+    <h2>Apps</h2>
+    <div class="grid">
+      <div class="card">
+        <p class="dev-note">In Development</p>
+<img src="Screenshot_20260621_222514_NarraWeave.jpg" alt="NarraWeave preview" class="icon" loading="lazy" />
+        <div class="info">
+          <h3>NarraWeave</h3>
+          <p>BYOK AI serial‑fiction platform – craft stories with your own AI model.</p>
+        </div>
+      </div>
+      <div class="card">
+        <p class="dev-note">In Development</p>
+<img src="Screenshot_20260624_152736_MakoRevive.jpg" alt="MakoRevive screenshot" class="icon" loading="lazy" />
+        <div class="info">
+          <h3>MakoRevive</h3>
+          <p>AI‑powered photo restoration – bring old memories back to life.</p>
+        </div>
+      </div>
     </div>
-  </div>
-</footer>
+  </section>
 
-<script>
-  const items = document.querySelectorAll('.game');
-  const obs = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in-view'); } });
-  }, { threshold: 0.15 });
-  items.forEach(i => obs.observe(i));
-</script>
+  <footer>
+    <p>© 2026 <a href="mailto:rekluzlabs@gmail.com">Rekluz Labs</a> – Vancouver, BC</p>
+  </footer>
 
+  <script src="script.js"></script>
 </body>
 </html>
