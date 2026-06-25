@@ -8,19 +8,6 @@ This is the source code for the [Rekluz Labs](https://rekluzlabs.github.io) webs
 
 Rekluz Labs designs and builds privacy‑first, ad‑free Android games and apps, built with care and a relentless attention to detail. This repository contains the static site that serves as the studio's web presence — showcasing current releases and apps in development.
 
-## Project Structure
-
-```
-.
-├── index.html              # Main landing page
-├── style.css                # Site styling
-├── script.js                 # Site interactivity
-├── REKLUZLABS_goldlogo.png   # Brand logo (PNG)
-├── AkachansAdventures/       # Assets/pages for Akachan's Adventures
-├── NikakudoriMahjong/        # Assets/pages for Nikakudori Mahjong
-├── .nojekyll                 # Disables GitHub Pages' Jekyll processing
-└── README.md
-```
 
 ## Technologies
 
