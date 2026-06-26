@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -19,167 +20,166 @@
     --silver: #B8C4CC;
   }
 
-  *{ box-sizing: border-box; }
+*{ box-sizing: border-box; }
 
-  html, body{
-    margin:0;
-    padding:0;
-    background: var(--bg);
-    color: var(--text);
-  }
+html, body{
+margin:0;
+padding:0;
+background: var(--bg);
+color: var(--text);
+}
 
-  body{
-    font-family: 'IBM Plex Sans', sans-serif;
-    font-weight: 300;
-    line-height: 1.75;
-    -webkit-font-smoothing: antialiased;
-  }
+body{
+font-family: 'IBM Plex Sans', sans-serif;
+font-weight: 300;
+line-height: 1.75;
+-webkit-font-smoothing: antialiased;
+}
 
-  /* faint vertical vignette to give the dark field some depth */
-  body::before{
-    content:"";
-    position: fixed;
-    inset: 0;
-    background:
-      radial-gradient(ellipse 1200px 700px at 50% -10%, rgba(111,168,201,0.10), transparent 60%),
-      radial-gradient(ellipse 900px 600px at 50% 110%, rgba(111,168,201,0.06), transparent 60%);
-    pointer-events: none;
-    z-index: 0;
-  }
+body::before{
+content:"";
+position: fixed;
+inset: 0;
+background:
+radial-gradient(ellipse 1200px 700px at 50% -10%, rgba(111,168,201,0.10), transparent 60%),
+radial-gradient(ellipse 900px 600px at 50% 110%, rgba(111,168,201,0.06), transparent 60%);
+pointer-events: none;
+z-index: 0;
+}
 
-  .page{
-    position: relative;
-    z-index: 1;
-    max-width: 760px;
-    margin: 0 auto;
-    padding: 96px 28px 64px;
-  }
+.page{
+position: relative;
+z-index: 1;
+max-width: 760px;
+margin: 0 auto;
+padding: 96px 28px 64px;
+}
 
-  header{
-    text-align: center;
-    margin-bottom: 56px;
-  }
+header{
+text-align: center;
+margin-bottom: 56px;
+}
 
-  .logo{
-    width: 76px;
-    height: 76px;
-    object-fit: contain;
-    margin-bottom: 28px;
-    filter: drop-shadow(0 0 18px rgba(111,168,201,0.25));
-  }
+.logo{
+width: 76px;
+height: 76px;
+object-fit: contain;
+margin-bottom: 28px;
+filter: drop-shadow(0 0 18px rgba(111,168,201,0.25));
+}
 
-  .eyebrow{
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.28em;
-    text-transform: uppercase;
-    color: var(--steel);
-    margin: 0 0 14px;
-  }
+.eyebrow{
+font-family: 'IBM Plex Mono', monospace;
+font-size: 11px;
+letter-spacing: 0.28em;
+text-transform: uppercase;
+color: var(--steel);
+margin: 0 0 14px;
+}
 
-  h1{
-    font-family: 'Spectral', serif;
-    font-weight: 500;
-    font-size: 42px;
-    letter-spacing: 0.01em;
-    margin: 0 0 10px;
-    color: var(--text);
-  }
+h1{
+font-family: 'Spectral', serif;
+font-weight: 500;
+font-size: 42px;
+letter-spacing: 0.01em;
+margin: 0 0 10px;
+color: var(--text);
+}
 
-  .subtitle{
-    font-family: 'Spectral', serif;
-    font-style: italic;
-    font-weight: 400;
-    font-size: 17px;
-    color: var(--muted);
-    margin: 0;
-  }
+.subtitle{
+font-family: 'Spectral', serif;
+font-style: italic;
+font-weight: 400;
+font-size: 17px;
+color: var(--muted);
+margin: 0;
+}
 
-  .divider{
-    width: 100%;
-    max-width: 220px;
-    margin: 36px auto 0;
-    height: 1px;
-    background: linear-gradient(to right, transparent, var(--hairline) 20%, var(--silver) 50%, var(--hairline) 80%, transparent);
-    opacity: 0.6;
-  }
+.divider{
+width: 100%;
+max-width: 220px;
+margin: 36px auto 0;
+height: 1px;
+background: linear-gradient(to right, transparent, var(--hairline) 20%, var(--silver) 50%, var(--hairline) 80%, transparent);
+opacity: 0.6;
+}
 
-  .divider-dot{
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-    background: var(--steel);
-    margin: 18px auto 0;
-    box-shadow: 0 0 8px rgba(111,168,201,0.7);
-  }
+.divider-dot{
+width: 5px;
+height: 5px;
+border-radius: 50%;
+background: var(--steel);
+margin: 18px auto 0;
+box-shadow: 0 0 8px rgba(111,168,201,0.7);
+}
 
-  article p{
-    font-size: 17px;
-    color: var(--text);
-    margin: 0 0 26px;
-    text-align: left;
-  }
+article p{
+font-size: 17px;
+color: var(--text);
+margin: 0 0 26px;
+text-align: left;
+}
 
-  article p:first-of-type::first-letter{
-    font-family: 'Spectral', serif;
-    font-weight: 600;
-    font-size: 3.4em;
-    line-height: 0.85;
-    float: left;
-    padding: 0.04em 0.09em 0 0;
-    color: var(--steel);
-  }
+article p:first-of-type::first-letter{
+font-family: 'Spectral', serif;
+font-weight: 600;
+font-size: 3.4em;
+line-height: 0.85;
+float: left;
+padding: 0.04em 0.09em 0 0;
+color: var(--steel);
+}
 
-  .pullquote{
-    font-family: 'Spectral', serif;
-    font-style: italic;
-    font-weight: 400;
-    font-size: 21px;
-    line-height: 1.6;
-    color: var(--silver);
-    border-left: 2px solid var(--steel-dim);
-    padding: 4px 0 4px 24px;
-    margin: 48px 0 48px;
-  }
+.pullquote{
+font-family: 'Spectral', serif;
+font-style: italic;
+font-weight: 400;
+font-size: 21px;
+line-height: 1.6;
+color: var(--silver);
+border-left: 2px solid var(--steel-dim);
+padding: 4px 0 4px 24px;
+margin: 48px 0 48px;
+}
 
-  footer{
-    margin-top: 64px;
-    padding-top: 28px;
-    border-top: 1px solid var(--hairline);
-    text-align: center;
-  }
+footer{
+margin-top: 64px;
+padding-top: 28px;
+border-top: 1px solid var(--hairline);
+text-align: center;
+}
 
-  footer p{
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 12px;
-    letter-spacing: 0.02em;
-    color: var(--muted);
-    margin: 0;
-  }
+footer p{
+font-family: 'IBM Plex Mono', monospace;
+font-size: 12px;
+letter-spacing: 0.02em;
+color: var(--muted);
+margin: 0;
+}
 
-  footer a{
-    color: var(--steel);
-    text-decoration: none;
-    border-bottom: 1px solid var(--steel-dim);
-    transition: color 0.2s ease, border-color 0.2s ease;
-  }
+footer a{
+color: var(--steel);
+text-decoration: none;
+border-bottom: 1px solid var(--steel-dim);
+transition: color 0.2s ease, border-color 0.2s ease;
+}
 
-  footer a:hover{
-    color: var(--silver);
-    border-color: var(--silver);
-  }
+footer a:hover{
+color: var(--silver);
+border-color: var(--silver);
+}
 
-  @media (max-width: 540px){
-    .page{ padding: 64px 20px 48px; }
-    h1{ font-size: 32px; }
-    article p{ font-size: 16px; }
-    .pullquote{ font-size: 19px; padding-left: 18px; }
-  }
+@media (max-width: 540px){
+.page{ padding: 64px 20px 48px; }
+h1{ font-size: 32px; }
+article p{ font-size: 16px; }
+.pullquote{ font-size: 19px; padding-left: 18px; }
+}
 
-  @media (prefers-reduced-motion: reduce){
-    *{ animation: none !important; transition: none !important; }
-  }
-</style>
+@media (prefers-reduced-motion: reduce){
+*{ animation: none !important; transition: none !important; }
+} </style>
+
 </head>
 <body>
 
@@ -195,21 +195,24 @@
   </header>
 
   <article>
-    <p>Rekluz Labs is an independent Android software studio committed to building applications that are private by architecture, not by policy.</p>
+    <p>Rekluz Labs is an independent Android software studio committed to building applications that are private by architecture, not by policy. Privacy is treated as a design constraint, embedded into how our software is built rather than added later or monetized.</p>
 
-    <p>We hold that privacy is a design constraint, not a feature to be bolted on or upsold. Across our portfolio, this principle manifests concretely: NarraWeave employs a bring-your-own-key (BYOK) architecture, giving users direct control over which AI provider processes their data rather than routing it through our own infrastructure. It also enforces age-appropriate access controls, restricting mature content to users who self-report as 18 or older and gating general content at 16+, to protect younger users from content not intended for them. MakoRevive runs its restoration pipeline entirely on-device, functioning completely offline once its models are downloaded locally, with no telemetry and no paywalls gating functionality. Across all our applications, we avoid advertising networks, third-party trackers, and monetization models that depend on harvesting user behavior. Any personal information collected — such as an email address provided voluntarily for support or correspondence — is used solely for direct communication with that user. We do not store it beyond what is necessary for that purpose, nor do we harvest it for analytics, sell it, or share it with third parties. These are not marketing claims; they are engineering decisions, made and verified at the implementation level.</p>
+```
+<p>Across our applications, this principle is reflected in concrete ways: user data is processed locally where possible, or routed directly through user-controlled services rather than our own infrastructure. We avoid advertising networks, third-party trackers, and behavioral analytics. Any information voluntarily provided by users is used solely for direct communication and retained only as long as necessary for that purpose.</p>
 
-    <p>This extends to how our applications are monetized, or rather, how they are not. Every application in our portfolio is distributed free of charge, with no advertisements, no subscription tiers, and no in-app purchases. We recognize this places us at odds with prevailing industry incentives, where engagement metrics and recurring revenue models frequently shape product decisions in ways that work against the user's interest rather than for it — extended session times engineered for ad impressions, feature-gating disguised as premium tiers, and retention mechanics designed to exploit rather than serve. We consider this trade-off, optimizing for user benefit over monetizable behavior, to be a defining constraint of our engineering process, not an incidental byproduct of it.</p>
+<p>All applications are distributed free of charge, with no advertisements, subscriptions, or in-app purchases. This places us at odds with prevailing industry models that prioritize engagement and monetization over user benefit. We deliberately reject those incentives in favor of building software that serves the user without manipulation or compromise.</p>
 
-    <p>We approach software development as a discipline of deliberate, well-considered choices rather than rapid iteration toward minimum viable products. Each application undergoes structured security review — input sanitization, encrypted local storage, dependency auditing — applied with the same rigor whether the product is a casual mobile game or a tool handling user-generated creative content. We test against real hardware constraints rather than theoretical benchmarks, and we document our technical decisions transparently, including the tradeoffs they involve.</p>
+<p>We approach development as a discipline of deliberate, well-considered decisions. Each product is built with consistent attention to security, performance, and usability, and tested against real-world conditions rather than abstract benchmarks. Technical decisions and their tradeoffs are documented transparently.</p>
 
-    <p>As a solo-operated studio, Rekluz Labs maintains direct, unmediated ownership over every layer of the development lifecycle — from system architecture and security posture to user experience and store presentation. This structure is intentional: it allows technical and ethical decisions to remain aligned, without the dilution that often accompanies larger product organizations. We believe an aesthetic sensibility — precision, restraint, and attention to detail, informed in part by Japanese design philosophy — and sound software engineering are not separate concerns, but the same concern, expressed at different layers of the product.</p>
+<p>As a solo-operated studio, Rekluz Labs maintains direct ownership over every layer of development, from system architecture to user experience. This structure ensures that technical and ethical decisions remain aligned. Thoughtful design and sound engineering are treated as the same principle, expressed at different layers of the product.</p>
 
-    <div class="pullquote">Our objective is straightforward: to demonstrate that mobile software can be free of cost, free of advertising, and free of compromise on user privacy — while still meeting a high bar for technical quality and design craftsmanship.</div>
+<div class="pullquote">Our objective is simple: to demonstrate that mobile software can be free of cost, free of advertising, and uncompromising in its respect for user privacy — while still meeting a high standard of technical quality and design.</div>
+```
+
   </article>
 
   <footer>
-This Mission Statement was created on June 25, 2026
+    <p>This Mission Statement was created on June 25, 2026</p>
     <p>© 2026 <a href="mailto:rekluzlabs@gmail.com">Rekluz Labs</a> – Vancouver, BC</p>
   </footer>
 
