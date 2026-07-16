@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>NarraWeave — Bring-Your-Own-Key Serial Fiction | Rekluz Labs</title>
-<meta name="description" content="NarraWeave is a personalized serial fiction app from Rekluz Labs. Stories are generated through the AI provider of your choice, using your own API key — nothing routes through Rekluz Labs infrastructure." />
-<meta property="og:title" content="NarraWeave — Rekluz Labs" />
+<title>MakoRevive — On-Device Photo Restoration | Rekluz Labs</title>
+<meta name="description" content="MakoRevive is a professional-grade photo restoration suite that runs entirely on-device — denoise, colorize, upscale, and repair faces in old photos with no upload step and no tracking." />
+<meta property="og:title" content="MakoRevive — Rekluz Labs" />
 <meta property="og:image" content="../assets/images/og-image.jpg" />
 <link rel="icon" type="image/png" href="../assets/images/favicon.png" />
 
@@ -14,7 +14,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;1,500;1,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="../assets/css/style.css" />
 
-<!-- Additions to make your layout responsive with the MakoRevive image next to the title -->
 <style>
   .hero-flex-container {
     display: flex;
@@ -22,43 +21,31 @@
     justify-content: space-between;
     gap: 48px;
   }
-  .hero-text-side {
-    flex: 1.2;
-    min-width: 280px;
-  }
-  .hero-image-side {
-    flex: 0.8;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+  .hero-text-side { flex: 1.2; min-width: 280px; }
+  .hero-image-side { flex: 0.8; display: flex; justify-content: center; align-items: center; }
   .hero-app-image {
     max-width: 100%;
     max-height: 480px;
     height: auto;
     border-radius: 16px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 24px 46px rgba(0,0,0,0.55);
     object-fit: contain;
   }
-  
-  /* Styling for the gallery where your other images will go */
   .screenshot-gallery {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 24px;
     margin-top: 32px;
   }
   .gallery-card {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 12px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
     padding: 12px;
     text-align: center;
-    transition: transform 0.2s ease;
+    transition: transform 0.35s var(--ease), border-color 0.35s var(--ease);
   }
-  .gallery-card:hover {
-    transform: translateY(-4px);
-  }
+  .gallery-card:hover { transform: translateY(-4px); border-color: var(--gold); }
   .gallery-card img {
     width: 100%;
     height: auto;
@@ -66,27 +53,18 @@
     aspect-ratio: 9/16;
     object-fit: cover;
     background: #111;
+    display: block;
   }
   .gallery-caption {
     display: block;
     margin-top: 12px;
-    font-size: 14px;
+    font-size: 13.5px;
     color: var(--text-dim);
-    font-family: 'Inter', sans-serif;
   }
-
-  /* Screen size adjustment so it stacks vertically on mobile */
   @media (max-width: 900px) {
-    .hero-flex-container {
-      flex-direction: column-reverse;
-      gap: 32px;
-    }
-    .hero-text-side, .hero-image-side {
-      width: 100%;
-    }
-    .hero-app-image {
-      max-height: 380px;
-    }
+    .hero-flex-container { flex-direction: column-reverse; gap: 32px; }
+    .hero-text-side, .hero-image-side { width: 100%; }
+    .hero-app-image { max-height: 380px; }
   }
 </style>
 </head>
@@ -102,7 +80,7 @@
       <div class="nav-links">
         <a href="../index.html#about">Studio</a>
         <a href="../index.html#principles">Principles</a>
-        <a href="../mission.html">Values</a>
+        <a href="../mission.html">Mission</a>
         <a href="../index.html#apps">Apps</a>
         <a href="../index.html#trust">Policies</a>
       </div>
@@ -118,21 +96,18 @@
 
 <header class="page-hero">
   <div class="container hero-flex-container">
-    <!-- Left Column: Title & Leeding Text -->
     <div class="hero-text-side">
       <a class="back-link" href="../index.html#apps">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
         Back to apps
       </a>
       <span class="eyebrow">App — In Development</span>
-      <h1>Serial fiction, generated with a key only you hold.</h1>
-      <p class="lede">NarraWeave is a personalized serial fiction platform. You choose the AI provider, you bring the key, and your stories are generated directly through that provider's API — never through Rekluz Labs servers.</p>
-      <div class="status-banner"><span class="status-dot"></span>In active development · Android</div>
+      <h1>Give your old photos a second life.</h1>
+      <p class="lede">MakoRevive is a professional-grade photo restoration suite that brings advanced AI directly to your phone — denoising, colorizing, upscaling, and face restoration, all processed on-device. Photos are never uploaded, and nothing is tracked.</p>
+      <div class="status-banner"><span class="status-dot"></span>In active development · Android 12+ recommended</div>
     </div>
-    
-    <!-- Right Column: MakoRevive Image Placement -->
     <div class="hero-image-side">
-      <img src="https://rekluzlabs.github.io/makorevive/makorevive_image.png" alt="MakoRevive App Interface Showcase" class="hero-app-image" />
+      <img src="https://rekluzlabs.github.io/makorevive/makorevive_image.png" alt="MakoRevive app screens: photo picker and a before-and-after restoration of an old bus photograph" class="hero-app-image" />
     </div>
   </div>
 </header>
@@ -140,44 +115,67 @@
 <section class="section" style="padding-bottom:60px;">
   <div class="container feature-grid reveal">
     <div class="feature-card">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l7 4v6c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-4z" stroke-linejoin="round"/></svg>
-      <h4>Bring your own key</h4>
-      <p>Add an API key from any supported provider directly in the app. It's stored on-device and used only to talk to that provider — not to us.</p>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 6h16M4 6l2 14h12l2-14M9 10v6M15 10v6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <h4>Four restoration tools</h4>
+      <p>Denoise, colorize, upscale, and repair faces — pick one option and MakoRevive runs the right models in a single pass.</p>
     </div>
     <div class="feature-card">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 6h16M4 12h16M4 18h10" stroke-linecap="round"/></svg>
-      <h4>Serial, not one-shot</h4>
-      <p>Stories unfold in ongoing installments shaped by your choices, rather than a single generated block of text.</p>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l8 3.5v6c0 5-3.4 8.7-8 10.5-4.6-1.8-8-5.5-8-10.5v-6L12 2z" stroke-linejoin="round"/></svg>
+      <h4>Nothing leaves the device</h4>
+      <p>All AI processing happens locally. Photos are never uploaded, and MakoRevive collects no analytics or tracking data.</p>
     </div>
     <div class="feature-card">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21s-7-4.35-9.5-9C0.8 8.1 2.5 4.5 6 4c2-.3 3.7.7 6 3 2.3-2.3 4-3.3 6-3 3.5.5 5.2 4.1 3.5 8-2.5 4.65-9.5 9-9.5 9z"/></svg>
-      <h4>No middleman infrastructure</h4>
-      <p>Requests go straight from your device to the provider you chose. Rekluz Labs never sees your prompts, your key, or your stories.</p>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16v16H4z" stroke-linejoin="round"/><path d="M4 15l4-4 4 4 4-6 4 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <h4>Fine-tune it yourself</h4>
+      <p>Advanced settings expose denoising strength, color vibrancy, and face-restoration fidelity for full manual control.</p>
     </div>
   </div>
 </section>
 
-<!-- Screenshot Gallery Section: Built for your remaining three images -->
 <section class="section" style="padding-top: 0; padding-bottom: 60px;">
   <div class="container reveal">
     <span class="eyebrow">App Interface</span>
-    <h2 style="margin-top: 14px; margin-bottom: 32px;">A closer look at NarraWeave</h2>
+    <h2 style="margin-top: 14px; margin-bottom: 32px;">A closer look at MakoRevive</h2>
     <div class="screenshot-gallery">
       <div class="gallery-card">
-        <img src="https://rekluzlabs.github.io/makorevive/makorevive_image.png" alt="NarraWeave Screen 1" />
-        <span class="gallery-caption">Interactive Storytelling</span>
+        <img src="https://rekluzlabs.github.io/makorevive/mako2.jpg" alt="Before-and-after slider comparing a black-and-white portrait to its restored, colorized version" loading="lazy" />
+        <span class="gallery-caption">Before-and-after comparison slider</span>
       </div>
       <div class="gallery-card">
-        <img src="https://rekluzlabs.github.io/makorevive/mako2.jpg" alt="MakoRevive Screen 2" />
-        <span class="gallery-caption">Live before and after viewer/editor</span>
+        <img src="https://rekluzlabs.github.io/makorevive/mako3.jpg" alt="Advanced pipeline settings screen with toggles for denoising, face restoration, colorization, and upscaling" loading="lazy" />
+        <span class="gallery-caption">Advanced pipeline settings for manual control</span>
       </div>
       <div class="gallery-card">
-        <img src="https://rekluzlabs.github.io/makorevive/mako3.jpg" alt="NarraWeave Screen 3" />
-        <span class="gallery-caption">Customize the AI model settings</span>
+        <img src="https://rekluzlabs.github.io/makorevive/mako_revive2.png" alt="A decades-old family photograph before and after restoration with MakoRevive" loading="lazy" />
+        <span class="gallery-caption">Restoring a decades-old family photo</span>
       </div>
-      <div class="gallery-card">
-        <img src="https://rekluzlabs.github.io/makorevive/mako_revive2.png" alt="NarraWeave Screen 4" />
-        <span class="gallery-caption">Offline Restorations</span>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0;">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">The four tools</span>
+      <h2>One workflow, four specialized models.</h2>
+      <p>Each tool targets a specific kind of damage rather than applying one generic filter to everything.</p>
+    </div>
+    <div class="feature-grid reveal">
+      <div class="feature-card">
+        <h4>Denoise</h4>
+        <p>Cleans up grainy photos taken in low light for a smooth, professional finish.</p>
+      </div>
+      <div class="feature-card">
+        <h4>Colorize</h4>
+        <p>Guesses natural-looking color for black-and-white photos, so they feel like they were taken yesterday.</p>
+      </div>
+      <div class="feature-card">
+        <h4>Face Restoration</h4>
+        <p>Targets blurry, pixelated, or damaged faces specifically, bringing back clarity while keeping the person's original look.</p>
+      </div>
+      <div class="feature-card">
+        <h4>HD Upscaling</h4>
+        <p>Turns small, low-quality images into large, sharp photos ready for printing.</p>
       </div>
     </div>
   </div>
@@ -186,49 +184,42 @@
 <section class="section" style="padding-top:0;">
   <div class="container two-col">
     <div class="reveal">
-      <span class="eyebrow">Providers</span>
-      <h2 style="font-size: clamp(24px,3vw,32px); margin-top:14px;">Pick the model. Keep the key.</h2>
-      <p style="margin-top:16px; color:var(--text-dim); font-size:15.5px;">NarraWeave doesn't lock you into one AI vendor. Bring a key from whichever provider you already trust and prefer for the quality, cost, or house style of its output.</p>
+      <span class="eyebrow">Formats &amp; editing</span>
+      <h2 style="font-size: clamp(24px,3vw,32px); margin-top:14px;">Finish the job in the app.</h2>
+      <p style="margin-top:16px; color:var(--text-dim); font-size:15.5px;">Once the AI pass is done, a built-in editor handles brightness, contrast, and cropping, with a before-and-after slider to check your work before exporting.</p>
     </div>
     <div class="reveal">
-      <div class="pill-row">
-        <span class="pill">Google Gemini</span>
-        <span class="pill">Anthropic Claude</span>
-        <span class="pill">OpenAI</span>
-        <span class="pill">DeepSeek</span>
-        <span class="pill">Mistral</span>
-        <span class="pill">xAI Grok</span>
-        <span class="pill">Cohere</span>
-      </div>
       <ul class="spec-list">
-        <li><span>Cost model</span><span>Free app · pay your provider directly</span></li>
-        <li><span>Data routing</span><span>Device → provider API, direct</span></li>
-        <li><span>Story storage</span><span>On-device</span></li>
-        <li><span>Advertising</span><span>None</span></li>
+        <li><span>Photos you can import</span><span>JPEG · PNG · WebP · HEIC</span></li>
+        <li><span>Export format</span><span>JPEG or lossless PNG</span></li>
+        <li><span>Processing</span><span>On-device only</span></li>
+        <li><span>Recommended OS</span><span>Android 12+</span></li>
       </ul>
     </div>
   </div>
 </section>
 
-<section class="section mission" style="padding: 90px 0;">
-  <div class="container mission-inner reveal">
-    <span class="eyebrow">Why BYOK</span>
-    <blockquote>"You control the model, the cost, and where your data goes — we just build the app around that choice."</blockquote>
-    <p class="mission-sub">Most AI apps route every request through the developer's own backend, which means the developer sees what you write and decides what it costs. NarraWeave's bring-your-own-key model exists because that tradeoff shouldn't be the default — it's a direct extension of the studio's mission statement.</p>
-    <a class="btn btn-ghost" href="../mission.html">
-      Our Philosophy
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </a>
+<section class="section" style="padding-top:0;">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Good to know</span>
+      <h2>Restoration is heavy work — for your phone too.</h2>
+    </div>
+    <div class="prose reveal">
+      <p>To keep the initial download small, MakoRevive downloads its AI models the first time you open the app. Once those models are on your device, the app works entirely offline — restore photos anywhere, with no connection required.</p>
+      <p>Restoring or colorizing a photo is computationally intensive, so the app recommends Android 12 or higher. When you process an image, your device's processor works at or near full capacity for the duration of that task, so it's normal for your phone to become warm or to slow down briefly — similar to extended gaming or video editing. This isn't a sign that MakoRevive or your device is malfunctioning, and your device's built-in thermal safeguards handle it automatically.</p>
+      <p>Full details on device performance, content ownership, and warranty are covered in the <a href="terms_of_use.html" style="color:var(--gold-bright); text-decoration:underline;">Terms of Use</a>.</p>
+    </div>
   </div>
 </section>
 
 <section class="section cta reveal">
   <div class="container">
-    <h2>Want to know when NarraWeave ships?</h2>
+    <h2>Want to know when MakoRevive ships?</h2>
     <p>There's no mailing list yet — just a developer you can email directly.</p>
     <div class="hero-actions">
-      <a class="btn btn-primary" href="mailto:rekluzlabs@gmail.com?subject=NarraWeave">Get in Touch</a>
-      <a class="btn btn-ghost" href="../index.html#apps">See Other Apps</a>
+      <a class="btn btn-primary" href="mailto:rekluzlabs@gmail.com?subject=MakoRevive">Get in Touch</a>
+      <a class="btn btn-ghost" href="terms_of_use.html">Read Terms of Use</a>
     </div>
   </div>
 </section>
@@ -246,8 +237,8 @@
       <div class="footer-col">
         <h5>Apps</h5>
         <ul>
-          <li><a href="../index.html#apps">Nikakudori Mahjong</a></li>
-          <li><a href="../index.html#apps">Akachan's Adventures</a></li>
+          <li><a href="../nikakudori-mahjong/">Nikakudori Mahjong</a></li>
+          <li><a href="../AkachansAdventures/">Akachan's Adventures</a></li>
           <li><a href="../narraweave/">NarraWeave</a></li>
           <li><a href="../makorevive/">MakoRevive</a></li>
         </ul>
@@ -265,9 +256,9 @@
         <h5>Policies</h5>
         <ul>
           <li><a href="../mission.html">Mission Statement</a></li>
-          <li><a href="../makorevive/terms_of_use.html">MakoRevive Terms</a></li>
+          <li><a href="terms_of_use.html">MakoRevive Terms</a></li>
           <li><a href="../AkachansAdventures/privacy-policy.html">Akachan's Privacy Policy</a></li>
-          <li><a href="mailto:rekluzlabs@gmail.com">Contact</a></li>
+          <li><a href="../contact.html">Contact</a></li>
         </ul>
       </div>
     </div>
