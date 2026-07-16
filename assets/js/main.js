@@ -47,6 +47,7 @@
   } else {
     revealEls.forEach(function (el) { el.classList.add("is-visible"); });
   }
+
   // Single-line vertical ticker (Studio section engineering list)
   var reducedMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -85,9 +86,24 @@
     var rowHeight = 0;
 
     function measure() {
-      rowHeight = items[0].getBoundingClientRect().height;
+      // Clear any previously forced heights so we get each row's natural height
+      items.forEach(function (li) { li.style.height = ""; });
+      clone.style.height = "";
+
+      rowHeight = items.reduce(function (max, li) {
+        return Math.max(max, li.getBoundingClientRect().height);
+      }, 0);
+
+      // Force every row (including the clone) to the tallest row's height,
+      // so translateY steps land correctly even when a label wraps to two lines
+      items.forEach(function (li) { li.style.height = rowHeight + "px"; });
+      clone.style.height = rowHeight + "px";
+
       viewport.style.height = rowHeight + "px";
+      track.classList.add("no-transition");
       track.style.transform = "translateY(-" + index * rowHeight + "px)";
+      track.offsetHeight; // force reflow
+      track.classList.remove("no-transition");
     }
 
     function setActiveDot(i) {
@@ -107,7 +123,6 @@
           track.classList.add("no-transition");
           index = 0;
           track.style.transform = "translateY(0)";
-          // eslint-disable-next-line no-unused-expressions
           track.offsetHeight; // force reflow before re-enabling transition
           track.classList.remove("no-transition");
         }, { once: true });
