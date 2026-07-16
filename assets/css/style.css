@@ -380,23 +380,66 @@ p { margin: 0; }
   font-size: clamp(26px, 3.2vw, 36px);
 }
 
-.about-list {
+.about-ticker {
   margin-top: 28px;
-  border-top: 1px solid var(--border-hairline);
 }
 
-.about-list li {
+.ticker-viewport {
+  border-top: 1px solid var(--border-hairline);
+  border-bottom: 1px solid var(--border-hairline);
+  overflow: hidden;
+  position: relative;
+}
+
+.ticker-track {
+  margin: 0;
+  padding: 0;
   list-style: none;
+}
+
+.ticker-track li {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   gap: 20px;
-  padding: 18px 0;
-  border-bottom: 1px solid var(--border-hairline);
+  padding: 20px 2px;
   font-size: 15.5px;
+  min-height: 24px;
 }
 
-.about-list li span:first-child { color: var(--text); font-weight: 500; }
-.about-list li span:last-child { color: var(--text-faint); font-family: var(--font-mono); font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; }
+.ticker-track li span:first-child { color: var(--text); font-weight: 500; }
+.ticker-track li span:last-child { color: var(--text-faint); font-family: var(--font-mono); font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; white-space: nowrap; }
+
+/* JS drives the transform; this transition gives the "flip up and away" motion */
+.ticker-track {
+  transition: transform 0.6s cubic-bezier(0.65, 0, 0.35, 1);
+}
+.ticker-track.no-transition { transition: none; }
+
+.ticker-dots {
+  display: flex;
+  gap: 7px;
+  margin-top: 16px;
+}
+
+.ticker-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--border);
+  transition: background 0.4s var(--ease), transform 0.4s var(--ease);
+}
+
+.ticker-dot.is-active {
+  background: var(--gold);
+  transform: scale(1.3);
+}
+
+/* Fallback for reduced motion / no-JS: show the full static list instead of a clipped window */
+.about-ticker.is-static .ticker-viewport { overflow: visible; }
+.about-ticker.is-static .ticker-track { transform: none !important; }
+.about-ticker.is-static .ticker-track li { border-bottom: 1px solid var(--border-hairline); }
+.about-ticker.is-static .ticker-dots { display: none; }
 
 .about-lede { font-size: 18px; color: var(--text-dim); margin-top: 20px; }
 
@@ -847,6 +890,25 @@ footer {
   border-radius: 999px;
   color: var(--text-dim);
 }
+
+.screenshot-frame {
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  background: var(--surface);
+  box-shadow: 0 30px 60px -20px rgba(0,0,0,0.5);
+}
+.screenshot-frame img { width: 100%; display: block; }
+
+.rating-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 22px;
+  color: var(--text-dim);
+  font-size: 14px;
+}
+.rating-row svg { width: 15px; height: 15px; color: var(--gold-bright); }
 
 @media (max-width: 900px) {
   .feature-grid { grid-template-columns: 1fr 1fr; }
