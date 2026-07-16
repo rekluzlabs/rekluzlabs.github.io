@@ -1,94 +1,353 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rekluz Labs – Privacy‑First Android Games & Apps</title>
-  <meta name="description" content="Rekluz Labs is a solo indie Android development studio based in Vancouver, BC. We build privacy‑first, ad‑free games with a Japanese aesthetic – Nikakudori Mahjong, Akachan's Adventures – and intelligent apps like NarraWeave and MakoRevive." />
-  <meta name="robots" content="index, follow" />
-  <meta name="author" content="Rekluz Labs" />
-  <link rel="icon" href="RekluzLabs_bluemetal.png" type="image/png" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
-  <!-- Open Graph -->
-  <meta property="og:title" content="Rekluz Labs – Privacy‑First Android Games & Apps" />
-  <meta property="og:description" content="Indie studio behind Nikakudori Mahjong, Akachan's Adventures, NarraWeave and MakoRevive." />
-  <meta property="og:image" content="RekluzLabs_bluemetal.png" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://rekluzlabs.com" />
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Rekluz Labs",
-    "url": "https://rekluzlabs.com",
-    "logo": "RekluzLabs_bluemetal.png",
-    "description": "Solo indie Android development studio based in Vancouver, BC, building privacy‑first, ad‑free games and modern apps."
-  }
-  </script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Rekluz Labs — Independent Android Software Studio</title>
+<meta name="description" content="Rekluz Labs is a solo-operated Android software studio in Vancouver, BC, building privacy-first, ad-free applications engineered to last — including Nikakudori Mahjong, Akachan's Adventures, NarraWeave, and MakoRevive." />
+<meta property="og:title" content="Rekluz Labs — Independent Android Software Studio" />
+<meta property="og:description" content="Privacy by architecture, not by policy. Independent Android software built without compromise." />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="assets/images/og-image.jpg" />
+<link rel="icon" type="image/png" href="assets/images/favicon.png" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;1,500;1,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
-  <section class="hero fade">
-    <img src="RekluzLabs_bluemetal.png" alt="Rekluz Labs logo" class="hero-logo" loading="lazy" style="width: 8em; height: auto; display: block; margin: 0 auto 0.5em;" />
-    <h1>Rekluz Labs</h1>
-    <p class="tagline">Zero cost. Zero ads. Zero compromises. <br>Just privacy‑first Android games and modern apps, built to a higher standard.</p>
-  </section>
 
-  <!-- Games Section -->
-<section id="games" class="section fade">
-    <h2>Games</h2>
-    <div class="grid">
-      
-      <div class="card">
-        <p class="dev-note">Available in the Playstore</p>
-        <img src="nmscreenshot.jpg" alt="Nikakudori Mahjong screenshot" class="icon" loading="lazy" />
-        <div class="info">
-          <h3>Nikakudori Mahjong</h3>
-          <p>Tile‑matching solitaire with a serene Japanese vibe.</p>
-        </div>
-        <a href="https://play.google.com/store/apps/details?id=com.rekluzlabs.nikaku_dori_mahjong" class="btn" target="_blank" rel="noopener">Play</a>
-      </div>
-      
-      <div class="card">
-        <p class="dev-note">Available in the Playstore</p>
-        <img src="/AkachansAdventures/Screenshot_20260624_152543_Akachans Adventures.jpg" alt="Akachan's Adventures screenshot" class="icon" loading="lazy" />
-        <div class="info">
-          <h3>Akachan's Adventures</h3>
-          <p>Bubble‑popping arcade adventure for quick, fun sessions.</p>
-        </div>
-        <a href="https://play.google.com/store/apps/details?id=com.rekluzlabs.akachan" class="btn" target="_blank" rel="noopener">Play</a>
-      </div>
+<!-- ================= NAV ================= -->
+<nav class="nav" id="nav">
+  <div class="container">
+    <a href="#top" class="brand">
+      <img src="assets/images/mark-transparent.png" alt="Rekluz Labs mark" />
+      Rekluz Labs
+    </a>
 
-    </div>
-  </section>
-
-  <!-- Apps Section -->
-  <section id="apps" class="section fade">
-    <h2>Apps</h2>
-    <div class="grid">
-      <div class="card">
-        <p class="dev-note">In Development</p>
-<img src="/narraweave/Screenshot_20260621_222514_NarraWeave.jpg" alt="NarraWeave preview" class="icon" loading="lazy" />
-        <div class="info">
-          <h3>NarraWeave</h3>
-          <p>BYOK (bring your own key) AI serial‑fiction platform <br>craft stories using your own AI model key.</p>
-        </div>
+    <div class="nav-menu" id="navMenu">
+      <div class="nav-links">
+        <a href="#about">Studio</a>
+        <a href="#principles">Principles</a>
+        <a href="#mission">Mission</a>
+        <a href="#apps">Apps</a>
+        <a href="#trust">Policies</a>
       </div>
-      <div class="card">
-        <p class="dev-note">In Development</p>
-<img src="/makorevive/Screenshot_20260624_152736_MakoRevive.jpg" alt="MakoRevive screenshot" class="icon" loading="lazy" />
-        <div class="info">
-          <h3>MakoRevive</h3>
-          <p>AI‑powered photo restoration – bring old memories back to life.</p>
-        </div>
+      <div class="nav-actions">
+        <a class="btn btn-primary" href="#apps">Explore Our Apps</a>
       </div>
     </div>
-  </section>
 
-  <footer>
-    <p>© 2026 <a href="mailto:rekluzlabs@gmail.com">Rekluz Labs</a> – Vancouver, BC</p>
-  </footer>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7h16M4 12h16M4 17h16" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+</nav>
 
-  <script src="script.js"></script>
+<!-- ================= HERO ================= -->
+<header class="hero" id="top">
+  <div class="container hero-grid">
+    <div>
+      <span class="eyebrow">Independent Android Software Studio</span>
+      <h1>Software built<br />with <span class="accent">purpose</span>, not pressure.</h1>
+      <p class="hero-lede">Rekluz Labs is a solo-operated studio in Vancouver, BC, designing Android applications that respect the people who use them — private by architecture, free of manipulation, and built to be maintained for years, not quarters.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#apps">
+          Explore Our Apps
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a class="btn btn-ghost" href="#mission">Read Our Mission</a>
+      </div>
+      <div class="hero-meta">
+        <div><strong>4</strong>Applications shipped &amp; in development</div>
+        <div><strong>1</strong>Developer, full ownership end-to-end</div>
+        <div><strong>0</strong>Ads, trackers, or in-app purchases</div>
+      </div>
+    </div>
+
+    <div class="hero-portrait reveal">
+      <img src="assets/images/hero-hummingbird.png" alt="The Rekluz Labs hummingbird mark, rendered in brushed gold" />
+    </div>
+  </div>
+</header>
+
+<div class="strip">
+  <div class="container">
+    <span>Nikakudori Mahjong</span>
+    <span>Akachan's Adventures</span>
+    <span>NarraWeave</span>
+    <span>MakoRevive</span>
+    <span>Vancouver, BC</span>
+  </div>
+</div>
+
+<!-- ================= ABOUT ================= -->
+<section class="section" id="about">
+  <div class="container about-grid">
+    <div class="about-copy reveal">
+      <span class="eyebrow">The Studio</span>
+      <h2>One developer. Every layer, one point of view.</h2>
+      <p class="about-lede">Rekluz Labs designs, builds, tests, and maintains every application in-house — no studio-for-hire, no outsourced growth team, no ad network deciding what the product becomes.</p>
+    </div>
+    <div class="reveal">
+      <p style="color:var(--text-dim); font-size:16.5px;">Because one person is accountable for the whole product, technical decisions and ethical ones stay aligned instead of getting negotiated apart in a roadmap meeting. That shows up in concrete engineering choices, not just a policy page:</p>
+      <ul class="about-list">
+        <li><span>Native Android development</span><span>Kotlin</span></li>
+        <li><span>Processing kept on-device wherever practical</span><span>Offline-first</span></li>
+        <li><span>No advertising networks or behavioral trackers</span><span>Zero telemetry</span></li>
+        <li><span>Only the permissions a feature actually needs</span><span>Minimal scope</span></li>
+        <li><span>Long-term maintenance over rapid re-releases</span><span>Sustained support</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PRINCIPLES ================= -->
+<section class="section" id="principles" style="padding-top:0;">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Core Principles</span>
+      <h2>What every release is checked against.</h2>
+    </div>
+
+    <div class="principles-grid reveal">
+      <div class="principle">
+        <svg class="principle-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l8 3.5v6c0 5-3.4 8.7-8 10.5-4.6-1.8-8-5.5-8-10.5v-6L12 2z" stroke-linejoin="round"/></svg>
+        <h3>Privacy First</h3>
+        <p>Your data belongs to you. Applications collect only what a feature strictly requires, and nothing is sold or shared.</p>
+      </div>
+      <div class="principle">
+        <svg class="principle-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l2.5 6.5L21 11l-6.5 2.5L12 20l-2.5-6.5L3 11l6.5-2.5L12 2z" stroke-linejoin="round"/></svg>
+        <h3>Quality Over Quantity</h3>
+        <p>Rather than shipping many rushed products, each application is deliberately designed and continually refined.</p>
+      </div>
+      <div class="principle">
+        <svg class="principle-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21s-7-4.35-9.5-9C0.8 8.1 2.5 4.5 6 4c2-.3 3.7.7 6 3 2.3-2.3 4-3.3 6-3 3.5.5 5.2 4.1 3.5 8-2.5 4.65-9.5 9-9.5 9z"/></svg>
+        <h3>User Respect</h3>
+        <p>No manipulative advertising, no deceptive subscriptions, no dark patterns — communication stays direct and clear.</p>
+      </div>
+      <div class="principle">
+        <svg class="principle-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 12a8 8 0 1116 0 8 8 0 01-16 0z"/><path d="M12 8v4l3 2" stroke-linecap="round"/></svg>
+        <h3>Built to Last</h3>
+        <p>Long-term support, regular updates, and development practices that hold up rather than accumulate debt.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MISSION ================= -->
+<section class="section mission" id="mission">
+  <div class="container mission-inner reveal">
+    <span class="eyebrow">Mission</span>
+    <blockquote>"Rekluz Labs is committed to building applications that are private by architecture, not by policy."</blockquote>
+    <p class="mission-sub">All applications are distributed free of charge, with no advertisements, subscriptions, or in-app purchases — a deliberate rejection of the incentives that prioritize engagement over user benefit. Each product is tested against real-world conditions and documented transparently, with technical and ethical decisions made by the same person, at the same time.</p>
+    <a class="btn btn-ghost" href="mission.html">
+      Read the Full Mission Statement
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- ================= PRODUCTS ================= -->
+<section class="section" id="apps">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Products</span>
+      <h2>Two apps live. Two more taking shape.</h2>
+      <p>Each product gets its own dedicated page covering features, permissions, and policies in full — this is the short version.</p>
+    </div>
+
+    <div class="products-grid reveal">
+
+      <article class="product-card">
+        <div class="product-top">
+          <div>
+            <span class="product-kicker">Game</span>
+          </div>
+          <span class="product-status is-live">Available on Google Play</span>
+        </div>
+        <h3>Nikakudori Mahjong</h3>
+        <p>Tile-matching solitaire with a serene Japanese aesthetic — no ads, no timers pushing you toward a purchase, just the game.</p>
+        <a class="product-link" href="https://play.google.com/store/apps/details?id=com.rekluzlabs.nikaku_dori_mahjong" target="_blank" rel="noopener">
+          View on Google Play
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </article>
+
+      <article class="product-card">
+        <div class="product-top">
+          <div>
+            <span class="product-kicker">Game</span>
+          </div>
+          <span class="product-status is-live">Available on Google Play</span>
+        </div>
+        <h3>Akachan's Adventures</h3>
+        <p>A bubble-popping arcade adventure built for quick, lighthearted sessions — designed with a young, curious audience in mind.</p>
+        <a class="product-link" href="https://play.google.com/store/apps/details?id=com.rekluzlabs.akachan" target="_blank" rel="noopener">
+          View on Google Play
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </article>
+
+      <article class="product-card">
+        <div class="product-top">
+          <div>
+            <span class="product-kicker">App</span>
+          </div>
+          <span class="product-status">In Development</span>
+        </div>
+        <h3>NarraWeave</h3>
+        <p>A bring-your-own-key serial fiction platform. Stories are generated through an AI provider of your choosing, using your own API key — nothing routes through Rekluz Labs infrastructure.</p>
+        <a class="product-link" href="narraweave/index.html">
+          Learn More
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </article>
+
+      <article class="product-card">
+        <div class="product-top">
+          <div>
+            <span class="product-kicker">App</span>
+          </div>
+          <span class="product-status">In Development</span>
+        </div>
+        <h3>MakoRevive</h3>
+        <p>Privacy-first, on-device AI photo restoration. Old memories are repaired and enhanced entirely on your phone — photos never leave the device.</p>
+        <a class="product-link" href="makorevive/index.html">
+          Learn More
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= PHILOSOPHY ================= -->
+<section class="section" style="background:var(--bg-alt); border-top:1px solid var(--border-hairline); border-bottom:1px solid var(--border-hairline);">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Development Philosophy</span>
+      <h2>How it gets built, not just what ships.</h2>
+    </div>
+
+    <div class="philosophy-grid reveal">
+      <div class="philosophy-copy">
+        <p>Most indie developers don't talk about their process — Rekluz Labs treats it as part of the product. Every application is designed with maintainability and longevity as first-class requirements, not an afterthought once something breaks.</p>
+        <p>Technical decisions and their tradeoffs are documented as they're made, and tested against real-world conditions rather than abstract benchmarks. Thoughtful design and sound engineering are treated as the same discipline, expressed at different layers of the same product.</p>
+      </div>
+      <ul class="philosophy-list">
+        <li>Native Android development</li>
+        <li>Modern Material Design</li>
+        <li>Accessibility as a default</li>
+        <li>Performance optimization</li>
+        <li>Battery efficiency</li>
+        <li>Reliable, ongoing updates</li>
+        <li>Continuous refinement</li>
+        <li>Transparent tradeoffs</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TRUST ================= -->
+<section class="section" id="trust">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Trust &amp; Transparency</span>
+      <h2>Policies aren't hidden in a footer here.</h2>
+      <p>Every commitment above is backed by a document you can actually read.</p>
+    </div>
+
+    <div class="trust-grid reveal">
+      <div class="trust-card">
+        <span>Studio-wide</span>
+        <h4>Mission Statement</h4>
+        <p>The principles every Rekluz Labs product is designed against, in full.</p>
+        <a class="product-link" href="mission.html">Read document
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+      <div class="trust-card">
+        <span>MakoRevive</span>
+        <h4>Terms of Use</h4>
+        <p>How the on-device restoration app can and can't be used.</p>
+        <a class="product-link" href="makorevive/terms_of_use.html">Read document
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+      <div class="trust-card">
+        <span>Akachan's Adventures</span>
+        <h4>Privacy Policy</h4>
+        <p>What is and, more importantly, isn't collected in the game.</p>
+        <a class="product-link" href="AkachansAdventures/privacy-policy.html">Read document
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CTA ================= -->
+<section class="section cta reveal">
+  <div class="container">
+    <h2>Building an Android app people can actually trust?</h2>
+    <p>Rekluz Labs is one developer, reachable directly — no support ticket queue in between.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="mailto:rekluzlabs@gmail.com">Get in Touch</a>
+      <a class="btn btn-ghost" href="https://github.com/RekluzLabs" target="_blank" rel="noopener">View on GitHub</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">
+          <img src="assets/images/mark-transparent.png" alt="Rekluz Labs mark" />
+          Rekluz Labs
+        </div>
+        <p class="footer-tagline">Independent Android software, built without compromise. Vancouver, BC.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Apps</h5>
+        <ul>
+          <li><a href="#apps">Nikakudori Mahjong</a></li>
+          <li><a href="#apps">Akachan's Adventures</a></li>
+          <li><a href="#apps">NarraWeave</a></li>
+          <li><a href="#apps">MakoRevive</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Studio</h5>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#principles">Principles</a></li>
+          <li><a href="mission.html">Mission Statement</a></li>
+          <li><a href="https://github.com/RekluzLabs" target="_blank" rel="noopener">GitHub</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Policies</h5>
+        <ul>
+          <li><a href="mission.html">Mission Statement</a></li>
+          <li><a href="makorevive/terms_of_use.html">MakoRevive Terms</a></li>
+          <li><a href="AkachansAdventures/privacy-policy.html">Akachan's Privacy Policy</a></li>
+          <li><a href="mailto:rekluzlabs@gmail.com">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Rekluz Labs. Vancouver, BC.</span>
+      <span>Zero ads. Zero trackers. Zero compromises.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
 </body>
 </html>
