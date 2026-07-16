@@ -408,9 +408,19 @@ p { margin: 0; }
   box-sizing: border-box;
 }
 
-
 .ticker-track li span:first-child { color: var(--text); font-weight: 500; }
 .ticker-track li span:last-child { color: var(--text-faint); font-family: var(--font-mono); font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; white-space: nowrap; }
+
+@media (max-width: 480px) {
+  .ticker-track li {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 4px;
+    padding: 14px 2px;
+  }
+  .ticker-track li span:first-child { font-size: 14.5px; line-height: 1.35; }
+}
 
 /* JS drives the transform; this transition gives the "flip up and away" motion */
 .ticker-track {
