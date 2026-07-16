@@ -405,7 +405,9 @@ p { margin: 0; }
   padding: 20px 2px;
   font-size: 15.5px;
   min-height: 24px;
+  box-sizing: border-box;
 }
+
 
 .ticker-track li span:first-child { color: var(--text); font-weight: 500; }
 .ticker-track li span:last-child { color: var(--text-faint); font-family: var(--font-mono); font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; white-space: nowrap; }
