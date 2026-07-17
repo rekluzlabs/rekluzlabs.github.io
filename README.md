@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="[assets/logo.png](https://github.com/rekluzlabs/rekluzlabs.github.io/blob/main/RL_transparent.png?raw=true)" alt="Rekluz Labs" width="120">
+  <img src="https://github.com/rekluzlabs/rekluzlabs.github.io/blob/main/RL_transparent.png?raw=true" alt="Rekluz Labs" width="120">
 </p>
 
 # Rekluz Labs Website
