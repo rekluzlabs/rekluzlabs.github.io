@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="[assets/logo.png](https://github.com/rekluzlabs/rekluzlabs.github.io/blob/main/RL_transparent.png?raw=true)" alt="Rekluz Labs" width="120">
+</p>
+
 # Rekluz Labs Website
 
 Source code for the [Rekluz Labs](https://rekluzlabs.github.io) website — the official landing page for Rekluz Labs, an independent Android development studio building privacy-first, ad-free apps and games.
