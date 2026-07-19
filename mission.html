@@ -121,15 +121,18 @@
     </div>
     <div class="reveal">
       <p style="color:var(--text-dim); font-size:16.5px;">Because one person is accountable for the whole product, technical decisions and ethical ones stay aligned instead of getting negotiated apart in a roadmap meeting. That shows up in concrete engineering choices, not just a policy page:</p>
-      <ul class="about-list">
-        <li><span>Native Android development</span><span>Kotlin</span></li>
-        <li><span>Processing kept on-device wherever practical</span><span>Offline-first</span></li>
-        <li><span>No advertising networks or behavioral trackers</span><span>Zero telemetry</span></li>
-        <li><span>Only the permissions a feature actually needs</span><span>Minimal scope</span></li>
-        <li><span>Long-term maintenance over rapid re-releases</span><span>Sustained support</span></li>
-      </ul>
-    </div>
-  </div>
+   <div class="about-ticker" data-ticker>
+        <div class="ticker-viewport">
+          <ul class="ticker-track" data-ticker-track>
+            <li><span>Native Android development</span><span>Kotlin</span></li>
+            <li><span>Processing kept on-device wherever practical</span><span>Offline-first</span></li>
+            <li><span>No advertising networks or behavioral trackers</span><span>Zero telemetry</span></li>
+            <li><span>Only the permissions a feature actually needs</span><span>Minimal scope</span></li>
+            <li><span>Long-term maintenance over rapid re-releases</span><span>Sustained support</span></li>
+          </ul>
+        </div>
+        <div class="ticker-dots" data-ticker-dots aria-hidden="true"></div>
+      </div>
 </section>
 
 <!-- ================= PRINCIPLES ================= -->
