@@ -201,8 +201,25 @@ p {
   padding-top: 180px;
   padding-bottom: 100px;
   position: relative;
+  overflow: hidden;
 }
 
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: -30% -10% auto -10%;
+  height: 620px;
+  background: radial-gradient(60% 60% at 30% 20%, rgba(212, 175, 55, 0.14), transparent 70%),
+              radial-gradient(45% 45% at 78% 10%, rgba(229, 193, 88, 0.12), transparent 70%);
+  filter: blur(10px);
+  pointer-events: none;
+  animation: driftGlow 22s ease-in-out infinite alternate;
+}
+
+@keyframes driftGlow {
+  from { transform: translate3d(0,0,0) scale(1); }
+  to   { transform: translate3d(2%, 3%, 0) scale(1.06); }
+}
 .hero-grid {
   display: grid;
   grid-template-columns: 1.2fr 0.8fr;
