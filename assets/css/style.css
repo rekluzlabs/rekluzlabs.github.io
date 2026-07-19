@@ -409,7 +409,7 @@ p { margin: 0; }.section {
   min-height: 24px;
 }
 
-.ticker-track li span:first-child { color: var(--text); font-weight: 500; }
+.ticker-track li span:first-child { color: var(--text); font-weight: 500; min-width: 0; flex: 1 1 auto; }
 .ticker-track li span:last-child { color: var(--text-faint); font-family: var(--font-mono); font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; white-space: nowrap; }
 @media (max-width: 480px) {
   .ticker-track li {
