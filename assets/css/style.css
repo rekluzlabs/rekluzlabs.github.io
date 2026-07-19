@@ -395,6 +395,7 @@ p { margin: 0; }.section {
   padding: 0;
   list-style: none;
 }
+
 .ticker-track li {
   display: flex;
   justify-content: space-between;
@@ -403,10 +404,12 @@ p { margin: 0; }.section {
   padding: 20px 2px;
   font-size: 15.5px;
   min-height: 24px;
+  box-sizing: border-box;
 }
 
-.ticker-track li span:first-child { color: var(--text); font-weight: 500; min-width: 0; flex: 1 1 auto; }
+.ticker-track li span:first-child { color: var(--text); font-weight: 500; }
 .ticker-track li span:last-child { color: var(--text-faint); font-family: var(--font-mono); font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; white-space: nowrap; }
+
 @media (max-width: 480px) {
   .ticker-track li {
     flex-direction: column;
@@ -448,9 +451,6 @@ p { margin: 0; }.section {
 .about-ticker.is-static .ticker-track { transform: none !important; }
 .about-ticker.is-static .ticker-track li { border-bottom: 1px solid var(--border-hairline); }
 .about-ticker.is-static .ticker-dots { display: none; }
-
-.about-lede { font-size: 18px; color: var(--text-dim); margin-top: 20px; }
-
 /* ---------- Principles ---------- */
 
 .principles-grid {
