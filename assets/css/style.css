@@ -377,7 +377,6 @@ p {
   border-bottom: 1px solid var(--border-hairline);
   overflow: hidden;
   position: relative;
-  height: 64px; /* Locked height handles container calculations perfectly */
 }
 
 .ticker-track {
@@ -396,9 +395,8 @@ p {
   justify-content: space-between;
   align-items: center;
   gap: 20px;
-  padding: 0 2px;
+  padding: 20px 2px;
   font-size: 15.5px;
-  height: 64px; /* Uniform constraint completely prevents mobile layout offsets */
   box-sizing: border-box;
 }
 
