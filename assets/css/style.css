@@ -812,7 +812,6 @@ footer {
 @media (max-width: 480px) {
   .ticker-track li {
     font-size: 14px;
-    height: 64px; /* Maintain fixed vertical match step dimensions */
   }
   .ticker-track li span:first-child { font-size: 13.5px; }
   .ticker-track li span:last-child { font-size: 11px; }
