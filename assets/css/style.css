@@ -399,7 +399,6 @@ p { margin: 0; }.section {
   padding: 0;
   list-style: none;
 }
-
 .ticker-track li {
   display: flex;
   justify-content: space-between;
@@ -408,12 +407,10 @@ p { margin: 0; }.section {
   padding: 20px 2px;
   font-size: 15.5px;
   min-height: 24px;
-  box-sizing: border-box;
 }
 
 .ticker-track li span:first-child { color: var(--text); font-weight: 500; }
 .ticker-track li span:last-child { color: var(--text-faint); font-family: var(--font-mono); font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; white-space: nowrap; }
-
 @media (max-width: 480px) {
   .ticker-track li {
     flex-direction: column;
