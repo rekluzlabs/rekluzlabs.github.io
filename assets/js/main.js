@@ -47,7 +47,6 @@
   } else {
     revealEls.forEach(function (el) { el.classList.add("is-visible"); });
   }
-
   // Single-line vertical ticker (Studio section engineering list)
   var reducedMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -123,6 +122,7 @@
           track.classList.add("no-transition");
           index = 0;
           track.style.transform = "translateY(0)";
+          // eslint-disable-next-line no-unused-expressions
           track.offsetHeight; // force reflow before re-enabling transition
           track.classList.remove("no-transition");
         }, { once: true });
@@ -130,6 +130,17 @@
     }
 
     measure();
+
+    // Re-measure once web fonts finish loading. Fraunces/Inter load async,
+    // and if measure() runs before the swap, rows get sized against fallback
+    // font metrics — text then reflows once the real font applies, and
+    // position drifts further with every step. This was the actual cause
+    // of the overlapping/misaligned lines on Android.
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(measure);
+    }
+    window.setTimeout(measure, 1200); // safety net if document.fonts is unavailable
+
     var timer = window.setInterval(advance, 3800);
 
     var resizeTimeout;
