@@ -299,6 +299,12 @@ p {
   position: relative;
   z-index: 1;
   filter: drop-shadow(0 24px 46px rgba(0, 0, 0, 0.55));
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
 }
 
 .hero-portrait::after {
