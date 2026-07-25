@@ -1,9 +1,10 @@
-(function () {
+document.addEventListener("DOMContentLoaded", function () {
   "use strict";
 
   // Sticky nav background on scroll
   var nav = document.getElementById("nav");
   var onScroll = function () {
+    if (!nav) return;
     if (window.scrollY > 40) {
       nav.classList.add("is-scrolled");
     } else {
@@ -47,6 +48,7 @@
   } else {
     revealEls.forEach(function (el) { el.classList.add("is-visible"); });
   }
+
   // Single-line vertical ticker (Studio section engineering list)
   var reducedMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -122,7 +124,6 @@
           track.classList.add("no-transition");
           index = 0;
           track.style.transform = "translateY(0)";
-          // eslint-disable-next-line no-unused-expressions
           track.offsetHeight; // force reflow before re-enabling transition
           track.classList.remove("no-transition");
         }, { once: true });
@@ -158,4 +159,4 @@
       }
     });
   });
-})();
+});
