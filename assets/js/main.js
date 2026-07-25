@@ -1,10 +1,9 @@
-document.addEventListener("DOMContentLoaded", function () {
+(function () {
   "use strict";
 
   // Sticky nav background on scroll
   var nav = document.getElementById("nav");
   var onScroll = function () {
-    if (!nav) return;
     if (window.scrollY > 40) {
       nav.classList.add("is-scrolled");
     } else {
@@ -48,7 +47,6 @@ document.addEventListener("DOMContentLoaded", function () {
   } else {
     revealEls.forEach(function (el) { el.classList.add("is-visible"); });
   }
-
   // Single-line vertical ticker (Studio section engineering list)
   var reducedMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -91,12 +89,15 @@ document.addEventListener("DOMContentLoaded", function () {
       items.forEach(function (li) { li.style.height = ""; });
       clone.style.height = "";
 
+      // Measure the TALLEST row, not just the first — a label that wraps to
+      // two lines on a narrower screen would otherwise get clipped by a
+      // viewport sized to the first (single-line) row's height.
       rowHeight = items.reduce(function (max, li) {
         return Math.max(max, li.getBoundingClientRect().height);
       }, 0);
 
-      // Force every row (including the clone) to the tallest row's height,
-      // so translateY steps land correctly even when a label wraps to two lines
+      // Force every row (including the clone) to that height, so translateY
+      // steps land correctly even when one row wraps to two lines
       items.forEach(function (li) { li.style.height = rowHeight + "px"; });
       clone.style.height = rowHeight + "px";
 
@@ -124,6 +125,7 @@ document.addEventListener("DOMContentLoaded", function () {
           track.classList.add("no-transition");
           index = 0;
           track.style.transform = "translateY(0)";
+          // eslint-disable-next-line no-unused-expressions
           track.offsetHeight; // force reflow before re-enabling transition
           track.classList.remove("no-transition");
         }, { once: true });
@@ -131,17 +133,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     measure();
-
-    // Re-measure once web fonts finish loading. Fraunces/Inter load async,
-    // and if measure() runs before the swap, rows get sized against fallback
-    // font metrics — text then reflows once the real font applies, and
-    // position drifts further with every step. This was the actual cause
-    // of the overlapping/misaligned lines on Android.
-    if (document.fonts && document.fonts.ready) {
-      document.fonts.ready.then(measure);
-    }
-    window.setTimeout(measure, 1200); // safety net if document.fonts is unavailable
-
     var timer = window.setInterval(advance, 3800);
 
     var resizeTimeout;
@@ -159,4 +150,4 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   });
-});
+})();
