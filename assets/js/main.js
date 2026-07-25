@@ -85,27 +85,9 @@
     var rowHeight = 0;
 
     function measure() {
-      // Clear any previously forced heights so we get each row's natural height
-      items.forEach(function (li) { li.style.height = ""; });
-      clone.style.height = "";
-
-      // Measure the TALLEST row, not just the first — a label that wraps to
-      // two lines on a narrower screen would otherwise get clipped by a
-      // viewport sized to the first (single-line) row's height.
-      rowHeight = items.reduce(function (max, li) {
-        return Math.max(max, li.getBoundingClientRect().height);
-      }, 0);
-
-      // Force every row (including the clone) to that height, so translateY
-      // steps land correctly even when one row wraps to two lines
-      items.forEach(function (li) { li.style.height = rowHeight + "px"; });
-      clone.style.height = rowHeight + "px";
-
+      rowHeight = items[0].getBoundingClientRect().height;
       viewport.style.height = rowHeight + "px";
-      track.classList.add("no-transition");
       track.style.transform = "translateY(-" + index * rowHeight + "px)";
-      track.offsetHeight; // force reflow
-      track.classList.remove("no-transition");
     }
 
     function setActiveDot(i) {
