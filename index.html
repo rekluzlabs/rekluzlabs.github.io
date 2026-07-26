@@ -33,6 +33,43 @@
   .product-card:hover .product-card-image {
     transform: translateY(-2px);
   }
+
+  /* Side-by-side layout for cards with a live app screenshot to the right of the copy */
+  .product-card-row {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+  .product-card-row .product-card-text {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+  .product-card-image-side {
+    flex: 0 0 auto;
+    width: 220px;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    object-fit: cover;
+    transition: transform 0.2s ease;
+  }
+  .product-card:hover .product-card-image-side {
+    transform: translateY(-2px);
+  }
+  @media (max-width: 720px) {
+    .product-card-row {
+      flex-direction: column;
+    }
+    .product-card-image-side {
+      width: 100%;
+    }
+  }
+
+  a.product-status {
+    text-decoration: none;
+    cursor: pointer;
+  }
 </style>
 </head>
 <body>
@@ -221,34 +258,44 @@
 
       <!-- ================= NARRAWEAVE ================= -->
       <article class="product-card">
-        <div class="product-top">
-          <div>
-            <span class="product-kicker">App</span>
+        <div class="product-card-row">
+          <div class="product-card-text">
+            <div class="product-top">
+              <div>
+                <span class="product-kicker">App</span>
+              </div>
+              <a class="product-status is-live" href="https://play.google.com/store/apps/details?id=com.rekluzlabs.narraweave" target="_blank" rel="noopener">View on Google Play</a>
+            </div>
+            <h3>NarraWeave</h3>
+            <p>A bring-your-own-key serial fiction platform. Stories are generated through an AI provider of your choosing, using your own API key and nothing routes through Rekluz Labs infrastructure.</p>
+            <a class="product-link" href="narraweave/">
+              Learn More
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
           </div>
-          <span class="product-status">In Development</span>
+          <img class="product-card-image-side" src="https://rekluzlabs.github.io/narraweave/narra_image.png" alt="NarraWeave serial fiction reading experience" />
         </div>
-        <h3>NarraWeave</h3>
-        <p>A bring-your-own-key serial fiction platform. Stories are generated through an AI provider of your choosing, using your own API key and nothing routes through Rekluz Labs infrastructure.</p>
-        <a class="product-link" href="narraweave/">
-          Learn More
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
       </article>
 
       <!-- ================= MAKOREVIVE ================= -->
       <article class="product-card">
-        <div class="product-top">
-          <div>
-            <span class="product-kicker">App</span>
+        <div class="product-card-row">
+          <div class="product-card-text">
+            <div class="product-top">
+              <div>
+                <span class="product-kicker">App</span>
+              </div>
+              <a class="product-status is-live" href="https://play.google.com/store/apps/details?id=com.rekluzlabs.makorevive" target="_blank" rel="noopener">View on Google Play</a>
+            </div>
+            <h3>MakoRevive</h3>
+            <p>Privacy-first, on-device AI photo restoration. Old memories are repaired and enhanced entirely on your phone. Your photos never leave the device.</p>
+            <a class="product-link" href="makorevive/">
+              Learn More
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
           </div>
-          <span class="product-status">In Development</span>
+          <img class="product-card-image-side" src="https://rekluzlabs.github.io/makorevive/makorevive_image.png" alt="MakoRevive on-device photo restoration" />
         </div>
-        <h3>MakoRevive</h3>
-        <p>Privacy-first, on-device AI photo restoration. Old memories are repaired and enhanced entirely on your phone. Your photos never leave the device.</p>
-        <a class="product-link" href="makorevive/">
-          Learn More
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
       </article>
 
     </div>
