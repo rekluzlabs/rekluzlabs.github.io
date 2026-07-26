@@ -85,9 +85,24 @@
     var rowHeight = 0;
 
     function measure() {
-      rowHeight = items[0].getBoundingClientRect().height;
+      // Clear any previously forced heights so we get each row's natural height
+      items.forEach(function (li) { li.style.height = ""; });
+      clone.style.height = "";
+
+      rowHeight = items.reduce(function (max, li) {
+        return Math.max(max, li.getBoundingClientRect().height);
+      }, 0);
+
+      // Force every row (including the clone) to the tallest row's height,
+      // so translateY steps land correctly even when a label wraps to two lines
+      items.forEach(function (li) { li.style.height = rowHeight + "px"; });
+      clone.style.height = rowHeight + "px";
+
       viewport.style.height = rowHeight + "px";
+      track.classList.add("no-transition");
       track.style.transform = "translateY(-" + index * rowHeight + "px)";
+      track.offsetHeight; // force reflow
+      track.classList.remove("no-transition");
     }
 
     function setActiveDot(i) {
@@ -115,6 +130,17 @@
     }
 
     measure();
+
+    // Re-measure once web fonts finish loading. Fraunces/Inter load async,
+    // and if measure() runs before the swap, rows get sized against fallback
+    // font metrics — text then reflows once the real font applies, and
+    // position drifts further with every step. This was the actual cause
+    // of the overlapping/misaligned lines on Android.
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(measure);
+    }
+    window.setTimeout(measure, 1200); // safety net if document.fonts is unavailable
+
     var timer = window.setInterval(advance, 3800);
 
     var resizeTimeout;
