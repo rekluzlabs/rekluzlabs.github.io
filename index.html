@@ -70,6 +70,17 @@
     text-decoration: none;
     cursor: pointer;
   }
+
+  /* Highlighted outline on hover, in addition to the existing card animation */
+  .product-card {
+    outline: 2px solid transparent;
+    outline-offset: 6px;
+    transition: outline-color 0.25s ease, box-shadow 0.25s ease;
+  }
+  .product-card:hover {
+    outline-color: var(--accent, #c9a227);
+    box-shadow: 0 0 0 1px rgba(201, 162, 39, 0.15);
+  }
 </style>
 </head>
 <body>
