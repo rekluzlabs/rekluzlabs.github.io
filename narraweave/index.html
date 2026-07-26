@@ -87,6 +87,12 @@
       max-height: 380px;
     }
   }
+
+  /* status-banner is now a link out to the Play Store; keep it looking like the original badge */
+  a.status-banner {
+    text-decoration: none;
+    cursor: pointer;
+  }
 </style>
 </head>
 <body>
@@ -128,7 +134,7 @@
       <span class="eyebrow">App — In Development</span>
       <h1>Serial fiction, generated with a key only you hold.</h1>
       <p class="lede">NarraWeave is a personalized serial fiction platform. You choose the AI provider, you bring the key, and your stories are generated directly through that provider's API and never through Rekluz Labs servers.</p>
-      <div class="status-banner"><span class="status-dot"></span>In active development · Android</div>
+      <a class="status-banner" href="https://play.google.com/store/apps/details?id=com.rekluzlabs.narraweave" target="_blank" rel="noopener"><span class="status-dot"></span>In active development · Android</a>
     </div>
     
     <!-- Right side: App Image Placement -->
