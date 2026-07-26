@@ -66,6 +66,12 @@
     .hero-text-side, .hero-image-side { width: 100%; }
     .hero-app-image { max-height: 380px; }
   }
+
+  /* status-banner is now a link out to the Play Store; keep it looking like the original badge */
+  a.status-banner {
+    text-decoration: none;
+    cursor: pointer;
+  }
 </style>
 </head>
 <body>
@@ -101,10 +107,10 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 16px; height: 16px; transform: scaleX(-1); vertical-align: middle; margin-right: 4px;"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
         Back to apps
       </a>
-      <span class="eyebrow" style="margin-top: 12px; display: block;">App — In Development</span>
+      <a class="eyebrow" href="https://play.google.com/store/apps/details?id=com.rekluzlabs.makorevive" target="_blank" rel="noopener" style="margin-top: 12px; display: block; text-decoration: none;">App — Live on Google Play</a>
       <h1>Give your old photos a second life.</h1>
       <p class="lede">MakoRevive is a professional-grade photo restoration suite that brings advanced AI directly to your phone. This includes denoising, colorizing, upscaling, and face restoration, all processed on-device. Photos are never uploaded, and nothing is tracked.</p>
-      <div class="status-banner"><span class="status-dot"></span>In active development · Android 12+ recommended</div>
+      <a class="status-banner" href="https://play.google.com/store/apps/details?id=com.rekluzlabs.makorevive" target="_blank" rel="noopener"><span class="status-dot"></span>In active development · Android 12+ recommended</a>
     </div>
     <div class="hero-image-side">
       <img src="https://rekluzlabs.github.io/makorevive/makorevive_image.png" alt="MakoRevive app screens: photo picker and a before-and-after restoration of an old bus photograph" class="hero-app-image" />
@@ -215,10 +221,10 @@
 
 <section class="section cta reveal">
   <div class="container">
-    <h2>Want to know when MakoRevive ships?</h2>
-    <p>There's no mailing list yet — just a developer you can email directly.</p>
+    <h2>Live on the Play Store now.</h2>
+    <p>MakoRevive is available to download today. Questions go straight to the developer.</p>
     <div class="hero-actions">
-      <a class="btn btn-primary" href="mailto:rekluzlabs@gmail.com?subject=MakoRevive">Get in Touch</a>
+      <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=com.rekluzlabs.makorevive" target="_blank" rel="noopener">View on Google Play</a>
       <a class="btn btn-ghost" href="terms_of_use.html">Read Terms of Use</a>
     </div>
   </div>
