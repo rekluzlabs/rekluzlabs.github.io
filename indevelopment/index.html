@@ -1,115 +1,254 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Apps in Development | REKLUZ LABS</title>
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Apps in Development | Rekluz Labs</title>
+<meta name="description" content="A look at what Rekluz Labs is currently building: Reminera, an offline-first family memory app, and VaultCuisine, a privacy-first recipe scanner." />
+<meta property="og:title" content="Apps in Development | Rekluz Labs" />
+<meta property="og:description" content="Privacy by architecture, not by policy. Here's what's currently in the workshop." />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="../assets/images/og-image.jpg" />
+<link rel="icon" type="image/png" href="../assets/images/favicon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;1,500;1,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../assets/css/style.css" />
+<!-- Page-specific additions, kept local to this page so the shared stylesheet stays untouched -->
+<style>
+  .product-card-image {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin-top: 20px;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    object-fit: cover;
+    transition: transform 0.2s ease;
+  }
+  .product-card:hover .product-card-image { transform: translateY(-2px); }
 
-    body {
-      background-color: #0d0f12;
-      color: #f1f5f9;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 2rem;
-    }
+  .product-card-row { display: flex; align-items: center; gap: 24px; }
+  .product-card-row .product-card-text { flex: 1 1 auto; min-width: 0; }
+  .product-card-image-side {
+    flex: 0 0 auto;
+    width: 220px;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    object-fit: cover;
+    transition: transform 0.2s ease;
+  }
+  .product-card:hover .product-card-image-side { transform: translateY(-2px); }
 
-    .container {
-      max-width: 600px;
-      width: 100%;
-    }
+  @media (max-width: 720px) {
+    .product-card-row { flex-direction: column; }
+    .product-card-image-side { width: 100%; }
+  }
 
-    .brand-title {
-      font-size: 2.25rem;
-      font-weight: 800;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: #ffffff;
-      margin-bottom: 0.5rem;
-    }
+  .product-card {
+    outline: 2px solid transparent;
+    outline-offset: 6px;
+    transition: outline-color 0.25s ease, box-shadow 0.25s ease;
+  }
+  .product-card:hover {
+    outline-color: var(--accent, #c9a227);
+    box-shadow: 0 0 0 1px rgba(201, 162, 39, 0.15);
+  }
 
-    .brand-subtitle {
-      font-size: 0.875rem;
-      font-weight: 600;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: #64748b;
-      margin-bottom: 2.5rem;
-    }
+  /* "In development" badge — same shape as the live badge, different signal color */
+  .product-status.is-dev {
+    background: rgba(96, 165, 250, 0.1);
+    border-color: rgba(96, 165, 250, 0.3);
+    color: #60a5fa;
+  }
 
-    .status-badge {
-      display: inline-block;
-      padding: 0.35rem 1rem;
-      background: rgba(59, 130, 246, 0.1);
-      border: 1px solid rgba(59, 130, 246, 0.3);
-      border-radius: 9999px;
-      color: #60a5fa;
-      font-size: 0.875rem;
-      font-weight: 500;
-      margin-bottom: 1.5rem;
-    }
+  /* Placeholder shown until real screenshots are dropped in */
+  .product-card-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    height: 160px;
+    border-radius: 8px;
+    border: 1px dashed rgba(255, 255, 255, 0.12);
+    color: var(--text-dim);
+    font-size: 13px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
 
-    h1 {
-      font-size: 2rem;
-      font-weight: 700;
-      margin-bottom: 1rem;
-      color: #f8fafc;
-    }
-
-    p {
-      color: #94a3b8;
-      font-size: 1.05rem;
-      line-height: 1.6;
-      margin-bottom: 2.5rem;
-    }
-
-    .back-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      color: #f8fafc;
-      text-decoration: none;
-      font-size: 0.95rem;
-      font-weight: 500;
-      transition: color 0.2s ease;
-    }
-
-    .back-link:hover {
-      color: #60a5fa;
-    }
-
-    .back-link svg {
-      width: 18px;
-      height: 18px;
-    }
-  </style>
+  .dev-intro {
+    max-width: 640px;
+    margin: 0 auto 2.5rem;
+    text-align: center;
+  }
+</style>
 </head>
 <body>
-
+<!-- ================= NAV ================= -->
+<nav class="nav" id="nav">
   <div class="container">
-    <div class="brand-title">REKLUZ LABS</div>
-    <div class="brand-subtitle">Independent Software</div>
-
-    <div class="status-badge">In Development</div>
-    
-    <h1>Coming Soon</h1>
-    <p>We're actively building our next generation of Android applications. Check back soon for project updates, previews, and testing opportunities.</p>
-
-    <a href="../" class="back-link">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M11 18l-6-6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      Return to main site
+    <a href="../#top" class="brand">
+      <img src="../assets/images/mark-transparent.png" alt="Rekluz Labs mark" />
+      Rekluz Labs
     </a>
+    <div class="nav-menu" id="navMenu">
+      <div class="nav-links">
+        <a href="../#about">Studio</a>
+        <a href="../#principles">Principles</a>
+        <a href="../#mission">Values</a>
+        <a href="../#apps">Shipped Apps</a>
+        <a href="../#trust">Policies</a>
+        <a href="../#contact">Contact</a>
+      </div>
+      <div class="nav-actions">
+        <a class="btn btn-primary" href="../#apps">View Shipped Apps</a>
+      </div>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7h16M4 12h16M4 17h16" stroke-linecap="round"/></svg>
+    </button>
   </div>
+</nav>
 
+<!-- ================= HEADER ================= -->
+<header class="hero" id="top" style="min-height:auto; padding-bottom:0;">
+  <div class="container hero-grid" style="grid-template-columns:1fr;">
+    <div>
+      <span class="eyebrow">Independent Android Software Studio</span>
+      <h1>In the <span class="accent">workshop</span> right now.</h1>
+      <p class="hero-lede">Two applications are currently under active development. Both follow the same rules as everything else Rekluz Labs ships: offline-first where possible, no accounts, no ads, and no data leaving the device without your say-so.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="../#apps">
+          See Shipped Apps
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a class="btn btn-ghost" href="../#top">Return to Main Site</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ================= IN DEVELOPMENT PRODUCTS ================= -->
+<section class="section" id="in-development">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Products</span>
+      <h2 class="no-wrap">Actively being built.</h2>
+      <p>Not yet on Google Play — here's what's coming, and why.</p>
+    </div>
+
+    <div class="products-grid reveal">
+
+      <!-- ================= REMINERA ================= -->
+      <article class="product-card">
+        <div class="product-card-row">
+          <div class="product-card-text">
+            <div class="product-top">
+              <div>
+                <span class="product-kicker">App</span>
+              </div>
+              <a class="product-status is-dev" href="https://github.com/rekluzlabs/Reminera" target="_blank" rel="noopener">In Development</a>
+            </div>
+            <h3>Reminera</h3>
+            <p>An offline-first family memory keeper. Record audio and video interviews, digitize old photographs, and write down biographies and stories — all stored on your device, with no cloud dependency required to use the app.</p>
+            <a class="product-link" href="https://github.com/rekluzlabs/Reminera" target="_blank" rel="noopener">
+              Follow Progress on GitHub
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+          <!-- Swap this placeholder for a real screenshot when one is ready, e.g.:
+          <img class="product-card-image-side" src="reminera_image.png" alt="Reminera family memory app" /> -->
+          <div class="product-card-placeholder" style="flex:0 0 auto; width:220px;">Preview coming soon</div>
+        </div>
+      </article>
+
+      <!-- ================= VAULTCUISINE ================= -->
+      <article class="product-card">
+        <div class="product-card-row">
+          <div class="product-card-text">
+            <div class="product-top">
+              <div>
+                <span class="product-kicker">App</span>
+              </div>
+              <a class="product-status is-dev" href="https://github.com/rekluzlabs/vaultcuisine" target="_blank" rel="noopener">In Development</a>
+            </div>
+            <h3>VaultCuisine</h3>
+            <p>A privacy-first recipe scanner. Photograph a printed or handwritten recipe card and it's structured into a clean, editable recipe entirely through your own API key — nothing is uploaded to Rekluz Labs, and there's no account to create.</p>
+            <a class="product-link" href="https://github.com/rekluzlabs/vaultcuisine" target="_blank" rel="noopener">
+              Follow Progress on GitHub
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+          <!-- Swap this placeholder for a real screenshot when one is ready, e.g.:
+          <img class="product-card-image-side" src="vaultcuisine_image.png" alt="VaultCuisine recipe scanner" /> -->
+          <div class="product-card-placeholder" style="flex:0 0 auto; width:220px;">Preview coming soon</div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= CTA ================= -->
+<section class="section cta reveal" id="contact">
+  <div class="container">
+    <h2>Building in<br />the open.</h2>
+    <p>Both apps are developed solo, with progress and technical decisions tracked publicly on GitHub as they happen.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="mailto:rekluzlabs@gmail.com">Get in Touch</a>
+      <a class="btn btn-ghost" href="https://github.com/RekluzLabs" target="_blank" rel="noopener">View on GitHub</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">
+          <img src="../assets/images/mark-transparent.png" alt="Rekluz Labs mark" />
+          Rekluz Labs
+        </div>
+        <p class="footer-tagline">Independent Android software. Small studio, serious standards. Vancouver, BC.</p>
+      </div>
+      <div class="footer-col">
+        <h5>In Development</h5>
+        <ul>
+          <li><a href="https://github.com/rekluzlabs/Reminera" target="_blank" rel="noopener">Reminera</a></li>
+          <li><a href="https://github.com/rekluzlabs/vaultcuisine" target="_blank" rel="noopener">VaultCuisine</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Studio</h5>
+        <ul>
+          <li><a href="../#about">About</a></li>
+          <li><a href="../#principles">Principles</a></li>
+          <li><a href="../mission.html">Our Philosophy</a></li>
+          <li><a href="https://github.com/RekluzLabs" target="_blank" rel="noopener">GitHub</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Policies</h5>
+        <ul>
+          <li><a href="../mission.html">How We Build</a></li>
+          <li><a href="../makorevive/terms_of_use.html">MakoRevive Terms</a></li>
+          <li><a href="../AkachansAdventures/privacy-policy.html">Akachan's Privacy Policy</a></li>
+          <li><a href="mailto:rekluzlabs@gmail.com">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Rekluz Labs. Vancouver, BC.</span>
+      <span>Zero ads. Zero trackers. Zero compromises.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/js/main.js"></script>
 </body>
 </html>
