@@ -29,25 +29,6 @@
   }
   .product-card:hover .product-card-image { transform: translateY(-2px); }
 
-  .product-card-row { display: flex; align-items: center; gap: 24px; }
-  .product-card-row .product-card-text { flex: 1 1 auto; min-width: 0; }
-  .product-card-image-side {
-    flex: 0 0 auto;
-    width: 220px;
-    height: auto;
-    border-radius: 8px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    object-fit: cover;
-    transition: transform 0.2s ease;
-  }
-  .product-card:hover .product-card-image-side { transform: translateY(-2px); }
-
-  @media (max-width: 720px) {
-    .product-card-row { flex-direction: column; }
-    .product-card-image-side { width: 100%; }
-  }
-
   .product-card {
     outline: 2px solid transparent;
     outline-offset: 6px;
@@ -65,19 +46,56 @@
     color: #60a5fa;
   }
 
+  /* Horizontal scroll strip for multiple screenshots per app */
+  .screenshot-strip {
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    margin-top: 20px;
+    padding-bottom: 6px;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.18) transparent;
+  }
+  .screenshot-strip::-webkit-scrollbar { height: 6px; }
+  .screenshot-strip::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.18);
+    border-radius: 999px;
+  }
+  .screenshot-strip::-webkit-scrollbar-track { background: transparent; }
+
+  .screenshot-strip img,
+  .screenshot-strip .product-card-placeholder {
+    flex: 0 0 auto;
+    height: 280px;
+    width: auto;
+    scroll-snap-align: start;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    object-fit: cover;
+    transition: transform 0.2s ease;
+  }
+  .product-card:hover .screenshot-strip img { transform: translateY(-2px); }
+
   /* Placeholder shown until real screenshots are dropped in */
   .product-card-placeholder {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 20px;
-    height: 160px;
-    border-radius: 8px;
-    border: 1px dashed rgba(255, 255, 255, 0.12);
+    width: 160px;
     color: var(--text-dim);
     font-size: 13px;
     letter-spacing: 0.04em;
     text-transform: uppercase;
+    text-align: center;
+    padding: 0 12px;
+    border-style: dashed;
+  }
+
+  @media (max-width: 720px) {
+    .screenshot-strip img,
+    .screenshot-strip .product-card-placeholder { height: 220px; }
   }
 
   .dev-intro {
@@ -145,47 +163,47 @@
 
       <!-- ================= REMINERA ================= -->
       <article class="product-card">
-        <div class="product-card-row">
-          <div class="product-card-text">
-            <div class="product-top">
-              <div>
-                <span class="product-kicker">App</span>
-              </div>
-              <a class="product-status is-dev" href="https://github.com/rekluzlabs/Reminera" target="_blank" rel="noopener">In Development</a>
-            </div>
-            <h3>Reminera</h3>
-            <p>An offline-first family memory keeper. Record audio and video interviews, digitize old photographs, and write down biographies and stories — all stored on your device, with no cloud dependency required to use the app.</p>
-            <a class="product-link" href="https://github.com/rekluzlabs/Reminera" target="_blank" rel="noopener">
-              Follow Progress on GitHub
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </a>
+        <div class="product-top">
+          <div>
+            <span class="product-kicker">App</span>
           </div>
-          <!-- Swap this placeholder for a real screenshot when one is ready, e.g.:
-          <img class="product-card-image-side" src="reminera_image.png" alt="Reminera family memory app" /> -->
-          <div class="product-card-placeholder" style="flex:0 0 auto; width:220px;">Preview coming soon</div>
+          <a class="product-status is-dev" href="https://github.com/rekluzlabs/Reminera" target="_blank" rel="noopener">In Development</a>
+        </div>
+        <h3>Reminera</h3>
+        <p>An offline-first family memory keeper. Record audio and video interviews, digitize old photographs, and write down biographies and stories — all stored on your device, with no cloud dependency required to use the app.</p>
+        <a class="product-link" href="https://github.com/rekluzlabs/Reminera" target="_blank" rel="noopener">
+          Follow Progress on GitHub
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <!-- Drop screenshots in as they're ready and swap each placeholder div for, e.g.:
+        <img src="reminera_1.png" alt="Reminera family groups screen" /> -->
+        <div class="screenshot-strip">
+          <div class="product-card-placeholder">Preview 1<br />coming soon</div>
+          <div class="product-card-placeholder">Preview 2<br />coming soon</div>
+          <div class="product-card-placeholder">Preview 3<br />coming soon</div>
         </div>
       </article>
 
       <!-- ================= VAULTCUISINE ================= -->
       <article class="product-card">
-        <div class="product-card-row">
-          <div class="product-card-text">
-            <div class="product-top">
-              <div>
-                <span class="product-kicker">App</span>
-              </div>
-              <a class="product-status is-dev" href="https://github.com/rekluzlabs/vaultcuisine" target="_blank" rel="noopener">In Development</a>
-            </div>
-            <h3>VaultCuisine</h3>
-            <p>A privacy-first recipe scanner. Photograph a printed or handwritten recipe card and it's structured into a clean, editable recipe entirely through your own API key — nothing is uploaded to Rekluz Labs, and there's no account to create.</p>
-            <a class="product-link" href="https://github.com/rekluzlabs/vaultcuisine" target="_blank" rel="noopener">
-              Follow Progress on GitHub
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </a>
+        <div class="product-top">
+          <div>
+            <span class="product-kicker">App</span>
           </div>
-          <!-- Swap this placeholder for a real screenshot when one is ready, e.g.:
-          <img class="product-card-image-side" src="vaultcuisine_image.png" alt="VaultCuisine recipe scanner" /> -->
-          <div class="product-card-placeholder" style="flex:0 0 auto; width:220px;">Preview coming soon</div>
+          <a class="product-status is-dev" href="https://github.com/rekluzlabs/vaultcuisine" target="_blank" rel="noopener">In Development</a>
+        </div>
+        <h3>VaultCuisine</h3>
+        <p>A privacy-first recipe scanner. Photograph a printed or handwritten recipe card and it's structured into a clean, editable recipe entirely through your own API key — nothing is uploaded to Rekluz Labs, and there's no account to create.</p>
+        <a class="product-link" href="https://github.com/rekluzlabs/vaultcuisine" target="_blank" rel="noopener">
+          Follow Progress on GitHub
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <!-- Drop screenshots in as they're ready and swap each placeholder div for, e.g.:
+        <img src="vaultcuisine_1.png" alt="VaultCuisine scan-to-recipe screen" /> -->
+        <div class="screenshot-strip">
+          <div class="product-card-placeholder">Preview 1<br />coming soon</div>
+          <div class="product-card-placeholder">Preview 2<br />coming soon</div>
+          <div class="product-card-placeholder">Preview 3<br />coming soon</div>
         </div>
       </article>
 
