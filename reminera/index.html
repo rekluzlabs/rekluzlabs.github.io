@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reminera — Family Memory Recording, Offline-First | Rekluz Labs</title>
+<meta name="description" content="Reminera is an offline, on-device family memory app from Rekluz Labs. Record voices, photos, and stories, write biographies chapter by chapter, and export a book-style keepsake — nothing ever leaves the device.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #faf6f0;
+    --card-bg: #ffffff;
+    --text: #241f1a;
+    --muted: #6b6055;
+    --border: #e6ddd0;
+    --accent: #9c6b3f;
+    --accent-deep: #6b4a2c;
+    --accent-soft: #f1e4d3;
+    --max-width: 1080px;
+    --radius: 10px;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1b1712;
+      --card-bg: #241e18;
+      --text: #f3ece2;
+      --muted: #ab9c88;
+      --border: #3a3025;
+      --accent: #d3a06c;
+      --accent-deep: #e8bd8c;
+      --accent-soft: #362a1d;
+    }
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    margin: 0;
+  }
+
+  a { color: inherit; text-decoration: none; }
+  a:focus-visible, button:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+
+  img { max-width: 100%; display: block; }
+
+  .wrap {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  /* ---------- Nav ---------- */
+  header.site {
+    border-bottom: 1px solid var(--border);
+    background: var(--bg);
+    position: sticky;
+    top: 0;
+    z-index: 20;
+  }
+
+  .nav-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 0;
+    gap: 1.5rem;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 1.05rem;
+  }
+  .brand img { width: 26px; height: 26px; }
+
+  nav.links {
+    display: flex;
+    gap: 1.75rem;
+    font-size: 0.92rem;
+    color: var(--muted);
+  }
+  nav.links a:hover { color: var(--text); }
+
+  .nav-cta {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  @media (max-width: 780px) {
+    nav.links { display: none; }
+  }
+
+  /* ---------- Buttons / pills ---------- */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.65rem 1.25rem;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border: 1px solid transparent;
+    transition: transform 0.15s ease, background 0.15s ease;
+  }
+  .btn-primary {
+    background: var(--accent);
+    color: #fffaf3;
+  }
+  .btn-primary:hover { background: var(--accent-deep); transform: translateY(-1px); }
+  .btn-ghost {
+    border-color: var(--border);
+    color: var(--text);
+  }
+  .btn-ghost:hover { border-color: var(--accent); }
+
+  .status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.35rem 0.85rem;
+    border-radius: 999px;
+    background: var(--accent-soft);
+    color: var(--accent-deep);
+    font-size: 0.82rem;
+    font-weight: 600;
+  }
+  .status-pill::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  /* ---------- Sub-header (back link + status) ---------- */
+  .sub-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.9rem 0;
+    font-size: 0.88rem;
+    color: var(--muted);
+    border-bottom: 1px solid var(--border);
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+  .sub-row a.back:hover { color: var(--text); }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    padding: 4.5rem 0 3rem;
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 3rem;
+    align-items: center;
+  }
+  @media (max-width: 860px) {
+    .hero { grid-template-columns: 1fr; padding: 3rem 0 2rem; }
+  }
+
+  .hero h1 {
+    font-size: clamp(2.1rem, 4vw, 3.1rem);
+    line-height: 1.12;
+    margin-bottom: 1.1rem;
+  }
+  .hero p.lede {
+    color: var(--muted);
+    font-size: 1.08rem;
+    max-width: 46ch;
+    margin-bottom: 1.75rem;
+  }
+  .hero .ctas {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.9rem;
+  }
+  .hero .fine-print {
+    font-size: 0.82rem;
+    color: var(--muted);
+  }
+
+  .hero-art {
+    position: relative;
+    aspect-ratio: 4 / 5;
+    border-radius: 18px;
+    background:
+      linear-gradient(160deg, var(--accent-soft), transparent 60%),
+      var(--card-bg);
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .hero-art .placeholder-note {
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.85rem;
+    padding: 2rem;
+  }
+  .hero-art img { width: 100%; height: 100%; object-fit: cover; }
+
+  /* ---------- Feature strip ---------- */
+  .features {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    padding: 2.5rem 0 3.5rem;
+    border-top: 1px solid var(--border);
+  }
+  @media (max-width: 780px) {
+    .features { grid-template-columns: 1fr; }
+  }
+  .feature h4 {
+    font-size: 1.05rem;
+    margin-bottom: 0.5rem;
+  }
+  .feature p {
+    color: var(--muted);
+    font-size: 0.95rem;
+    margin: 0;
+  }
+
+  /* ---------- Section headers ---------- */
+  .eyebrow {
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+  .section-head {
+    padding: 0 0 2rem;
+  }
+  .section-head h2 {
+    font-size: clamp(1.5rem, 2.6vw, 2.1rem);
+  }
+
+  /* ---------- Screenshot gallery (photo-album motif) ---------- */
+  .gallery {
+    padding: 3rem 0 3.5rem;
+    border-top: 1px solid var(--border);
+  }
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem 1.5rem;
+  }
+  @media (max-width: 900px) {
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 520px) {
+    .gallery-grid { grid-template-columns: 1fr; }
+  }
+
+  .photo-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 0.6rem 0.6rem 1rem;
+    box-shadow: 0 10px 24px -14px rgba(36, 31, 26, 0.25);
+  }
+  .photo-card:nth-child(odd)  { transform: rotate(-1.4deg); }
+  .photo-card:nth-child(even) { transform: rotate(1.2deg); }
+  .photo-card:hover { transform: rotate(0deg); transition: transform 0.2s ease; }
+
+  .photo-card .frame {
+    aspect-ratio: 9 / 16;
+    background: var(--accent-soft);
+    border-radius: 3px;
+    overflow: hidden;
+    margin-bottom: 0.75rem;
+  }
+  .photo-card .frame img { width: 100%; height: 100%; object-fit: cover; }
+  .photo-card figcaption {
+    font-family: 'Fraunces', serif;
+    font-size: 0.88rem;
+    text-align: center;
+    color: var(--muted);
+  }
+
+  /* ---------- Why offline-first ---------- */
+  .principle {
+    padding: 3.5rem 0;
+    border-top: 1px solid var(--border);
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 3rem;
+    align-items: start;
+  }
+  @media (max-width: 860px) {
+    .principle { grid-template-columns: 1fr; }
+  }
+
+  blockquote {
+    margin: 0 0 1.25rem;
+    font-family: 'Fraunces', serif;
+    font-size: 1.35rem;
+    line-height: 1.4;
+    color: var(--text);
+    border-left: 3px solid var(--accent);
+    padding-left: 1.25rem;
+  }
+  .principle p.body-text {
+    color: var(--muted);
+    max-width: 56ch;
+  }
+  .principle .philosophy-link {
+    display: inline-block;
+    margin-top: 0.5rem;
+    font-weight: 600;
+    color: var(--accent);
+  }
+  .philosophy-link:hover { color: var(--accent-deep); }
+
+  .fact-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+  }
+  .fact-card dl {
+    margin: 0;
+    display: grid;
+    gap: 0.9rem;
+  }
+  .fact-card .row {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    font-size: 0.92rem;
+    padding-bottom: 0.9rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .fact-card .row:last-child { border-bottom: none; padding-bottom: 0; }
+  .fact-card dt { color: var(--muted); }
+  .fact-card dd { margin: 0; font-weight: 600; text-align: right; }
+
+  /* ---------- Closing CTA ---------- */
+  .closing {
+    padding: 3.5rem 0 4rem;
+    border-top: 1px solid var(--border);
+    text-align: center;
+  }
+  .closing h2 {
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    margin-bottom: 0.9rem;
+  }
+  .closing p {
+    color: var(--muted);
+    max-width: 50ch;
+    margin: 0 auto 1.75rem;
+  }
+  .closing .ctas {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  /* ---------- Footer ---------- */
+  footer.site {
+    border-top: 1px solid var(--border);
+    padding: 3rem 0 2.5rem;
+  }
+  .footer-top {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+    padding-bottom: 2.5rem;
+  }
+  .footer-brand {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    max-width: 280px;
+  }
+  .footer-brand .brand { font-size: 1rem; }
+  .footer-brand p { color: var(--muted); font-size: 0.9rem; margin: 0; }
+
+  .footer-cols {
+    display: flex;
+    gap: 3.5rem;
+    flex-wrap: wrap;
+  }
+  .footer-cols h5 {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    margin-bottom: 0.9rem;
+    font-weight: 600;
+  }
+  .footer-cols ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.6rem;
+    font-size: 0.9rem;
+  }
+  .footer-cols a:hover { color: var(--accent); }
+
+  .footer-bottom {
+    border-top: 1px solid var(--border);
+    padding-top: 1.5rem;
+    font-size: 0.82rem;
+    color: var(--muted);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; scroll-behavior: auto !important; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap nav-row">
+    <a class="brand" href="https://rekluzlabs.github.io/index.html">
+      <img src="https://rekluzlabs.github.io/assets/images/mark-transparent.png" alt="Rekluz Labs mark">
+      Rekluz Labs
+    </a>
+    <nav class="links">
+      <a href="https://rekluzlabs.github.io/index.html#about">Studio</a>
+      <a href="https://rekluzlabs.github.io/index.html#principles">Principles</a>
+      <a href="https://rekluzlabs.github.io/mission.html">Values</a>
+      <a href="https://rekluzlabs.github.io/index.html#apps">Apps</a>
+      <a href="https://rekluzlabs.github.io/index.html#trust">Policies</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-ghost" href="https://rekluzlabs.github.io/index.html#apps">Explore Our Apps</a>
+    </div>
+  </div>
+</header>
+
+<div class="wrap sub-row">
+  <a class="back" href="https://rekluzlabs.github.io/index.html#apps">&larr; Back to apps</a>
+  <span class="status-pill">Coming soon to Google Play</span>
+</div>
+
+<main>
+  <section class="wrap hero">
+    <div>
+      <h1>Every memory, kept in someone's own words.</h1>
+      <p class="lede">Reminera is an offline family memory app. Record voices, photos, and videos, write a life story chapter by chapter, and bind it all into a book-style keepsake — without an account, a server, or a single upload.</p>
+      <div class="ctas">
+        <a class="btn btn-primary" href="mailto:rekluzlabs@gmail.com?subject=Notify%20me%20when%20Reminera%20launches">Get notified at launch</a>
+        <a class="btn btn-ghost" href="https://github.com/rekluzlabs/Reminera">Follow development on GitHub</a>
+      </div>
+      <p class="fine-print">In active development · Android · Offline-first, always</p>
+    </div>
+    <div class="hero-art">
+      <!-- Replace with a real screenshot or device mockup, e.g.:
+      <img src="hero_device.png" alt="Reminera family profile and biography screens"> -->
+      <div class="placeholder-note">Hero screenshot goes here<br>(e.g. family profile grid or biography editor, 4:5 crop)</div>
+    </div>
+  </section>
+
+  <section class="wrap features">
+    <div class="feature">
+      <h4>Record once, keep forever</h4>
+      <p>Photos, videos, and voice recordings are captured and stored directly on the device. Nothing is compressed for upload, because nothing is ever uploaded.</p>
+    </div>
+    <div class="feature">
+      <h4>A life, in chapters</h4>
+      <p>Biography sections and story entries build into a proper memoir, not a scattered camera roll — organized by person, by chapter, by year.</p>
+    </div>
+    <div class="feature">
+      <h4>No servers, no accounts</h4>
+      <p>There is no Reminera backend. Every family profile and recording lives in a local database that only exists on your device.</p>
+    </div>
+  </section>
+
+  <section class="wrap gallery">
+    <div class="section-head">
+      <span class="eyebrow">App interface</span>
+      <h2>A closer look at Reminera</h2>
+    </div>
+    <div class="gallery-grid">
+      <figure class="photo-card">
+        <div class="frame">
+          <!-- <img src="screenshot_family_grid.jpg" alt="Reminera family groups screen"> -->
+        </div>
+        <figcaption>Family Groups</figcaption>
+      </figure>
+      <figure class="photo-card">
+        <div class="frame">
+          <!-- <img src="screenshot_biography.jpg" alt="Reminera biography editor screen"> -->
+        </div>
+        <figcaption>Biography Chapters</figcaption>
+      </figure>
+      <figure class="photo-card">
+        <div class="frame">
+          <!-- <img src="screenshot_recording.jpg" alt="Reminera audio and video recording screen"> -->
+        </div>
+        <figcaption>Voice &amp; Video Recording</figcaption>
+      </figure>
+      <figure class="photo-card">
+        <div class="frame">
+          <!-- <img src="screenshot_book_export.jpg" alt="Reminera book-style PDF export screen"> -->
+        </div>
+        <figcaption>Book-Style Export</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="wrap principle">
+    <div>
+      <span class="eyebrow">Why offline-first</span>
+      <blockquote>"A family's memories shouldn't need a login. We just build the book around what's already on your phone."</blockquote>
+      <p class="body-text">Most memory-keeping apps ask you to hand your family's photos and stories to a cloud service in exchange for convenience. Reminera keeps that trade off the table entirely — it's a direct extension of the studio's mission statement.</p>
+      <a class="philosophy-link" href="https://rekluzlabs.github.io/mission.html">Our Philosophy &rarr;</a>
+    </div>
+    <div class="fact-card">
+      <dl>
+        <div class="row"><dt>Cost model</dt><dd>Free app · no purchases required</dd></div>
+        <div class="row"><dt>Data routing</dt><dd>Nowhere. Stays on device.</dd></div>
+        <div class="row"><dt>Story &amp; media storage</dt><dd>On-device only</dd></div>
+        <div class="row"><dt>Optional AI polish</dt><dd>Bring your own Gemini key</dd></div>
+        <div class="row"><dt>Advertising</dt><dd>None</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="wrap closing">
+    <h2>Reminera is coming to the Play Store.</h2>
+    <p>The app is in active development. Leave your email and we'll let you know the moment it's live — no mailing list, just a note when it ships.</p>
+    <div class="ctas">
+      <a class="btn btn-primary" href="mailto:rekluzlabs@gmail.com?subject=Notify%20me%20when%20Reminera%20launches">Get notified at launch</a>
+      <a class="btn btn-ghost" href="https://rekluzlabs.github.io/index.html#apps">See Other Apps</a>
+    </div>
+  </section>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a class="brand" href="https://rekluzlabs.github.io/index.html">
+          <img src="https://rekluzlabs.github.io/assets/images/mark-transparent.png" alt="Rekluz Labs mark">
+          Rekluz Labs
+        </a>
+        <p>Independent Android software, built without compromise. Vancouver, BC.</p>
+      </div>
+      <div class="footer-cols">
+        <div>
+          <h5>Apps</h5>
+          <ul>
+            <li><a href="https://rekluzlabs.github.io/index.html#apps">Nikakudori Mahjong</a></li>
+            <li><a href="https://rekluzlabs.github.io/index.html#apps">Akachan's Adventures</a></li>
+            <li><a href="https://rekluzlabs.github.io/narraweave/">NarraWeave</a></li>
+            <li><a href="https://rekluzlabs.github.io/makorevive/">MakoRevive</a></li>
+            <li><a href="https://rekluzlabs.github.io/reminera/">Reminera</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5>Studio</h5>
+          <ul>
+            <li><a href="https://rekluzlabs.github.io/index.html#about">About</a></li>
+            <li><a href="https://rekluzlabs.github.io/index.html#principles">Principles</a></li>
+            <li><a href="https://rekluzlabs.github.io/mission.html">Mission Statement</a></li>
+            <li><a href="https://github.com/RekluzLabs">GitHub</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5>Policies</h5>
+          <ul>
+            <li><a href="https://rekluzlabs.github.io/mission.html">Mission Statement</a></li>
+            <li><a href="privacy-policy.html">Reminera Privacy Policy</a></li>
+            <li><a href="mailto:rekluzlabs@gmail.com">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2026 Rekluz Labs. Vancouver, BC. Zero ads. Zero trackers. Zero compromises.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
