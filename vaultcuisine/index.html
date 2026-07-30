@@ -1,20 +1,181 @@
-# VaultCuisine
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>README - VaultCuisine</title>
+    <style>
+        :root {
+            --bg-color: #0d1117;
+            --card-bg: #161b22;
+            --border-color: #30363d;
+            --text-primary: #c9d1d9;
+            --text-secondary: #8b949e;
+            --accent-color: #58a6ff;
+            --code-bg: #1f242c;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.6;
+            margin: 0;
+            padding: 40px 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 40px;
+        }
+        h1, h2, h3 {
+            color: #f0f6fc;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.3em;
+        }
+        h1 {
+            font-size: 2em;
+            margin-top: 0;
+        }
+        h2 {
+            font-size: 1.5em;
+            margin-top: 1.5em;
+        }
+        a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 0.5em;
+        }
+        code {
+            background-color: var(--code-bg);
+            padding: 0.2em 0.4em;
+            border-radius: 3px;
+            font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
+            font-size: 85%;
+        }
+        pre {
+            background-color: var(--code-bg);
+            padding: 16px;
+            border-radius: 6px;
+            overflow-x: auto;
+            border: 1px solid var(--border-color);
+        }
+        pre code {
+            background-color: transparent;
+            padding: 0;
+        }
+        .center {
+            text-align: center;
+        }
+        .img-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .img-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>VaultCuisine</h1>
+        
+        <div class="img-container">
+            <img width="300" alt="VaultCuisine Logo" src="icon4VC-removebg-preview.png">
+        </div>
 
-<p align="center">
-  <img width="300" alt="VaultCuisine Logo" src="icon4VC-removebg-preview.png" />
-</p>
+        <p>An Android app that converts printed and handwritten recipe cards into editable, structured recipes. Text recognition runs locally on device by default. Cloud AI structuring is opt-in, requires your own API key, and sends only compressed, EXIF-stripped images after an explicit consent prompt.</p>
 
-An Android application that converts printed and handwritten recipe cards into editable, structured data. Text recognition runs locally on device by default. Cloud AI structuring is opt-in, requires a user-provided API key, and transmits compressed, EXIF-stripped images only after explicit consent.
+        <h2>Core features</h2>
+        <ul>
+            <li><strong>On-device text recognition:</strong> Uses ML Kit OCR locally. Works offline on every supported device without network calls.</li>
+            <li><strong>Opt-in cloud AI structuring:</strong> Connects to the Google Gemini API using your own API key. Converts OCR text and images into structured fields (title, ingredients, instructions, timers). Gated by a consent prompt before any network transmission.</li>
+            <li><strong>Offline heuristic fallback:</strong> Uses regular expressions to parse text when no API key is configured or when you decline the cloud consent prompt.</li>
+            <li><strong>Inline recipe editing:</strong> Allows editing line items, adding or deleting ingredients and instructions, and reordering items by drag-and-drop or via a long-press menu.</li>
+            <li><strong>Original photo rescan:</strong> Reruns AI structuring against the original stored photo without overwriting existing edits until you save.</li>
+            <li><strong>Manual retry control:</strong> Includes a "Doesn't look right?" button on the review screen to re-run structuring or retake the photo.</li>
+            <li><strong>Scaling and unit conversions:</strong> Scales serving sizes and converts between metric and imperial units per recipe. Conversions run only on explicit request.</li>
+            <li><strong>Local metadata:</strong> Supports chef's notes and 5-star ratings stored on device.</li>
+        </ul>
 
-## Core features
+        <h2>Processing architecture</h2>
+        <pre><code>Photo ──&gt; ML Kit OCR (On-device, local) ──&gt; Structuring engine
+                                                 │
+                                                 ├─ API key set + Consent granted
+                                                 │  └─&gt; Gemini API (Cloud)
+                                                 │
+                                                 └─ No key OR Consent declined
+                                                    └─&gt; Regex parser (Local)
+                                                         │
+                                                         ▼
+                                                Editable review screen
+                                                         │
+                                                         ▼
+                                                Local Room database</code></pre>
 
-* **On-device text recognition:** Uses ML Kit OCR locally. Executes offline on supported devices without network calls.
-* **Opt-in cloud AI structuring:** Connects to the Google Gemini API using a user-provided API key. Converts OCR text and images into structured fields including title, ingredients, instructions, and timers. Gated by a consent dialog prior to network transmission.
-* **Offline heuristic fallback:** Uses regular expression parsing when no API key is configured or when the user declines the cloud consent prompt.
-* **Inline recipe editing:** Supports editing text lines, adding or removing ingredient and instruction entries, and reordering items via drag-and-drop or a long-press menu.
-* **Original photo rescan:** Re-runs AI structuring against the original stored photo without modifying existing edits until explicitly saved.
-* **Manual retry control:** Provides a retry control on the review screen to resend the photo for another pass or retake the image.
-* **Scaling and unit conversions:** Scales serving sizes and converts between metric and imperial units per recipe upon explicit request.
-* **Local metadata:** Stores chef-written notes and star ratings locally on device.
+        <p>Every scan displays an editable review screen before saving to local storage.</p>
 
-## Processing architecture
+        <h2>App preview</h2>
+        <div class="img-container">
+            <img src="images/vaultcuisine_preview.gif" width="300" alt="VaultCuisine app preview animation">
+        </div>
+
+        <h2>Tech stack and components</h2>
+        <ul>
+            <li><strong>Language &amp; UI:</strong> Kotlin, Jetpack Compose</li>
+            <li><strong>Local persistence:</strong> Room database</li>
+            <li><strong>On-device OCR:</strong> ML Kit Text Recognition v2</li>
+            <li><strong>Cloud AI:</strong> Google Gemini API via user-provided API key (Bring Your Own Key)</li>
+            <li><strong>Key security:</strong> EncryptedSharedPreferences (transmits only to <code>generativelanguage.googleapis.com</code> for authentication)</li>
+            <li><strong>Fallback engine:</strong> Kotlin regular-expression parser</li>
+        </ul>
+
+        <h2>Requirements</h2>
+        <ul>
+            <li>Android 8.0+ (API level 26)</li>
+            <li>Optional: Google Gemini API key from <code>ai.google.dev</code> for cloud AI structuring. Scanning and regular-expression parsing function without a key.</li>
+        </ul>
+
+        <h2>Project status and known limitations</h2>
+        <p>VaultCuisine is in early alpha testing. Current limitations include:</p>
+        <ul>
+            <li><strong>Handwriting recognition:</strong> Accuracy varies based on card legibility. Current mitigation includes image contrast adjustments, JSON schema constraints on Gemini responses, and confidence-triggered retries.</li>
+            <li><strong>Database migrations:</strong> The app currently uses <code>fallbackToDestructiveMigration()</code>. Schema changes clear local database tables on app updates.</li>
+            <li><strong>Pending release blockers:</strong> Live testing across target handwritten cards and replacing destructive migrations with explicit Room migrations.</li>
+        </ul>
+
+        <h2>Planned development</h2>
+        <ul>
+            <li>Replace destructive Room migration fallback with explicit migration scripts before public release.</li>
+            <li>Add confidence-level visual markers on the review screen.</li>
+            <li>Add recipe export and print options.</li>
+            <li>Add meal planning and pantry inventory tools.</li>
+        </ul>
+
+        <h2>Privacy practices</h2>
+        <ul>
+            <li>VaultCuisine collects no analytics and contains no advertisements, in-app purchases, or subscription code.</li>
+            <li>On-device OCR processes image frames locally without network requests.</li>
+            <li>Cloud processing runs only when an API key is present and the consent dialog is confirmed.</li>
+            <li>Cloud requests strip EXIF metadata from uploaded images. Uploads route directly to Google's API endpoints; VaultCuisine operates no intermediary servers.</li>
+            <li>API keys are stored in <code>EncryptedSharedPreferences</code>.</li>
+            <li>For detailed data-handling policies, read <code>PRIVACY.md</code>.</li>
+        </ul>
+
+        <h2>License</h2>
+        <p>All Rights Reserved. See <a href="LICENSE.md">LICENSE.md</a> for details.</p>
+    </div>
+</body>
+</html>
