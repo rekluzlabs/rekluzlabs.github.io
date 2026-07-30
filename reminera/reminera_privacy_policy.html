@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy - Reminera</title>
+  <style>
+    :root {
+      --bg-color: #fcfcfc;
+      --card-bg: #ffffff;
+      --text-color: #222222;
+      --muted-text: #555555;
+      --border-color: #e2e8f0;
+      --code-bg: #f1f5f9;
+      --link-color: #2563eb;
+      --max-width: 800px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg-color: #0f172a;
+        --card-bg: #1e293b;
+        --text-color: #f8fafc;
+        --muted-text: #94a3b8;
+        --border-color: #334155;
+        --code-bg: #090d16;
+        --link-color: #60a5fa;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 2rem 1rem;
+    }
+
+    main {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      background: var(--card-bg);
+      padding: 2.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    }
+
+    header {
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.02em;
+    }
+
+    .meta-info {
+      color: var(--muted-text);
+      font-size: 0.9rem;
+    }
+
+    .meta-info p {
+      margin-bottom: 0.25rem;
+    }
+
+    h2 {
+      font-size: 1.35rem;
+      margin-top: 2rem;
+      margin-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 0.3rem;
+    }
+
+    p {
+      margin-bottom: 1rem;
+    }
+
+    ul {
+      margin-bottom: 1rem;
+      padding-left: 1.5rem;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+    }
+
+    code {
+      font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+      background-color: var(--code-bg);
+      padding: 0.2em 0.4em;
+      border-radius: 4px;
+      font-size: 0.875em;
+    }
+
+    a {
+      color: var(--link-color);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border-color);
+      color: var(--muted-text);
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+
+<main>
+  <header>
+    <h1>Privacy Policy — Reminera</h1>
+    <div class="meta-info">
+      <p><strong>App:</strong> Reminera (Family Memory Recording)</p>
+      <p><strong>Package:</strong> <code>com.rekluzlabs.reminera</code></p>
+      <p><strong>Developer:</strong> Rekluz Labs (Enrico Luzi / RekluzLabs)</p>
+      <p><strong>Last updated:</strong> July 25, 2026</p>
+    </div>
+  </header>
+
+  <section>
+    <h2>Data collection baseline</h2>
+    <p>Reminera runs offline. The app has no accounts, no logins, and no servers managed by Rekluz Labs. Every photo, video, audio recording, biography entry, and family relationship stored in the app stays on the local device.</p>
+    <p>The app does not collect or transmit the following items:</p>
+    <ul>
+      <li>Analytics, telemetry, or app usage statistics</li>
+      <li>Advertising identifiers or device tracking IDs</li>
+      <li>Crash reports or automated error logs sent to external platforms</li>
+      <li>Personal media files, audio recordings, or family history records</li>
+    </ul>
+    <p>Reminera contains zero advertisements and includes no third-party advertising or tracking SDKs.</p>
+  </section>
+
+  <section>
+    <h2>On-device data storage</h2>
+    <p>All data generated or imported by the user resides in sandboxed application storage:</p>
+    <ul>
+      <li><strong>Media files:</strong> Recorded photos, videos, and audio clips are saved directly in app-private storage at <code>filesDir/recordings/</code>, along with internal copies of imported media files.</li>
+      <li><strong>Database records:</strong> Family profiles, story entries, biographies, and memory metadata are managed locally through an on-device Room database.</li>
+      <li><strong>Generated documents:</strong> Compiled PDF books are held in internal storage until the user manually exports or shares them.</li>
+      <li><strong>Settings:</strong> Theme and app configuration values are saved locally.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Android permissions</h2>
+    <p>Reminera requests specific Android system permissions strictly to perform local media operations:</p>
+    <ul>
+      <li><code>CAMERA</code>: Captures photos and video clips within the app interface.</li>
+      <li><code>RECORD_AUDIO</code>: Records voice notes and audio for internal video generation.</li>
+      <li><strong>System Photo and Document Pickers:</strong> Imports external photos, videos, or audio files without granting the app full system storage access.</li>
+      <li><strong>Storage export:</strong> Writes exported PDF documents or exported media directly to <code>DCIM/Reminera</code> only when explicitly requested by the user.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Google Gemini API processing</h2>
+    <p>Reminera provides an optional feature to rephrase biography notes into structured text using Google's Gemini API. This feature relies on a bring-your-own-key (BYOK) design:</p>
+    <ul>
+      <li><strong>Disabled by default:</strong> AI text generation remains completely inactive until a user inputs their personal Google Gemini API key in app settings. Rekluz Labs holds no keys and operates no proxy servers for this requests pipeline.</li>
+      <li><strong>Text-only transmission:</strong> Requests transmit plain text biography notes capped at 20,000 characters. Photos, video files, and audio recordings are never sent to the API.</li>
+      <li><strong>Manual execution:</strong> Text transmits directly to Google only when the user explicitly taps "Generate" or "Regenerate". The app initiates no background or automated transmissions.</li>
+      <li><strong>Key security:</strong> The API key is stored locally on the device inside Android's <code>EncryptedSharedPreferences</code>, backed by hardware-level storage in the Android Keystore. The key transmits directly to Google's API endpoints to authenticate requests.</li>
+      <li><strong>Consent and reset:</strong> The app displays a dedicated consent dialog before the first API request is sent. Users can revoke consent or clear the saved API key at any time from app settings.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Third-party records and family data</h2>
+    <p>Users may record information about extended family members or minors inside Reminera. All family records stay on the local device under the sole control of the device owner. Rekluz Labs has no access to any stored profiles or media files. Device owners remain responsible for obtaining required consent from family members or legal guardians before logging their personal information.</p>
+  </section>
+
+  <section>
+    <h2>Data retention and removal</h2>
+    <p>Because all records remain local to the device:</p>
+    <ul>
+      <li>Users can delete individual recordings, story entries, or profiles directly inside the app interface.</li>
+      <li>Uninstalling Reminera permanently removes the Room database, saved media files, encrypted preferences, and generated PDFs from device storage.</li>
+      <li>Rekluz Labs holds no account backups and cannot restore or delete data remotely.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Contact</h2>
+    <p>Questions regarding this policy or data storage implementation can be submitted directly via GitHub or email:</p>
+    <ul>
+      <li><strong>Email:</strong> <a href="mailto:rekluzlabs@gmail.com">rekluzlabs@gmail.com</a></li>
+      <li><strong>GitHub Project Page:</strong> <a href="https://rekluzlabs.github.io" target="_blank" rel="noopener">rekluzlabs.github.io</a></li>
+    </ul>
+  </section>
+
+  <footer>
+    <p>Rekluz Labs builds privacy-first Android software. This policy reflects the exact data mechanics of Reminera build <code>com.rekluzlabs.reminera</code> as of July 25, 2026.</p>
+  </footer>
+</main>
+
+</body>
+</html>
