@@ -1,0 +1,20 @@
+# VaultCuisine
+
+<p align="center">
+  <img width="300" alt="VaultCuisine Logo" src="icon4VC-removebg-preview.png" />
+</p>
+
+An Android application that converts printed and handwritten recipe cards into editable, structured data. Text recognition runs locally on device by default. Cloud AI structuring is opt-in, requires a user-provided API key, and transmits compressed, EXIF-stripped images only after explicit consent.
+
+## Core features
+
+* **On-device text recognition:** Uses ML Kit OCR locally. Executes offline on supported devices without network calls.
+* **Opt-in cloud AI structuring:** Connects to the Google Gemini API using a user-provided API key. Converts OCR text and images into structured fields including title, ingredients, instructions, and timers. Gated by a consent dialog prior to network transmission.
+* **Offline heuristic fallback:** Uses regular expression parsing when no API key is configured or when the user declines the cloud consent prompt.
+* **Inline recipe editing:** Supports editing text lines, adding or removing ingredient and instruction entries, and reordering items via drag-and-drop or a long-press menu.
+* **Original photo rescan:** Re-runs AI structuring against the original stored photo without modifying existing edits until explicitly saved.
+* **Manual retry control:** Provides a retry control on the review screen to resend the photo for another pass or retake the image.
+* **Scaling and unit conversions:** Scales serving sizes and converts between metric and imperial units per recipe upon explicit request.
+* **Local metadata:** Stores chef-written notes and star ratings locally on device.
+
+## Processing architecture
