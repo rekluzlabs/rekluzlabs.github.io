@@ -1,0 +1,228 @@
+{
+  "schemaVersion": 1,
+  "templateId": "mystery_v4",
+  "displayName": "Mystery",
+  "categories": [
+    {
+      "id": "c1",
+      "label": "Something Doesn't Add Up",
+      "tiles": [
+        {
+          "id": "t1",
+          "label": "Something Doesn't Add Up",
+          "defaultTopic": "a contradiction in reality",
+          "promptSeed": "Write a short vignette (1 paragraph) where something doesn't logically make sense.",
+          "description": "",
+          "tone": "neutral",
+          "insertionMode": "PROTAGONIST",
+          "constraints": [
+            "1 paragraph"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "c2",
+      "label": "Locked Room",
+      "tiles": [
+        {
+          "id": "t2",
+          "label": "Locked Room",
+          "defaultTopic": "an impossible situation",
+          "promptSeed": "Write a short mystery involving a locked or impossible situation.",
+          "description": "",
+          "tone": "neutral",
+          "insertionMode": "PROTAGONIST",
+          "constraints": [
+            "1 paragraph"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "c3",
+      "label": "Cold Case",
+      "tiles": [
+        {
+          "id": "t3",
+          "label": "Cold Case",
+          "defaultTopic": "an unsolved mystery",
+          "promptSeed": "Write an 80-120 word unsolved case.",
+          "description": "",
+          "tone": "neutral",
+          "insertionMode": "OBSERVER",
+          "constraints": [
+            "80-120 words"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "c4",
+      "label": "Strange Clue",
+      "tiles": [
+        {
+          "id": "t4",
+          "label": "Strange Clue",
+          "defaultTopic": "an odd detail",
+          "promptSeed": "Write a vignette where a small clue changes everything.",
+          "description": "",
+          "tone": "neutral",
+          "insertionMode": "PROTAGONIST",
+          "constraints": [
+            "1 paragraph"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "c5",
+      "label": "Missing Person",
+      "tiles": [
+        {
+          "id": "t5",
+          "label": "Missing Person",
+          "defaultTopic": "someone disappears",
+          "promptSeed": "Write a short vignette about a disappearance.",
+          "description": "",
+          "tone": "neutral",
+          "insertionMode": "PROTAGONIST",
+          "constraints": [
+            "1 paragraph"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "c6",
+      "label": "Unanswered Question",
+      "tiles": [
+        {
+          "id": "t6",
+          "label": "Unanswered Question",
+          "defaultTopic": "a lingering mystery",
+          "promptSeed": "Write a vignette that raises a question but does not answer it.",
+          "description": "",
+          "tone": "neutral",
+          "insertionMode": "OBSERVER",
+          "constraints": [
+            "1 paragraph"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "c7",
+      "label": "False Memory",
+      "tiles": [
+        {
+          "id": "t7",
+          "label": "False Memory",
+          "defaultTopic": "misremembering something",
+          "promptSeed": "Write a vignette where memory conflicts with reality.",
+          "description": "",
+          "tone": "neutral",
+          "insertionMode": "PROTAGONIST",
+          "constraints": [
+            "1 paragraph"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "c8",
+      "label": "Hidden Truth",
+      "tiles": [
+        {
+          "id": "t8",
+          "label": "Hidden Truth",
+          "defaultTopic": "something concealed",
+          "promptSeed": "Write a vignette where something important is hidden.",
+          "description": "",
+          "tone": "neutral",
+          "insertionMode": "OBSERVER",
+          "constraints": [
+            "1 paragraph"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "c9",
+      "label": "Secret Message",
+      "tiles": [
+        {
+          "id": "t9",
+          "label": "Secret Message",
+          "defaultTopic": "a coded message",
+          "promptSeed": "Write a short story involving a hidden message.",
+          "description": "",
+          "tone": "neutral",
+          "insertionMode": "PROTAGONIST",
+          "constraints": [
+            "1 paragraph"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "c10",
+      "label": "Someone's Lying",
+      "tiles": [
+        {
+          "id": "t10",
+          "label": "Someone's Lying",
+          "defaultTopic": "deception",
+          "promptSeed": "Write dialogue (3-5 lines) where someone is lying.",
+          "description": "",
+          "tone": "neutral",
+          "insertionMode": "PROTAGONIST",
+          "constraints": [
+            "3-5 lines"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "c11",
+      "label": "Final Clue",
+      "tiles": [
+        {
+          "id": "t11",
+          "label": "Final Clue",
+          "defaultTopic": "last piece of puzzle",
+          "promptSeed": "Write a vignette where the final clue appears.",
+          "description": "",
+          "tone": "neutral",
+          "insertionMode": "PROTAGONIST",
+          "constraints": [
+            "1 paragraph"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "c12",
+      "label": "Unresolved",
+      "tiles": [
+        {
+          "id": "t12",
+          "label": "Unresolved",
+          "defaultTopic": "unsolved ending",
+          "promptSeed": "Write a mystery that remains unresolved.",
+          "description": "",
+          "tone": "neutral",
+          "insertionMode": "OBSERVER",
+          "constraints": [
+            "1 paragraph"
+          ]
+        }
+      ]
+    }
+  ],
+  "promptSeed": "[SYSTEM]\nYou are NarraWeave.\n\n[MODE]\nOutput only the story.\n\n[TILE]\n{{tile.promptSeed}}\n\n[CONSTRAINTS]\nFollow all tile constraints.",
+  "metadata": {
+    "author": "NarraWeave",
+    "description": "Mystery template"
+  }
+}

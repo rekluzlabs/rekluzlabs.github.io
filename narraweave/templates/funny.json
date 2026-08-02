@@ -1,0 +1,240 @@
+{
+  "schemaVersion": 1,
+  "templateId": "funny_template",
+  "displayName": "Funny",
+  "categories": [
+    {
+      "id": "bizarre_haiku",
+      "label": "Absurd Haiku",
+      "tiles": [
+        {
+          "id": "bizarre_haiku_default",
+          "label": "Absurd Haiku",
+          "defaultTopic": "a raccoon wearing a tuxedo at a high-end restaurant",
+          "promptSeed": "Write a single haiku in English (5-7-5 syllable structure) capturing a completely surreal, bizarre, or ridiculous situation. Deliver maximum comedic impact using unexpected images. No title, preamble, or explanation.",
+          "description": "A 3-line poem highlighting a wonderfully ridiculous or surreal moment.",
+          "tone": "absurd, deadpan, funny",
+          "insertionMode": "PROTAGONIST",
+          "constraints": [
+            "Exactly 3 lines, 5-7-5 syllable structure",
+            "No title or commentary"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "unhinged_broadcast",
+      "label": "Strange Frequency",
+      "tiles": [
+        {
+          "id": "unhinged_broadcast_default",
+          "label": "Strange Frequency",
+          "defaultTopic": "an automated beacon for lost rubber ducks",
+          "promptSeed": "Write a short broadcast or automated radio transcript (50-75 words). Voice: weirdly official, slightly unhinged, or bizarrely calm amidst complete chaos. Sensory details: weird static, odd background noise, absurd announcements. Keep it silly, nonsensical, and funny. No horror.",
+          "description": "A short snippet of an odd radio broadcast or emergency alert for a ridiculously nonsensical situation.",
+          "tone": "unhinged, deadpan, surreal",
+          "insertionMode": "OBSERVER",
+          "constraints": [
+            "50-75 words",
+            "Formatted as a radio transcript or beacon"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "weird_parable",
+      "label": "Bizarre Quest",
+      "tiles": [
+        {
+          "id": "weird_parable_default",
+          "label": "Bizarre Quest",
+          "defaultTopic": "a man attempting to teach a pigeon how to play chess",
+          "promptSeed": "Write a hilarious modern parable in exactly 3 paragraphs. Center on a character dedicated to a completely absurd or pointless task that confuses everyone around them. Paragraph 1: introduce the absurd task. Paragraph 2: show them taking it far too seriously despite obstacles. Paragraph 3: end with a funny, unexpected turn of logic. Do not state a moral.",
+          "description": "A 3-paragraph story about someone taking a completely ridiculous, nonsensical mission way too seriously.",
+          "tone": "absurd, solemn, comedic",
+          "insertionMode": "PROTAGONIST",
+          "constraints": [
+            "Exactly 3 paragraphs",
+            "No stated moral"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "odd_proverb",
+      "label": "Silly Wisdom",
+      "tiles": [
+        {
+          "id": "odd_proverb_default",
+          "label": "Silly Wisdom",
+          "defaultTopic": "a flamingo standing on one leg in a bowling alley",
+          "promptSeed": "Write an invented, bizarre proverb in exactly 2 sentences. The first sentence sets up a completely absurd, concrete image. The second sentence undercuts or extends it with ridiculous, pseudo-profound logic. Make it sound like an ancient saying, but completely silly. Do not explain the joke.",
+          "description": "A two-sentence pseudo-wise saying built around a totally surreal image.",
+          "tone": "pseudo-profound, deadpan, funny",
+          "insertionMode": "OBSERVER",
+          "constraints": [
+            "Exactly 2 sentences",
+            "No explanation or moralizing"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "office_dad_joke",
+      "label": "Watercooler Joke",
+      "tiles": [
+        {
+          "id": "office_dad_joke_default",
+          "label": "Watercooler Joke",
+          "defaultTopic": "spreadsheets and corporate meetings",
+          "promptSeed": "Write a single dad joke in English focused on office life, jobs, emails, or corporate culture. Corny, pun-filled, and groan-worthy setup followed by a punchline. Avoid punching-down humor or offensive topics.",
+          "description": "A classic corny dad joke centered around office work, bosses, and corporate life.",
+          "tone": "corny, punny, lighthearted",
+          "insertionMode": "PROTAGONIST",
+          "constraints": [
+            "Setup line followed by punchline",
+            "No title or explanation"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "overheard_breakroom",
+      "label": "Overheard in HR",
+      "tiles": [
+        {
+          "id": "overheard_breakroom_default",
+          "label": "Overheard in HR",
+          "defaultTopic": "someone using the office microwave improperly",
+          "promptSeed": "Write a single snippet of dialogue (1-2 lines) presented as if overheard mid-conversation in a chaotic office or workplace setting. Enclose in quotation marks, followed by a parenthetical location tag (e.g., '(Overheard near the office printer)'). Voice: exhausted, bewildered, or inappropriately confident.",
+          "description": "A hilarious, out-of-context snippet of office dialogue overheard near the watercooler or breakroom.",
+          "tone": "candid, chaotic, workplace-satire",
+          "insertionMode": "PROTAGONIST",
+          "constraints": [
+            "1-2 lines of dialogue",
+            "Must include parenthetical setting tag"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "office_story",
+      "label": "Reply All Disaster",
+      "tiles": [
+        {
+          "id": "office_story_default",
+          "label": "Reply All Disaster",
+          "defaultTopic": "accidentally sending a meme to the entire company",
+          "promptSeed": "Write a short comedic story (2-3 short paragraphs) about a small office task escalating into mild, harmless catastrophe. Focus on escalating chaos, frantic miscommunication, and relatable workplace panic. Keep it funny, lighthearted, and relatable.",
+          "description": "A short 2-3 paragraph comedy story detailing a small workplace mistake spiraling out of control.",
+          "tone": "frantic, relatable, comedic",
+          "insertionMode": "PROTAGONIST",
+          "constraints": [
+            "2-3 short paragraphs",
+            "No dark or mean-spirited humor"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "corporate_affirmation",
+      "label": "Workplace Mantra",
+      "tiles": [
+        {
+          "id": "corporate_affirmation_default",
+          "label": "Workplace Mantra",
+          "defaultTopic": "surviving a 2-hour meeting that could have been an email",
+          "promptSeed": "Write a single sarcastic or tongue-in-cheek daily affirmation (1-2 sentences) written in first person ('I will...', 'I am...'). Focus on surviving corporate madness, endless emails, or nonsensical workplace buzzwords with humorous optimism.",
+          "description": "A funny, slightly sarcastic daily affirmation for getting through the workday.",
+          "tone": "satirical, witty, relatable",
+          "insertionMode": "PROTAGONIST",
+          "constraints": [
+            "1-2 sentences",
+            "First-person perspective"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mishap_tanka",
+      "label": "Clumsy Tanka",
+      "tiles": [
+        {
+          "id": "mishap_tanka_default",
+          "label": "Clumsy Tanka",
+          "defaultTopic": "dropping toast butter-side down on a fresh rug",
+          "promptSeed": "Write a single tanka poem (5-7-5-7-7 syllable structure). The first 3 lines set up a minor, highly relatable daily blunder or clumsy mistake. The final 2 lines add a dramatically over-the-top emotional reaction or reflection. No title or preamble.",
+          "description": "A 5-line poem dramatically lamenting a minor everyday blunder like stubbing a toe or spilling coffee.",
+          "tone": "melodramatic, humorous, relatable",
+          "insertionMode": "PROTAGONIST",
+          "constraints": [
+            "Exactly 5 lines, 5-7-5-7-7 syllable structure",
+            "No title or commentary"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mishap_iyashikei",
+      "label": "Silver Lining",
+      "tiles": [
+        {
+          "id": "mishap_iyashikei_default",
+          "label": "Silver Lining",
+          "defaultTopic": "getting caught in a sudden downpour without an umbrella",
+          "promptSeed": "Write a funny Iyashikei-style short story (2-3 short paragraphs). Focus on an annoying everyday inconvenience (e.g., wrong grocery item, missed bus, tangled headphones) that ends up being unexpectedly charming or funny. Warm, silly, and comforting.",
+          "description": "A heartwarming, funny slice-of-life story turning a minor inconvenience into a good laugh.",
+          "tone": "warm, humorous, lighthearted",
+          "insertionMode": "PROTAGONIST",
+          "constraints": [
+            "2-3 short paragraphs",
+            "No heavy drama or negativity"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mishap_bedtime",
+      "label": "Silly Night Tale",
+      "tiles": [
+        {
+          "id": "mishap_bedtime_default",
+          "label": "Silly Night Tale",
+          "defaultTopic": "a dog who stole a single sock and went into hiding",
+          "promptSeed": "Write a lighthearted, funny bed-time style story (2-3 short paragraphs) about a silly everyday house incident involving pets, kids, or lost objects. Gentle, humorous, and perfect for winding down with a chuckle.",
+          "description": "A cozy, humorous bedtime story based on minor household mischief.",
+          "tone": "playful, gentle, warm",
+          "insertionMode": "PROTAGONIST",
+          "constraints": [
+            "2-3 short paragraphs",
+            "Suitable for all ages"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "unlucky_fortune",
+      "label": "Misfortune Cookie",
+      "tiles": [
+        {
+          "id": "unlucky_fortune_default",
+          "label": "Misfortune Cookie",
+          "defaultTopic": "forgetting why you walked into the room",
+          "promptSeed": "Write a single funny, overly specific fortune cookie message (1-2 sentences) predicting a minor, silly everyday annoyance (like pushing a door that says pull). Optionally include 6 random lucky numbers (between 1 and 59) on a new line about 30-40% of the time ('Lucky Numbers: XX, XX, XX, XX, XX, XX').",
+          "description": "A fortune cookie message predicting hilarious, hyper-specific minor inconveniences.",
+          "tone": "witty, ironic, playful",
+          "insertionMode": "PROTAGONIST",
+          "constraints": [
+            "1-2 sentences",
+            "Include lucky numbers 30-40% of the time"
+          ]
+        }
+      ]
+    }
+  ],
+  "promptSeed": "[SYSTEM]\nYou are NarraWeave, a creative writing engine focused on comedy, humor, and witty storytelling in English. Your output is punchy, funny, and faithful to the comedic prompt provided.\n\n[MODE]\nProduce only the creative output. No titles, no preambles, no explanations, no meta-commentary. The piece should stand entirely on its own.\n\n[TILE]\n{{tile.promptSeed}}\n\n[CONSTRAINTS]\n- Output ONLY the creative piece — nothing else.\n- Follow the structural rules of the selected form exactly (syllable counts, line counts, paragraph limits).\n- Maintain a witty, funny, and entertaining tone throughout.\n- Avoid mean-spirited, offensive, or punching-down humor.",
+  "metadata": {
+    "author": "NarraWeave",
+    "description": "Funny theme featuring 12 humorous tile categories"
+  }
+}

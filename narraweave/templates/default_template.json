@@ -1,0 +1,240 @@
+{
+  "schemaVersion": 1,
+  "templateId": "default_template",
+  "displayName": "Default",
+  "categories": [
+    {
+      "id": "haiku",
+      "label": "Haiku",
+      "tiles": [
+        {
+          "id": "haiku_default",
+          "label": "Generate Haiku",
+          "defaultTopic": "",
+          "promptSeed": "Write a single haiku in English. Exactly 3 lines, following a 5-7-5 syllable structure. Evoke a clear image or moment tied to the given topic. If the topic is empty or vague, choose a nature or seasonal theme.",
+          "description": "A haiku is a 3-line Japanese poem with a 5-7-5 syllable structure. Traditionally focused on nature and seasons, it captures a single moment or image in vivid, minimalist language.",
+          "tone": "contemplative, precise, seasonal",
+          "insertionMode": "PROTAGONIST",
+          "constraints": [
+            "Exactly 3 lines, 5-7-5 syllable structure",
+            "No title, preamble, or explanation"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tanka",
+      "label": "Tanka",
+      "tiles": [
+        {
+          "id": "tanka_default",
+          "label": "Generate Tanka",
+          "defaultTopic": "",
+          "promptSeed": "Write a single tanka in English. Exactly 5 lines, following a 5-7-5-7-7 syllable structure. The first 3 lines set a scene or image, and the final 2 lines add a personal reflection or emotional turn. If the topic is empty or vague, choose a nature or seasonal theme.",
+          "description": "A tanka is a 5-line Japanese poem with a 5-7-5-7-7 syllable structure. It's like a haiku but longer — the first 3 lines (5-7-5) set a scene or image, and the final 2 lines (7-7) add a personal reflection or emotional turn.",
+          "tone": "reflective, emotionally nuanced",
+          "insertionMode": "PROTAGONIST",
+          "constraints": [
+            "Exactly 5 lines, 5-7-5-7-7 syllable structure",
+            "No title, preamble, or explanation"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "shizuka",
+      "label": "Shizuka",
+      "tiles": [
+        {
+          "id": "shizuka_default",
+          "label": "Generate Shizuka",
+          "defaultTopic": "",
+          "promptSeed": "Write a brief, still vignette in English — the Japanese genre known as \"shizuka,\" where the atmosphere itself is the story. A brief atmospheric vignette (1-2 short paragraphs). Center on quiet, solitude, and stillness as the point of the piece. Minimal plot, minimal dialogue — a single person (or no one) in a calm setting. Describe sensory details: soft sounds, light, weather, quiet movement. No conflict, no drama, no tension, no lesson — just a still moment. If the topic is provided, build the quiet scene around it. If the topic is empty, choose a classic restful scene.",
+          "description": "Shizuka stories center on quiet, solitude, and stillness — minimal plot, minimal dialogue, a single person (or no one at all) in a calm setting, where the atmosphere itself is the story. No conflict to resolve, no lesson to land — just a still moment held long enough to feel restful.",
+          "tone": "still, atmospheric, quiet",
+          "insertionMode": "OBSERVER",
+          "constraints": [
+            "1-2 short paragraphs only",
+            "No conflict, no drama, no lesson"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "iyashikei",
+      "label": "Iyashikei",
+      "tiles": [
+        {
+          "id": "iyashikei_default",
+          "label": "Generate Iyashikei",
+          "defaultTopic": "",
+          "promptSeed": "Write a short Iyashikei (healing) story in English. A gentle, calming short story (2-3 short paragraphs). Focus on comfort, peace, warmth, and soothing moments. No conflict, no drama, no tension — pure healing. Describe sensory details: soft sounds, warm light, gentle breezes. If the topic is provided, incorporate it into the peaceful scene. If the topic is empty, write a classic soothing vignette.",
+          "description": "Iyashikei is a Japanese genre of healing, comfort-focused storytelling — gentle, calming slices of life that soothe the reader. These are short, warm narratives (2-3 paragraphs) that evoke peace and contentment.",
+          "tone": "gentle, warm, soothing",
+          "insertionMode": "PROTAGONIST",
+          "constraints": [
+            "2-3 short paragraphs",
+            "No conflict, no tension"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "jokes",
+      "label": "Dad Jokes",
+      "tiles": [
+        {
+          "id": "jokes_default",
+          "label": "Generate Joke",
+          "defaultTopic": "",
+          "promptSeed": "Write a single short dad joke in English. A classic dad joke: corny, pun-filled, and groan-worthy. Setup line followed by a punchline. Avoid punching-down humor, slurs, or offensive content. If the topic is empty or vague, choose a light-hearted theme.",
+          "description": "A dad joke is a classic short joke built on a setup and a punchline — corny, pun-filled, and deliberately groan-worthy. The worse the pun, the better the joke.",
+          "tone": "playful, corny, light-hearted",
+          "insertionMode": "PROTAGONIST",
+          "constraints": [
+            "Setup line followed by punchline",
+            "No title or explanation"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fortune_cookie",
+      "label": "Fortune Cookie",
+      "tiles": [
+        {
+          "id": "fortune_cookie_default",
+          "label": "Generate Fortune",
+          "defaultTopic": "",
+          "promptSeed": "Write a single fortune cookie message in English. A short, wise, uplifting or humorous fortune (1-2 sentences). Make it feel authentic like a real fortune cookie. LUCKY NUMBERS (OCCASIONAL): Occasionally (about 30-40% of the time, chosen randomly), end the fortune with a set of lucky numbers on a new line. Format: \"Lucky Numbers: XX, XX, XX, XX, XX, XX\". Generate 6 unique random numbers between 1 and 59 inclusive. Do NOT include lucky numbers every time — only every so often. If the topic is provided, loosely tie the fortune to that theme.",
+          "description": "A fortune cookie message is a short, wise, uplifting or humorous fortune (1-2 sentences) that feels authentic like a real fortune cookie — a little nugget of insight or luck. You may also sometimes be rewarded with lucky numbers as well.",
+          "tone": "wise, whimsical, brief",
+          "insertionMode": "PROTAGONIST",
+          "constraints": [
+            "1-2 sentences",
+            "Include lucky numbers 30-40% of the time"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "six_word_stories",
+      "label": "3 AM Broadcast",
+      "tiles": [
+        {
+          "id": "six_word_stories_default",
+          "label": "Generate Broadcast",
+          "defaultTopic": "",
+          "promptSeed": "Write a short transmission fragment in English. 2 to 4 short lines or a brief single paragraph (50-75 words). Present as a radio transcript, shortwave broadcast, or automated beacon (e.g., using audio cues like \"...\", radio frequencies, or call signs). Voice: distant, atmospheric, quiet, mysterious, or slightly melancholy. Sensory details: static, hums, cold night air, flickering lights, empty horizons. No jump scares or explicit horror — keep it haunting, lonely, or wonder-filled. If a topic is provided, weave it into the broadcast. If empty, default to a calm, lonely night frequency.",
+          "description": "A short, atmospheric fragment of a late-night radio broadcast, satellite ping, or lonely distress beacon drifting through the void.",
+          "tone": "distant, atmospheric, melancholy",
+          "insertionMode": "OBSERVER",
+          "constraints": [
+            "50-75 words",
+            "Format as radio transcript or beacon"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "two_sentence_horror",
+      "label": "Modern Proverb",
+      "tiles": [
+        {
+          "id": "two_sentence_horror_default",
+          "label": "Generate Proverb",
+          "defaultTopic": "",
+          "promptSeed": "Write a single invented proverb in English, in exactly 2 sentences. The first sentence sets up a proverb-like statement using a concrete, physical image (an object, an animal, a place, a simple action) rather than an abstract idea. The second sentence complicates, undercuts, or quietly extends the first. It must NOT simply restate, explain, or moralize the first sentence. Never use phrases like \"which teaches us,\" \"this means,\" or \"in other words.\" The proverb should sound old and worn-smooth, as if it has been repeated for generations, not like it was just written. Do not address the reader directly. If a topic is provided, build the proverb's central image loosely around it. If the topic is empty or vague, choose any everyday object, animal, or simple action as the image.",
+          "description": "A modern proverb is an invented saying that sounds like old folk wisdom but isn't. It uses a concrete, physical image rather than an abstract idea, and never explains itself.",
+          "tone": "aged, proverb-like, impersonal",
+          "insertionMode": "OBSERVER",
+          "constraints": [
+            "Exactly 2 sentences",
+            "No moral or explanation"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bedtime_stories",
+      "label": "Bedtime Stories",
+      "tiles": [
+        {
+          "id": "bedtime_stories_default",
+          "label": "Generate Story",
+          "defaultTopic": "",
+          "promptSeed": "Write a short soothing bedtime story in English. A gentle, calming short story (2-3 short paragraphs). Suitable for all ages — warm, kind, and comforting. If the topic is provided, incorporate it into the story. If the topic is empty, write a classic gentle tale.",
+          "description": "A bedtime story is a gentle, calming short story (2-3 paragraphs) suitable for all ages — warm, kind, comforting, and perfect for winding down.",
+          "tone": "gentle, warm, comforting",
+          "insertionMode": "PROTAGONIST",
+          "constraints": [
+            "2-3 short paragraphs",
+            "Suitable for all ages"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "daily_affirmations",
+      "label": "Daily Affirmations",
+      "tiles": [
+        {
+          "id": "daily_affirmations_default",
+          "label": "Generate Affirmation",
+          "defaultTopic": "",
+          "promptSeed": "Write a single daily affirmation in English. A short, positive, empowering statement (1-2 sentences). Written in first person (\"I am...\", \"I can...\", \"I will...\"). If the topic is provided, tie the affirmation to that theme.",
+          "description": "A daily affirmation is a short, positive, empowering statement written in first person (\"I am...\", \"I can...\", \"I will...\") to start your day with intention and belief.",
+          "tone": "empowering, positive, first-person",
+          "insertionMode": "PROTAGONIST",
+          "constraints": [
+            "1-2 sentences",
+            "Written in first person"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "daily_intention",
+      "label": "A Quiet Parable",
+      "tiles": [
+        {
+          "id": "daily_intention_default",
+          "label": "Generate Parable",
+          "defaultTopic": "",
+          "promptSeed": "Write a short modern parable in English, in the style of a quiet, understated fable. Exactly 3 paragraphs. Center on one character doing something that seems pointless, strange, or misunderstood by the people around them (a repeated task, an odd habit, a private ritual). The overall tone must be tender, gentle, and comforting — nothing dark, bleak, sad, or ominous. Paragraph 1: introduce the character and the strange or seemingly pointless thing they do. Include at least one specific detail. Paragraph 2: develop it further. Show time passing, or someone questioning them, or the thing being tested. Paragraph 3: end with a moment that reframes what the character was doing all along. The reader should understand the point without being told what it is directly. Do not state a moral. If the topic is provided, build the character's strange task or habit around it. If the topic is empty, choose an ordinary occupation or domestic routine and give it unexpected weight.",
+          "description": "A quiet parable is a short modern story about someone doing something that looks pointless or strange, whose true purpose is only revealed by how the story ends. The lesson is never stated outright. The reader has to arrive at it themselves.",
+          "tone": "tender, understated, fable-like",
+          "insertionMode": "PROTAGONIST",
+          "constraints": [
+            "Exactly 3 paragraphs",
+            "No stated moral"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "writing_prompts",
+      "label": "Overheard in passing",
+      "tiles": [
+        {
+          "id": "writing_prompts_default",
+          "label": "Generate Snippet",
+          "defaultTopic": "",
+          "promptSeed": "Write a single snippet of dialogue in English, presented as if overheard in passing. 1 to 2 lines of dialogue only, spoken by one or two unseen people. Must feel mid-conversation, completely stripped of setup or context. Voice: authentic, human, slightly eccentric, funny, or unexpectedly thoughtful. Present the speech enclosed in quotation marks, followed optionally by a brief setting in parenthetical format (e.g., \"(Overheard on a morning train)\"). If a topic is provided, weave it naturally into the spoken lines. If empty, pick an intriguing everyday situation.",
+          "description": "A single snippet of dialogue overheard out of context — funny, mysterious, or strangely profound, leaving the rest of the conversation up to your imagination.",
+          "tone": "authentic, mid-conversation, candid",
+          "insertionMode": "PROTAGONIST",
+          "constraints": [
+            "1-2 lines of dialogue",
+            "Mid-conversation, no context"
+          ]
+        }
+      ]
+    }
+  ],
+  "promptSeed": "[SYSTEM]\nYou are NarraWeave, a creative writing engine that produces short-form literary pieces in English. Your output is evocative, precise, and faithful to the form you are asked to write in.\n\n[MODE]\nProduce only the creative output. No titles, no preambles, no explanations, no meta-commentary. The piece should stand entirely on its own.\n\n[TILE]\n{{tile.promptSeed}}\n\n[CONSTRAINTS]\n- Output ONLY the creative piece — nothing else.\n- Follow the structural rules of the selected form exactly (syllable counts, line counts, paragraph limits).\n- If a topic is provided, weave it naturally into the piece. If no topic is given, choose an appropriate default theme.\n- Maintain the emotional register and aesthetic sensibility of the selected form.\n- Avoid repetition, filler, and unnecessary words.",
+  "metadata": {
+    "author": "NarraWeave",
+    "description": "Default template with 12 categories across 3 groups"
+  }
+}
