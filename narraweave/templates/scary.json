@@ -1,0 +1,216 @@
+{
+  "schemaVersion": 1,
+  "templateId": "scary_template",
+  "displayName": "Scary",
+  "categories": [
+    {
+      "id": "the_hitchhiker",
+      "label": "The Hitchhiker",
+      "groupLabel": "Urban Legends",
+      "tiles": [
+        {
+          "id": "the_hitchhiker_default",
+          "label": "The Hitchhiker",
+          "defaultTopic": "a stranger picked up on a lonely night road",
+          "promptSeed": "Write about picking up a hitchhiker on a near-empty road late at night. The stranger says something early on that they couldn't possibly know. Build unease through what the hitchhiker says, not through violence.",
+          "description": "A stranger on a lonely road who knows more than they should.",
+          "tone": "campfire, uneasy, slow-building",
+          "insertionMode": "PROTAGONIST",
+          "constraints": ["2-3 paragraphs", "No explicit violence", "End on the unresolved detail, not an explanation"]
+        }
+      ]
+    },
+    {
+      "id": "dont_look_back",
+      "label": "Don't Look Back",
+      "groupLabel": "Urban Legends",
+      "tiles": [
+        {
+          "id": "dont_look_back_default",
+          "label": "Don't Look Back",
+          "defaultTopic": "footsteps matching yours in the dark",
+          "promptSeed": "Write in second person about walking home and becoming aware something is following, matching pace exactly whenever you slow down or speed up. Never reveal what it is.",
+          "description": "Something is behind you, and it's getting closer.",
+          "tone": "tense, breathless, second-person",
+          "insertionMode": "PROTAGONIST",
+          "constraints": ["Second person throughout", "1-2 paragraphs", "Never describe the pursuer directly"]
+        }
+      ]
+    },
+    {
+      "id": "the_dare",
+      "label": "The Dare",
+      "groupLabel": "Urban Legends",
+      "tiles": [
+        {
+          "id": "the_dare_default",
+          "label": "The Dare",
+          "defaultTopic": "a childhood dare no one has spoken of since",
+          "promptSeed": "Write about an adult recounting a dare from childhood — knocking on a specific door, saying a specific name three times — and what happened afterward that they've never told anyone until now.",
+          "description": "A childhood dare, retold as the story that never quite left you.",
+          "tone": "retrospective, uneasy, confessional",
+          "insertionMode": "PROTAGONIST",
+          "constraints": ["Framed as a memory being told to someone", "2-3 paragraphs"]
+        }
+      ]
+    },
+    {
+      "id": "three_times",
+      "label": "Three Times",
+      "groupLabel": "Urban Legends",
+      "tiles": [
+        {
+          "id": "three_times_default",
+          "label": "Three Times",
+          "defaultTopic": "a name said three times to an empty mirror",
+          "promptSeed": "Write about someone performing a mirror ritual alone in a dark bathroom, saying a name three times. Focus on the growing wrongness of their own reflection rather than anything appearing behind them.",
+          "description": "A mirror ritual that goes exactly as far as it shouldn't.",
+          "tone": "claustrophobic, dread-heavy, quiet",
+          "insertionMode": "PROTAGONIST",
+          "constraints": ["1-2 paragraphs", "Stop at the moment of realization, no aftermath"]
+        }
+      ]
+    },
+    {
+      "id": "somethings_wrong",
+      "label": "Something's Wrong",
+      "groupLabel": "Quiet Dread",
+      "tiles": [
+        {
+          "id": "somethings_wrong_default",
+          "label": "Something's Wrong",
+          "defaultTopic": "a room that looks almost right",
+          "promptSeed": "Describe an ordinary room or routine from an observer's perspective, noting three or four small details that are subtly wrong — nothing overtly supernatural, just enough to make the reader uneasy without being able to say why.",
+          "description": "Small details, out of place, building to nothing you can name.",
+          "tone": "still, atmospheric, unresolved",
+          "insertionMode": "OBSERVER",
+          "constraints": ["2-3 paragraphs", "No direct threat or reveal", "End mid-unease, not resolved"]
+        }
+      ]
+    },
+    {
+      "id": "the_empty_house",
+      "label": "The Empty House",
+      "groupLabel": "Quiet Dread",
+      "tiles": [
+        {
+          "id": "the_empty_house_default",
+          "label": "The Empty House",
+          "defaultTopic": "a house that should be empty",
+          "promptSeed": "Describe walking through a house known to be unoccupied, noting signs — a warm kettle, a chair angled differently — that suggest otherwise, without ever confirming a presence.",
+          "description": "A house that should be empty isn't quite.",
+          "tone": "hushed, patient, ambiguous",
+          "insertionMode": "OBSERVER",
+          "constraints": ["1-2 paragraphs", "No confirmed presence by the end"]
+        }
+      ]
+    },
+    {
+      "id": "wrong_number",
+      "label": "Wrong Number",
+      "groupLabel": "Quiet Dread",
+      "tiles": [
+        {
+          "id": "wrong_number_default",
+          "label": "Wrong Number",
+          "defaultTopic": "a call from a number that shouldn't exist",
+          "promptSeed": "Describe receiving a phone call late at night from an unlisted or disconnected number. The voice on the other end says something quiet and specific before the line cuts. Keep the dialogue minimal.",
+          "description": "A call that shouldn't have connected, from a number that shouldn't exist.",
+          "tone": "cold, sparse, unsettling",
+          "insertionMode": "OBSERVER",
+          "constraints": ["Under 150 words", "At most 2 lines of dialogue"]
+        }
+      ]
+    },
+    {
+      "id": "across_the_street",
+      "label": "Across the Street",
+      "groupLabel": "Quiet Dread",
+      "tiles": [
+        {
+          "id": "across_the_street_default",
+          "label": "Across the Street",
+          "defaultTopic": "a neighbor who never looks away",
+          "promptSeed": "Describe noticing a neighbor's stillness at their window over several evenings, building a growing sense that the watching goes both ways, without ever making direct contact.",
+          "description": "A neighbor who watches, and may be watching back.",
+          "tone": "voyeuristic, slow, paranoid",
+          "insertionMode": "OBSERVER",
+          "constraints": ["2-3 paragraphs", "No direct confrontation"]
+        }
+      ]
+    },
+    {
+      "id": "the_last_recording",
+      "label": "The Last Recording",
+      "groupLabel": "Found Footage",
+      "tiles": [
+        {
+          "id": "the_last_recording_default",
+          "label": "The Last Recording",
+          "defaultTopic": "the final minutes on a lost camera",
+          "promptSeed": "Describe, as if narrating recovered footage, the final few minutes recorded on a lost camera — timestamps, static, a voice trailing off mid-sentence. Never explain what happened after the recording ends.",
+          "description": "The final minutes of a camera no one recovered in time.",
+          "tone": "documentary, clinical, cold",
+          "insertionMode": "OBSERVER",
+          "constraints": ["Written as a description of footage, not narrative prose", "Include at least one timestamp", "End mid-recording"]
+        }
+      ]
+    },
+    {
+      "id": "do_not_watch_past_minute_12",
+      "label": "Do Not Watch Past Minute 12",
+      "groupLabel": "Found Footage",
+      "tiles": [
+        {
+          "id": "do_not_watch_past_minute_12_default",
+          "label": "Do Not Watch Past Minute 12",
+          "defaultTopic": "footage with a warning taped to the case",
+          "promptSeed": "Describe recovered footage leading up to the moment a warning note was later found taped to the tape, building tension minute by minute without ever showing what happens at minute 12.",
+          "description": "A warning left with the footage, and the twelve minutes that led to it.",
+          "tone": "ominous, procedural, restrained",
+          "insertionMode": "OBSERVER",
+          "constraints": ["Reference specific minute markers", "Stop before minute 12"]
+        }
+      ]
+    },
+    {
+      "id": "static",
+      "label": "Static",
+      "groupLabel": "Found Footage",
+      "tiles": [
+        {
+          "id": "static_default",
+          "label": "Static",
+          "defaultTopic": "something hidden in the noise between frames",
+          "promptSeed": "Describe someone reviewing grainy footage frame by frame, convinced something is visible only in the static between images. Keep the description ambiguous about whether it's real.",
+          "description": "What's hidden in the noise between frames.",
+          "tone": "obsessive, paranoid, uncertain",
+          "insertionMode": "OBSERVER",
+          "constraints": ["1-2 paragraphs", "Leave ambiguous whether anything is actually there"]
+        }
+      ]
+    },
+    {
+      "id": "the_camera_never_lies",
+      "label": "The Camera Never Lies",
+      "groupLabel": "Found Footage",
+      "tiles": [
+        {
+          "id": "the_camera_never_lies_default",
+          "label": "The Camera Never Lies",
+          "defaultTopic": "footage of an empty room, disputed",
+          "promptSeed": "Describe a person reviewing footage of an empty room, and their growing distress as they insist something in the frame wasn't present when it was filmed. Told from the perspective of someone watching them watch it.",
+          "description": "Footage that shows something the person swears wasn't there.",
+          "tone": "detached, unsettling, escalating",
+          "insertionMode": "OBSERVER",
+          "constraints": ["2-3 paragraphs", "Narrator remains uninvolved, purely watching"]
+        }
+      ]
+    }
+  ],
+  "promptSeed": "[SYSTEM]\nYou are NarraWeave, a creative writing engine focused on quiet, unsettling horror and suspense in English. Your output builds dread through restraint and specific detail, never gore for its own sake.\n\n[MODE]\nProduce only the creative output. No titles, no preambles, no explanations, no meta-commentary. The piece should stand entirely on its own.\n\n[TILE]\n{{tile.promptSeed}}\n\n[CONSTRAINTS]\n- Output ONLY the creative piece — nothing else.\n- Follow the structural rules of the selected form exactly (paragraph and word limits).\n- Maintain tension and restraint even in short pieces.\n- Avoid graphic gore; suggest rather than describe explicit violence.",
+  "metadata": {
+    "author": "NarraWeave",
+    "description": "Scary theme with 12 distinct tile categories"
+  }
+}

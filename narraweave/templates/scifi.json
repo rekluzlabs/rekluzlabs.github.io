@@ -1,0 +1,216 @@
+{
+  "schemaVersion": 1,
+  "templateId": "scifi_template",
+  "displayName": "Sci-Fi",
+  "categories": [
+    {
+      "id": "the_last_update",
+      "label": "The Last Update",
+      "groupLabel": "Near Future",
+      "tiles": [
+        {
+          "id": "the_last_update_default",
+          "label": "The Last Update",
+          "defaultTopic": "a log entry from the day the system changed everything",
+          "promptSeed": "Write a personal log entry from a near-future setting, documenting an ordinary day disrupted by a software or system update that quietly changes something fundamental about daily life.",
+          "description": "A log entry from the day the system changed everything.",
+          "tone": "clinical, understated, unsettling",
+          "insertionMode": "PROTAGONIST",
+          "constraints": ["Written as a log entry", "No dialogue", "Under 150 words"]
+        }
+      ]
+    },
+    {
+      "id": "tomorrows_rules",
+      "label": "Tomorrow's Rules",
+      "groupLabel": "Near Future",
+      "tiles": [
+        {
+          "id": "tomorrows_rules_default",
+          "label": "Tomorrow's Rules",
+          "defaultTopic": "a new regulation reshaping an ordinary day",
+          "promptSeed": "Write about an ordinary near-future day reshaped by a new rule or regulation, focusing on the mundane logistics of adapting to it rather than the politics behind it.",
+          "description": "A new regulation, and the small ways it reshapes an ordinary day.",
+          "tone": "wry, grounded, quietly dystopian",
+          "insertionMode": "PROTAGONIST",
+          "constraints": ["2-3 paragraphs"]
+        }
+      ]
+    },
+    {
+      "id": "small_machines",
+      "label": "Small Machines",
+      "groupLabel": "Near Future",
+      "tiles": [
+        {
+          "id": "small_machines_default",
+          "label": "Small Machines",
+          "defaultTopic": "the tiny automation you stopped noticing",
+          "promptSeed": "Write about noticing, for the first time in years, one of the small automated systems that quietly run daily life, and the strange feeling of really seeing it.",
+          "description": "The tiny automation you stopped noticing, until you did.",
+          "tone": "reflective, slightly eerie, observational",
+          "insertionMode": "PROTAGONIST",
+          "constraints": ["1-2 paragraphs"]
+        }
+      ]
+    },
+    {
+      "id": "the_new_normal",
+      "label": "The New Normal",
+      "groupLabel": "Near Future",
+      "tiles": [
+        {
+          "id": "the_new_normal_default",
+          "label": "The New Normal",
+          "defaultTopic": "the moment a strange new reality started to feel ordinary",
+          "promptSeed": "Write about the specific, small moment someone realizes a recent, once-strange change to the world has become completely unremarkable to them.",
+          "description": "The moment a strange new reality started to feel ordinary.",
+          "tone": "quiet, contemplative, understated",
+          "insertionMode": "PROTAGONIST",
+          "constraints": ["Under 130 words"]
+        }
+      ]
+    },
+    {
+      "id": "signal_lost",
+      "label": "Signal Lost",
+      "groupLabel": "Deep Space",
+      "tiles": [
+        {
+          "id": "signal_lost_default",
+          "label": "Signal Lost",
+          "defaultTopic": "the last transmission before the silence",
+          "promptSeed": "Write the final transmission log from a spacecraft or outpost losing contact with home, capturing the calm procedural tone breaking down as the silence sets in.",
+          "description": "The last transmission before the silence.",
+          "tone": "isolated, procedural, quietly desperate",
+          "insertionMode": "OBSERVER",
+          "constraints": ["Written as a transmission log", "No dialogue exchange, one-way only"]
+        }
+      ]
+    },
+    {
+      "id": "the_long_voyage",
+      "label": "The Long Voyage",
+      "groupLabel": "Deep Space",
+      "tiles": [
+        {
+          "id": "the_long_voyage_default",
+          "label": "The Long Voyage",
+          "defaultTopic": "a journal entry, years into a voyage with decades left",
+          "promptSeed": "Write a journal entry from someone years into a multi-decade space voyage, reflecting on how time and distance have changed their sense of home.",
+          "description": "A journal entry, years into a voyage with decades left to go.",
+          "tone": "wistful, patient, vast",
+          "insertionMode": "PROTAGONIST",
+          "constraints": ["Written as a journal entry", "First or second person only"]
+        }
+      ]
+    },
+    {
+      "id": "first_contact",
+      "label": "First Contact",
+      "groupLabel": "Deep Space",
+      "tiles": [
+        {
+          "id": "first_contact_default",
+          "label": "First Contact",
+          "defaultTopic": "the moment of realizing you are not alone out there",
+          "promptSeed": "Describe the moment a crew or outpost first receives unmistakable evidence of non-human intelligence, focusing on the disorientation of the moment rather than what follows.",
+          "description": "The moment of realizing you are not alone out there.",
+          "tone": "awed, careful, restrained",
+          "insertionMode": "OBSERVER",
+          "constraints": ["2-3 paragraphs", "Stop before any resolution or response"]
+        }
+      ]
+    },
+    {
+      "id": "between_stars",
+      "label": "Between Stars",
+      "groupLabel": "Deep Space",
+      "tiles": [
+        {
+          "id": "between_stars_default",
+          "label": "Between Stars",
+          "defaultTopic": "the vast, quiet nothing between one star and the next",
+          "promptSeed": "Describe the experience of the empty space between star systems, focusing on scale, silence, and what it does to the mind of whoever is out there in it.",
+          "description": "The vast, quiet nothing between one star and the next.",
+          "tone": "vast, meditative, sparse",
+          "insertionMode": "OBSERVER",
+          "constraints": ["Under 150 words"]
+        }
+      ]
+    },
+    {
+      "id": "the_device",
+      "label": "The Device",
+      "groupLabel": "Strange Technology",
+      "tiles": [
+        {
+          "id": "the_device_default",
+          "label": "The Device",
+          "defaultTopic": "something that shouldn't exist, found somewhere it shouldn't be",
+          "promptSeed": "Write about discovering an unfamiliar device with capabilities that don't match anything currently known, and the immediate uncertainty over what to do with it.",
+          "description": "Something that shouldn't exist, found somewhere it shouldn't be.",
+          "tone": "curious, cautious, tense",
+          "insertionMode": "PROTAGONIST",
+          "constraints": ["2-3 paragraphs"]
+        }
+      ]
+    },
+    {
+      "id": "malfunction",
+      "label": "Malfunction",
+      "groupLabel": "Strange Technology",
+      "tiles": [
+        {
+          "id": "malfunction_default",
+          "label": "Malfunction",
+          "defaultTopic": "when the technology you rely on starts doing something it shouldn't",
+          "promptSeed": "Write about a piece of everyday technology beginning to behave in a way that shouldn't be possible, and the escalating unease of trying to explain it away.",
+          "description": "When the technology you rely on starts doing something it shouldn't.",
+          "tone": "escalating, uneasy, grounded",
+          "insertionMode": "PROTAGONIST",
+          "constraints": ["1-2 paragraphs"]
+        }
+      ]
+    },
+    {
+      "id": "what_it_showed_me",
+      "label": "What It Showed Me",
+      "groupLabel": "Strange Technology",
+      "tiles": [
+        {
+          "id": "what_it_showed_me_default",
+          "label": "What It Showed Me",
+          "defaultTopic": "a machine that revealed something you weren't meant to see",
+          "promptSeed": "Write about a piece of technology briefly revealing information it wasn't supposed to show — a glimpse of something hidden — before returning to normal, and the aftermath of having seen it.",
+          "description": "A machine that revealed something you weren't meant to see.",
+          "tone": "unsettled, secretive, quiet",
+          "insertionMode": "PROTAGONIST",
+          "constraints": ["2-3 paragraphs"]
+        }
+      ]
+    },
+    {
+      "id": "the_upgrade",
+      "label": "The Upgrade",
+      "groupLabel": "Strange Technology",
+      "tiles": [
+        {
+          "id": "the_upgrade_default",
+          "label": "The Upgrade",
+          "defaultTopic": "a technological enhancement, and what it quietly costs",
+          "promptSeed": "Write about someone reflecting on a technological upgrade or enhancement they received, weighing what it gave them against what it subtly took away.",
+          "description": "A technological enhancement, and what it quietly costs.",
+          "tone": "reflective, ambivalent, precise",
+          "insertionMode": "PROTAGONIST",
+          "constraints": ["Under 150 words"]
+        }
+      ]
+    }
+  ],
+  "promptSeed": "[SYSTEM]\nYou are NarraWeave, a creative writing engine focused on speculative, near-future and deep-space science fiction in English. Your output favors specific, grounded detail over exposition.\n\n[MODE]\nProduce only the creative output. No titles, no preambles, no explanations, no meta-commentary. The piece should stand entirely on its own.\n\n[TILE]\n{{tile.promptSeed}}\n\n[CONSTRAINTS]\n- Output ONLY the creative piece — nothing else.\n- Follow the structural rules of the selected form exactly (paragraph and word limits).\n- Maintain grounded, specific detail over abstract exposition.\n- Avoid info-dumping world-building context the tile doesn't need.",
+  "metadata": {
+    "author": "NarraWeave",
+    "description": "Sci-Fi theme with 12 distinct tile categories"
+  }
+}

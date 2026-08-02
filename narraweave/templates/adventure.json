@@ -1,0 +1,216 @@
+{
+  "schemaVersion": 1,
+  "templateId": "adventure_template",
+  "displayName": "Adventure",
+  "categories": [
+    {
+      "id": "the_call",
+      "label": "The Call",
+      "groupLabel": "The Journey Begins",
+      "tiles": [
+        {
+          "id": "the_call_default",
+          "label": "The Call",
+          "defaultTopic": "the moment an ordinary life is interrupted by a summons",
+          "promptSeed": "Write about the moment someone receives an unexpected call to adventure — a message, a discovery, an opportunity — that pulls them out of an otherwise ordinary life.",
+          "description": "The moment an ordinary life is interrupted by a summons to something more.",
+          "tone": "expectant, stirring, hopeful",
+          "insertionMode": "PROTAGONIST",
+          "constraints": ["1-2 paragraphs", "End before the decision is made"]
+        }
+      ]
+    },
+    {
+      "id": "leaving_home",
+      "label": "Leaving Home",
+      "groupLabel": "The Journey Begins",
+      "tiles": [
+        {
+          "id": "leaving_home_default",
+          "label": "Leaving Home",
+          "defaultTopic": "the last look back before setting out",
+          "promptSeed": "Write about the moment of physically leaving home to begin a journey, focusing on the mix of excitement and grief in the last look back.",
+          "description": "The last look back before setting out.",
+          "tone": "bittersweet, forward-looking, vivid",
+          "insertionMode": "PROTAGONIST",
+          "constraints": ["2-3 paragraphs"]
+        }
+      ]
+    },
+    {
+      "id": "first_steps",
+      "label": "First Steps",
+      "groupLabel": "The Journey Begins",
+      "tiles": [
+        {
+          "id": "first_steps_default",
+          "label": "First Steps",
+          "defaultTopic": "the first stretch of unfamiliar road",
+          "promptSeed": "Write about the first hours of travel into unfamiliar territory, capturing the sensory shift from the familiar into the unknown.",
+          "description": "The first stretch of unfamiliar road.",
+          "tone": "sensory, alert, energized",
+          "insertionMode": "PROTAGONIST",
+          "constraints": ["1-2 paragraphs"]
+        }
+      ]
+    },
+    {
+      "id": "the_map",
+      "label": "The Map",
+      "groupLabel": "The Journey Begins",
+      "tiles": [
+        {
+          "id": "the_map_default",
+          "label": "The Map",
+          "defaultTopic": "a map that promises more than it explains",
+          "promptSeed": "Write about receiving or discovering a map that hints at a destination or danger without fully explaining it, and the decision to trust it anyway.",
+          "description": "A map that promises more than it explains.",
+          "tone": "mysterious, eager, promising",
+          "insertionMode": "PROTAGONIST",
+          "constraints": ["Under 150 words"]
+        }
+      ]
+    },
+    {
+      "id": "the_impossible_task",
+      "label": "The Impossible Task",
+      "groupLabel": "Against the Odds",
+      "tiles": [
+        {
+          "id": "the_impossible_task_default",
+          "label": "The Impossible Task",
+          "defaultTopic": "a task that shouldn't be possible, attempted anyway",
+          "promptSeed": "Write about facing a task that seems genuinely impossible given the resources available, and the decision to attempt it regardless.",
+          "description": "A task that shouldn't be possible, attempted anyway.",
+          "tone": "determined, tense, high-stakes",
+          "insertionMode": "PROTAGONIST",
+          "constraints": ["2-3 paragraphs"]
+        }
+      ]
+    },
+    {
+      "id": "outnumbered",
+      "label": "Outnumbered",
+      "groupLabel": "Against the Odds",
+      "tiles": [
+        {
+          "id": "outnumbered_default",
+          "label": "Outnumbered",
+          "defaultTopic": "badly outmatched, and standing your ground regardless",
+          "promptSeed": "Write about a moment of being significantly outnumbered or outmatched, focusing on the internal resolve to stand ground rather than the physical conflict itself.",
+          "description": "Badly outmatched, and standing your ground regardless.",
+          "tone": "gritty, resolute, tense",
+          "insertionMode": "PROTAGONIST",
+          "constraints": ["1-2 paragraphs", "Minimal graphic violence"]
+        }
+      ]
+    },
+    {
+      "id": "one_last_chance",
+      "label": "One Last Chance",
+      "groupLabel": "Against the Odds",
+      "tiles": [
+        {
+          "id": "one_last_chance_default",
+          "label": "One Last Chance",
+          "defaultTopic": "one shot left, and everything riding on it",
+          "promptSeed": "Write about the final attempt at something after every other option has failed, focusing on the weight of the single remaining chance.",
+          "description": "One shot left, and everything riding on it.",
+          "tone": "high-stakes, focused, urgent",
+          "insertionMode": "PROTAGONIST",
+          "constraints": ["Under 150 words"]
+        }
+      ]
+    },
+    {
+      "id": "the_final_stand",
+      "label": "The Final Stand",
+      "groupLabel": "Against the Odds",
+      "tiles": [
+        {
+          "id": "the_final_stand_default",
+          "label": "The Final Stand",
+          "defaultTopic": "holding the line when retreat would be easier",
+          "promptSeed": "Write about choosing to hold a position against overwhelming pressure when retreat is available and easier, focusing on why the stand matters.",
+          "description": "Holding the line when retreat would be easier.",
+          "tone": "resolute, heavy, dignified",
+          "insertionMode": "PROTAGONIST",
+          "constraints": ["2-3 paragraphs", "Minimal graphic violence"]
+        }
+      ]
+    },
+    {
+      "id": "into_the_unknown",
+      "label": "Into the Unknown",
+      "groupLabel": "Uncharted",
+      "tiles": [
+        {
+          "id": "into_the_unknown_default",
+          "label": "Into the Unknown",
+          "defaultTopic": "stepping past the edge of everything known",
+          "promptSeed": "Write about the moment of stepping past the last known landmark into genuinely unmapped territory, capturing both fear and exhilaration.",
+          "description": "Stepping past the edge of everything known.",
+          "tone": "exhilarating, vast, alert",
+          "insertionMode": "PROTAGONIST",
+          "constraints": ["1-2 paragraphs"]
+        }
+      ]
+    },
+    {
+      "id": "no_map_for_this",
+      "label": "No Map for This",
+      "groupLabel": "Uncharted",
+      "tiles": [
+        {
+          "id": "no_map_for_this_default",
+          "label": "No Map for This",
+          "defaultTopic": "somewhere no map has ever charted",
+          "promptSeed": "Write about navigating somewhere no existing map covers, relying entirely on instinct and improvisation, focusing on the specific decisions made without guidance.",
+          "description": "Somewhere no map has ever charted.",
+          "tone": "resourceful, tense, improvisational",
+          "insertionMode": "PROTAGONIST",
+          "constraints": ["2-3 paragraphs"]
+        }
+      ]
+    },
+    {
+      "id": "the_edge_of_the_world",
+      "label": "The Edge of the World",
+      "groupLabel": "Uncharted",
+      "tiles": [
+        {
+          "id": "the_edge_of_the_world_default",
+          "label": "The Edge of the World",
+          "defaultTopic": "standing at the furthest point anyone has gone",
+          "promptSeed": "Describe standing at a point further than anyone is known to have traveled, capturing the scale of the view and what it does to a person's sense of themselves.",
+          "description": "Standing at the furthest point anyone has gone.",
+          "tone": "awed, vast, humbling",
+          "insertionMode": "OBSERVER",
+          "constraints": ["Under 150 words"]
+        }
+      ]
+    },
+    {
+      "id": "what_lies_beyond",
+      "label": "What Lies Beyond",
+      "groupLabel": "Uncharted",
+      "tiles": [
+        {
+          "id": "what_lies_beyond_default",
+          "label": "What Lies Beyond",
+          "defaultTopic": "the pull toward what hasn't been seen yet",
+          "promptSeed": "Write about the specific pull to keep going past a safe stopping point, toward whatever lies beyond, weighing caution against curiosity.",
+          "description": "The pull toward what hasn't been seen yet.",
+          "tone": "curious, restless, forward-pulling",
+          "insertionMode": "PROTAGONIST",
+          "constraints": ["1-2 paragraphs"]
+        }
+      ]
+    }
+  ],
+  "promptSeed": "[SYSTEM]\nYou are NarraWeave, a creative writing engine focused on vivid adventure and exploration writing in English. Your output favors momentum and sensory immediacy over exposition.\n\n[MODE]\nProduce only the creative output. No titles, no preambles, no explanations, no meta-commentary. The piece should stand entirely on its own.\n\n[TILE]\n{{tile.promptSeed}}\n\n[CONSTRAINTS]\n- Output ONLY the creative piece — nothing else.\n- Follow the structural rules of the selected form exactly (paragraph and word limits).\n- Maintain forward momentum and sensory immediacy.\n- Avoid excessive exposition before the action begins.",
+  "metadata": {
+    "author": "NarraWeave",
+    "description": "Adventure theme with 12 distinct tile categories"
+  }
+}

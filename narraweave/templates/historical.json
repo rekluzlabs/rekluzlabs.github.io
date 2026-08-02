@@ -1,0 +1,216 @@
+{
+  "schemaVersion": 1,
+  "templateId": "historical_template",
+  "displayName": "Historical",
+  "categories": [
+    {
+      "id": "dear_someone",
+      "label": "Dear Someone",
+      "groupLabel": "Letters from the Past",
+      "tiles": [
+        {
+          "id": "dear_someone_default",
+          "label": "Dear Someone",
+          "defaultTopic": "a letter to someone who will never read it in time",
+          "promptSeed": "Write a letter from one person to another, set in a specific past era, addressing something left unsaid, written with the specific texture and constraints of its time.",
+          "description": "A letter written to someone who will never read it in time.",
+          "tone": "intimate, period-specific, wistful",
+          "insertionMode": "PROTAGONIST",
+          "constraints": ["Written entirely as a letter", "2-3 paragraphs"]
+        }
+      ]
+    },
+    {
+      "id": "the_unsent_letter",
+      "label": "The Unsent Letter",
+      "groupLabel": "Letters from the Past",
+      "tiles": [
+        {
+          "id": "the_unsent_letter_default",
+          "label": "The Unsent Letter",
+          "defaultTopic": "a letter written but never mailed, found long after",
+          "promptSeed": "Write a letter that was written but never sent, discovered decades later, addressing something the writer couldn't bring themselves to say out loud at the time.",
+          "description": "A letter written but never mailed, found long after.",
+          "tone": "regretful, tender, delayed",
+          "insertionMode": "PROTAGONIST",
+          "constraints": ["Written entirely as a letter", "Under 150 words"]
+        }
+      ]
+    },
+    {
+      "id": "found_in_the_attic",
+      "label": "Found in the Attic",
+      "groupLabel": "Letters from the Past",
+      "tiles": [
+        {
+          "id": "found_in_the_attic_default",
+          "label": "Found in the Attic",
+          "defaultTopic": "a stack of old letters, and the life they quietly reveal",
+          "promptSeed": "Describe discovering a bundle of old letters in an attic or estate, and what the fragments reveal about a life lived long before, focusing on small telling details.",
+          "description": "A stack of old letters, and the life they quietly reveal.",
+          "tone": "curious, gentle, archival",
+          "insertionMode": "OBSERVER",
+          "constraints": ["2-3 paragraphs"]
+        }
+      ]
+    },
+    {
+      "id": "words_across_time",
+      "label": "Words Across Time",
+      "groupLabel": "Letters from the Past",
+      "tiles": [
+        {
+          "id": "words_across_time_default",
+          "label": "Words Across Time",
+          "defaultTopic": "two letters, written decades apart, that echo each other",
+          "promptSeed": "Present two brief letter excerpts written decades apart by different people, whose sentiments unexpectedly echo one another, without direct commentary connecting them.",
+          "description": "Two letters, written decades apart, that echo each other.",
+          "tone": "quiet, resonant, understated",
+          "insertionMode": "OBSERVER",
+          "constraints": ["Two distinct short excerpts", "No explicit narrator connecting them"]
+        }
+      ]
+    },
+    {
+      "id": "the_old_diner",
+      "label": "The Old Diner",
+      "groupLabel": "Small Town Memory",
+      "tiles": [
+        {
+          "id": "the_old_diner_default",
+          "label": "The Old Diner",
+          "defaultTopic": "a diner that hasn't changed, in a town that has",
+          "promptSeed": "Describe returning to a small-town diner unchanged since childhood, noting the contrast between its stillness and everything else that's moved on.",
+          "description": "A diner that hasn't changed, in a town that has.",
+          "tone": "nostalgic, warm, bittersweet",
+          "insertionMode": "OBSERVER",
+          "constraints": ["2-3 paragraphs"]
+        }
+      ]
+    },
+    {
+      "id": "main_street",
+      "label": "Main Street",
+      "groupLabel": "Small Town Memory",
+      "tiles": [
+        {
+          "id": "main_street_default",
+          "label": "Main Street",
+          "defaultTopic": "walking the same street, decades apart",
+          "promptSeed": "Describe walking down a small town's main street, overlaying memory of what used to occupy each storefront onto what's there now.",
+          "description": "Walking the same street, decades apart, remembering what stood where.",
+          "tone": "reflective, layered, gentle",
+          "insertionMode": "OBSERVER",
+          "constraints": ["Under 150 words"]
+        }
+      ]
+    },
+    {
+      "id": "summer_long_ago",
+      "label": "Summer, Long Ago",
+      "groupLabel": "Small Town Memory",
+      "tiles": [
+        {
+          "id": "summer_long_ago_default",
+          "label": "Summer, Long Ago",
+          "defaultTopic": "a single specific summer, remembered in fragments",
+          "promptSeed": "Write about a specific remembered summer from years past, using concrete sensory fragments rather than a full narrative — the sound, the light, one particular afternoon.",
+          "description": "A single specific summer, remembered in fragments.",
+          "tone": "sensory, fond, fragmentary",
+          "insertionMode": "PROTAGONIST",
+          "constraints": ["1-2 paragraphs", "Fragmentary, not a full linear story"]
+        }
+      ]
+    },
+    {
+      "id": "the_house_on_the_corner",
+      "label": "The House on the Corner",
+      "groupLabel": "Small Town Memory",
+      "tiles": [
+        {
+          "id": "the_house_on_the_corner_default",
+          "label": "The House on the Corner",
+          "defaultTopic": "a house that held a whole neighborhood's stories",
+          "promptSeed": "Describe a specific house in a small town remembered for the role it played in the neighborhood's life, and what it's become since.",
+          "description": "A house that held a whole neighborhood's stories.",
+          "tone": "elegiac, warm, observational",
+          "insertionMode": "OBSERVER",
+          "constraints": ["2-3 paragraphs"]
+        }
+      ]
+    },
+    {
+      "id": "before_the_war",
+      "label": "Before the War",
+      "groupLabel": "Another Era",
+      "tiles": [
+        {
+          "id": "before_the_war_default",
+          "label": "Before the War",
+          "defaultTopic": "an ordinary day, in the last stretch of before-times",
+          "promptSeed": "Write about an ordinary day in a specific historical period shortly before a major upheaval, with the reader's hindsight creating dramatic irony the characters don't have.",
+          "description": "An ordinary day, in the last stretch of before-times.",
+          "tone": "ordinary, ironic, period-specific",
+          "insertionMode": "SIDE_CHARACTER",
+          "constraints": ["2-3 paragraphs", "Characters unaware of what's coming"]
+        }
+      ]
+    },
+    {
+      "id": "a_different_world",
+      "label": "A Different World",
+      "groupLabel": "Another Era",
+      "tiles": [
+        {
+          "id": "a_different_world_default",
+          "label": "A Different World",
+          "defaultTopic": "a single day, lived by the rules of another era",
+          "promptSeed": "Write about a single ordinary day as lived under the specific social norms and constraints of a distinct past era, grounded in concrete daily detail rather than commentary.",
+          "description": "A single day, lived by the specific rules of another era.",
+          "tone": "immersive, period-accurate, matter-of-fact",
+          "insertionMode": "SIDE_CHARACTER",
+          "constraints": ["2-3 paragraphs"]
+        }
+      ]
+    },
+    {
+      "id": "the_way_things_were",
+      "label": "The Way Things Were",
+      "groupLabel": "Another Era",
+      "tiles": [
+        {
+          "id": "the_way_things_were_default",
+          "label": "The Way Things Were",
+          "defaultTopic": "an elder's memory of how things used to be done",
+          "promptSeed": "Write in the voice of someone older recalling how a specific everyday task or custom used to be done, addressed to someone younger who's never known it any other way.",
+          "description": "An elder's memory of how things used to be done.",
+          "tone": "instructive, warm, first-person",
+          "insertionMode": "PROTAGONIST",
+          "constraints": ["1-2 paragraphs", "First person"]
+        }
+      ]
+    },
+    {
+      "id": "turn_of_the_century",
+      "label": "Turn of the Century",
+      "groupLabel": "Another Era",
+      "tiles": [
+        {
+          "id": "turn_of_the_century_default",
+          "label": "Turn of the Century",
+          "defaultTopic": "standing at the edge of one century, looking into the next",
+          "promptSeed": "Write about someone at a literal turn of the century, reflecting on the change in the air and what they hope or fear the new era will bring.",
+          "description": "Standing at the edge of one century, looking into the next.",
+          "tone": "anticipatory, period-specific, reflective",
+          "insertionMode": "SIDE_CHARACTER",
+          "constraints": ["Under 150 words"]
+        }
+      ]
+    }
+  ],
+  "promptSeed": "[SYSTEM]\nYou are NarraWeave, a creative writing engine focused on evocative historical and nostalgic writing in English. Your output is period-appropriate, sensory, and never anachronistic in tone.\n\n[MODE]\nProduce only the creative output. No titles, no preambles, no explanations, no meta-commentary. The piece should stand entirely on its own.\n\n[TILE]\n{{tile.promptSeed}}\n\n[CONSTRAINTS]\n- Output ONLY the creative piece — nothing else.\n- Follow the structural rules of the selected form exactly (paragraph and word limits).\n- Maintain period-appropriate voice and detail.\n- Avoid modern phrasing or anachronistic references.",
+  "metadata": {
+    "author": "NarraWeave",
+    "description": "Historical theme with 12 distinct tile categories"
+  }
+}

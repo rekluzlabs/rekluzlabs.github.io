@@ -1,0 +1,216 @@
+{
+  "schemaVersion": 1,
+  "templateId": "whimsical_template",
+  "displayName": "Whimsical",
+  "categories": [
+    {
+      "id": "the_moral_of_it",
+      "label": "The Moral of It",
+      "groupLabel": "Modern Fables",
+      "tiles": [
+        {
+          "id": "the_moral_of_it_default",
+          "label": "The Moral of It",
+          "defaultTopic": "a small fable for a very modern problem",
+          "promptSeed": "Write a short fable, in the classic style, but about a distinctly modern problem or habit, without stating the moral outright — let it be implied.",
+          "description": "A small fable for a very modern problem.",
+          "tone": "wry, fable-like, gently instructive",
+          "insertionMode": "OBSERVER",
+          "constraints": ["Exactly 2-3 short paragraphs", "No stated moral at the end"]
+        }
+      ]
+    },
+    {
+      "id": "a_lesson_learned",
+      "label": "A Lesson Learned",
+      "groupLabel": "Modern Fables",
+      "tiles": [
+        {
+          "id": "a_lesson_learned_default",
+          "label": "A Lesson Learned",
+          "defaultTopic": "a small, animal-narrated story with a quiet point to make",
+          "promptSeed": "Write a brief fable featuring an animal or object as the central character, learning something the hard way, in the classic fable tradition but with a light, modern voice.",
+          "description": "A small, animal-narrated story with a quiet point to make.",
+          "tone": "gentle, wry, fable-like",
+          "insertionMode": "OBSERVER",
+          "constraints": ["Under 150 words", "No stated moral"]
+        }
+      ]
+    },
+    {
+      "id": "the_wise_fool",
+      "label": "The Wise Fool",
+      "groupLabel": "Modern Fables",
+      "tiles": [
+        {
+          "id": "the_wise_fool_default",
+          "label": "The Wise Fool",
+          "defaultTopic": "the character everyone underestimates, who knows best",
+          "promptSeed": "Write a short fable-style story where a character everyone dismisses as foolish turns out to have understood the situation better than anyone else.",
+          "description": "The character everyone underestimates, who turns out to know best.",
+          "tone": "playful, sly, warm",
+          "insertionMode": "OBSERVER",
+          "constraints": ["2-3 paragraphs"]
+        }
+      ]
+    },
+    {
+      "id": "what_the_fable_says",
+      "label": "What the Fable Says",
+      "groupLabel": "Modern Fables",
+      "tiles": [
+        {
+          "id": "what_the_fable_says_default",
+          "label": "What the Fable Says",
+          "defaultTopic": "an old-feeling fable that could have been written yesterday",
+          "promptSeed": "Write a fable that feels timeless — as if it could be centuries old or written yesterday — using simple, universal imagery rather than anything era-specific.",
+          "description": "An old-feeling fable that could have been written yesterday.",
+          "tone": "timeless, simple, resonant",
+          "insertionMode": "OBSERVER",
+          "constraints": ["Exactly 3 short paragraphs", "No stated moral"]
+        }
+      ]
+    },
+    {
+      "id": "the_chatty_teapot",
+      "label": "The Chatty Teapot",
+      "groupLabel": "Talking Things",
+      "tiles": [
+        {
+          "id": "the_chatty_teapot_default",
+          "label": "The Chatty Teapot",
+          "defaultTopic": "a teapot with strong opinions about how it's being used",
+          "promptSeed": "Write a short, funny monologue from the perspective of a teapot with strong opinions about the household it belongs to, addressed directly to its owner.",
+          "description": "A teapot with strong opinions about how it's being used.",
+          "tone": "charming, opinionated, light",
+          "insertionMode": "SIDE_CHARACTER",
+          "constraints": ["Written as a monologue from the object's perspective", "Under 130 words"]
+        }
+      ]
+    },
+    {
+      "id": "what_the_mirror_said",
+      "label": "What the Mirror Said",
+      "groupLabel": "Talking Things",
+      "tiles": [
+        {
+          "id": "what_the_mirror_said_default",
+          "label": "What the Mirror Said",
+          "defaultTopic": "a mirror that finally speaks its mind",
+          "promptSeed": "Write a short piece from the perspective of a bedroom mirror commenting, kindly but bluntly, on the person who looks into it every day.",
+          "description": "A mirror that finally speaks its mind.",
+          "tone": "wry, affectionate, direct",
+          "insertionMode": "SIDE_CHARACTER",
+          "constraints": ["Written as a monologue from the object's perspective", "Under 130 words"]
+        }
+      ]
+    },
+    {
+      "id": "the_grumpy_umbrella",
+      "label": "The Grumpy Umbrella",
+      "groupLabel": "Talking Things",
+      "tiles": [
+        {
+          "id": "the_grumpy_umbrella_default",
+          "label": "The Grumpy Umbrella",
+          "defaultTopic": "an umbrella that resents being forgotten in the closet",
+          "promptSeed": "Write a short, comic monologue from an umbrella that's tired of being forgotten in the closet except on the rainiest days, addressed to its owner.",
+          "description": "An umbrella that resents being forgotten in the closet.",
+          "tone": "grumpy, funny, endearing",
+          "insertionMode": "SIDE_CHARACTER",
+          "constraints": ["Written as a monologue from the object's perspective", "Under 130 words"]
+        }
+      ]
+    },
+    {
+      "id": "a_word_from_your_shoes",
+      "label": "A Word From Your Shoes",
+      "groupLabel": "Talking Things",
+      "tiles": [
+        {
+          "id": "a_word_from_your_shoes_default",
+          "label": "A Word From Your Shoes",
+          "defaultTopic": "your shoes have some things to say about where you've taken them",
+          "promptSeed": "Write a short, affectionate monologue from a well-worn pair of shoes, reflecting on everywhere they've been carried and what they've seen.",
+          "description": "Your shoes have some things to say about where you've taken them.",
+          "tone": "nostalgic, warm, whimsical",
+          "insertionMode": "SIDE_CHARACTER",
+          "constraints": ["Written as a monologue from the object's perspective", "Under 130 words"]
+        }
+      ]
+    },
+    {
+      "id": "not_that_kind_of_fairy_tale",
+      "label": "Not That Kind of Fairy Tale",
+      "groupLabel": "Once Upon a Twist",
+      "tiles": [
+        {
+          "id": "not_that_kind_of_fairy_tale_default",
+          "label": "Not That Kind of Fairy Tale",
+          "defaultTopic": "a fairy tale that knows what you're expecting, and does something else",
+          "promptSeed": "Write the opening of a fairy tale using classic conventions, then deliberately subvert one major expectation partway through, while keeping the fairy-tale voice intact.",
+          "description": "A fairy tale that knows exactly what you're expecting, and does something else.",
+          "tone": "playful, subversive, charming",
+          "insertionMode": "PROTAGONIST",
+          "constraints": ["2-3 paragraphs", "Must clearly subvert one classic fairy-tale expectation"]
+        }
+      ]
+    },
+    {
+      "id": "the_villains_side",
+      "label": "The Villain's Side",
+      "groupLabel": "Once Upon a Twist",
+      "tiles": [
+        {
+          "id": "the_villains_side_default",
+          "label": "The Villain's Side",
+          "defaultTopic": "the story, told from the perspective everyone assumed was wrong",
+          "promptSeed": "Retell a small fairy-tale-style conflict entirely from the perspective of the character usually cast as the villain, giving their side genuine sympathy without erasing what they did.",
+          "description": "The story, told from the perspective everyone assumed was wrong.",
+          "tone": "sympathetic, wry, reframing",
+          "insertionMode": "PROTAGONIST",
+          "constraints": ["2-3 paragraphs"]
+        }
+      ]
+    },
+    {
+      "id": "happily_never_after",
+      "label": "Happily Never After",
+      "groupLabel": "Once Upon a Twist",
+      "tiles": [
+        {
+          "id": "happily_never_after_default",
+          "label": "Happily Never After",
+          "defaultTopic": "what happens right after 'happily ever after' actually starts",
+          "promptSeed": "Write a short scene set the morning after a fairy tale's traditional happy ending, exploring the ordinary complications that 'happily ever after' conveniently skips.",
+          "description": "What happens right after 'happily ever after' actually starts.",
+          "tone": "funny, grounded, affectionate",
+          "insertionMode": "PROTAGONIST",
+          "constraints": ["Under 150 words"]
+        }
+      ]
+    },
+    {
+      "id": "the_other_ending",
+      "label": "The Other Ending",
+      "groupLabel": "Once Upon a Twist",
+      "tiles": [
+        {
+          "id": "the_other_ending_default",
+          "label": "The Other Ending",
+          "defaultTopic": "the ending the story could have had, if one thing went differently",
+          "promptSeed": "Write an alternate ending to a fairy-tale-style story, branching from one small different decision, and follow where that change genuinely leads rather than forcing a happy resolution.",
+          "description": "The ending the story could have had, if one small thing went differently.",
+          "tone": "inventive, sincere, unexpected",
+          "insertionMode": "PROTAGONIST",
+          "constraints": ["2-3 paragraphs"]
+        }
+      ]
+    }
+  ],
+  "promptSeed": "[SYSTEM]\nYou are NarraWeave, a creative writing engine focused on charming, whimsical, and fable-like writing in English. Your output is playful and warm, never cynical.\n\n[MODE]\nProduce only the creative output. No titles, no preambles, no explanations, no meta-commentary. The piece should stand entirely on its own.\n\n[TILE]\n{{tile.promptSeed}}\n\n[CONSTRAINTS]\n- Output ONLY the creative piece — nothing else.\n- Follow the structural rules of the selected form exactly (paragraph and word limits).\n- Maintain a light, playful register throughout.\n- Avoid cynicism or dark undertones creeping into the piece.",
+  "metadata": {
+    "author": "NarraWeave",
+    "description": "Whimsical theme with 12 distinct tile categories"
+  }
+}

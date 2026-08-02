@@ -1,0 +1,216 @@
+{
+  "schemaVersion": 1,
+  "templateId": "inspirational_template",
+  "displayName": "Inspirational",
+  "categories": [
+    {
+      "id": "the_first_step",
+      "label": "The First Step",
+      "groupLabel": "Quiet Courage",
+      "tiles": [
+        {
+          "id": "the_first_step_default",
+          "label": "The First Step",
+          "defaultTopic": "the moment before doing the hard thing",
+          "promptSeed": "Write about the moment right before someone does something that scares them — not the outcome, just the internal decision to take the first step despite the fear.",
+          "description": "The moment before doing the hard thing, and the decision to do it anyway.",
+          "tone": "grounded, quietly brave, present-tense",
+          "insertionMode": "PROTAGONIST",
+          "constraints": ["1-2 paragraphs", "End at the moment of the step, not the result"]
+        }
+      ]
+    },
+    {
+      "id": "facing_it",
+      "label": "Facing It",
+      "groupLabel": "Quiet Courage",
+      "tiles": [
+        {
+          "id": "facing_it_default",
+          "label": "Facing It",
+          "defaultTopic": "finally confronting something long avoided",
+          "promptSeed": "Write about someone finally confronting something they've been avoiding — a conversation, a fear, a truth — with honesty about how hard it is, without minimizing the difficulty.",
+          "description": "Turning to look directly at the thing you've been avoiding.",
+          "tone": "honest, steady, unsentimental",
+          "insertionMode": "PROTAGONIST",
+          "constraints": ["2-3 paragraphs", "No forced resolution or tidy lesson"]
+        }
+      ]
+    },
+    {
+      "id": "standing_alone",
+      "label": "Standing Alone",
+      "groupLabel": "Quiet Courage",
+      "tiles": [
+        {
+          "id": "standing_alone_default",
+          "label": "Standing Alone",
+          "defaultTopic": "holding a position when no one else will",
+          "promptSeed": "Write about someone holding to a decision or belief while standing genuinely alone in it, focusing on what it costs them and why they hold the line anyway.",
+          "description": "Holding a position when no one else will stand with you.",
+          "tone": "resolute, weighty, sincere",
+          "insertionMode": "PROTAGONIST",
+          "constraints": ["2-3 paragraphs", "Avoid clichéd 'hero' framing"]
+        }
+      ]
+    },
+    {
+      "id": "the_harder_right",
+      "label": "The Harder Right",
+      "groupLabel": "Quiet Courage",
+      "tiles": [
+        {
+          "id": "the_harder_right_default",
+          "label": "The Harder Right",
+          "defaultTopic": "choosing the honest path when no one's watching",
+          "promptSeed": "Write about a small, private decision where the easier option was available and the harder, more honest option was chosen instead, with no one else there to witness it.",
+          "description": "Choosing the difficult, honest path over the easy one.",
+          "tone": "quiet, integrity-focused, understated",
+          "insertionMode": "PROTAGONIST",
+          "constraints": ["1-2 paragraphs", "No audience for the choice — it's private"]
+        }
+      ]
+    },
+    {
+      "id": "starting_over",
+      "label": "Starting Over",
+      "groupLabel": "Second Chances",
+      "tiles": [
+        {
+          "id": "starting_over_default",
+          "label": "Starting Over",
+          "defaultTopic": "the first ordinary day of beginning again",
+          "promptSeed": "Write about the first small, unremarkable day of starting over after a significant loss or failure — not the dramatic decision to start over, but the quiet mechanics of the first day doing it.",
+          "description": "The first ordinary day of beginning again.",
+          "tone": "tender, hopeful, grounded",
+          "insertionMode": "PROTAGONIST",
+          "constraints": ["2-3 paragraphs", "Focus on small concrete actions, not internal monologue about hope"]
+        }
+      ]
+    },
+    {
+      "id": "the_apology",
+      "label": "The Apology",
+      "groupLabel": "Second Chances",
+      "tiles": [
+        {
+          "id": "the_apology_default",
+          "label": "The Apology",
+          "defaultTopic": "saying the hard thing, and meaning it",
+          "promptSeed": "Write about someone delivering a genuine, specific apology for something they got wrong, focusing on the discomfort of accountability rather than the relief afterward.",
+          "description": "Saying the hard thing, and meaning it.",
+          "tone": "humble, specific, unresolved",
+          "insertionMode": "PROTAGONIST",
+          "constraints": ["1-2 paragraphs", "The apology must be specific, not generic"]
+        }
+      ]
+    },
+    {
+      "id": "new_beginning",
+      "label": "New Beginning",
+      "groupLabel": "Second Chances",
+      "tiles": [
+        {
+          "id": "new_beginning_default",
+          "label": "New Beginning",
+          "defaultTopic": "standing at the edge of something new",
+          "promptSeed": "Write about someone standing at the literal or figurative threshold of a new beginning — a new place, role, or chapter — capturing both the uncertainty and the willingness to step forward.",
+          "description": "Standing at the edge of something new, uncertain but willing.",
+          "tone": "hopeful, uncertain, forward-looking",
+          "insertionMode": "PROTAGONIST",
+          "constraints": ["2-3 paragraphs"]
+        }
+      ]
+    },
+    {
+      "id": "what_i_know_now",
+      "label": "What I Know Now",
+      "groupLabel": "Second Chances",
+      "tiles": [
+        {
+          "id": "what_i_know_now_default",
+          "label": "What I Know Now",
+          "defaultTopic": "looking back with hard-won understanding",
+          "promptSeed": "Write in first person as someone reflecting on a past mistake or hard period, articulating what they understand now that they didn't then, without excessive self-criticism.",
+          "description": "Looking back at who you were, with hard-won understanding.",
+          "tone": "reflective, warm, wiser",
+          "insertionMode": "PROTAGONIST",
+          "constraints": ["1-2 paragraphs", "First person", "No self-flagellation"]
+        }
+      ]
+    },
+    {
+      "id": "one_day_at_a_time",
+      "label": "One Day at a Time",
+      "groupLabel": "Small Victories",
+      "tiles": [
+        {
+          "id": "one_day_at_a_time_default",
+          "label": "One Day at a Time",
+          "defaultTopic": "getting through today, which is enough",
+          "promptSeed": "Write about someone getting through one ordinary, difficult day — not solving everything, just making it through — and finding that enough.",
+          "description": "Getting through today, which is enough for today.",
+          "tone": "gentle, present-focused, unforced",
+          "insertionMode": "PROTAGONIST",
+          "constraints": ["1-2 paragraphs", "No grand resolution, just endurance"]
+        }
+      ]
+    },
+    {
+      "id": "the_little_win",
+      "label": "The Little Win",
+      "groupLabel": "Small Victories",
+      "tiles": [
+        {
+          "id": "the_little_win_default",
+          "label": "The Little Win",
+          "defaultTopic": "a small accomplishment that matters more than it looks",
+          "promptSeed": "Write about a small, easily-overlooked accomplishment — finishing a task, making a call, getting out of bed — and why it matters more than its size suggests, given what it took to do it.",
+          "description": "A small accomplishment that matters more than it looks like it should.",
+          "tone": "warm, specific, unpretentious",
+          "insertionMode": "PROTAGONIST",
+          "constraints": ["Under 120 words"]
+        }
+      ]
+    },
+    {
+      "id": "progress_not_perfection",
+      "label": "Progress, Not Perfection",
+      "groupLabel": "Small Victories",
+      "tiles": [
+        {
+          "id": "progress_not_perfection_default",
+          "label": "Progress, Not Perfection",
+          "defaultTopic": "doing it imperfectly, and doing it anyway",
+          "promptSeed": "Write about someone doing something imperfectly — a skill, a habit, a piece of work — and choosing to value the attempt and the progress over getting it exactly right.",
+          "description": "Doing it imperfectly, and doing it anyway.",
+          "tone": "encouraging, honest, not saccharine",
+          "insertionMode": "PROTAGONIST",
+          "constraints": ["1-2 paragraphs", "Avoid generic motivational-poster phrasing"]
+        }
+      ]
+    },
+    {
+      "id": "today_i_showed_up",
+      "label": "Today I Showed Up",
+      "groupLabel": "Small Victories",
+      "tiles": [
+        {
+          "id": "today_i_showed_up_default",
+          "label": "Today I Showed Up",
+          "defaultTopic": "just showing up, on a day when that was hard",
+          "promptSeed": "Write in first person, brief, about simply showing up for something — work, a commitment, a person — on a day when not showing up would have been easier, without dramatizing it.",
+          "description": "Just showing up, on a day when that was hard.",
+          "tone": "plain, honest, first-person",
+          "insertionMode": "PROTAGONIST",
+          "constraints": ["1-2 sentences", "First person"]
+        }
+      ]
+    }
+  ],
+  "promptSeed": "[SYSTEM]\nYou are NarraWeave, a creative writing engine focused on sincere, grounded, inspirational writing in English. Your output is hopeful and honest, never saccharine or clichéd.\n\n[MODE]\nProduce only the creative output. No titles, no preambles, no explanations, no meta-commentary. The piece should stand entirely on its own.\n\n[TILE]\n{{tile.promptSeed}}\n\n[CONSTRAINTS]\n- Output ONLY the creative piece — nothing else.\n- Follow the structural rules of the selected form exactly (paragraph and sentence limits).\n- Maintain a sincere, grounded emotional register.\n- Avoid generic motivational-poster phrasing and forced resolutions.",
+  "metadata": {
+    "author": "NarraWeave",
+    "description": "Inspirational theme with 12 distinct tile categories"
+  }
+}

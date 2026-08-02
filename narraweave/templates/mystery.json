@@ -1,0 +1,216 @@
+{
+  "schemaVersion": 1,
+  "templateId": "mystery_template",
+  "displayName": "Mystery",
+  "categories": [
+    {
+      "id": "the_sealed_door",
+      "label": "The Sealed Door",
+      "groupLabel": "Locked Room",
+      "tiles": [
+        {
+          "id": "the_sealed_door_default",
+          "label": "The Sealed Door",
+          "defaultTopic": "a room locked from the inside, and no way it could be",
+          "promptSeed": "Write about discovering a room locked from the inside with no other way in or out, and the impossible situation found within. Focus on the puzzle of the scene, not the resolution.",
+          "description": "A room locked from the inside, and no way it could be.",
+          "tone": "methodical, tense, puzzle-focused",
+          "insertionMode": "PROTAGONIST",
+          "constraints": ["2-3 paragraphs", "End on the impossibility, not the solution"]
+        }
+      ]
+    },
+    {
+      "id": "no_way_out",
+      "label": "No Way Out",
+      "groupLabel": "Locked Room",
+      "tiles": [
+        {
+          "id": "no_way_out_default",
+          "label": "No Way Out",
+          "defaultTopic": "trapped somewhere that shouldn't be able to trap anyone",
+          "promptSeed": "Write about realizing you're trapped in a space that should have an obvious exit, and the mounting tension of searching for a way out that isn't there.",
+          "description": "Trapped somewhere that shouldn't be able to trap anyone.",
+          "tone": "claustrophobic, urgent, controlled panic",
+          "insertionMode": "PROTAGONIST",
+          "constraints": ["1-2 paragraphs"]
+        }
+      ]
+    },
+    {
+      "id": "the_only_witness",
+      "label": "The Only Witness",
+      "groupLabel": "Locked Room",
+      "tiles": [
+        {
+          "id": "the_only_witness_default",
+          "label": "The Only Witness",
+          "defaultTopic": "the one person who saw what happened, and what they're not saying",
+          "promptSeed": "Describe the account of the only witness to an event in a sealed space, focusing on what details they emphasize and what they conspicuously avoid mentioning.",
+          "description": "The one person who saw what happened, and what they're not saying.",
+          "tone": "guarded, careful, evasive",
+          "insertionMode": "OBSERVER",
+          "constraints": ["2-3 paragraphs", "At least one detail the witness deliberately omits"]
+        }
+      ]
+    },
+    {
+      "id": "the_impossible_crime",
+      "label": "The Impossible Crime",
+      "groupLabel": "Locked Room",
+      "tiles": [
+        {
+          "id": "the_impossible_crime_default",
+          "label": "The Impossible Crime",
+          "defaultTopic": "a crime with no apparent way it could have been committed",
+          "promptSeed": "Describe, from an outside investigator's perspective, the scene of a crime that appears to have no logical means of having been committed. Present the facts plainly, without resolving the mystery.",
+          "description": "A crime with no apparent way it could have been committed.",
+          "tone": "procedural, dry, precise",
+          "insertionMode": "OBSERVER",
+          "constraints": ["2-3 paragraphs", "No solution offered"]
+        }
+      ]
+    },
+    {
+      "id": "years_later",
+      "label": "Years Later",
+      "groupLabel": "Cold Case",
+      "tiles": [
+        {
+          "id": "years_later_default",
+          "label": "Years Later",
+          "defaultTopic": "reopening a case everyone else has forgotten",
+          "promptSeed": "Describe someone reopening a case file that's sat untouched for years, noting what's changed about how the old evidence reads with new eyes.",
+          "description": "Reopening a case everyone else has forgotten.",
+          "tone": "weathered, patient, noir",
+          "insertionMode": "OBSERVER",
+          "constraints": ["2-3 paragraphs"]
+        }
+      ]
+    },
+    {
+      "id": "the_unsolved_file",
+      "label": "The Unsolved File",
+      "groupLabel": "Cold Case",
+      "tiles": [
+        {
+          "id": "the_unsolved_file_default",
+          "label": "The Unsolved File",
+          "defaultTopic": "the details that never added up, laid out one more time",
+          "promptSeed": "Describe the contents of an unsolved case file, listing the details that never quite fit together, in a tone of tired, careful re-examination.",
+          "description": "The details that never added up, laid out one more time.",
+          "tone": "dry, meticulous, weary",
+          "insertionMode": "OBSERVER",
+          "constraints": ["Written as a review of case notes, not narrative scene", "Under 150 words"]
+        }
+      ]
+    },
+    {
+      "id": "new_evidence",
+      "label": "New Evidence",
+      "groupLabel": "Cold Case",
+      "tiles": [
+        {
+          "id": "new_evidence_default",
+          "label": "New Evidence",
+          "defaultTopic": "one new detail that changes everything, or nothing",
+          "promptSeed": "Describe the discovery of a single new piece of evidence in a long-cold case, and the immediate uncertainty over whether it changes the whole picture or means nothing at all.",
+          "description": "One new detail that changes everything, or nothing.",
+          "tone": "tense, uncertain, procedural",
+          "insertionMode": "OBSERVER",
+          "constraints": ["1-2 paragraphs"]
+        }
+      ]
+    },
+    {
+      "id": "buried_truth",
+      "label": "Buried Truth",
+      "groupLabel": "Cold Case",
+      "tiles": [
+        {
+          "id": "buried_truth_default",
+          "label": "Buried Truth",
+          "defaultTopic": "the thing someone has kept hidden for years, finally surfacing",
+          "promptSeed": "Describe a long-buried truth surfacing after years of concealment, focusing on the moment of exposure rather than the original event.",
+          "description": "The thing someone has kept hidden for years, finally surfacing.",
+          "tone": "heavy, inevitable, quiet",
+          "insertionMode": "OBSERVER",
+          "constraints": ["2-3 paragraphs"]
+        }
+      ]
+    },
+    {
+      "id": "the_alibi",
+      "label": "The Alibi",
+      "groupLabel": "Someone's Lying",
+      "tiles": [
+        {
+          "id": "the_alibi_default",
+          "label": "The Alibi",
+          "defaultTopic": "an alibi that's almost too perfect",
+          "promptSeed": "Write from the perspective of someone corroborating a friend's alibi, noticing small inconsistencies in the story they're being asked to support, and deciding what to do with that knowledge.",
+          "description": "An alibi that's almost too perfect.",
+          "tone": "conflicted, tense, morally uneasy",
+          "insertionMode": "SIDE_CHARACTER",
+          "constraints": ["2-3 paragraphs"]
+        }
+      ]
+    },
+    {
+      "id": "trust_no_one",
+      "label": "Trust No One",
+      "groupLabel": "Someone's Lying",
+      "tiles": [
+        {
+          "id": "trust_no_one_default",
+          "label": "Trust No One",
+          "defaultTopic": "realizing you can't tell who's telling the truth anymore",
+          "promptSeed": "Write about the moment of realizing that everyone around you might be lying about something, and the immediate, disorienting recalibration of who to trust.",
+          "description": "Realizing you can't tell who's telling the truth anymore.",
+          "tone": "paranoid, disorienting, urgent",
+          "insertionMode": "PROTAGONIST",
+          "constraints": ["1-2 paragraphs"]
+        }
+      ]
+    },
+    {
+      "id": "the_tell",
+      "label": "The Tell",
+      "groupLabel": "Someone's Lying",
+      "tiles": [
+        {
+          "id": "the_tell_default",
+          "label": "The Tell",
+          "defaultTopic": "the small, involuntary sign that gives someone away",
+          "promptSeed": "Describe watching someone during a conversation and noticing the one small involuntary sign that reveals they're lying, without confronting them about it.",
+          "description": "The small, involuntary sign that gives someone away.",
+          "tone": "observant, restrained, sharp",
+          "insertionMode": "OBSERVER",
+          "constraints": ["Under 130 words", "No confrontation"]
+        }
+      ]
+    },
+    {
+      "id": "two_stories",
+      "label": "Two Stories",
+      "groupLabel": "Someone's Lying",
+      "tiles": [
+        {
+          "id": "two_stories_default",
+          "label": "Two Stories",
+          "defaultTopic": "two accounts of the same night that don't quite match",
+          "promptSeed": "Present two brief, conflicting accounts of the same event from two different people, letting the contradictions speak for themselves without resolving which is true.",
+          "description": "Two accounts of the same night that don't quite match.",
+          "tone": "dry, precise, unresolved",
+          "insertionMode": "SIDE_CHARACTER",
+          "constraints": ["Two distinct short accounts", "No narrator judgment on which is true"]
+        }
+      ]
+    }
+  ],
+  "promptSeed": "[SYSTEM]\nYou are NarraWeave, a creative writing engine focused on tense, atmospheric mystery and suspense writing in English. Your output withholds and reveals information deliberately, never over-explaining.\n\n[MODE]\nProduce only the creative output. No titles, no preambles, no explanations, no meta-commentary. The piece should stand entirely on its own.\n\n[TILE]\n{{tile.promptSeed}}\n\n[CONSTRAINTS]\n- Output ONLY the creative piece — nothing else.\n- Follow the structural rules of the selected form exactly (paragraph and word limits).\n- Maintain deliberate ambiguity where the tile calls for it.\n- Avoid resolving mysteries the tile doesn't ask to be resolved.",
+  "metadata": {
+    "author": "NarraWeave",
+    "description": "Mystery theme with 12 distinct tile categories"
+  }
+}
