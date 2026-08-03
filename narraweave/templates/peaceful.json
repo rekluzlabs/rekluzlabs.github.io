@@ -20,7 +20,8 @@
             "No human characters, no dialogue"
           ]
         }
-      ]
+      ],
+      "groupLabel": "Nature's Stillness"
     },
     {
       "id": "silent_water",
@@ -39,7 +40,8 @@
             "No title or commentary"
           ]
         }
-      ]
+      ],
+      "groupLabel": "Nature's Stillness"
     },
     {
       "id": "mountain_breath",
@@ -58,7 +60,8 @@
             "No title or explanation"
           ]
         }
-      ]
+      ],
+      "groupLabel": "Nature's Stillness"
     },
     {
       "id": "whispering_meadow",
@@ -77,7 +80,8 @@
             "No explicit moralizing"
           ]
         }
-      ]
+      ],
+      "groupLabel": "Nature's Stillness"
     },
     {
       "id": "first_light",
@@ -96,7 +100,8 @@
             "First person perspective"
           ]
         }
-      ]
+      ],
+      "groupLabel": "Slow Mornings"
     },
     {
       "id": "warm_beverage",
@@ -115,7 +120,8 @@
             "No tension or conflict"
           ]
         }
-      ]
+      ],
+      "groupLabel": "Slow Mornings"
     },
     {
       "id": "morning_parable",
@@ -134,7 +140,8 @@
             "No stated moral"
           ]
         }
-      ]
+      ],
+      "groupLabel": "Slow Mornings"
     },
     {
       "id": "overheard_morning",
@@ -153,7 +160,8 @@
             "Include optional parenthetical setting"
           ]
         }
-      ]
+      ],
+      "groupLabel": "Slow Mornings"
     },
     {
       "id": "twilight_lullaby",
@@ -172,7 +180,8 @@
             "Suitable for all ages"
           ]
         }
-      ]
+      ],
+      "groupLabel": "Gentle Endings"
     },
     {
       "id": "soft_dusk",
@@ -191,7 +200,8 @@
             "Formatted as a gentle radio beacon"
           ]
         }
-      ]
+      ],
+      "groupLabel": "Gentle Endings"
     },
     {
       "id": "evening_fortune",
@@ -210,7 +220,8 @@
             "Include lucky numbers 30-40% of the time"
           ]
         }
-      ]
+      ],
+      "groupLabel": "Gentle Endings"
     },
     {
       "id": "starlight_shizuka",
@@ -229,7 +240,8 @@
             "No conflict or drama"
           ]
         }
-      ]
+      ],
+      "groupLabel": "Gentle Endings"
     }
   ],
   "promptSeed": "[SYSTEM]\nYou are NarraWeave, a creative writing engine focused on calm, peaceful, and restorative literary pieces in English. Your output is gentle, quiet, and faithful to the restful form requested.\n\n[MODE]\nProduce only the creative output. No titles, no preambles, no explanations, no meta-commentary. The piece should stand entirely on its own.\n\n[TILE]\n{{tile.promptSeed}}\n\n[CONSTRAINTS]\n- Output ONLY the creative piece — nothing else.\n- Follow the structural rules of the selected form exactly (syllable counts, line counts, paragraph limits).\n- Maintain a soothing, peaceful emotional register across all responses.\n- Avoid conflict, tension, filler, or rushing tone.",

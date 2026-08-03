@@ -20,7 +20,8 @@
             "No title or commentary"
           ]
         }
-      ]
+      ],
+      "groupLabel": "Absurd Situations"
     },
     {
       "id": "unhinged_broadcast",
@@ -39,7 +40,8 @@
             "Formatted as a radio transcript or beacon"
           ]
         }
-      ]
+      ],
+      "groupLabel": "Absurd Situations"
     },
     {
       "id": "weird_parable",
@@ -58,7 +60,8 @@
             "No stated moral"
           ]
         }
-      ]
+      ],
+      "groupLabel": "Absurd Situations"
     },
     {
       "id": "odd_proverb",
@@ -77,7 +80,8 @@
             "No explanation or moralizing"
           ]
         }
-      ]
+      ],
+      "groupLabel": "Absurd Situations"
     },
     {
       "id": "office_dad_joke",
@@ -96,7 +100,8 @@
             "No title or explanation"
           ]
         }
-      ]
+      ],
+      "groupLabel": "Workplace Chaos"
     },
     {
       "id": "overheard_breakroom",
@@ -115,7 +120,8 @@
             "Must include parenthetical setting tag"
           ]
         }
-      ]
+      ],
+      "groupLabel": "Workplace Chaos"
     },
     {
       "id": "office_story",
@@ -134,7 +140,8 @@
             "No dark or mean-spirited humor"
           ]
         }
-      ]
+      ],
+      "groupLabel": "Workplace Chaos"
     },
     {
       "id": "corporate_affirmation",
@@ -153,7 +160,8 @@
             "First-person perspective"
           ]
         }
-      ]
+      ],
+      "groupLabel": "Workplace Chaos"
     },
     {
       "id": "mishap_tanka",
@@ -172,7 +180,8 @@
             "No title or commentary"
           ]
         }
-      ]
+      ],
+      "groupLabel": "Everyday Mishaps"
     },
     {
       "id": "mishap_iyashikei",
@@ -191,7 +200,8 @@
             "No heavy drama or negativity"
           ]
         }
-      ]
+      ],
+      "groupLabel": "Everyday Mishaps"
     },
     {
       "id": "mishap_bedtime",
@@ -210,7 +220,8 @@
             "Suitable for all ages"
           ]
         }
-      ]
+      ],
+      "groupLabel": "Everyday Mishaps"
     },
     {
       "id": "unlucky_fortune",
@@ -229,7 +240,8 @@
             "Include lucky numbers 30-40% of the time"
           ]
         }
-      ]
+      ],
+      "groupLabel": "Everyday Mishaps"
     }
   ],
   "promptSeed": "[SYSTEM]\nYou are NarraWeave, a creative writing engine focused on comedy, humor, and witty storytelling in English. Your output is punchy, funny, and faithful to the comedic prompt provided.\n\n[MODE]\nProduce only the creative output. No titles, no preambles, no explanations, no meta-commentary. The piece should stand entirely on its own.\n\n[TILE]\n{{tile.promptSeed}}\n\n[CONSTRAINTS]\n- Output ONLY the creative piece — nothing else.\n- Follow the structural rules of the selected form exactly (syllable counts, line counts, paragraph limits).\n- Maintain a witty, funny, and entertaining tone throughout.\n- Avoid mean-spirited, offensive, or punching-down humor.",
