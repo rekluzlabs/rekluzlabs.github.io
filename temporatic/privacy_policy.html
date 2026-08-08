@@ -1,94 +1,183 @@
-# Privacy Policy
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Temporatic — Privacy Policy</title>
+<style>
+  :root {
+    --ink: #2b2b28;
+    --paper: #faf7f0;
+    --indigo: #2c4a6e;
+    --indigo-soft: #5b7a99;
+    --rule: #ddd6c4;
+    --muted: #6b665a;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans", "Noto Sans JP", sans-serif;
+    line-height: 1.7;
+  }
+  .wrap {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 64px 24px 96px;
+  }
+  header {
+    margin-bottom: 40px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .brand {
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--indigo-soft);
+    margin-bottom: 12px;
+  }
+  h1 {
+    font-size: 28px;
+    margin: 0 0 8px;
+    color: var(--indigo);
+    letter-spacing: 0.01em;
+  }
+  .updated {
+    font-size: 14px;
+    color: var(--muted);
+    margin: 0;
+  }
+  h2 {
+    font-size: 18px;
+    color: var(--indigo);
+    margin: 40px 0 12px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--rule);
+  }
+  h3 {
+    font-size: 15px;
+    color: var(--ink);
+    margin: 24px 0 8px;
+  }
+  p { margin: 12px 0; font-size: 15.5px; }
+  ul { margin: 12px 0; padding-left: 22px; }
+  li { margin: 6px 0; font-size: 15.5px; }
+  strong { color: var(--ink); }
+  a { color: var(--indigo); text-decoration: none; border-bottom: 1px solid var(--indigo-soft); }
+  a:hover { color: var(--indigo-soft); }
+  .lede {
+    font-size: 15.5px;
+    color: var(--muted);
+  }
+  .summary-box {
+    background: #fff;
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--indigo);
+    padding: 16px 20px;
+    margin: 20px 0;
+    border-radius: 2px;
+  }
+  .summary-box p { margin: 0; }
+  footer {
+    margin-top: 56px;
+    padding-top: 20px;
+    border-top: 1px solid var(--rule);
+    font-size: 13px;
+    color: var(--muted);
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
 
-**Last updated: August 7, 2026**
+  <header>
+    <div class="brand">Rekluz Labs</div>
+    <h1>Privacy Policy — Temporatic</h1>
+    <p class="updated">Last updated: August 7, 2026</p>
+  </header>
 
-This Privacy Policy explains how Rekluz Labs ("we", "us", or "our") handles information when you use the Temporatic mobile application (the "App") available on the Google Play Store.
+  <p class="lede">This Privacy Policy explains how Rekluz Labs ("we", "us", or "our") handles information when you use the Temporatic mobile application (the "App") available on the Google Play Store.</p>
+  <p class="lede">By installing or using the App, you agree to the practices described in this Privacy Policy.</p>
 
-By installing or using the App, you agree to the practices described in this Privacy Policy.
+  <h2>Overview</h2>
+  <p>Temporatic is a floating screenshot utility built for Android testers and developers. It can capture your screen on demand via the floating capture button, and it also detects screenshots taken by the system or other apps so everything can be organized in one place. It lets you tag, crop, timestamp, and share your screenshots.</p>
 
-## Overview
+  <div class="summary-box">
+    <p><strong>The short version:</strong> The App does not collect, transmit, or share any of your data. All information processed by the App stays on your device. There are no accounts, no analytics, no advertising, and no servers.</p>
+  </div>
 
-Temporatic is a floating screenshot utility built for Android testers and developers. It can capture your screen on demand via the floating capture button, and it also detects screenshots taken by the system or other apps so everything can be organized in one place. It lets you tag, crop, timestamp, and share your screenshots.
+  <h2>Information the App Processes</h2>
 
-**The short version:** The App does not collect, transmit, or share any of your data. All information processed by the App stays on your device. There are no accounts, no analytics, no advertising, and no servers.
+  <h3>Content You Capture</h3>
+  <p>Temporatic captures and detects screenshots in two ways:</p>
+  <ul>
+    <li><strong>On-demand capture:</strong> When you tap the floating capture button, the App uses Android's screen capture (MediaProjection) system to record a single frame of your screen. This requires your explicit consent through the Android system permission dialog each time it's requested. The App does not record audio.</li>
+    <li><strong>System screenshot detection:</strong> The App watches your device's media library for new screenshots taken outside the App (e.g. via your device's built-in screenshot shortcut) so they can be organized alongside App-captured ones.</li>
+  </ul>
+  <p>Screenshots may contain whatever was visible on your screen at the time, including personal or sensitive information displayed by other apps. The App processes this content only to:</p>
+  <ul>
+    <li>Capture or detect the screenshot.</li>
+    <li>Apply optional edits such as tag, crop, and timestamp.</li>
+    <li>Keep a local record of your screenshots for browsing within the App.</li>
+    <li>Let you share or email a screenshot, if you choose to do so.</li>
+  </ul>
+  <p>This processing happens entirely on your device.</p>
 
-## Information the App Processes
+  <h3>Device Information</h3>
+  <p>The App does not collect device identifiers, IP addresses, or any hardware or usage analytics. The only device information ever referenced is the device model name, which is used solely to generate a "Temporatic Proof" timestamp text (date, time, and device model) if you enable that feature in Settings. This text is embedded directly into the screenshot image on your device and is not transmitted anywhere.</p>
 
-### Content You Capture
+  <h2>Permissions We Use</h2>
+  <p>The App requests certain permissions so it can work as designed:</p>
+  <ul>
+    <li><strong>Draw over other apps (SYSTEM_ALERT_WINDOW):</strong> To show the floating capture button while you work in other apps.</li>
+    <li><strong>Screen capture (MediaProjection):</strong> To capture your screen when you tap the floating button. No audio is recorded. Each capture session requires your consent via the Android system permission dialog.</li>
+    <li><strong>Media library access (MediaStore observer):</strong> To detect screenshots taken by the system or other apps so they can be organized alongside App-captured ones.</li>
+    <li><strong>Photos and media (READ_MEDIA_IMAGES / READ_EXTERNAL_STORAGE):</strong> To let you browse previously captured screenshots within the App.</li>
+    <li><strong>Notifications (POST_NOTIFICATIONS):</strong> To show the ongoing status of the App's foreground services, as required by Android.</li>
+    <li><strong>Usage access (PACKAGE_USAGE_STATS) — optional:</strong> Used only if you enable "Organize by App" in Settings, to identify the name of the app on screen so screenshots can be grouped by app. This setting is off by default, and no data collected through it ever leaves your device.</li>
+    <li><strong>Foreground service (FOREGROUND_SERVICE, FOREGROUND_SERVICE_MEDIA_PROJECTION, FOREGROUND_SERVICE_DATA_SYNC):</strong> To keep the capture and screenshot-detection services running reliably, with a persistent notification while active.</li>
+  </ul>
+  <p>These permissions are used solely to provide the App's functionality. None of the data accessed through these permissions is collected or transmitted off your device.</p>
 
-Temporatic captures and detects screenshots in two ways:
+  <h2>How We Store and Protect Your Data</h2>
+  <ul>
+    <li><strong>Local storage only:</strong> Screenshot images are saved to your device's storage. App records are kept in a local database (Room/SQLite) and app settings are kept in local device preferences.</li>
+    <li><strong>No cloud storage:</strong> The App does not upload your screenshots or any related data to any server or cloud service.</li>
+    <li><strong>You control your data:</strong> Deleting the App from your device removes its app data and preferences. Screenshot images you have already saved to shared storage may remain until you delete them.</li>
+  </ul>
+  <p>We have no access to your data because it never leaves your device.</p>
 
-- **On-demand capture:** When you tap the floating capture button, the App uses Android's screen capture (MediaProjection) system to record a single frame of your screen. This requires your explicit consent through the Android system permission dialog each time it's requested. The App does not record audio.
-- **System screenshot detection:** The App watches your device's media library for new screenshots taken outside the App (e.g. via your device's built-in screenshot shortcut) so they can be organized alongside App-captured ones.
+  <h2>Children's Privacy</h2>
+  <p>The App is not directed to children under the age of 13, and we do not knowingly collect any personal information from children. Because the App collects no data at all, there is no personal information to collect from anyone, including children.</p>
 
-Screenshots may contain whatever was visible on your screen at the time, including personal or sensitive information displayed by other apps. The App processes this content only to:
+  <h2>Third-Party Services</h2>
+  <p>The App does not include any third-party analytics, advertising, crash reporting, or tracking SDKs. The only third-party components used are open-source libraries that run entirely on your device and do not transmit data.</p>
 
-- Capture or detect the screenshot.
-- Apply optional edits such as tag, crop, and timestamp.
-- Keep a local record of your screenshots for browsing within the App.
-- Let you share or email a screenshot, if you choose to do so.
+  <h2>Data Sharing and Disclosure</h2>
+  <p>We do not sell, rent, trade, or share your personal information with any third party. The only sharing that occurs is initiated entirely by you, when you use the App's share or email features to send a screenshot you captured.</p>
 
-This processing happens entirely on your device.
+  <h2>Data Retention and Deletion</h2>
+  <p>Because no personal data is collected by us, there is nothing for us to retain. Data stored locally on your device (screenshots, app records, and settings) remains on your device until you delete it. You can delete individual screenshots or the entire App at any time.</p>
 
-### Device Information
+  <h2>Changes to This Privacy Policy</h2>
+  <p>We may update this Privacy Policy from time to time. If we make material changes, we will update the "Last updated" date at the top of this policy. Any changes take effect when posted. Because the App does not collect data, future changes will not affect how your data is handled unless the App's functionality changes.</p>
 
-The App does not collect device identifiers, IP addresses, or any hardware or usage analytics. The only device information ever referenced is the device model name, which is used solely to generate a "Temporatic Proof" timestamp text (date, time, and device model) if you enable that feature in Settings. This text is embedded directly into the screenshot image on your device and is not transmitted anywhere.
+  <h2>Contact Us</h2>
+  <p>If you have any questions or concerns about this Privacy Policy or the App, you can contact us at:</p>
+  <p><strong>Rekluz Labs</strong><br>
+  Website: <a href="https://rekluzlabs.github.io/">https://rekluzlabs.github.io/</a><br>
+  Email: <a href="mailto:rekluzlabs@gmail.com">rekluzlabs@gmail.com</a></p>
 
-## Permissions We Use
+  <h2>Consent</h2>
+  <p>By using the App, you consent to this Privacy Policy. If you do not agree with this policy, please do not install or use the App.</p>
 
-The App requests certain permissions so it can work as designed:
+  <footer>
+    Copyright © 2026 Rekluz Labs. All Rights Reserved.
+  </footer>
 
-- **Draw over other apps (SYSTEM_ALERT_WINDOW):** To show the floating capture button while you work in other apps.
-- **Screen capture (MediaProjection):** To capture your screen when you tap the floating button. No audio is recorded. Each capture session requires your consent via the Android system permission dialog.
-- **Media library access (MediaStore observer):** To detect screenshots taken by the system or other apps so they can be organized alongside App-captured ones.
-- **Photos and media (READ_MEDIA_IMAGES / READ_EXTERNAL_STORAGE):** To let you browse previously captured screenshots within the App.
-- **Notifications (POST_NOTIFICATIONS):** To show the ongoing status of the App's foreground services, as required by Android.
-- **Usage access (PACKAGE_USAGE_STATS) — optional:** Used only if you enable "Organize by App" in Settings, to identify the name of the app on screen so screenshots can be grouped by app. This setting is off by default, and no data collected through it ever leaves your device.
-- **Foreground service (FOREGROUND_SERVICE, FOREGROUND_SERVICE_MEDIA_PROJECTION, FOREGROUND_SERVICE_DATA_SYNC):** To keep the capture and screenshot-detection services running reliably, with a persistent notification while active.
-
-These permissions are used solely to provide the App's functionality. None of the data accessed through these permissions is collected or transmitted off your device.
-
-## How We Store and Protect Your Data
-
-- **Local storage only:** Screenshot images are saved to your device's storage. App records are kept in a local database (Room/SQLite) and app settings are kept in local device preferences.
-- **No cloud storage:** The App does not upload your screenshots or any related data to any server or cloud service.
-- **You control your data:** Deleting the App from your device removes its app data and preferences. Screenshot images you have already saved to shared storage may remain until you delete them.
-
-We have no access to your data because it never leaves your device.
-
-## Children's Privacy
-
-The App is not directed to children under the age of 13, and we do not knowingly collect any personal information from children. Because the App collects no data at all, there is no personal information to collect from anyone, including children.
-
-## Third-Party Services
-
-The App does not include any third-party analytics, advertising, crash reporting, or tracking SDKs. The only third-party components used are open-source libraries that run entirely on your device and do not transmit data.
-
-## Data Sharing and Disclosure
-
-We do not sell, rent, trade, or share your personal information with any third party. The only sharing that occurs is initiated entirely by you, when you use the App's share or email features to send a screenshot you captured.
-
-## Data Retention and Deletion
-
-Because no personal data is collected by us, there is nothing for us to retain. Data stored locally on your device (screenshots, app records, and settings) remains on your device until you delete it. You can delete individual screenshots or the entire App at any time.
-
-## Changes to This Privacy Policy
-
-We may update this Privacy Policy from time to time. If we make material changes, we will update the "Last updated" date at the top of this policy. Any changes take effect when posted. Because the App does not collect data, future changes will not affect how your data is handled unless the App's functionality changes.
-
-## Contact Us
-
-If you have any questions or concerns about this Privacy Policy or the App, you can contact us at:
-
-**Rekluz Labs**
-
-- Website: [https://rekluzlabs.github.io/](https://rekluzlabs.github.io/)
-- Email: [rekluzlabs@gmail.com](mailto:rekluzlabs@gmail.com)
-
-## Consent
-
-By using the App, you consent to this Privacy Policy. If you do not agree with this policy, please do not install or use the App.
-
----
-
-Copyright © 2026 Rekluz Labs. All Rights Reserved.
+</div>
+</body>
+</html>
