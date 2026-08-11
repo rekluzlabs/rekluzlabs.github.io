@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Apps in Development | Rekluz Labs</title>
-<meta name="description" content="A look at what Rekluz Labs is currently building: Reminera, an offline-first family memory app, and VaultCuisine, a privacy-first recipe scanner." />
+<meta name="description" content="A look at what Rekluz Labs is currently building: Temporatic, a gameplay screenshot utility in closed testing, Reminera, an offline-first family memory app, and VaultCuisine, a privacy-first recipe scanner." />
 <meta property="og:title" content="Apps in Development | Rekluz Labs" />
 <meta property="og:description" content="Privacy by architecture, not by policy. Here's what's currently in the workshop." />
 <meta property="og:type" content="website" />
@@ -44,6 +44,13 @@
     background: rgba(96, 165, 250, 0.1);
     border-color: rgba(96, 165, 250, 0.3);
     color: #60a5fa;
+  }
+
+  /* "Closed testing" badge — one step further along than "in development" */
+  .product-status.is-testing {
+    background: rgba(52, 211, 153, 0.1);
+    border-color: rgba(52, 211, 153, 0.3);
+    color: #34d399;
   }
 
   /* Horizontal scroll strip for multiple screenshots per app */
@@ -138,7 +145,7 @@
     <div>
       <span class="eyebrow">Independent Android Software Studio</span>
       <h1>In the <span class="accent">workshop</span> right now.</h1>
-      <p class="hero-lede">Two applications are currently under active development. Both follow the same rules as everything else Rekluz Labs ships: offline-first where possible, no accounts, no ads, and no data leaving the device without your say-so.</p>
+      <p class="hero-lede">Three applications are currently under active development. All of them follow the same rules as everything else Rekluz Labs ships: offline-first where possible, no accounts, no ads, and no data leaving the device without your say-so.</p>
       <div class="hero-actions">
         <a class="btn btn-primary" href="../#apps">
           See Shipped Apps
@@ -160,6 +167,25 @@
     </div>
 
     <div class="products-grid reveal">
+
+      <!-- ================= TEMPORATIC ================= -->
+      <article class="product-card">
+        <div class="product-top">
+          <div>
+            <span class="product-kicker">App</span>
+          </div>
+          <a class="product-status is-testing" href="https://rekluzlabs.github.io/temporatic" target="_blank" rel="noopener">Closed Testing</a>
+        </div>
+        <h3>Temporatic</h3>
+        <p>A gameplay screenshot utility built to capture, recall, and prove. Every screenshot is automatically stamped with a date and time watermark, giving you verifiable proof of when a capture was taken. Currently in Google Play closed testing, with a public release coming soon.</p>
+        <a class="product-link" href="https://rekluzlabs.github.io/temporatic" target="_blank" rel="noopener">
+          Follow Progress on GitHub
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <div class="screenshot-strip">
+          <img src="temporatic_1.jpg" alt="Temporatic feature graphic showing the app's home screen, settings, and watermark options" loading="lazy" />
+        </div>
+      </article>
 
       <!-- ================= REMINERA ================= -->
       <article class="product-card">
@@ -211,7 +237,7 @@
 <section class="section cta reveal" id="contact">
   <div class="container">
     <h2>Building in<br />the open.</h2>
-    <p>Both apps are developed solo, with progress and technical decisions tracked publicly on GitHub as they happen.</p>
+    <p>All three apps are developed solo, with progress and technical decisions tracked publicly on GitHub as they happen.</p>
     <div class="hero-actions">
       <a class="btn btn-primary" href="mailto:rekluzlabs@gmail.com">Get in Touch</a>
       <a class="btn btn-ghost" href="https://github.com/RekluzLabs" target="_blank" rel="noopener">View on GitHub</a>
@@ -233,6 +259,7 @@
       <div class="footer-col">
         <h5>In Development</h5>
         <ul>
+          <li>Temporatic (Closed Testing)</li>
           <li><a href="https://github.com/rekluzlabs/Reminera" target="_blank" rel="noopener">Reminera</a></li>
           <li><a href="https://github.com/rekluzlabs/vaultcuisine" target="_blank" rel="noopener">VaultCuisine</a></li>
         </ul>
