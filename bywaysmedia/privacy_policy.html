@@ -85,7 +85,7 @@
 
   <header>
     <h1>Privacy Policy for Byways Media Hub</h1>
-    <div class="updated">Last updated: August 29, 2026</div>
+    <div class="updated">Last updated: August 30, 2026</div>
   </header>
 
   <p class="lead">Byways Media Hub ("the App") is developed by Rekluz Labs ("we," "us," "our"). This Privacy Policy explains what information the App accesses, how it's used, and what it never does with your data.</p>
@@ -118,17 +118,23 @@
   <p>This data never leaves your device. Uninstalling the App deletes it.</p>
 
   <h3>Optional online cover art lookups</h3>
-  <p>If you're connected to Wi-Fi, the App may look up cover art for your media folders using third-party metadata services:</p>
+  <p>The App can look up cover art for your media folders using third-party metadata services. How this works differs by media type:</p>
   <ul>
-    <li><strong>TV shows &amp; movies:</strong> <a href="https://www.themoviedb.org/">TMDB</a> (The Movie Database), with <a href="https://fanart.tv/">Fanart.tv</a> as a secondary source for high-resolution posters.</li>
-    <li><strong>Music albums:</strong> the <a href="https://developer.apple.com/library/archive/documentation/AudioVideo/Conceptual/iTuneSearchAPI/">iTunes Search API</a> (itunes.apple.com), which is key-less and doesn't require any account.</li>
+    <li><strong>Music albums:</strong> the <a href="https://developer.apple.com/library/archive/documentation/AudioVideo/Conceptual/iTuneSearchAPI/">iTunes Search API</a> (itunes.apple.com) is used automatically, if you're connected to Wi-Fi. This service is key-less and doesn't require any account or credentials.</li>
+    <li><strong>TV shows &amp; movies:</strong> <a href="https://www.themoviedb.org/">TMDB</a> (The Movie Database) and <a href="https://fanart.tv/">Fanart.tv</a> require you to supply your own free API key for each service before any lookup happens. Nothing is fetched from these two services until you add your key(s) in the App's Settings screen. TMDB and Fanart.tv keys are independent — you can add one, both, or neither.</li>
   </ul>
-  <p>In each case, only the folder or album name you've organized your files under is sent as a search query, and a matching cover image is downloaded and cached locally for offline use.</p>
+  <p><strong>About the API keys you provide:</strong></p>
   <ul>
-    <li>This lookup happens automatically in the background but only over Wi-Fi — it will never use mobile data.</li>
-    <li>No personal information, file contents, or device identifiers are sent — only the folder/album name text.</li>
+    <li>Getting a key is free and only takes a couple of minutes on TMDB's or Fanart.tv's own website; the App links directly to their sign-up pages from Settings.</li>
+    <li>Your key is stored only on your device, encrypted using Android's Keystore-backed encryption (EncryptedSharedPreferences). It is never transmitted to us, never leaves your device except as part of a direct request from your device to TMDB or Fanart.tv, and is not shared with any other party.</li>
+    <li>You can remove a saved key at any time from Settings, which immediately stops that service's lookups.</li>
+  </ul>
+  <p><strong>For all cover art lookups (iTunes, TMDB, and Fanart.tv alike):</strong></p>
+  <ul>
+    <li>Lookups only happen over Wi-Fi — never mobile data.</li>
+    <li>Only the folder or album name you've organized your files under is sent as a search query, and a matching cover image is downloaded and cached locally for offline use.</li>
+    <li>No personal information, file contents, or device identifiers are sent — only the folder/album name text (and, for TMDB/Fanart, the API key you provided, which identifies your key to that service, not you personally).</li>
     <li>These lookups are governed by TMDB's, Fanart.tv's, and Apple's own privacy policies for the request itself; we do not receive or store the results beyond the cover image cached on your device.</li>
-    <li>This feature does not require an account with any of these services and does not use any developer credentials tied to you personally.</li>
   </ul>
 
   <h2>Information We Do Not Collect</h2>
@@ -145,7 +151,7 @@
   <p>The App requests only the Android permissions needed for its core function of browsing and playing local media (such as storage access via SAF, and network state to detect Wi-Fi for the optional poster lookups described above). It does not request permissions unrelated to this purpose, such as contacts, camera, microphone, or precise location.</p>
 
   <h2>Data Sharing</h2>
-  <p>We do not sell, rent, or share your data with third parties. The only outbound network requests the App makes are the optional, Wi-Fi-only poster lookups described above, which send only a folder/show name — nothing else.</p>
+  <p>We do not sell, rent, or share your data with third parties. The only outbound network requests the App makes are the optional, Wi-Fi-only cover art lookups described above, which send only a folder/album name (and, for TMDB/Fanart, the API key you personally provided) — nothing else.</p>
 
   <h2>Data Retention and Deletion</h2>
   <p>Because all data is stored locally on your device, you are always in control of it:</p>
