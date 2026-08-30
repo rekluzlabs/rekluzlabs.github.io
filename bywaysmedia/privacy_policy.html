@@ -117,13 +117,18 @@
   </ul>
   <p>This data never leaves your device. Uninstalling the App deletes it.</p>
 
-  <h3>Optional online poster lookups</h3>
-  <p>If you're connected to Wi-Fi, the App may look up cover art for your video folders using third-party metadata services (TMDB and Fanart.tv). In this case, the folder or show name you've organized your files under is sent to these services as a search query, and a matching poster image is downloaded and cached locally for offline use.</p>
+  <h3>Optional online cover art lookups</h3>
+  <p>If you're connected to Wi-Fi, the App may look up cover art for your media folders using third-party metadata services:</p>
+  <ul>
+    <li><strong>TV shows &amp; movies:</strong> <a href="https://www.themoviedb.org/">TMDB</a> (The Movie Database), with <a href="https://fanart.tv/">Fanart.tv</a> as a secondary source for high-resolution posters.</li>
+    <li><strong>Music albums:</strong> the <a href="https://developer.apple.com/library/archive/documentation/AudioVideo/Conceptual/iTuneSearchAPI/">iTunes Search API</a> (itunes.apple.com), which is key-less and doesn't require any account.</li>
+  </ul>
+  <p>In each case, only the folder or album name you've organized your files under is sent as a search query, and a matching cover image is downloaded and cached locally for offline use.</p>
   <ul>
     <li>This lookup happens automatically in the background but only over Wi-Fi — it will never use mobile data.</li>
-    <li>No personal information, file contents, or device identifiers are sent — only the folder/show name text.</li>
-    <li>These lookups are governed by TMDB's and Fanart.tv's own privacy policies for the request itself; we do not receive or store the results beyond the poster image cached on your device.</li>
-    <li>This feature does not require an account with either service and does not use any developer credentials tied to you personally.</li>
+    <li>No personal information, file contents, or device identifiers are sent — only the folder/album name text.</li>
+    <li>These lookups are governed by TMDB's, Fanart.tv's, and Apple's own privacy policies for the request itself; we do not receive or store the results beyond the cover image cached on your device.</li>
+    <li>This feature does not require an account with any of these services and does not use any developer credentials tied to you personally.</li>
   </ul>
 
   <h2>Information We Do Not Collect</h2>
