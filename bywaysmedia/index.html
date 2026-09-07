@@ -41,38 +41,61 @@
     object-fit: contain;
   }
 
-  /* App Gallery Section styling */
+  /* App Gallery Section styling — overlapping stacked cards */
   .screenshot-gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 24px;
-    margin-top: 32px;
+    position: relative;
+    height: 420px;
+    max-width: 640px;
+    margin: 40px auto 0;
   }
   .gallery-card {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 12px;
     padding: 12px;
     text-align: center;
-    transition: transform 0.2s ease;
+    cursor: pointer;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2);
+  }
+  .gallery-card.stack-0 { transform: rotate(-6deg) translate(-36px, 12px); z-index: 1; }
+  .gallery-card.stack-1 { transform: rotate(0deg) translate(0, 0); z-index: 2; }
+  .gallery-card.stack-2 { transform: rotate(6deg) translate(36px, -12px); z-index: 3; }
+  .gallery-card.active {
+    transform: rotate(0deg) translate(0, 0) scale(1.04) !important;
+    z-index: 10 !important;
+    box-shadow: 0 24px 48px rgba(0, 0, 0, 0.4);
   }
   .gallery-card:hover {
-    transform: translateY(-4px);
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.3);
   }
   .gallery-card img {
     width: 100%;
-    height: auto;
+    height: calc(100% - 36px);
     border-radius: 8px;
-    aspect-ratio: 9/16;
-    object-fit: cover;
+    object-fit: contain;
     background: #111;
+    pointer-events: none;
   }
   .gallery-caption {
     display: block;
-    margin-top: 12px;
+    margin-top: 10px;
     font-size: 14px;
     color: var(--text-dim);
     font-family: 'Inter', sans-serif;
+  }
+
+  @media (max-width: 640px) {
+    .screenshot-gallery {
+      height: 340px;
+    }
+    .gallery-card.stack-0 { transform: rotate(-5deg) translate(-20px, 8px); }
+    .gallery-card.stack-2 { transform: rotate(5deg) translate(20px, -8px); }
   }
 
   @media (max-width: 900px) {
@@ -135,7 +158,7 @@
     </div>
 
     <div class="hero-image-side">
-      <img src="https://rekluzlabs.github.io/bywaysmedia/byways_splashscreen.jpg" alt="Byways Media Hub splash screen, showing the app's compass-and-wave icon" class="hero-app-image" />
+      <img src="https://rekluzlabs.github.io/bywaysmedia/byways_ad.jpg" alt="Byways Media Hub showcase graphic, showing the Audio, Videos, and Photos tabs across phone and tablet screens" class="hero-app-image" />
     </div>
   </div>
 </header>
@@ -164,16 +187,16 @@
   <div class="container reveal">
     <span class="eyebrow">App Interface</span>
     <h2 style="margin-top: 14px; margin-bottom: 32px;">Three tabs, one library</h2>
-    <div class="screenshot-gallery">
-      <div class="gallery-card">
+    <div class="screenshot-gallery" id="screenshotGallery">
+      <div class="gallery-card stack-0">
         <img src="https://rekluzlabs.github.io/bywaysmedia/Tempo_2026-08-29_23-07-36-668.png" alt="Byways Media Hub Videos tab, showing folder-based show and movie posters" />
         <span class="gallery-caption">Videos — resume-watching &amp; episode tracking</span>
       </div>
-      <div class="gallery-card">
+      <div class="gallery-card stack-1">
         <img src="https://rekluzlabs.github.io/bywaysmedia/Screenshot_20260830_214416_Byways%20Media%20Hub.jpg" alt="Byways Media Hub Photos tab, showing an album grid with slideshow option" />
         <span class="gallery-caption">Photos — album grid &amp; fullscreen slideshow</span>
       </div>
-      <div class="gallery-card">
+      <div class="gallery-card stack-2">
         <img src="https://rekluzlabs.github.io/bywaysmedia/Tempo_2026-08-29_23-08-25-953.png" alt="Byways Media Hub Audio tab, showing album art for local music" />
         <span class="gallery-caption">Audio — plays straight from local folders</span>
       </div>
@@ -274,5 +297,18 @@
 </footer>
 
 <script src="../assets/js/main.js"></script>
+<script>
+  (function () {
+    var gallery = document.getElementById('screenshotGallery');
+    if (!gallery) return;
+    var cards = gallery.querySelectorAll('.gallery-card');
+    cards.forEach(function (card) {
+      card.addEventListener('click', function () {
+        cards.forEach(function (c) { c.classList.remove('active'); });
+        card.classList.add('active');
+      });
+    });
+  })();
+</script>
 </body>
 </html>
