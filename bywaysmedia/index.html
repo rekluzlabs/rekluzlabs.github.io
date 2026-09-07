@@ -41,12 +41,43 @@
     object-fit: contain;
   }
 
-  /* App Gallery Section styling — overlapping stacked cards */
+  /* App Gallery Section styling — overlapping stacked cards + chevron nav */
+  .gallery-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    max-width: 760px;
+    margin: 40px auto 0;
+  }
+  .gallery-nav-btn {
+    flex: 0 0 auto;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--text, #fff);
+    transition: background 0.2s ease, transform 0.2s ease;
+    padding: 0;
+  }
+  .gallery-nav-btn:hover {
+    background: rgba(255, 255, 255, 0.14);
+    transform: scale(1.06);
+  }
+  .gallery-nav-btn svg {
+    width: 20px;
+    height: 20px;
+  }
   .screenshot-gallery {
     position: relative;
     height: 420px;
+    width: 100%;
     max-width: 640px;
-    margin: 40px auto 0;
   }
   .gallery-card {
     position: absolute;
@@ -60,15 +91,14 @@
     padding: 12px;
     text-align: center;
     cursor: pointer;
-    transition: transform 0.35s ease, box-shadow 0.35s ease;
+    transition: transform 0.35s ease, box-shadow 0.35s ease, z-index 0s;
     box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2);
   }
-  .gallery-card.stack-0 { transform: rotate(-6deg) translate(-36px, 12px); z-index: 1; }
-  .gallery-card.stack-1 { transform: rotate(0deg) translate(0, 0); z-index: 2; }
-  .gallery-card.stack-2 { transform: rotate(6deg) translate(36px, -12px); z-index: 3; }
+  .gallery-card.stack-left { transform: rotate(-6deg) translate(-36px, 12px); z-index: 1; }
+  .gallery-card.stack-right { transform: rotate(6deg) translate(36px, -12px); z-index: 2; }
   .gallery-card.active {
-    transform: rotate(0deg) translate(0, 0) scale(1.04) !important;
-    z-index: 10 !important;
+    transform: rotate(0deg) translate(0, 0) scale(1.04);
+    z-index: 10;
     box-shadow: 0 24px 48px rgba(0, 0, 0, 0.4);
   }
   .gallery-card:hover {
@@ -91,11 +121,22 @@
   }
 
   @media (max-width: 640px) {
+    .gallery-wrap {
+      gap: 10px;
+    }
+    .gallery-nav-btn {
+      width: 34px;
+      height: 34px;
+    }
+    .gallery-nav-btn svg {
+      width: 16px;
+      height: 16px;
+    }
     .screenshot-gallery {
       height: 340px;
     }
-    .gallery-card.stack-0 { transform: rotate(-5deg) translate(-20px, 8px); }
-    .gallery-card.stack-2 { transform: rotate(5deg) translate(20px, -8px); }
+    .gallery-card.stack-left { transform: rotate(-5deg) translate(-20px, 8px); }
+    .gallery-card.stack-right { transform: rotate(5deg) translate(20px, -8px); }
   }
 
   @media (max-width: 900px) {
@@ -187,19 +228,27 @@
   <div class="container reveal">
     <span class="eyebrow">App Interface</span>
     <h2 style="margin-top: 14px; margin-bottom: 32px;">Three tabs, one library</h2>
-    <div class="screenshot-gallery" id="screenshotGallery">
-      <div class="gallery-card stack-0">
-        <img src="https://rekluzlabs.github.io/bywaysmedia/Tempo_2026-08-29_23-07-36-668.png" alt="Byways Media Hub Videos tab, showing folder-based show and movie posters" />
-        <span class="gallery-caption">Videos — resume-watching &amp; episode tracking</span>
+    <div class="gallery-wrap">
+      <button class="gallery-nav-btn" id="galleryPrev" aria-label="Previous screenshot" type="button">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="screenshot-gallery" id="screenshotGallery">
+        <div class="gallery-card active" data-index="0">
+          <img src="https://rekluzlabs.github.io/bywaysmedia/Tempo_2026-08-29_23-07-36-668.png" alt="Byways Media Hub Videos tab, showing folder-based show and movie posters" />
+          <span class="gallery-caption">Videos — resume-watching &amp; episode tracking</span>
+        </div>
+        <div class="gallery-card" data-index="1">
+          <img src="https://rekluzlabs.github.io/bywaysmedia/Screenshot_20260830_214416_Byways%20Media%20Hub.jpg" alt="Byways Media Hub Photos tab, showing an album grid with slideshow option" />
+          <span class="gallery-caption">Photos — album grid &amp; fullscreen slideshow</span>
+        </div>
+        <div class="gallery-card" data-index="2">
+          <img src="https://rekluzlabs.github.io/bywaysmedia/Tempo_2026-08-29_23-08-25-953.png" alt="Byways Media Hub Audio tab, showing album art for local music" />
+          <span class="gallery-caption">Audio — plays straight from local folders</span>
+        </div>
       </div>
-      <div class="gallery-card stack-1">
-        <img src="https://rekluzlabs.github.io/bywaysmedia/Screenshot_20260830_214416_Byways%20Media%20Hub.jpg" alt="Byways Media Hub Photos tab, showing an album grid with slideshow option" />
-        <span class="gallery-caption">Photos — album grid &amp; fullscreen slideshow</span>
-      </div>
-      <div class="gallery-card stack-2">
-        <img src="https://rekluzlabs.github.io/bywaysmedia/Tempo_2026-08-29_23-08-25-953.png" alt="Byways Media Hub Audio tab, showing album art for local music" />
-        <span class="gallery-caption">Audio — plays straight from local folders</span>
-      </div>
+      <button class="gallery-nav-btn" id="galleryNext" aria-label="Next screenshot" type="button">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
     </div>
   </div>
 </section>
@@ -301,13 +350,47 @@
   (function () {
     var gallery = document.getElementById('screenshotGallery');
     if (!gallery) return;
-    var cards = gallery.querySelectorAll('.gallery-card');
+    var cards = Array.prototype.slice.call(gallery.querySelectorAll('.gallery-card'));
+    var total = cards.length;
+    var currentIndex = 0;
+
+    function render() {
+      cards.forEach(function (card) {
+        var idx = parseInt(card.getAttribute('data-index'), 10);
+        var rel = (idx - currentIndex + total) % total;
+        card.classList.remove('active', 'stack-left', 'stack-right');
+        if (rel === 0) {
+          card.classList.add('active');
+        } else if (rel === 1) {
+          card.classList.add('stack-right');
+        } else {
+          card.classList.add('stack-left');
+        }
+      });
+    }
+
+    function goTo(idx) {
+      currentIndex = ((idx % total) + total) % total;
+      render();
+    }
+
     cards.forEach(function (card) {
       card.addEventListener('click', function () {
-        cards.forEach(function (c) { c.classList.remove('active'); });
-        card.classList.add('active');
+        var idx = parseInt(card.getAttribute('data-index'), 10);
+        if (idx === currentIndex) {
+          goTo(currentIndex + 1);
+        } else {
+          goTo(idx);
+        }
       });
     });
+
+    var prevBtn = document.getElementById('galleryPrev');
+    var nextBtn = document.getElementById('galleryNext');
+    if (prevBtn) prevBtn.addEventListener('click', function () { goTo(currentIndex - 1); });
+    if (nextBtn) nextBtn.addEventListener('click', function () { goTo(currentIndex + 1); });
+
+    render();
   })();
 </script>
 </body>
