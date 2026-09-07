@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Rekluz Labs — Independent Android Software Studio</title>
-<meta name="description" content="Rekluz Labs is an indie Android software studio in Vancouver, CANADA, building privacy-first, ad-free applications engineered to last — including Nikakudori Mahjong, Akachan's Adventures, NarraWeave, MakoRevive, and Temporatic." />
+<meta name="description" content="Rekluz Labs is an indie Android software studio in Vancouver, CANADA, building privacy-first, ad-free applications engineered to last — including Nikakudori Mahjong, Akachan's Adventures, NarraWeave, MakoRevive, Temporatic, and Byways Media Hub." />
 <meta property="og:title" content="Rekluz Labs — Independent Android Software Studio" />
 <meta property="og:description" content="Privacy by architecture, not by policy. Independent Android software built without compromise." />
 <meta property="og:type" content="website" />
@@ -69,6 +69,13 @@
   a.product-status {
     text-decoration: none;
     cursor: pointer;
+  }
+
+  /* "Closed testing" badge — for apps not yet on Google Play but further along than "in development" */
+  .product-status.is-testing {
+    background: rgba(52, 211, 153, 0.1);
+    border-color: rgba(52, 211, 153, 0.3);
+    color: #34d399;
   }
 
   /* Highlighted outline on hover, in addition to the existing card animation */
@@ -147,6 +154,7 @@
     <span>NarraWeave</span>
     <span>MakoRevive</span>
     <span>Temporatic</span>
+    <span>Byways Media Hub</span>
     <span>Vancouver, BC</span>
   </div>
 </div>
@@ -330,6 +338,28 @@
     <img class="product-card-image-side" src="indevelopment/temporatic_1.jpg" alt="Temporatic screenshot showing watermark and app controls" />
   </div>
 </article>
+
+      <!-- ================= BYWAYS MEDIA HUB ================= -->
+      <article class="product-card">
+        <div class="product-card-row">
+          <div class="product-card-text">
+            <div class="product-top">
+              <div>
+                <span class="product-kicker">App</span>
+              </div>
+              <a class="product-status is-testing" href="mailto:rekluzlabs@gmail.com">Coming Soon</a>
+            </div>
+            <h3>Byways Media Hub</h3>
+            <p>An offline portable media powerhouse: video, photos & music, no cloud needed. Plays your personal media collections straight from local storage, SD cards, or USB drives — organized into clean libraries with zero cloud dependencies.</p>
+            <a class="product-link" href="mailto:rekluzlabs@gmail.com">
+              Email Developer to Join Testing
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+          <img class="product-card-image-side" src="https://rekluzlabs.github.io/bywaysmedia/byways_ad.jpg" alt="Byways Media Hub showcase graphic" />
+        </div>
+      </article>
+
     </div>
 
     <!-- ================= APPS IN DEVELOPMENT LINK ================= -->
@@ -438,6 +468,7 @@
           <li><a href="#apps">NarraWeave</a></li>
           <li><a href="#apps">MakoRevive</a></li>
           <li><a href="#apps">Temporatic</a></li>
+          <li><a href="#apps">Byways Media Hub</a></li>
         </ul>
       </div>
       <div class="footer-col">
