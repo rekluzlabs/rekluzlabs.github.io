@@ -159,3 +159,14 @@
     });
   });
 })();
+
+// Cloudflare Web Analytics — injected here so every page that loads main.js
+// gets the beacon automatically, instead of pasting the snippet into every
+// HTML file by hand.
+(function () {
+  var beacon = document.createElement("script");
+  beacon.type = "module";
+  beacon.src = "https://static.cloudflareinsights.com/beacon.min.js";
+  beacon.setAttribute("data-cf-beacon", '{"token": "0c23be45c4a0464aa7a467bf9286dfa2"}');
+  document.head.appendChild(beacon);
+})();
