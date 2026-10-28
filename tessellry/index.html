@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Tessellry: Photo &amp; Sprite Studio | Rekluz Labs</title>
+<meta name="description" content="Tessellry splits scanned sheets into individual tiles, cards, stamps, sprites, and faces, and builds print-ready contact sheets from your own photos. Everything runs on your device with no account and no cloud." />
+<meta property="og:title" content="Tessellry: Photo &amp; Sprite Studio | Rekluz Labs" />
+<meta property="og:image" content="../assets/images/og-image.jpg" />
+<link rel="icon" type="image/png" href="../assets/images/favicon.png" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;1,500;1,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../assets/css/style.css" />
+
+<style>
+  .hero-flex-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 48px;
+  }
+  .hero-text-side { flex: 1.2; min-width: 280px; }
+  .hero-image-side { flex: 0.8; display: flex; justify-content: center; align-items: center; }
+  .hero-app-image {
+    max-width: 100%;
+    max-height: 520px;
+    height: auto;
+    border-radius: 16px;
+    box-shadow: 0 24px 46px rgba(0,0,0,0.55);
+    object-fit: contain;
+  }
+  .screenshot-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 24px;
+    margin-top: 32px;
+  }
+  .gallery-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 12px;
+    text-align: center;
+    transition: transform 0.35s var(--ease), border-color 0.35s var(--ease);
+  }
+  .gallery-card:hover { transform: translateY(-4px); border-color: var(--gold); }
+  .gallery-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    aspect-ratio: 9/16;
+    object-fit: contain;
+    background: #111;
+    display: block;
+  }
+  .gallery-caption {
+    display: block;
+    margin-top: 12px;
+    font-size: 13.5px;
+    color: var(--text-dim);
+  }
+  @media (max-width: 900px) {
+    .hero-flex-container { flex-direction: column-reverse; gap: 32px; }
+    .hero-text-side, .hero-image-side { width: 100%; }
+    .hero-app-image { max-height: 420px; }
+  }
+
+  /* Closed-testing banner is informational, not a link yet */
+  .status-banner.is-testing { cursor: default; }
+</style>
+</head>
+<body>
+
+<nav class="nav is-scrolled" id="nav">
+  <div class="container">
+    <a href="../index.html" class="brand">
+      <img src="../assets/images/mark-transparent.png" alt="Rekluz Labs mark" />
+      Rekluz Labs
+    </a>
+    <div class="nav-menu" id="navMenu">
+      <div class="nav-links">
+        <a href="../index.html#about">Studio</a>
+        <a href="../index.html#principles">Principles</a>
+        <a href="../mission.html">Values</a>
+        <a href="../index.html#apps">Apps</a>
+        <a href="../index.html#trust">Policies</a>
+      </div>
+      <div class="nav-actions">
+        <a class="btn btn-primary" href="../index.html#apps">Explore Our Apps</a>
+      </div>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7h16M4 12h16M4 17h16" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+</nav>
+
+<header class="page-hero" style="padding-top: 80px;">
+  <div class="container hero-flex-container">
+    <div class="hero-text-side">
+      <a class="back-link" href="../index.html#apps" style="color: var(--gold); fill: none;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 16px; height: 16px; transform: scaleX(-1); vertical-align: middle; margin-right: 4px;"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Back to apps
+      </a>
+      <span class="eyebrow" style="margin-top: 12px; display: block;">App · In Closed Testing</span>
+      <h1>Sheets into tiles. Photos into sheets.</h1>
+      <p class="lede">Tessellry works in both directions. Split a scanned or photographed sheet into clean, individual tiles, cards, stamps, sprites, or faces, or combine your own photos into a print-ready contact sheet. It all runs on your phone, with no account and nothing uploaded.</p>
+      <span class="status-banner is-testing"><span class="status-dot"></span>Closed testing now · Google Play release to follow</span>
+    </div>
+
+    <div class="hero-image-side">
+      <img src="tessellry_home.png" alt="Tessellry home screen with two options: Split a Sheet and Create a Contact Sheet" class="hero-app-image" />
+    </div>
+  </div>
+</header>
+
+<section class="section" style="padding-bottom:60px;">
+  <div class="container feature-grid reveal">
+    <div class="feature-card">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z" stroke-linejoin="round"/></svg>
+      <h4>Split a sheet</h4>
+      <p>Load a scan or photo of a sheet and Tessellry finds each tile, names it, and exports it as its own image. Great for sprite sheets, game tiles, stamps, and cards.</p>
+    </div>
+    <div class="feature-card">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16v16H4z" stroke-linejoin="round"/><path d="M4 9h16M4 15h16M9 4v16M15 4v16" stroke-linecap="round"/></svg>
+      <h4>Create a contact sheet</h4>
+      <p>Pick up to 56 photos and Tessellry arranges them into a tidy grid, ready to print or share, in a range of standard sheet sizes.</p>
+    </div>
+    <div class="feature-card">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l8 3.5v6c0 5-3.4 8.7-8 10.5-4.6-1.8-8-5.5-8-10.5v-6L12 2z" stroke-linejoin="round"/></svg>
+      <h4>Nothing leaves the device</h4>
+      <p>Your photos and sheets are processed locally. There is no account, no cloud step, and no tracking, and it works without an internet connection.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top: 0; padding-bottom: 60px;">
+  <div class="container reveal">
+    <span class="eyebrow">App Interface</span>
+    <h2 style="margin-top: 14px; margin-bottom: 32px;">A closer look at Tessellry</h2>
+    <div class="screenshot-gallery">
+      <div class="gallery-card">
+        <img src="tessellry_split.png" alt="Split a Sheet workspace showing a sheet of Mahjong tiles, a tile template, and buttons for names, layout, and export" loading="lazy" />
+        <span class="gallery-caption">Split a Sheet: 50 tiles found and ready to export</span>
+      </div>
+      <div class="gallery-card">
+        <img src="tessellry_contact.png" alt="Contact Sheet screen with a reorderable list of selected photos and an Export Contact Sheet button" loading="lazy" />
+        <span class="gallery-caption">Contact Sheet: choose, reorder, and export</span>
+      </div>
+      <div class="gallery-card">
+        <img src="tessellry_settings.png" alt="Tessellry settings for color theme, output format, tile resolution, and filenames" loading="lazy" />
+        <span class="gallery-caption">Settings for format, size, and filenames</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0;">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Split a Sheet</span>
+      <h2>From one scan to a folder of clean tiles.</h2>
+      <p>Four simple steps, with a gentle glow in the app pointing out what to tap next.</p>
+    </div>
+    <div class="feature-grid reveal">
+      <div class="feature-card">
+        <h4>1. Load your sheet</h4>
+        <p>Choose a scanned or photographed sheet, then pick <strong>Tiles</strong> to find square or rectangular items, or <strong>Faces</strong> to find people in group photos.</p>
+      </div>
+      <div class="feature-card">
+        <h4>2. Choose a template</h4>
+        <p>Keep the plain tiles, or place each one in a built-in frame: picture frame, postage stamp, Mahjong tile, or playing card.</p>
+      </div>
+      <div class="feature-card">
+        <h4>3. Check the names</h4>
+        <p>Tessellry reads any text printed on a tile and uses it as the filename. Review Names lets you fix any of them. You can also turn on optional AI upscaling for small, low-resolution tiles.</p>
+      </div>
+      <div class="feature-card">
+        <h4>4. Adjust and export</h4>
+        <p>The Layout Adjuster lets you fine-tune size, margins, position, and rotation. Then export every tile in one go.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0;">
+  <div class="container two-col">
+    <div class="reveal">
+      <span class="eyebrow">Create a Contact Sheet</span>
+      <h2 style="font-size: clamp(24px,3vw,32px); margin-top:14px;">Your photos, laid out for print.</h2>
+      <p style="margin-top:16px; color:var(--text-dim); font-size:15.5px;">Select up to 56 photos, then hold and drag to put them in the order you want. Tessellry works out the grid for you and numbers each photo to match its place on the sheet. Name the file, tap export, and you have a single image ready for printing, proofing, or sharing.</p>
+    </div>
+    <div class="reveal">
+      <ul class="spec-list">
+        <li><span>Photos per sheet</span><span>Up to 56</span></li>
+        <li><span>Sheet sizes</span><span>Square · US Letter · A4 · A5 · B5</span></li>
+        <li><span>Card sizes</span><span>Business card · Recipe card</span></li>
+        <li><span>Layout</span><span>Automatic grid, drag to reorder</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0;">
+  <div class="container two-col">
+    <div class="reveal">
+      <span class="eyebrow">Who it's for</span>
+      <h2 style="font-size: clamp(24px,3vw,32px); margin-top:14px;">Made for anyone with a lot of little images.</h2>
+      <p style="margin-top:16px; color:var(--text-dim); font-size:15.5px;">Whether you are digitizing a collection or preparing prints, Tessellry saves the hours of cropping, naming, and arranging you would otherwise do by hand.</p>
+    </div>
+    <div class="reveal">
+      <div class="pill-row">
+        <span class="pill">Sprite &amp; tile sheets</span>
+        <span class="pill">Board game &amp; card makers</span>
+        <span class="pill">Stamp &amp; card collectors</span>
+        <span class="pill">Family photo archives</span>
+        <span class="pill">Photographers</span>
+        <span class="pill">Designers</span>
+      </div>
+      <ul class="spec-list">
+        <li><span>Export formats</span><span>PNG · WebP · JPEG · PDF</span></li>
+        <li><span>Tile size</span><span>512 px default, larger available</span></li>
+        <li><span>Filenames</span><span>Automatic, or your own prefix</span></li>
+        <li><span>Look</span><span>Several color themes</span></li>
+        <li><span>Processing</span><span>On-device only</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0;">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Good to know</span>
+      <h2>A few things worth knowing.</h2>
+    </div>
+    <div class="prose reveal">
+      <p>Tessellry is currently in closed testing and is headed to Google Play. Like every Rekluz Labs app, it will be free, with no ads, no subscriptions, and no in-app purchases.</p>
+      <p>Detection works best on clear, evenly lit scans. If a tile is missed or a name is wrong, you can correct it before exporting using Review Names and the Layout Adjuster. AI upscaling is optional and asks more of your phone, so switch it on only when you need sharper results from small tiles.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section cta reveal">
+  <div class="container">
+    <h2>Tessellry is <br>coming to the Play Store.</h2>
+    <p>The app is in closed testing now. <br>Have questions? Email the developer directly at <a href="mailto:rekluzlabs@gmail.com">rekluzlabs@gmail.com</a>.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="../index.html#apps">See Other Apps</a>
+      <a class="btn btn-ghost" href="../mission.html">Our Philosophy</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">
+          <img src="../assets/images/mark-transparent.png" alt="Rekluz Labs mark" />
+          Rekluz Labs
+        </div>
+        <p class="footer-tagline">Independent Android software, built without compromise. Vancouver, BC.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Apps</h5>
+        <ul>
+          <li><a href="../index.html#apps">Nikakudori Mahjong</a></li>
+          <li><a href="../index.html#apps">Akachan's Adventures</a></li>
+          <li><a href="../narraweave/">NarraWeave</a></li>
+          <li><a href="../makorevive/">MakoRevive</a></li>
+          <li><a href="../tessellry/">Tessellry</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Studio</h5>
+        <ul>
+          <li><a href="../index.html#about">About</a></li>
+          <li><a href="../index.html#principles">Principles</a></li>
+          <li><a href="../mission.html">Mission Statement</a></li>
+          <li><a href="https://github.com/RekluzLabs" target="_blank" rel="noopener">GitHub</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Policies</h5>
+        <ul>
+          <li><a href="../mission.html">Mission Statement</a></li>
+          <li><a href="../makorevive/terms_of_use.html">MakoRevive Terms</a></li>
+          <li><a href="../AkachansAdventures/privacy-policy.html">Akachan's Privacy Policy</a></li>
+          <li><a href="mailto:rekluzlabs@gmail.com">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Rekluz Labs. Vancouver, BC.</span>
+      <span>Zero ads. Zero trackers. Zero compromises.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/js/main.js"></script>
+</body>
+</html>
