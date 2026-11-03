@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tessellry User Manual</title>
+<style>
+/*THEME_VARS_START*/
+:root {
+  --bg: #14120d;
+  --surface: #1e1b13;
+  --text: #e9e4d6;
+  --muted: #a39d8b;
+  --accent: #d4af37;
+  --border: #3a3526;
+  --code-bg: #0e0c08;
+}
+/*THEME_VARS_END*/
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 16px/1.65 -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+.tm-wrap { max-width: 820px; margin: 0 auto; padding: 24px 16px 64px; }
+h1 { font-size: 2rem; margin: 0 0 4px; color: var(--accent); line-height: 1.2; }
+h2 {
+  font-size: 1.4rem; margin: 2.4rem 0 .6rem; padding-bottom: .3rem;
+  border-bottom: 1px solid var(--border); color: var(--accent);
+}
+h3 { font-size: 1.1rem; margin: 1.6rem 0 .4rem; }
+p, li { margin: .5rem 0; }
+ul, ol { padding-left: 1.4rem; }
+a { color: var(--accent); }
+.tm-sub { color: var(--muted); margin: 0 0 1rem; }
+.tm-toc {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 8px; padding: 12px 20px; margin: 1.2rem 0;
+}
+.tm-toc ol { margin: 0; }
+.tm-toc li { margin: .25rem 0; }
+.tm-table { overflow-x: auto; margin: 1rem 0; }
+table { border-collapse: collapse; width: 100%; font-size: .93rem; }
+th, td { border: 1px solid var(--border); padding: 8px 10px; text-align: left; vertical-align: top; }
+th { background: var(--surface); color: var(--accent); }
+code {
+  background: var(--code-bg); padding: 1px 5px; border-radius: 4px;
+  font-family: Consolas, Menlo, monospace; font-size: .9em;
+}
+pre {
+  background: var(--code-bg); border: 1px solid var(--border);
+  border-radius: 8px; padding: 12px; overflow-x: auto; margin: 1rem 0;
+}
+pre code { padding: 0; background: none; }
+.tm-foot { color: var(--muted); font-size: .9rem; margin-top: 2.5rem; border-top: 1px solid var(--border); padding-top: 1rem; }
+</style>
+</head>
+<body>
+<div class="tm-wrap">
+
+<h1>Tessellry User Manual</h1>
+<p class="tm-sub">Version 1.5.0 &middot; by Rekluz Labs</p>
+
+<p>Tessellry (formerly Tile Harvest) is an Android app for taking grid images apart and putting photo grids together. Everything runs on your device. Nothing is uploaded, and no account is needed.</p>
+
+<p><strong>What you can do with it:</strong></p>
+<ul>
+  <li><strong>Split a Sheet:</strong> turn one image full of items (sprite sheets, scanned cards, mahjong tiles, stamps, photo grids) into individual, named image files, a ZIP, or a game-ready sprite atlas.</li>
+  <li><strong>Create a Contact Sheet:</strong> combine up to 56 photos into one numbered, print-ready grid image or PDF.</li>
+</ul>
+
+<nav class="tm-toc">
+  <strong>Contents</strong>
+  <ol>
+    <li><a href="#getting-started">Getting Started</a></li>
+    <li><a href="#split">Split a Sheet</a></li>
+    <li><a href="#export">Exporting Tiles</a></li>
+    <li><a href="#atlas">Sprite Atlas Export</a></li>
+    <li><a href="#contact">Create a Contact Sheet</a></li>
+    <li><a href="#settings">Settings</a></li>
+    <li><a href="#troubleshooting">Troubleshooting</a></li>
+    <li><a href="#privacy">Privacy</a></li>
+    <li><a href="#quickref">Quick Reference</a></li>
+  </ol>
+</nav>
+
+<h2 id="getting-started">1. Getting Started</h2>
+<p>When you open Tessellry you will see two options: <strong>Split a Sheet</strong> and <strong>Create a Contact Sheet</strong>. A short tutorial appears on first launch. You can skip it at any time. <strong>Settings</strong> is available from the same screen.</p>
+<p><strong>Sharing into Tessellry:</strong> you can send images to Tessellry from your gallery or any other app using Android's Share menu. One image opens in Split a Sheet. Several images open in Create a Contact Sheet.</p>
+<p><strong>Saved work:</strong> Tessellry remembers your tile names and edge edits for each sheet. If you reopen the same sheet, your work is restored. Data stays on your device and is removed if you clear the app's data or uninstall.</p>
+<p><strong>Permissions:</strong> Tessellry uses Android's built-in pickers, so it only sees the images and folders you choose.</p>
+
+<h2 id="split">2. Split a Sheet</h2>
+
+<h3>Step 1: Choose a detection mode</h3>
+<ul>
+  <li><strong>Tiles</strong> (default): finds rectangular tiles in a grid. Best for sprite sheets, cards, mahjong tiles, stamps, and labels.</li>
+  <li><strong>Faces</strong>: finds faces and builds each tile around them. Best for class photos, ID-photo sheets, and portrait grids.</li>
+</ul>
+<p>Switching modes after loading a sheet re-runs detection and discards any manual edits (Tessellry asks first).</p>
+
+<h3>Step 2: Load a sheet</h3>
+<p>Tap <strong>Sheet</strong> to pick an image, or <strong>Sample Sheet</strong> to try a built-in example. Samples are a good way to learn the controls.</p>
+
+<h3>Step 3: Choose a template</h3>
+<p>A template is a frame that each tile is placed into. Tap <strong>Template</strong> to choose one:</p>
+<div class="tm-table"><table>
+  <tr><th>Template</th><th>Has name label</th></tr>
+  <tr><td>Tessellry Frame</td><td>No</td></tr>
+  <tr><td>Picture Frame (default)</td><td>No</td></tr>
+  <tr><td>Postage Stamp</td><td>Yes</td></tr>
+  <tr><td>Mahjong Tile</td><td>Yes</td></tr>
+  <tr><td>Playing Card</td><td>Yes</td></tr>
+  <tr><td>Picture Frame Landscape</td><td>No</td></tr>
+  <tr><td>Mahjong Tile Landscape</td><td>Yes</td></tr>
+</table></div>
+<p>You can also load your own template image. If its opening is in the wrong place, adjust it with <strong>Frame Opening</strong> in the Layout Adjuster.</p>
+<p>Templates with a label area print each tile's name onto the exported tile.</p>
+
+<h3>Step 4: Review the results</h3>
+<p>Tessellry detects the tiles and then reads the title on each one using on-device text recognition (OCR). On the review screen you can:</p>
+<ul>
+  <li><strong>Review Names:</strong> correct any names OCR got wrong. Names are used in filenames and printed on label templates.</li>
+  <li><strong>Tick or untick tiles:</strong> unticked tiles are skipped on export. <strong>Select All</strong> and <strong>Unselect All</strong> change every tile at once.</li>
+  <li><strong>Re-run OCR:</strong> try name recognition again.</li>
+</ul>
+
+<h3>Step 5: Fix problems (optional)</h3>
+<p><strong>Edit Tile Edges</strong> lets you correct detection mistakes:</p>
+<ul>
+  <li>Drag a corner to reshape a tile.</li>
+  <li>Pinch to zoom and drag the background to pan.</li>
+  <li>Use the arrow controls to nudge a corner by one pixel.</li>
+  <li>Delete false detections, restore them, or use Undo and Redo.</li>
+</ul>
+<p><strong>Layout Adjuster (Edit All)</strong> changes every tile at once. Swipe between tiles to preview the effect, then tap <strong>Apply to All Tiles</strong>.</p>
+<div class="tm-table"><table>
+  <tr><th>Control</th><th>What it does</th></tr>
+  <tr><td>Artwork Scale</td><td>Zoom the artwork inside the frame</td></tr>
+  <tr><td>Horizontal / Vertical Shift</td><td>Move the artwork</td></tr>
+  <tr><td>Rotation</td><td>Rotate the artwork</td></tr>
+  <tr><td>Trim (Left, Right, Top, Bottom)</td><td>Crop unwanted edges from the source, such as scan borders</td></tr>
+  <tr><td>Frame Opening</td><td>Move the template's window (applies to all tiles)</td></tr>
+  <tr><td>Reset Defaults / Reset Opening</td><td>Undo your changes</td></tr>
+</table></div>
+<p><strong>Tune</strong> adjusts a single tile. Use <strong>Previous Tile</strong> and <strong>Next Tile</strong> to move through the sheet. Tuned tiles show <strong>Tune &bull;</strong> on the review screen.</p>
+<p>A good workflow: use the Layout Adjuster to get most tiles right, then use Tune for the few that are still off.</p>
+
+<h3>Step 6: AI Upscale (optional)</h3>
+<p>Turn on <strong>AI Upscale</strong> to sharpen small or low-resolution tiles during export. Tessellry picks the right model automatically: one for graphics and illustrations (Tiles mode), another for photos of people (Faces mode).</p>
+<p>Upscaling is slow and uses battery, so leave it off if your source is already sharp. It is not used for atlas exports.</p>
+
+<h2 id="export">3. Exporting Tiles</h2>
+<p>Tap <strong>Export Tiles</strong> and choose a destination:</p>
+<ul>
+  <li><strong>Files:</strong> each tile is saved as its own image in a folder you pick.</li>
+  <li><strong>ZIP:</strong> all tiles are packed into one archive, easy to share. Default name: <code>Tessellry_yyyyMMdd_HHmm.zip</code>.</li>
+  <li><strong>Atlas:</strong> a packed sprite sheet plus a JSON file, for game developers (see <a href="#atlas">Section 4</a>).</li>
+</ul>
+<p><strong>File naming:</strong> files are named <code>&lt;prefix&gt;_&lt;name&gt;.&lt;ext&gt;</code>, where the name is the first 6 letters and numbers of the tile's name. For example, a tile named "Blue Dragon" becomes <code>tileset2_bluedr.png</code>. Tiles with no name become <code>tile_1</code>, <code>tile_2</code>, and so on. You can change the prefix in Settings.</p>
+<p><strong>If a file already exists,</strong> Tessellry asks whether to <strong>Overwrite</strong>, <strong>Rename</strong>, <strong>Delete existing</strong>, or <strong>Do Nothing</strong>. Tick <strong>Apply to all remaining conflicts</strong> to use your choice for the whole batch.</p>
+<p>After exporting, tap <strong>Share</strong> to send the files or <strong>Gallery</strong> to check them.</p>
+<p><strong>Output formats</strong> (set in Settings):</p>
+<div class="tm-table"><table>
+  <tr><th>Format</th><th>Notes</th></tr>
+  <tr><td>PNG</td><td>Lossless, keeps transparency. The safe default.</td></tr>
+  <tr><td>WEBP</td><td>Smaller files, keeps transparency. Needs Android 11 or newer (falls back to PNG on older devices).</td></tr>
+  <tr><td>JPEG</td><td>Compact, but transparent areas become white.</td></tr>
+  <tr><td>PDF</td><td>One page per tile, for printing.</td></tr>
+</table></div>
+
+<h2 id="atlas">4. Sprite Atlas Export</h2>
+<p>An atlas packs many sprites into one or more PNG images, with a JSON file that records where each sprite sits. Game engines load it as a single asset and look sprites up by name. If you are not making a game, you can skip this section.</p>
+<p><strong>What an atlas contains:</strong> the raw artwork only. The template frame, labels, and AI upscaling are not included. Pages are always PNG.</p>
+<p><strong>Atlas settings:</strong></p>
+<div class="tm-table"><table>
+  <tr><th>Setting</th><th>Options</th><th>Default</th><th>Purpose</th></tr>
+  <tr><td>Padding</td><td>0, 1, 2, 4 px</td><td>2 px</td><td>Space between sprites to prevent visible seams</td></tr>
+  <tr><td>Extrude edges</td><td>On / Off</td><td>On</td><td>Repeats edge pixels into the padding to prevent bleeding</td></tr>
+  <tr><td>Power of two</td><td>On / Off</td><td>Off</td><td>Rounds page sizes to 512, 1024, 2048, and so on, for engines that need it</td></tr>
+  <tr><td>Max size</td><td>1024, 2048, 4096 px</td><td>2048 px</td><td>Largest size of a single page</td></tr>
+</table></div>
+<p><strong>Output files:</strong></p>
+<pre><code>Tessellry_20261103_1420_atlas.json
+Tessellry_20261103_1420_atlas_0.png
+Tessellry_20261103_1420_atlas_1.png</code></pre>
+<p>Keep the JSON and all PNG pages together in the same folder. If your tiles do not fit on one page, Tessellry creates more.</p>
+<p><strong>Sprite names:</strong> your tile names become the sprite names in the JSON. Spaces and symbols become underscores ("Hero Sprite!" becomes <code>Hero_Sprite</code>), duplicates get <code>_2</code>, <code>_3</code>, and blank names become <code>tile_001</code>, <code>tile_002</code>.</p>
+<p><strong>Engine compatibility:</strong> the JSON uses the TexturePacker/Phaser "JSON Hash" style. It works directly with Phaser 3 and PixiJS. Other engines such as Unity, Godot, and libGDX need a small importer script or plugin. Sprites are never rotated or trimmed, so conversion is straightforward.</p>
+<p>Phaser 3 example:</p>
+<pre><code>this.load.atlas('tiles', 'atlas_0.png', 'atlas.json');
+this.add.image(100, 100, 'tiles', 'Blue_Dragon');</code></pre>
+<p>If you see <strong>"Not enough memory to build the atlas,"</strong> lower Max size.</p>
+
+<h2 id="contact">5. Create a Contact Sheet</h2>
+<p>A contact sheet arranges many photos in one grid, useful for client proofs, print layouts, catalogs, and mood boards.</p>
+<ol>
+  <li><strong>Add Photos:</strong> select up to 56 photos. Use <strong>Add More</strong> to add further batches.</li>
+  <li><strong>Reorder:</strong> hold and drag a photo to move it. The grid fills left to right, top to bottom, and the printed numbers follow this order. Tap a photo to view it fullscreen.</li>
+  <li><strong>Canvas size:</strong> choose a preset (table below).</li>
+  <li><strong>Layout:</strong>
+    <ul>
+      <li><strong>Show numbers under each photo:</strong> adds a number label to each photo, handy for proofing.</li>
+      <li><strong>Margin:</strong> space around the edge of the sheet (0 to 6%, default 2%).</li>
+      <li><strong>Gutter:</strong> space between photos (0 to 6%, default 1.2%).</li>
+    </ul>
+  </li>
+  <li><strong>File name and format:</strong> choose PNG, WEBP, JPEG, or PDF. This is separate from the Split a Sheet format setting.</li>
+  <li><strong>Export Contact Sheet:</strong> pick a folder. When it finishes, tap <strong>View in Gallery</strong> to check it.</li>
+</ol>
+<div class="tm-table"><table>
+  <tr><th>Preset</th><th>Size (px)</th></tr>
+  <tr><td>Square</td><td>3000 &times; 3000</td></tr>
+  <tr><td>8.5 &times; 11 (US Letter)</td><td>2550 &times; 3300</td></tr>
+  <tr><td>A4</td><td>2480 &times; 3508</td></tr>
+  <tr><td>A5</td><td>1748 &times; 2480</td></tr>
+  <tr><td>B5</td><td>2079 &times; 2953</td></tr>
+  <tr><td>4 &times; 6</td><td>1800 &times; 1200</td></tr>
+  <tr><td>3 &times; 5</td><td>1500 &times; 900</td></tr>
+  <tr><td>Business Card</td><td>1050 &times; 600</td></tr>
+</table></div>
+<p>The grid size is chosen automatically to be roughly square. Photos are never cropped: each one is fitted inside its cell on a white background.</p>
+
+<h2 id="settings">6. Settings</h2>
+<div class="tm-table"><table>
+  <tr><th>Setting</th><th>Options</th></tr>
+  <tr><td><strong>Language</strong></td><td>System default, or choose from 21 languages</td></tr>
+  <tr><td><strong>Theme</strong></td><td>Mahjong Tile, Mako Blue, Narra Green, Akachan's Glow, Temporatic Steel, RekluzLabs Gold (default)</td></tr>
+  <tr><td><strong>Output Format</strong></td><td>PNG, WEBP, JPEG, PDF</td></tr>
+  <tr><td><strong>Output Tile Resolution</strong></td><td>128, 256, or 512 px (default). Applies to Files and ZIP exports.</td></tr>
+  <tr><td><strong>Filename Convention</strong></td><td>Turn on <strong>Use custom filename pattern</strong> to replace the <code>tileset2</code> prefix with your own</td></tr>
+  <tr><td><strong>About</strong></td><td>Version, Privacy Policy, and contact link</td></tr>
+</table></div>
+<p>Resolution guide: 128 px for small icons, 256 px for general game assets, 512 px for print or high-resolution screens. Tiles keep their shape and are never stretched to a square.</p>
+
+<h2 id="troubleshooting">7. Troubleshooting</h2>
+<div class="tm-table"><table>
+  <tr><th>Problem</th><th>What to try</th></tr>
+  <tr><td>"No tiles detected"</td><td>Switch between Tiles and Faces mode. Use a cleaner, straighter scan with good contrast between tiles and background.</td></tr>
+  <tr><td>Too many tiles detected</td><td>Untick the extras, or delete them in Edit Tile Edges.</td></tr>
+  <tr><td>A tile is cut off</td><td>Drag its corners outward in Edit Tile Edges.</td></tr>
+  <tr><td>Artwork is off-center</td><td>Use Layout Adjuster for the whole sheet, or Tune for one tile.</td></tr>
+  <tr><td>Frame opening looks wrong</td><td>Adjust Frame Opening in the Layout Adjuster, or tap Reset Opening.</td></tr>
+  <tr><td>Names are wrong</td><td>Edit them in Review Names, or tap Re-run OCR.</td></tr>
+  <tr><td>Export is slow</td><td>Turn off AI Upscale, lower the tile resolution, or export fewer tiles.</td></tr>
+  <tr><td>Seams in atlas sprites</td><td>Raise Padding to 4 and turn on Extrude edges.</td></tr>
+  <tr><td>"No tiles fit within the maximum atlas size"</td><td>Raise Max size.</td></tr>
+  <tr><td>Transparent areas turned white</td><td>JPEG does not support transparency. Use PNG or WEBP.</td></tr>
+  <tr><td>WEBP not applied</td><td>Your device is below Android 11, so PNG was used.</td></tr>
+  <tr><td>Shared image did not open</td><td>Share it again. Images over 64 MB cannot be received.</td></tr>
+</table></div>
+<p><strong>Tips for better results:</strong></p>
+<ul>
+  <li>Scan or photograph the sheet straight, with no shadows, and leave a little background around the tiles.</li>
+  <li>Check the tile count before exporting. If you expect 20 and see 18, open Edit Tile Edges.</li>
+  <li>Finish your manual edits before switching detection modes.</li>
+</ul>
+
+<h2 id="privacy">8. Privacy</h2>
+<p>Tessellry works entirely on your device. It has no internet permission, no account, no analytics, and no ads. Tile detection, text recognition, face detection, and AI upscaling all run locally. The full Privacy Policy is in <strong>Settings &rarr; About &rarr; Privacy Policy</strong>.</p>
+<p>Questions? Contact Rekluz Labs at <a href="mailto:rekluzlabs@gmail.com">rekluzlabs@gmail.com</a>.</p>
+
+<h2 id="quickref">9. Quick Reference</h2>
+<p><strong>Split a Sheet:</strong> choose mode &rarr; load sheet &rarr; pick template &rarr; review names &rarr; fix edges or layout if needed &rarr; export (Files, ZIP, or Atlas).</p>
+<p><strong>Contact Sheet:</strong> add photos &rarr; drag to reorder &rarr; choose canvas &rarr; set margin, gutter, and numbers &rarr; choose format &rarr; export.</p>
+<p><strong>Defaults:</strong></p>
+<div class="tm-table"><table>
+  <tr><th>Setting</th><th>Default</th></tr>
+  <tr><td>Detection mode</td><td>Tiles</td></tr>
+  <tr><td>Template</td><td>Picture Frame</td></tr>
+  <tr><td>Output format</td><td>PNG</td></tr>
+  <tr><td>Tile resolution</td><td>512 px</td></tr>
+  <tr><td>Filename prefix</td><td><code>tileset2</code></td></tr>
+  <tr><td>Atlas</td><td>2 px padding, extrude on, power of two off, 2048 max</td></tr>
+  <tr><td>Contact sheet</td><td>Square, 2% margin, 1.2% gutter, numbers off</td></tr>
+</table></div>
+<p><strong>Limits:</strong> 56 photos per contact sheet, 30 saved sheets of names and edits, 64 MB per shared image.</p>
+
+<p class="tm-foot">Tessellry 1.5.0 &middot; &copy; 2026 Rekluz Labs</p>
+
+</div>
+</body>
+</html>
