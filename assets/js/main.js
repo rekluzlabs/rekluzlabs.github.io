@@ -67,15 +67,30 @@
       targetY = event.clientY;
     }, { passive: true });
 
-    // ---------- Contrail particle system ----------
+    // ---------- Hummingbird shadow contrail (afterimage ghosting) ----------
     var canvas = document.getElementById("contrail");
     var ctx = canvas && canvas.getContext("2d");
     var dpr = Math.min(window.devicePixelRatio || 1, 2);
-    var particles = [];
-    var MAX_PARTICLES = 220;
-    var lastEmit = 0;
-    var lastLogoSample = { x: 0, y: 0 };
+
+    var ghosts = [];
+    var GHOST_LIFE = 900;        // ms each ghost remains visible
+    var GHOST_INTERVAL = 45;     // ms between ghost spawns while moving
+    var MAX_GHOSTS = 24;
+    var lastGhostAt = 0;
+
+    var logoSample = { x: 0, y: 0 };
     var logoSampleInit = false;
+
+    var birdImg = new Image();
+    var birdReady = false;
+    var birdW = 0;
+    var birdH = 0;
+    birdImg.onload = function () {
+      birdReady = true;
+      birdW = birdImg.naturalWidth || 1;
+      birdH = birdImg.naturalHeight || 1;
+    };
+    birdImg.src = "assets/images/rl_goldlogo_t.png";
 
     function sizeCanvas() {
       if (!canvas) return;
@@ -93,50 +108,36 @@
       window.addEventListener("resize", sizeCanvas);
     }
 
-    function spawnParticle(x, y, vx, vy) {
-      if (particles.length >= MAX_PARTICLES) particles.shift();
-      var life = 700 + Math.random() * 500; // ms
-      particles.push({
-        x: x, y: y,
-        vx: vx, vy: vy,
-        born: performance.now(),
-        life: life,
-        size: 2.5 + Math.random() * 2.5
-      });
-    }
-
     function stepContrail(now) {
       if (!ctx) return;
-      ctx.clearRect(0, 0, canvas.width / dpr, canvas.height / dpr);
-      if (!particles.length) return;
-      ctx.globalCompositeOperation = "lighter";
+      var w = canvas.width / dpr;
+      var h = canvas.height / dpr;
+      ctx.clearRect(0, 0, w, h);
+
+      if (!ghosts.length) return;
+      if (!birdReady || !birdW || !birdH) return;
+
       var alive = [];
-      for (var i = 0; i < particles.length; i++) {
-        var p = particles[i];
-        var age = now - p.born;
-        if (age >= p.life) continue;
-        var t = age / p.life;         // 0 → 1
-        var alpha = (1 - t) * 0.55;   // fade out
-        var radius = p.size * (1 + t * 1.6);
+      for (var i = 0; i < ghosts.length; i++) {
+        var g = ghosts[i];
+        var age = now - g.born;
+        if (age >= GHOST_LIFE) continue;
 
-        // gentle drag so the trail settles
-        p.x += p.vx;
-        p.y += p.vy;
-        p.vx *= 0.94;
-        p.vy *= 0.94;
+        var t = age / GHOST_LIFE;         // 0 → 1
+        var alpha = (1 - t) * 0.18;       // start faint, fade to nothing
 
-        var g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, radius);
-        g.addColorStop(0,   "rgba(229, 193, 88, " + alpha + ")");     // gold core
-        g.addColorStop(0.5, "rgba(212, 175, 55, " + alpha * 0.5 + ")");
-        g.addColorStop(1,   "rgba(212, 175, 55, 0)");
+        var drawW = g.size;
+        var drawH = g.size * (birdH / birdW);
+        var dx = g.x - drawW / 2;
+        var dy = g.y - drawH / 2;
 
-        ctx.fillStyle = g;
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, radius, 0, Math.PI * 2);
-        ctx.fill();
-        alive.push(p);
+        ctx.globalAlpha = alpha;
+        ctx.drawImage(birdImg, dx, dy, drawW, drawH);
+        ctx.globalAlpha = 1;
+
+        alive.push(g);
       }
-      particles = alive;
+      ghosts = alive;
     }
 
     function animateAmbient(timestamp) {
@@ -174,39 +175,40 @@
         }
       });
 
-      // Emission & Contrail update
-      if (ctx && timestamp - lastEmit > 16) {
+      // Ghost emission: stamp copies of the bird behind it as it moves.
+      if (ctx && birdReady) {
         var logoEl = document.querySelector(".floating-logo-graphic");
         if (logoEl) {
           var r = logoEl.getBoundingClientRect();
           var lx = r.left + r.width / 2;
           var ly = r.top + r.height / 2;
+
           if (!logoSampleInit) {
-            lastLogoSample.x = lx;
-            lastLogoSample.y = ly;
+            logoSample.x = lx;
+            logoSample.y = ly;
             logoSampleInit = true;
           }
-          var dx = lx - lastLogoSample.x;
-          var dy = ly - lastLogoSample.y;
-          var dist = Math.hypot(dx, dy);
 
-          if (dist > 0.6) {
-            var count = Math.min(3, Math.ceil(dist / 6));
-            for (var k = 0; k < count; k++) {
-              var jitter = 6;
-              spawnParticle(
-                lx + (Math.random() - 0.5) * jitter,
-                ly + (Math.random() - 0.5) * jitter,
-                -dx * 0.15 + (Math.random() - 0.5) * 0.6,
-                -dy * 0.15 + (Math.random() - 0.5) * 0.6
-              );
-            }
-            lastEmit = timestamp;
+          var gdx = lx - logoSample.x;
+          var gdy = ly - logoSample.y;
+          var dist = Math.hypot(gdx, gdy);
+
+          if (dist > 0.8 && timestamp - lastGhostAt > GHOST_INTERVAL) {
+            if (ghosts.length >= MAX_GHOSTS) ghosts.shift();
+            ghosts.push({
+              x: lx,
+              y: ly,
+              born: timestamp,
+              size: r.width * 0.92,
+            });
+            lastGhostAt = timestamp;
           }
-          lastLogoSample.x = lx;
-          lastLogoSample.y = ly;
+
+          logoSample.x = lx;
+          logoSample.y = ly;
         }
       }
+
       stepContrail(timestamp);
 
       ambientFrame = window.requestAnimationFrame(animateAmbient);
@@ -226,7 +228,8 @@
       }
       if (ctx) {
         ctx.clearRect(0, 0, canvas.width / dpr, canvas.height / dpr);
-        particles = [];
+        ghosts = [];
+        logoSampleInit = false;
       }
     }
 
