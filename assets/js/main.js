@@ -48,7 +48,7 @@
     revealEls.forEach(function (el) { el.classList.add("is-visible"); });
   }
 
-  // Mouse following for logo/blob
+  // Ambient background: cursor tracking plus organic drift.
   var animElements = document.querySelectorAll(".glow-blob, .floating-logo-graphic");
   var motionQuery = window.matchMedia
     ? window.matchMedia("(prefers-reduced-motion: reduce)")
@@ -73,6 +73,7 @@
         return;
       }
 
+      // Frame-rate-independent easing keeps the movement consistent.
       var delta = lastTime ? Math.min(timestamp - lastTime, 32) : 16;
       lastTime = timestamp;
       var easing = 1 - Math.pow(1 - 0.04, delta / 16.67);
@@ -86,18 +87,20 @@
 
       animElements.forEach(function (element, index) {
         var isLogo = element.classList.contains("floating-logo-graphic");
-        var speed = parseFloat(element.getAttribute("data-speed")) || (isLogo ? 1.0 : 0.03);
+        // Logo: strong parallax follow (0.6). Blobs: gentle ambient drift (0.03).
+        var speed = parseFloat(element.getAttribute("data-speed")) || (isLogo ? 0.6 : 0.03);
         var phase = index * 2.1;
         var ambientX = isLogo ? 0 : Math.sin(time + phase) * 22;
         var ambientY = isLogo ? 0 : Math.cos(time * 0.9 + phase) * 22;
         var x = moveX * speed + ambientX;
         var y = moveY * speed + ambientY;
 
+        // Set custom properties; let CSS handle centering via calc()
         element.style.setProperty("--float-x", x.toFixed(2) + "px");
         element.style.setProperty("--float-y", y.toFixed(2) + "px");
 
-        // Apply direct transform so it follows the mouse fully
-        if (element.classList.contains("glow-blob") || isLogo) {
+        // Blobs have no centering transform; their CSS transform is supplied here.
+        if (element.classList.contains("glow-blob")) {
           element.style.transform = "translate3d(" +
             x.toFixed(2) + "px, " + y.toFixed(2) + "px, 0)";
         }
@@ -135,7 +138,9 @@
           animElements.forEach(function (element) {
             element.style.removeProperty("--float-x");
             element.style.removeProperty("--float-y");
-            element.style.transform = "";
+            if (element.classList.contains("glow-blob")) {
+              element.style.transform = "";
+            }
           });
         } else {
           startAmbientAnimation();
@@ -170,6 +175,7 @@
       return;
     }
 
+    // Build progress dots
     var dots = [];
     if (dotsWrap) {
       items.forEach(function (_, i) {
@@ -180,6 +186,7 @@
       });
     }
 
+    // Duplicate the first row at the end for a seamless wrap-around
     var clone = items[0].cloneNode(true);
     clone.setAttribute("aria-hidden", "true");
     track.appendChild(clone);
