@@ -820,7 +820,7 @@ footer {
 }
 
 /* ==========================================================================
-   AMBIENT FLUID BACKGROUND & FLOATING GRAPHIC
+   AMBIENT BACKGROUND & CENTERED WATERMARK
    ========================================================================== */
 .ambient-glow-container {
   position: fixed;
@@ -834,9 +834,10 @@ footer {
   position: absolute;
   border-radius: 50%;
   filter: blur(140px);
-  opacity: 0.35;
+  opacity: 0.30;
   mix-blend-mode: screen;
   will-change: transform;
+  transform: translate3d(0, 0, 0);
 }
 
 .blob-1 {
@@ -863,17 +864,26 @@ footer {
   left: 35%;
 }
 
-/* Floating Logo Graphic Layer */
+/*
+ * The logo is centered using its own transform. JavaScript animates only
+ * the --float-x / --float-y custom properties, so it cannot overwrite
+ * the centering transform or depend on the logo's aspect ratio.
+ */
 .floating-logo-graphic {
   position: absolute;
-  top: 25%;
-  right: 12%;
-  width: 320px;
-  max-width: 35vw;
-  opacity: 0.22;
+  top: 50%;
+  left: 50%;
+  width: min(420px, 45vw);
+  margin: 0;
+  opacity: 0.12;
   mix-blend-mode: screen;
   will-change: transform;
-  filter: drop-shadow(0 20px 40px rgba(212, 175, 55, 0.25));
+  transform: translate3d(
+    calc(-50% + var(--float-x, 0px)),
+    calc(-50% + var(--float-y, 0px)),
+    0
+  );
+  filter: drop-shadow(0 25px 50px rgba(212, 175, 55, 0.18));
   pointer-events: none;
 }
 
@@ -882,6 +892,36 @@ footer {
   height: auto;
   display: block;
 }
+
+@media (max-width: 1024px) {
+  .floating-logo-graphic {
+    width: min(300px, 52vw);
+    opacity: 0.09;
+  }
+}
+
+@media (max-width: 480px) {
+  .glow-blob {
+    filter: blur(100px);
+  }
+
+  .floating-logo-graphic {
+    width: min(240px, 58vw);
+    opacity: 0.07;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glow-blob {
+    will-change: auto;
+  }
+
+  .floating-logo-graphic {
+    will-change: auto;
+    transform: translate3d(-50%, -50%, 0);
+  }
+}
+
 
 /* ==========================================================================
    RESPONSIVE MEDIA QUERIES
@@ -907,9 +947,6 @@ footer {
   .footer-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 40px;
-  }
-  .floating-logo-graphic {
-    opacity: 0.12; /* Lighter on smaller screens so it doesn't crowd text */
   }
 }
 
@@ -977,4 +1014,13 @@ footer {
   .ticker-track {
     transition: none;
   }
+  .glow-blob {
+    will-change: auto;
+  }
+  .floating-logo-graphic {
+    will-change: auto;
+  }
 }
+
+3. assets/js/main.js
+JavaScript
