@@ -820,7 +820,7 @@ footer {
 }
 
 /* ==========================================================================
-   AMBIENT FLUID BACKGROUND CLOUDS
+   AMBIENT FLUID BACKGROUND & FLOATING GRAPHIC
    ========================================================================== */
 .ambient-glow-container {
   position: fixed;
@@ -863,6 +863,26 @@ footer {
   left: 35%;
 }
 
+/* Floating Logo Graphic Layer */
+.floating-logo-graphic {
+  position: absolute;
+  top: 25%;
+  right: 12%;
+  width: 320px;
+  max-width: 35vw;
+  opacity: 0.22;
+  mix-blend-mode: screen;
+  will-change: transform;
+  filter: drop-shadow(0 20px 40px rgba(212, 175, 55, 0.25));
+  pointer-events: none;
+}
+
+.floating-logo-graphic img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
 /* ==========================================================================
    RESPONSIVE MEDIA QUERIES
    ========================================================================== */
@@ -887,6 +907,9 @@ footer {
   .footer-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 40px;
+  }
+  .floating-logo-graphic {
+    opacity: 0.12; /* Lighter on smaller screens so it doesn't crowd text */
   }
 }
 
