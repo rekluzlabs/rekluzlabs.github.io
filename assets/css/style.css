@@ -220,6 +220,7 @@ p {
   from { transform: translate3d(0,0,0) scale(1); }
   to   { transform: translate3d(2%, 3%, 0) scale(1.06); }
 }
+
 .hero-grid {
   display: grid;
   grid-template-columns: 1.2fr 0.8fr;
@@ -780,6 +781,104 @@ footer {
 }
 
 /* ==========================================================================
+   APP INTERFACE GALLERY
+   ========================================================================== */
+.screenshot-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  align-items: stretch;
+}
+
+.gallery-card {
+  background: var(--bg-alt);
+  border: 1px solid var(--border-hairline);
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+}
+
+.gallery-card img {
+  width: 100%;
+  height: auto;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 8px;
+  display: block;
+}
+
+.gallery-caption {
+  display: block;
+  font-size: 13px;
+  color: var(--text-dim);
+  text-align: center;
+  margin-top: 14px;
+  line-height: 1.4;
+}
+
+/* ==========================================================================
+   AMBIENT BACKGROUND CLOUDS (ADDED)
+   ========================================================================== */
+.ambient-glow-container {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.glow-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.4;
+  mix-blend-mode: screen;
+  will-change: transform;
+  animation: float-drift 22s ease-in-out infinite alternate;
+}
+
+.blob-1 {
+  width: 550px;
+  height: 550px;
+  background: var(--accent);
+  top: -10%;
+  left: 15%;
+}
+
+.blob-2 {
+  width: 650px;
+  height: 650px;
+  background: #3b82f6;
+  bottom: -20%;
+  right: 10%;
+  animation-delay: -7s;
+}
+
+.blob-3 {
+  width: 480px;
+  height: 480px;
+  background: #8b5cf6;
+  top: 40%;
+  left: 35%;
+  animation-delay: -14s;
+}
+
+@keyframes float-drift {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  50% {
+    transform: translate(60px, -40px) scale(1.12);
+  }
+  100% {
+    transform: translate(-40px, 50px) scale(0.92);
+  }
+}
+
+/* ==========================================================================
    RESPONSIVE MEDIA QUERIES
    ========================================================================== */
 @media (max-width: 1024px) {
@@ -806,9 +905,16 @@ footer {
   }
 }
 
+@media (max-width: 900px) {
+  .screenshot-gallery {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+
 @media (max-width: 768px) {
   .section { padding: 80px 0; }
-  .nav-menu { display: none; } /* Mobile navbar optimization */
+  .nav-menu { display: none; }
   .nav-toggle { display: block; }
 
   .nav-menu.is-open {
@@ -862,51 +968,5 @@ footer {
   }
   .ticker-track {
     transition: none;
-  }
-}
-/* ==========================================================================
-   APP INTERFACE GALLERY
-   ========================================================================== */
-.screenshot-gallery {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  align-items: stretch;
-}
-
-.gallery-card {
-  background: var(--bg-alt);
-  border: 1px solid var(--border-hairline);
-  border-radius: 12px;
-  padding: 16px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  overflow: hidden;
-}
-
-.gallery-card img {
-  width: 100%;
-  height: auto;
-  max-height: 100%;
-  object-fit: contain; /* Preserves full image without clipping edges */
-  border-radius: 8px;
-  display: block;
-}
-
-.gallery-caption {
-  display: block;
-  font-size: 13px;
-  color: var(--text-dim);
-  text-align: center;
-  margin-top: 14px;
-  line-height: 1.4;
-}
-
-/* Responsive adjustment for tablet/mobile screens */
-@media (max-width: 900px) {
-  .screenshot-gallery {
-    grid-template-columns: 1fr;
-    gap: 32px;
   }
 }
