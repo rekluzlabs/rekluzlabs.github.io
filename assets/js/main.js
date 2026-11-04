@@ -48,9 +48,9 @@
     revealEls.forEach(function (el) { el.classList.add("is-visible"); });
   }
 
-  // Fluid mouse-tracking ambient cloud effect with organic momentum & breathing flow
-  var blobs = document.querySelectorAll(".glow-blob");
-  if (blobs.length && !(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches)) {
+  // Fluid mouse-tracking ambient elements & logo graphic with organic momentum & breathing flow
+  var animElements = document.querySelectorAll(".glow-blob, .floating-logo-graphic");
+  if (animElements.length && !(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches)) {
     var mouseX = window.innerWidth / 2;
     var mouseY = window.innerHeight / 2;
     var targetX = window.innerWidth / 2;
@@ -61,7 +61,7 @@
       targetY = e.clientY;
     }, { passive: true });
 
-    function animateBlobs() {
+    function animateElements() {
       // Linear interpolation (lerp) for smooth weighted lagging momentum
       mouseX += (targetX - mouseX) * 0.04;
       mouseY += (targetY - mouseY) * 0.04;
@@ -72,8 +72,8 @@
       var moveY = mouseY - centerY;
       var time = Date.now() * 0.0007; // Organic breathing speed
 
-      blobs.forEach(function (blob, i) {
-        var speed = parseFloat(blob.getAttribute("data-speed")) || 0.03;
+      animElements.forEach(function (el, i) {
+        var speed = parseFloat(el.getAttribute("data-speed")) || 0.03;
         
         // Continuous sine/cosine wave flow for independent ambient breathing
         var ambientX = Math.sin(time + (i * 2.2)) * 40;
@@ -83,13 +83,13 @@
         var x = (moveX * speed * 1.4) + ambientX;
         var y = (moveY * speed * 1.4) + ambientY;
 
-        blob.style.transform = "translate(" + x + "px, " + y + "px)";
+        el.style.transform = "translate(" + x + "px, " + y + "px)";
       });
 
-      requestAnimationFrame(animateBlobs);
+      requestAnimationFrame(animateElements);
     }
 
-    requestAnimationFrame(animateBlobs);
+    requestAnimationFrame(animateElements);
   }
 
   // Single-line vertical ticker (Studio section engineering list)
