@@ -48,7 +48,7 @@
     revealEls.forEach(function (el) { el.classList.add("is-visible"); });
   }
 
-  // Ambient background & mouse following logo/blob
+  // Mouse following for logo/blob
   var animElements = document.querySelectorAll(".glow-blob, .floating-logo-graphic");
   var motionQuery = window.matchMedia
     ? window.matchMedia("(prefers-reduced-motion: reduce)")
@@ -73,7 +73,6 @@
         return;
       }
 
-      // Frame-rate-independent easing keeps the movement consistent.
       var delta = lastTime ? Math.min(timestamp - lastTime, 32) : 16;
       lastTime = timestamp;
       var easing = 1 - Math.pow(1 - 0.04, delta / 16.67);
@@ -97,8 +96,8 @@
         element.style.setProperty("--float-x", x.toFixed(2) + "px");
         element.style.setProperty("--float-y", y.toFixed(2) + "px");
 
-        // Blobs have no centering transform; their CSS transform is supplied here.
-        if (element.classList.contains("glow-blob")) {
+        // Apply direct transform so it follows the mouse fully
+        if (element.classList.contains("glow-blob") || isLogo) {
           element.style.transform = "translate3d(" +
             x.toFixed(2) + "px, " + y.toFixed(2) + "px, 0)";
         }
@@ -136,9 +135,7 @@
           animElements.forEach(function (element) {
             element.style.removeProperty("--float-x");
             element.style.removeProperty("--float-y");
-            if (element.classList.contains("glow-blob")) {
-              element.style.transform = "";
-            }
+            element.style.transform = "";
           });
         } else {
           startAmbientAnimation();
@@ -173,7 +170,6 @@
       return;
     }
 
-    // Build progress dots
     var dots = [];
     if (dotsWrap) {
       items.forEach(function (_, i) {
@@ -184,7 +180,6 @@
       });
     }
 
-    // Duplicate the first row at the end for a seamless wrap-around
     var clone = items[0].cloneNode(true);
     clone.setAttribute("aria-hidden", "true");
     track.appendChild(clone);
