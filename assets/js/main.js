@@ -67,111 +67,74 @@
       targetY = event.clientY;
     }, { passive: true });
 
- // ---------- Hummingbird shadow wake (continuous motion-blur) ----------
-var canvas = document.getElementById("contrail");
-var ctx = canvas && canvas.getContext("2d");
-var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    // ---------- Hummingbird shadow wake (continuous motion-blur) ----------
+    var canvas = document.getElementById("contrail");
+    var ctx = canvas && canvas.getContext("2d");
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
 
-var birdImg = new Image();
-var birdReady = false;
-var birdW = 0, birdH = 0;
-birdImg.onload = function () {
-  birdReady = true;
-  birdW = birdImg.naturalWidth || 1;
-  birdH = birdImg.naturalHeight || 1;
-};
-birdImg.src = "assets/images/rl_goldlogo_t.png";
+    var birdImg = new Image();
+    var birdReady = false;
+    var birdW = 0, birdH = 0;
+    birdImg.onload = function () {
+      birdReady = true;
+      birdW = birdImg.naturalWidth || 1;
+      birdH = birdImg.naturalHeight || 1;
+    };
+    birdImg.src = "assets/images/rl_goldlogo_t.png";
 
-// The canvas *persists* between frames; we fade it out each frame instead
-// of clearing it. That produces a single flowing wake rather than stamps.
-var TRAIL_DECAY = 0.08;    // 0.05 = long trail, 0.15 = short trail
-var TRAIL_OPACITY = 0.16;  // opacity of each freshly-painted frame
+    // The canvas *persists* between frames; we fade it out each frame instead
+    // of clearing it. That produces a single flowing wake rather than stamps.
+    var TRAIL_DECAY = 0.08;    // 0.05 = long trail, 0.15 = short trail
+    var TRAIL_OPACITY = 0.16;  // opacity of each freshly-painted frame
 
-function sizeCanvas() {
-  if (!canvas) return;
-  var w = window.innerWidth;
-  var h = window.innerHeight;
-  canvas.width = Math.floor(w * dpr);
-  canvas.height = Math.floor(h * dpr);
-  canvas.style.width = w + "px";
-  canvas.style.height = h + "px";
-  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-  // The canvas becomes a persistent layer; no re-clearing needed here.
-}
+    function sizeCanvas() {
+      if (!canvas) return;
+      var w = window.innerWidth;
+      var h = window.innerHeight;
+      canvas.width = Math.floor(w * dpr);
+      canvas.height = Math.floor(h * dpr);
+      canvas.style.width = w + "px";
+      canvas.style.height = h + "px";
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
 
-if (canvas) {
-  sizeCanvas();
-  window.addEventListener("resize", sizeCanvas);
-}
-
-function stepContrail(now) {
-  if (!ctx || !birdReady || !birdW || !birdH) return;
-
-  var w = canvas.width / dpr;
-  var h = canvas.height / dpr;
-
-  // 1) Fade the whole canvas toward transparency by a small amount each frame.
-  //    "destination-out" with a low-alpha fill darkens existing pixels gradually,
-  //    which is what makes the trail dissolve smoothly instead of popping.
-  ctx.save();
-  ctx.globalCompositeOperation = "destination-out";
-  ctx.fillStyle = "rgba(0, 0, 0, " + TRAIL_DECAY + ")";
-  ctx.fillRect(0, 0, w, h);
-  ctx.restore();
-
-  // 2) Draw the CURRENT bird position as a fresh faint ghost on top.
-  var logoEl = document.querySelector(".floating-logo-graphic");
-  if (!logoEl) return;
-
-  var r = logoEl.getBoundingClientRect();
-  var lx = r.left + r.width / 2;
-  var ly = r.top + r.height / 2;
-
-  var drawW = r.width * 0.92;
-  var drawH = drawW * (birdH / birdW);
-
-  ctx.save();
-  ctx.globalAlpha = TRAIL_OPACITY;
-  // Slight blur makes the tail edges softer and more "liquid"
-  ctx.filter = "blur(1.5px)";
-  ctx.drawImage(birdImg, lx - drawW / 2, ly - drawH / 2, drawW, drawH);
-  ctx.restore();
-}
     if (canvas) {
       sizeCanvas();
       window.addEventListener("resize", sizeCanvas);
     }
 
     function stepContrail(now) {
-      if (!ctx) return;
+      if (!ctx || !birdReady || !birdW || !birdH) return;
+
       var w = canvas.width / dpr;
       var h = canvas.height / dpr;
-      ctx.clearRect(0, 0, w, h);
 
-      if (!ghosts.length) return;
-      if (!birdReady || !birdW || !birdH) return;
+      // 1) Fade the whole canvas toward transparency by a small amount each frame.
+      //    "destination-out" with a low-alpha fill darkens existing pixels gradually,
+      //    which is what makes the trail dissolve smoothly instead of popping.
+      ctx.save();
+      ctx.globalCompositeOperation = "destination-out";
+      ctx.fillStyle = "rgba(0, 0, 0, " + TRAIL_DECAY + ")";
+      ctx.fillRect(0, 0, w, h);
+      ctx.restore();
 
-      var alive = [];
-      for (var i = 0; i < ghosts.length; i++) {
-        var g = ghosts[i];
-        var age = now - g.born;
-        if (age >= GHOST_LIFE) continue;
+      // 2) Draw the CURRENT bird position as a fresh faint ghost on top.
+      var logoEl = document.querySelector(".floating-logo-graphic");
+      if (!logoEl) return;
 
-        var t = age / GHOST_LIFE;         // 0 → 1
-        var alpha = (1 - t) * 0.18;       // start faint, fade to nothing
+      var r = logoEl.getBoundingClientRect();
+      var lx = r.left + r.width / 2;
+      var ly = r.top + r.height / 2;
 
-        var drawW = g.size;
-        var drawH = g.size * (birdH / birdW);
-        var dx = g.x - drawW / 2;
-        var dy = g.y - drawH / 2;
+      var drawW = r.width * 0.92;
+      var drawH = drawW * (birdH / birdW);
 
-        ctx.globalAlpha = alpha;
-        ctx.drawImage(birdImg, dx, dy, drawW, drawH);
-        ctx.globalAlpha = 1;
-
-        alive.push(g);
-      }
-      ghosts = alive;
+      ctx.save();
+      ctx.globalAlpha = TRAIL_OPACITY;
+      // Slight blur makes the tail edges softer and more "liquid"
+      ctx.filter = "blur(1.5px)";
+      ctx.drawImage(birdImg, lx - drawW / 2, ly - drawH / 2, drawW, drawH);
+      ctx.restore();
     }
 
     function animateAmbient(timestamp) {
@@ -209,40 +172,6 @@ function stepContrail(now) {
         }
       });
 
-      // Ghost emission: stamp copies of the bird behind it as it moves.
-      if (ctx && birdReady) {
-        var logoEl = document.querySelector(".floating-logo-graphic");
-        if (logoEl) {
-          var r = logoEl.getBoundingClientRect();
-          var lx = r.left + r.width / 2;
-          var ly = r.top + r.height / 2;
-
-          if (!logoSampleInit) {
-            logoSample.x = lx;
-            logoSample.y = ly;
-            logoSampleInit = true;
-          }
-
-          var gdx = lx - logoSample.x;
-          var gdy = ly - logoSample.y;
-          var dist = Math.hypot(gdx, gdy);
-
-          if (dist > 0.8 && timestamp - lastGhostAt > GHOST_INTERVAL) {
-            if (ghosts.length >= MAX_GHOSTS) ghosts.shift();
-            ghosts.push({
-              x: lx,
-              y: ly,
-              born: timestamp,
-              size: r.width * 0.92,
-            });
-            lastGhostAt = timestamp;
-          }
-
-          logoSample.x = lx;
-          logoSample.y = ly;
-        }
-      }
-
       stepContrail(timestamp);
 
       ambientFrame = window.requestAnimationFrame(animateAmbient);
@@ -262,8 +191,6 @@ function stepContrail(now) {
       }
       if (ctx) {
         ctx.clearRect(0, 0, canvas.width / dpr, canvas.height / dpr);
-        ghosts = [];
-        logoSampleInit = false;
       }
     }
 
