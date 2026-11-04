@@ -48,8 +48,7 @@
     revealEls.forEach(function (el) { el.classList.add("is-visible"); });
   }
 
-  // Ambient background: slow cursor response plus independent organic drift.
-  // CSS owns the logo's centering; JavaScript changes only its offset variables.
+  // Ambient background & mouse following logo/blob
   var animElements = document.querySelectorAll(".glow-blob, .floating-logo-graphic");
   var motionQuery = window.matchMedia
     ? window.matchMedia("(prefers-reduced-motion: reduce)")
@@ -87,10 +86,11 @@
       var time = timestamp * 0.00018;
 
       animElements.forEach(function (element, index) {
-        var speed = parseFloat(element.getAttribute("data-speed")) || 0.03;
+        var isLogo = element.classList.contains("floating-logo-graphic");
+        var speed = parseFloat(element.getAttribute("data-speed")) || (isLogo ? 1.0 : 0.03);
         var phase = index * 2.1;
-        var ambientX = Math.sin(time + phase) * 22;
-        var ambientY = Math.cos(time * 0.9 + phase) * 22;
+        var ambientX = isLogo ? 0 : Math.sin(time + phase) * 22;
+        var ambientY = isLogo ? 0 : Math.cos(time * 0.9 + phase) * 22;
         var x = moveX * speed + ambientX;
         var y = moveY * speed + ambientY;
 
