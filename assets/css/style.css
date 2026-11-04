@@ -890,7 +890,7 @@ footer {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: min(420px, 45vw);
+  width: min(260px, 30vw);
   margin: 0;
   opacity: 0.12;
   mix-blend-mode: screen;
