@@ -820,7 +820,7 @@ footer {
 }
 
 /* ==========================================================================
-   AMBIENT MOUSE-TRACKING CLOUDS (ADDED)
+   AMBIENT FLUID BACKGROUND CLOUDS
    ========================================================================== */
 .ambient-glow-container {
   position: fixed;
@@ -833,32 +833,31 @@ footer {
 .glow-blob {
   position: absolute;
   border-radius: 50%;
-  filter: blur(130px);
+  filter: blur(140px);
   opacity: 0.35;
   mix-blend-mode: screen;
   will-change: transform;
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .blob-1 {
-  width: 600px;
-  height: 600px;
+  width: 650px;
+  height: 650px;
   background: var(--accent);
   top: -10%;
   left: 10%;
 }
 
 .blob-2 {
-  width: 700px;
-  height: 700px;
+  width: 750px;
+  height: 750px;
   background: #3b82f6;
   bottom: -20%;
   right: 5%;
 }
 
 .blob-3 {
-  width: 500px;
-  height: 500px;
+  width: 550px;
+  height: 550px;
   background: #8b5cf6;
   top: 35%;
   left: 35%;
@@ -953,9 +952,6 @@ footer {
     transition: none;
   }
   .ticker-track {
-    transition: none;
-  }
-  .glow-blob {
     transition: none;
   }
 }
