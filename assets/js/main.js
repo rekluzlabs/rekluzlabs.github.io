@@ -48,48 +48,111 @@
     revealEls.forEach(function (el) { el.classList.add("is-visible"); });
   }
 
-  // Fluid mouse-tracking ambient elements & logo graphic with organic momentum & breathing flow
+  // Ambient background: slow cursor response plus independent organic drift.
+  // CSS owns the logo's centering; JavaScript changes only its offset variables.
   var animElements = document.querySelectorAll(".glow-blob, .floating-logo-graphic");
-  if (animElements.length && !(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches)) {
+  var motionQuery = window.matchMedia
+    ? window.matchMedia("(prefers-reduced-motion: reduce)")
+    : null;
+  var ambientFrame = null;
+
+  if (animElements.length && !(motionQuery && motionQuery.matches)) {
     var mouseX = window.innerWidth / 2;
     var mouseY = window.innerHeight / 2;
-    var targetX = window.innerWidth / 2;
-    var targetY = window.innerHeight / 2;
+    var targetX = mouseX;
+    var targetY = mouseY;
+    var lastTime = 0;
 
-    document.addEventListener("mousemove", function (e) {
-      targetX = e.clientX;
-      targetY = e.clientY;
+    document.addEventListener("mousemove", function (event) {
+      targetX = event.clientX;
+      targetY = event.clientY;
     }, { passive: true });
 
-    function animateElements() {
-      // Linear interpolation (lerp) for smooth weighted lagging momentum
-      mouseX += (targetX - mouseX) * 0.04;
-      mouseY += (targetY - mouseY) * 0.04;
+    function animateAmbient(timestamp) {
+      if (document.hidden || (motionQuery && motionQuery.matches)) {
+        ambientFrame = null;
+        return;
+      }
 
-      var centerX = window.innerWidth / 2;
-      var centerY = window.innerHeight / 2;
-      var moveX = mouseX - centerX;
-      var moveY = mouseY - centerY;
-      var time = Date.now() * 0.0007; // Organic breathing speed
+      // Frame-rate-independent easing keeps the movement consistent.
+      var delta = lastTime ? Math.min(timestamp - lastTime, 32) : 16;
+      lastTime = timestamp;
+      var easing = 1 - Math.pow(1 - 0.04, delta / 16.67);
 
-      animElements.forEach(function (el, i) {
-        var speed = parseFloat(el.getAttribute("data-speed")) || 0.03;
-        
-        // Continuous sine/cosine wave flow for independent ambient breathing
-        var ambientX = Math.sin(time + (i * 2.2)) * 40;
-        var ambientY = Math.cos(time + (i * 1.8)) * 40;
+      mouseX += (targetX - mouseX) * easing;
+      mouseY += (targetY - mouseY) * easing;
 
-        // Combined cursor pull and organic sine drift
-        var x = (moveX * speed * 1.4) + ambientX;
-        var y = (moveY * speed * 1.4) + ambientY;
+      var moveX = mouseX - window.innerWidth / 2;
+      var moveY = mouseY - window.innerHeight / 2;
+      var time = timestamp * 0.00018;
 
-        el.style.transform = "translate(" + x + "px, " + y + "px)";
+      animElements.forEach(function (element, index) {
+        var speed = parseFloat(element.getAttribute("data-speed")) || 0.03;
+        var phase = index * 2.1;
+        var ambientX = Math.sin(time + phase) * 22;
+        var ambientY = Math.cos(time * 0.9 + phase) * 22;
+        var x = moveX * speed + ambientX;
+        var y = moveY * speed + ambientY;
+
+        element.style.setProperty("--float-x", x.toFixed(2) + "px");
+        element.style.setProperty("--float-y", y.toFixed(2) + "px");
+
+        // Blobs have no centering transform; their CSS transform is supplied here.
+        if (element.classList.contains("glow-blob")) {
+          element.style.transform = "translate3d(" +
+            x.toFixed(2) + "px, " + y.toFixed(2) + "px, 0)";
+        }
       });
 
-      requestAnimationFrame(animateElements);
+      ambientFrame = window.requestAnimationFrame(animateAmbient);
     }
 
-    requestAnimationFrame(animateElements);
+    function startAmbientAnimation() {
+      if (!ambientFrame && !document.hidden && !(motionQuery && motionQuery.matches)) {
+        lastTime = 0;
+        ambientFrame = window.requestAnimationFrame(animateAmbient);
+      }
+    }
+
+    function stopAmbientAnimation() {
+      if (ambientFrame) {
+        window.cancelAnimationFrame(ambientFrame);
+        ambientFrame = null;
+      }
+    }
+
+    document.addEventListener("visibilitychange", function () {
+      if (document.hidden) {
+        stopAmbientAnimation();
+      } else {
+        startAmbientAnimation();
+      }
+    });
+
+    if (motionQuery) {
+      var onMotionPreferenceChange = function (event) {
+        if (event.matches) {
+          stopAmbientAnimation();
+          animElements.forEach(function (element) {
+            element.style.removeProperty("--float-x");
+            element.style.removeProperty("--float-y");
+            if (element.classList.contains("glow-blob")) {
+              element.style.transform = "";
+            }
+          });
+        } else {
+          startAmbientAnimation();
+        }
+      };
+
+      if (motionQuery.addEventListener) {
+        motionQuery.addEventListener("change", onMotionPreferenceChange);
+      } else if (motionQuery.addListener) {
+        motionQuery.addListener(onMotionPreferenceChange);
+      }
+    }
+
+    startAmbientAnimation();
   }
 
   // Single-line vertical ticker (Studio section engineering list)
