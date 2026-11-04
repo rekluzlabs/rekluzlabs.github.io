@@ -48,27 +48,48 @@
     revealEls.forEach(function (el) { el.classList.add("is-visible"); });
   }
 
-  // Mouse-tracking ambient cloud parallax effect
+  // Fluid mouse-tracking ambient cloud effect with organic momentum & breathing flow
   var blobs = document.querySelectorAll(".glow-blob");
   if (blobs.length && !(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches)) {
+    var mouseX = window.innerWidth / 2;
+    var mouseY = window.innerHeight / 2;
+    var targetX = window.innerWidth / 2;
+    var targetY = window.innerHeight / 2;
+
     document.addEventListener("mousemove", function (e) {
-      var clientX = e.clientX;
-      var clientY = e.clientY;
-      
+      targetX = e.clientX;
+      targetY = e.clientY;
+    }, { passive: true });
+
+    function animateBlobs() {
+      // Linear interpolation (lerp) for smooth weighted lagging momentum
+      mouseX += (targetX - mouseX) * 0.04;
+      mouseY += (targetY - mouseY) * 0.04;
+
       var centerX = window.innerWidth / 2;
       var centerY = window.innerHeight / 2;
-      
-      var moveX = clientX - centerX;
-      var moveY = clientY - centerY;
+      var moveX = mouseX - centerX;
+      var moveY = mouseY - centerY;
+      var time = Date.now() * 0.0007; // Organic breathing speed
 
-      blobs.forEach(function (blob) {
+      blobs.forEach(function (blob, i) {
         var speed = parseFloat(blob.getAttribute("data-speed")) || 0.03;
-        var x = moveX * speed;
-        var y = moveY * speed;
         
+        // Continuous sine/cosine wave flow for independent ambient breathing
+        var ambientX = Math.sin(time + (i * 2.2)) * 40;
+        var ambientY = Math.cos(time + (i * 1.8)) * 40;
+
+        // Combined cursor pull and organic sine drift
+        var x = (moveX * speed * 1.4) + ambientX;
+        var y = (moveY * speed * 1.4) + ambientY;
+
         blob.style.transform = "translate(" + x + "px, " + y + "px)";
       });
-    }, { passive: true });
+
+      requestAnimationFrame(animateBlobs);
+    }
+
+    requestAnimationFrame(animateBlobs);
   }
 
   // Single-line vertical ticker (Studio section engineering list)
