@@ -47,6 +47,30 @@
   } else {
     revealEls.forEach(function (el) { el.classList.add("is-visible"); });
   }
+
+  // Mouse-tracking ambient cloud parallax effect
+  var blobs = document.querySelectorAll(".glow-blob");
+  if (blobs.length && !(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches)) {
+    document.addEventListener("mousemove", function (e) {
+      var clientX = e.clientX;
+      var clientY = e.clientY;
+      
+      var centerX = window.innerWidth / 2;
+      var centerY = window.innerHeight / 2;
+      
+      var moveX = clientX - centerX;
+      var moveY = clientY - centerY;
+
+      blobs.forEach(function (blob) {
+        var speed = parseFloat(blob.getAttribute("data-speed")) || 0.03;
+        var x = moveX * speed;
+        var y = moveY * speed;
+        
+        blob.style.transform = "translate(" + x + "px, " + y + "px)";
+      });
+    }, { passive: true });
+  }
+
   // Single-line vertical ticker (Studio section engineering list)
   var reducedMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -85,7 +109,6 @@
     var rowHeight = 0;
 
     function measure() {
-      // Clear any previously forced heights so we get each row's natural height
       items.forEach(function (li) { li.style.height = ""; });
       clone.style.height = "";
 
@@ -93,15 +116,13 @@
         return Math.max(max, li.getBoundingClientRect().height);
       }, 0);
 
-      // Force every row (including the clone) to the tallest row's height,
-      // so translateY steps land correctly even when a label wraps to two lines
       items.forEach(function (li) { li.style.height = rowHeight + "px"; });
       clone.style.height = rowHeight + "px";
 
       viewport.style.height = rowHeight + "px";
       track.classList.add("no-transition");
       track.style.transform = "translateY(-" + index * rowHeight + "px)";
-      track.offsetHeight; // force reflow
+      track.offsetHeight;
       track.classList.remove("no-transition");
     }
 
@@ -122,8 +143,7 @@
           track.classList.add("no-transition");
           index = 0;
           track.style.transform = "translateY(0)";
-          // eslint-disable-next-line no-unused-expressions
-          track.offsetHeight; // force reflow before re-enabling transition
+          track.offsetHeight;
           track.classList.remove("no-transition");
         }, { once: true });
       }
@@ -131,15 +151,10 @@
 
     measure();
 
-    // Re-measure once web fonts finish loading. Fraunces/Inter load async,
-    // and if measure() runs before the swap, rows get sized against fallback
-    // font metrics — text then reflows once the real font applies, and
-    // position drifts further with every step. This was the actual cause
-    // of the overlapping/misaligned lines on Android.
     if (document.fonts && document.fonts.ready) {
       document.fonts.ready.then(measure);
     }
-    window.setTimeout(measure, 1200); // safety net if document.fonts is unavailable
+    window.setTimeout(measure, 1200);
 
     var timer = window.setInterval(advance, 3800);
 
@@ -149,7 +164,6 @@
       resizeTimeout = setTimeout(measure, 150);
     });
 
-    // Pause politely when the tab isn't visible
     document.addEventListener("visibilitychange", function () {
       if (document.hidden) {
         clearInterval(timer);
@@ -160,9 +174,7 @@
   });
 })();
 
-// Cloudflare Web Analytics — injected here so every page that loads main.js
-// gets the beacon automatically, instead of pasting the snippet into every
-// HTML file by hand.
+// Cloudflare Web Analytics
 (function () {
   var beacon = document.createElement("script");
   beacon.type = "module";
