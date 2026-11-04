@@ -67,7 +67,7 @@
       targetY = event.clientY;
     }, { passive: true });
 
-    // ---------- Hummingbird shadow wake (continuous motion-blur) ----------
+      // ---------- Hummingbird shadow wake (continuous motion-blur) ----------
     var canvas = document.getElementById("contrail");
     var ctx = canvas && canvas.getContext("2d");
     var dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -82,10 +82,17 @@
     };
     birdImg.src = "assets/images/rl_goldlogo_t.png";
 
-    // The canvas *persists* between frames; we fade it out each frame instead
-    // of clearing it. That produces a single flowing wake rather than stamps.
-    var TRAIL_DECAY = 0.08;    // 0.05 = long trail, 0.15 = short trail
-    var TRAIL_OPACITY = 0.16;  // opacity of each freshly-painted frame
+    // The canvas persists between frames; we fade it out each frame instead of
+    // clearing it, so the wake flows. Because exponential fades bottom out at
+    // the 8-bit alpha floor (never truly zero), we also hard-clear whenever the
+    // bird has been effectively stationary for a moment.
+    var TRAIL_DECAY = 0.12;       // 0.08 = long trail, 0.18 = short trail
+    var TRAIL_OPACITY = 0.16;     // opacity of each freshly-painted frame
+    var IDLE_CLEAR_MS = 400;      // clear canvas after this much stillness
+    var MOVE_EPSILON = 1.2;       // px of movement considered "not idle"
+
+    var lastPos = { x: -1, y: -1 };
+    var lastMoveAt = 0;
 
     function sizeCanvas() {
       if (!canvas) return;
@@ -96,6 +103,7 @@
       canvas.style.width = w + "px";
       canvas.style.height = h + "px";
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      // Resizing wipes pixels, which is fine — trail resets on resize.
     }
 
     if (canvas) {
@@ -103,22 +111,14 @@
       window.addEventListener("resize", sizeCanvas);
     }
 
+    function clearContrail() {
+      if (!ctx) return;
+      ctx.clearRect(0, 0, canvas.width / dpr, canvas.height / dpr);
+    }
+
     function stepContrail(now) {
       if (!ctx || !birdReady || !birdW || !birdH) return;
 
-      var w = canvas.width / dpr;
-      var h = canvas.height / dpr;
-
-      // 1) Fade the whole canvas toward transparency by a small amount each frame.
-      //    "destination-out" with a low-alpha fill darkens existing pixels gradually,
-      //    which is what makes the trail dissolve smoothly instead of popping.
-      ctx.save();
-      ctx.globalCompositeOperation = "destination-out";
-      ctx.fillStyle = "rgba(0, 0, 0, " + TRAIL_DECAY + ")";
-      ctx.fillRect(0, 0, w, h);
-      ctx.restore();
-
-      // 2) Draw the CURRENT bird position as a fresh faint ghost on top.
       var logoEl = document.querySelector(".floating-logo-graphic");
       if (!logoEl) return;
 
@@ -126,12 +126,41 @@
       var lx = r.left + r.width / 2;
       var ly = r.top + r.height / 2;
 
+      var movedX = Math.abs(lx - lastPos.x);
+      var movedY = Math.abs(ly - lastPos.y);
+      var moved = movedX > MOVE_EPSILON || movedY > MOVE_EPSILON;
+
+      if (moved) {
+        lastMoveAt = now;
+      } else if (now - lastMoveAt > IDLE_CLEAR_MS) {
+        // Idle long enough — hard clear so nothing lingers at the alpha floor.
+        clearContrail();
+        lastPos.x = lx;
+        lastPos.y = ly;
+        return;
+      }
+
+      lastPos.x = lx;
+      lastPos.y = ly;
+
+      var w = canvas.width / dpr;
+      var h = canvas.height / dpr;
+
+      // 1) Fade existing trail toward transparency.
+      ctx.save();
+      ctx.globalCompositeOperation = "destination-out";
+      ctx.fillStyle = "rgba(0, 0, 0, " + TRAIL_DECAY + ")";
+      ctx.fillRect(0, 0, w, h);
+      ctx.restore();
+
+      // 2) Only paint a new ghost if the bird actually moved.
+      if (!moved) return;
+
       var drawW = r.width * 0.92;
       var drawH = drawW * (birdH / birdW);
 
       ctx.save();
       ctx.globalAlpha = TRAIL_OPACITY;
-      // Slight blur makes the tail edges softer and more "liquid"
       ctx.filter = "blur(1.5px)";
       ctx.drawImage(birdImg, lx - drawW / 2, ly - drawH / 2, drawW, drawH);
       ctx.restore();
