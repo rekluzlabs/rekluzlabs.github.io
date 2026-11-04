@@ -820,7 +820,7 @@ footer {
 }
 
 /* ==========================================================================
-   AMBIENT BACKGROUND CLOUDS (ADDED)
+   AMBIENT MOUSE-TRACKING CLOUDS (ADDED)
    ========================================================================== */
 .ambient-glow-container {
   position: fixed;
@@ -833,49 +833,35 @@ footer {
 .glow-blob {
   position: absolute;
   border-radius: 50%;
-  filter: blur(120px);
-  opacity: 0.4;
+  filter: blur(130px);
+  opacity: 0.35;
   mix-blend-mode: screen;
   will-change: transform;
-  animation: float-drift 22s ease-in-out infinite alternate;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .blob-1 {
-  width: 550px;
-  height: 550px;
+  width: 600px;
+  height: 600px;
   background: var(--accent);
   top: -10%;
-  left: 15%;
+  left: 10%;
 }
 
 .blob-2 {
-  width: 650px;
-  height: 650px;
+  width: 700px;
+  height: 700px;
   background: #3b82f6;
   bottom: -20%;
-  right: 10%;
-  animation-delay: -7s;
+  right: 5%;
 }
 
 .blob-3 {
-  width: 480px;
-  height: 480px;
+  width: 500px;
+  height: 500px;
   background: #8b5cf6;
-  top: 40%;
+  top: 35%;
   left: 35%;
-  animation-delay: -14s;
-}
-
-@keyframes float-drift {
-  0% {
-    transform: translate(0px, 0px) scale(1);
-  }
-  50% {
-    transform: translate(60px, -40px) scale(1.12);
-  }
-  100% {
-    transform: translate(-40px, 50px) scale(0.92);
-  }
 }
 
 /* ==========================================================================
@@ -967,6 +953,9 @@ footer {
     transition: none;
   }
   .ticker-track {
+    transition: none;
+  }
+  .glow-blob {
     transition: none;
   }
 }
