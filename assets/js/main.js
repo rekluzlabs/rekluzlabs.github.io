@@ -67,41 +67,76 @@
       targetY = event.clientY;
     }, { passive: true });
 
-    // ---------- Hummingbird shadow contrail (afterimage ghosting) ----------
-    var canvas = document.getElementById("contrail");
-    var ctx = canvas && canvas.getContext("2d");
-    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+  // ---------- Hummingbird shadow wake (continuous motion-blur) ----------
+var canvas = document.getElementById("contrail");
+var ctx = canvas && canvas.getContext("2d");
+var dpr = Math.min(window.devicePixelRatio || 1, 2);
 
-    var ghosts = [];
-    var GHOST_LIFE = 900;        // ms each ghost remains visible
-    var GHOST_INTERVAL = 45;     // ms between ghost spawns while moving
-    var MAX_GHOSTS = 24;
-    var lastGhostAt = 0;
+var birdImg = new Image();
+var birdReady = false;
+var birdW = 0, birdH = 0;
+birdImg.onload = function () {
+  birdReady = true;
+  birdW = birdImg.naturalWidth || 1;
+  birdH = birdImg.naturalHeight || 1;
+};
+birdImg.src = "assets/images/rl_goldlogo_t.png";
 
-    var logoSample = { x: 0, y: 0 };
-    var logoSampleInit = false;
+// The canvas *persists* between frames; we fade it out each frame instead
+// of clearing it. That produces a single flowing wake rather than stamps.
+var TRAIL_DECAY = 0.08;    // 0.05 = long trail, 0.15 = short trail
+var TRAIL_OPACITY = 0.16;  // opacity of each freshly-painted frame
 
-    var birdImg = new Image();
-    var birdReady = false;
-    var birdW = 0;
-    var birdH = 0;
-    birdImg.onload = function () {
-      birdReady = true;
-      birdW = birdImg.naturalWidth || 1;
-      birdH = birdImg.naturalHeight || 1;
-    };
-    birdImg.src = "assets/images/rl_goldlogo_t.png";
+function sizeCanvas() {
+  if (!canvas) return;
+  var w = window.innerWidth;
+  var h = window.innerHeight;
+  canvas.width = Math.floor(w * dpr);
+  canvas.height = Math.floor(h * dpr);
+  canvas.style.width = w + "px";
+  canvas.style.height = h + "px";
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  // The canvas becomes a persistent layer; no re-clearing needed here.
+}
 
-    function sizeCanvas() {
-      if (!canvas) return;
-      var w = window.innerWidth;
-      var h = window.innerHeight;
-      canvas.width = Math.floor(w * dpr);
-      canvas.height = Math.floor(h * dpr);
-      canvas.style.width = w + "px";
-      canvas.style.height = h + "px";
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    }
+if (canvas) {
+  sizeCanvas();
+  window.addEventListener("resize", sizeCanvas);
+}
+
+function stepContrail(now) {
+  if (!ctx || !birdReady || !birdW || !birdH) return;
+
+  var w = canvas.width / dpr;
+  var h = canvas.height / dpr;
+
+  // 1) Fade the whole canvas toward transparency by a small amount each frame.
+  //    "destination-out" with a low-alpha fill darkens existing pixels gradually,
+  //    which is what makes the trail dissolve smoothly instead of popping.
+  ctx.save();
+  ctx.globalCompositeOperation = "destination-out";
+  ctx.fillStyle = "rgba(0, 0, 0, " + TRAIL_DECAY + ")";
+  ctx.fillRect(0, 0, w, h);
+  ctx.restore();
+
+  // 2) Draw the CURRENT bird position as a fresh faint ghost on top.
+  var logoEl = document.querySelector(".floating-logo-graphic");
+  if (!logoEl) return;
+
+  var r = logoEl.getBoundingClientRect();
+  var lx = r.left + r.width / 2;
+  var ly = r.top + r.height / 2;
+
+  var drawW = r.width * 0.92;
+  var drawH = drawW * (birdH / birdW);
+
+  ctx.save();
+  ctx.globalAlpha = TRAIL_OPACITY;
+  // Slight blur makes the tail edges softer and more "liquid"
+  ctx.filter = "blur(1.5px)";
+  ctx.drawImage(birdImg, lx - drawW / 2, ly - drawH / 2, drawW, drawH);
+  ctx.restore();
+}
 
     if (canvas) {
       sizeCanvas();
