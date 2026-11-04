@@ -213,14 +213,14 @@
       }
     }
 
-    function stopAmbientAnimation() {
+       function stopAmbientAnimation() {
       if (ambientFrame) {
         window.cancelAnimationFrame(ambientFrame);
         ambientFrame = null;
       }
-      if (ctx) {
-        ctx.clearRect(0, 0, canvas.width / dpr, canvas.height / dpr);
-      }
+      clearContrail();
+      lastPos.x = -1;
+      lastPos.y = -1;
     }
 
     document.addEventListener("visibilitychange", function () {
