@@ -1,3 +1,20 @@
+#contrail {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  opacity: 0.9;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #contrail {
+    display: none;
+  }
+}
+
 /* ==========================================================================
    DESIGN SYSTEM VARIABLES
    ========================================================================== */
@@ -20,7 +37,7 @@
 /* ==========================================================================
    BASE STYLES & RESET 
    ========================================================================== */
-* {
+*, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -864,11 +881,6 @@ footer {
   left: 35%;
 }
 
-/*
- * The logo is centered using its own transform. JavaScript animates only
- * the --float-x / --float-y custom properties, so it cannot overwrite
- * the centering transform or depend on the logo's aspect ratio.
- */
 .floating-logo-graphic {
   position: absolute;
   top: 50%;
@@ -921,7 +933,6 @@ footer {
     transform: translate3d(-50%, -50%, 0);
   }
 }
-
 
 /* ==========================================================================
    RESPONSIVE MEDIA QUERIES
@@ -1021,6 +1032,3 @@ footer {
     will-change: auto;
   }
 }
-
-3. assets/js/main.js
-JavaScript
