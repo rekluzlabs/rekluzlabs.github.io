@@ -67,7 +67,7 @@
       targetY = event.clientY;
     }, { passive: true });
 
-  // ---------- Hummingbird shadow wake (continuous motion-blur) ----------
+ // ---------- Hummingbird shadow wake (continuous motion-blur) ----------
 var canvas = document.getElementById("contrail");
 var ctx = canvas && canvas.getContext("2d");
 var dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -137,7 +137,6 @@ function stepContrail(now) {
   ctx.drawImage(birdImg, lx - drawW / 2, ly - drawH / 2, drawW, drawH);
   ctx.restore();
 }
-
     if (canvas) {
       sizeCanvas();
       window.addEventListener("resize", sizeCanvas);
