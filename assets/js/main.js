@@ -67,7 +67,7 @@
       targetY = event.clientY;
     }, { passive: true });
 
-      // ---------- Hummingbird shadow wake (continuous motion-blur) ----------
+    // ---------- Hummingbird shadow wake (continuous motion-blur) ----------
     var canvas = document.getElementById("contrail");
     var ctx = canvas && canvas.getContext("2d");
     var dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -82,14 +82,11 @@
     };
     birdImg.src = "assets/images/rl_goldlogo_t.png";
 
-    // The canvas persists between frames; we fade it out each frame instead of
-    // clearing it, so the wake flows. Because exponential fades bottom out at
-    // the 8-bit alpha floor (never truly zero), we also hard-clear whenever the
-    // bird has been effectively stationary for a moment.
-    var TRAIL_DECAY = 0.12;       // 0.08 = long trail, 0.18 = short trail
-    var TRAIL_OPACITY = 0.16;     // opacity of each freshly-painted frame
-    var IDLE_CLEAR_MS = 400;      // clear canvas after this much stillness
-    var MOVE_EPSILON = 1.2;       // px of movement considered "not idle"
+    // Trail configurations
+    var TRAIL_DECAY = 0.15;     // controls how fast the trail fades out
+    var TRAIL_OPACITY = 0.18;   // opacity of each freshly-painted frame
+    var IDLE_CLEAR_MS = 400;    // clear canvas after this much stillness
+    var MOVE_EPSILON = 1.2;     // px of movement considered "not idle"
 
     var lastPos = { x: -1, y: -1 };
     var lastMoveAt = 0;
@@ -103,7 +100,6 @@
       canvas.style.width = w + "px";
       canvas.style.height = h + "px";
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      // Resizing wipes pixels, which is fine — trail resets on resize.
     }
 
     if (canvas) {
@@ -133,7 +129,7 @@
       if (moved) {
         lastMoveAt = now;
       } else if (now - lastMoveAt > IDLE_CLEAR_MS) {
-        // Idle long enough — hard clear so nothing lingers at the alpha floor.
+        // Idle long enough — hard clear so nothing lingers
         clearContrail();
         lastPos.x = lx;
         lastPos.y = ly;
@@ -146,10 +142,11 @@
       var w = canvas.width / dpr;
       var h = canvas.height / dpr;
 
-      // 1) Fade existing trail toward transparency.
+      // 1) Smoothly fade out the canvas using standard alpha blending over transparent black,
+      // avoiding any destructive destination-out washing out effects.
       ctx.save();
-      ctx.globalCompositeOperation = "destination-out";
-      ctx.fillStyle = "rgba(0, 0, 0, " + TRAIL_DECAY + ")";
+      ctx.globalCompositeOperation = "source-over";
+      ctx.fillStyle = "rgba(13, 13, 15, " + TRAIL_DECAY + ")";
       ctx.fillRect(0, 0, w, h);
       ctx.restore();
 
@@ -160,6 +157,7 @@
       var drawH = drawW * (birdH / birdW);
 
       ctx.save();
+      ctx.globalCompositeOperation = "source-over";
       ctx.globalAlpha = TRAIL_OPACITY;
       ctx.filter = "blur(1.5px)";
       ctx.drawImage(birdImg, lx - drawW / 2, ly - drawH / 2, drawW, drawH);
@@ -213,7 +211,7 @@
       }
     }
 
-       function stopAmbientAnimation() {
+    function stopAmbientAnimation() {
       if (ambientFrame) {
         window.cancelAnimationFrame(ambientFrame);
         ambientFrame = null;
@@ -366,5 +364,5 @@
   beacon.type = "module";
   beacon.src = "https://static.cloudflareinsights.com/beacon.min.js";
   beacon.setAttribute("data-cf-beacon", '{"token": "0c23be45c4a0464aa7a467bf9286dfa2"}');
-  document.head.appendChild(beacon);
+  document.getElementById("nav").after(beacon); // safe append
 })();
