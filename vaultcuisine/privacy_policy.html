@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VaultCuisine Privacy Policy</title>
+<meta name="description" content="Privacy policy for VaultCuisine, an offline-first recipe scanning app for Android by RekluzLabs.">
+<style>
+  :root {
+    --bg: #ffffff;
+    --fg: #1f2328;
+    --muted: #59636e;
+    --border: #d1d9e0;
+    --link: #0969da;
+    --code-bg: #f6f8fa;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0d1117;
+      --fg: #e6edf3;
+      --muted: #9198a1;
+      --border: #3d444d;
+      --link: #4493f8;
+      --code-bg: #151b23;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  main {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 32px 16px 64px;
+  }
+  h1, h2 {
+    border-bottom: 1px solid var(--border);
+    padding-bottom: .3em;
+    line-height: 1.25;
+  }
+  h1 { font-size: 2em; margin: 0 0 .5em; }
+  h2 { font-size: 1.5em; margin: 1.6em 0 .7em; }
+  p, ul { margin: 0 0 16px; }
+  ul { padding-left: 2em; }
+  li + li { margin-top: .25em; }
+  a { color: var(--link); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .meta { color: var(--muted); margin-bottom: 24px; }
+  .summary {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 4px 16px 0;
+    margin-bottom: 16px;
+  }
+  footer { color: var(--muted); font-size: .875em; margin-top: 48px; border-top: 1px solid var(--border); padding-top: 16px; }
+</style>
+</head>
+<body>
+<main>
+
+<h1>VaultCuisine Privacy Policy</h1>
+<p class="meta">Last updated: November 7, 2026</p>
+
+<p>VaultCuisine does not collect, store, or sell your personal data. RekluzLabs ("we", "us") built the app to work on your device, with no accounts, no ads, no analytics, and no tracking.</p>
+
+<h2 id="summary">Summary</h2>
+<div class="summary">
+<ul>
+  <li>Your recipes, photos, and shopping lists stay on your device. We run no server and cannot see them.</li>
+  <li>There is no sign-up, login, or account of any kind.</li>
+  <li>Text recognition runs on your device.</li>
+  <li>If you choose to use the optional AI structuring feature, the app sends your recipe content to Google's Gemini API using your own API key. This is the only time data leaves your device.</li>
+  <li>The app contains no advertising, analytics, or crash-reporting services.</li>
+</ul>
+</div>
+
+<h2 id="collect">Information we collect</h2>
+<p>We collect nothing. We operate no backend, so we have no way to receive, view, or store your information.</p>
+<p>The app saves the following on your device only, in its private app storage:</p>
+<ul>
+  <li>Recipes you scan or enter, including titles, ingredients, instructions, and notes</li>
+  <li>Photos of recipes you capture or import</li>
+  <li>Shopping lists and categories you create</li>
+  <li>App settings, and your Gemini API key if you add one</li>
+</ul>
+<p>This data is not accessible to other apps and is not transmitted to us.</p>
+
+<h2 id="permissions">Permissions</h2>
+<p>VaultCuisine asks for access only when a feature needs it:</p>
+<ul>
+  <li><strong>Camera:</strong> to photograph a recipe for scanning. Images are processed on your device and saved only if you keep the recipe.</li>
+  <li><strong>Photos and files:</strong> to import an existing recipe image you select. The app reads only the items you pick.</li>
+  <li><strong>Printing:</strong> when you print a recipe, the app hands the formatted recipe to Android's print system. Where it goes after that depends on the printer or print service you choose.</li>
+</ul>
+<p>You can revoke any permission at any time in your device settings.</p>
+
+<h2 id="ocr">Text recognition</h2>
+<p>VaultCuisine uses Google ML Kit text recognition to read the text in your recipe photos. This runs entirely on your device, and the images are not sent to Google or to us for this step.</p>
+
+<h2 id="gemini">AI structuring with your own Gemini API key</h2>
+<p>VaultCuisine can organize scanned recipes into titles, ingredients, and steps using Google's Gemini API. This feature is optional and works only if you enter your own Gemini API key ("bring your own key"). We do not provide, proxy, or see this key or the requests made with it.</p>
+<p>When you use this feature:</p>
+<ul>
+  <li>The app sends the recognized recipe text, and where needed the recipe image, directly from your device to Google's Gemini API.</li>
+  <li>Google processes that content under its own terms and privacy policy. How Google handles API data can depend on the plan tied to your key, so review <a href="https://ai.google.dev/gemini-api/terms">Google's Gemini API terms</a> before use.</li>
+  <li>Your API key is stored on your device and is sent only to Google as part of those requests.</li>
+  <li>Error messages shown in the app are sanitized so that your key and content are not exposed in them.</li>
+</ul>
+<p>If you do not add a key, nothing is sent anywhere and the app works with on-device recognition and manual editing.</p>
+
+<h2 id="third-parties">Third parties</h2>
+<p>We do not sell, rent, or share your data, because we do not have it. The only third parties involved are:</p>
+<ul>
+  <li><strong>Google Play:</strong> if you install the app through Google Play, Google may collect install and device information under its own privacy policy. We do not receive personal information from this.</li>
+  <li><strong>Google ML Kit:</strong> runs on your device for text recognition, as described above.</li>
+  <li><strong>Google Gemini API:</strong> used only if you add your own key, as described above.</li>
+</ul>
+<p>The app includes no ad networks, analytics tools, or crash-reporting services.</p>
+
+<h2 id="retention">Retention and deletion</h2>
+<p>Your data stays on your device until you delete it. You can delete individual recipes and lists in the app, clear the app's storage in Android settings, or uninstall the app to remove all of its data. Because we hold no copy, there is nothing for us to delete on your behalf.</p>
+<p>If you have Android device backup turned on, your device may back up app data to your Google account under Google's terms. We do not control or receive those backups.</p>
+
+<h2 id="children">Children's privacy</h2>
+<p>VaultCuisine does not knowingly collect personal information from anyone, including children under 13. The app has no accounts and no data collection.</p>
+
+<h2 id="security">Security</h2>
+<p>Your data is kept in the app's private storage on your device. The only network traffic the app makes is the optional request to Google's Gemini API, which is sent over an encrypted (HTTPS) connection. Please protect your device with a screen lock, and keep your API key private.</p>
+
+<h2 id="changes">Changes to this policy</h2>
+<p>If this policy changes, we will update the date at the top of this page. Material changes will also be noted in the app's release notes.</p>
+
+<h2 id="contact">Contact</h2>
+<p>Questions about this policy can be sent to RekluzLabs at <a href="mailto:YOUR_EMAIL@example.com">YOUR_EMAIL@example.com</a>.</p>
+
+<footer>
+  &copy; 2026 RekluzLabs. Vancouver, BC, Canada.
+</footer>
+
+</main>
+</body>
+</html>
