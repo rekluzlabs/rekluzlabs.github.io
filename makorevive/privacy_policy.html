@@ -1,7 +1,7 @@
 <!--
   ~ Copyright (c) 2026 Rekluz Labs
   ~ All rights reserved.
-  -->
+-->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -76,29 +76,33 @@
     <div class="container">
         <h1>Privacy Policy</h1>
         <div class="meta">
-            Effective June 29, 2026<br>
+            Effective November 13, 2026<br>
             Rekluz Labs
         </div>
 
-        <p>At Rekluz Labs, we believe that advanced technology should never come at the expense of personal privacy. MakoRevive is built upon a fundamental design philosophy: your data belongs to you, and it should never leave your possession. This policy outlines our commitment to a zero-collection architecture and details how we have engineered our application to be private by default.</p>
+        <p>At Rekluz Labs, we believe that advanced technology should never come at the expense of personal privacy. MakoRevive is built upon a fundamental design philosophy: your data belongs to you, and it should stay in your possession. This policy outlines our commitment to a minimal-collection architecture and details how we have engineered our application to be private by default.</p>
 
         <h2>The Local-First Standard</h2>
-        <p>Unlike traditional image enhancement services that rely on cloud-based processing, MakoRevive is architected to perform all computations directly on your hardware. When you restore or colorize a photograph, the underlying AI models execute locally within your device's secured environment. We do not maintain servers capable of viewing, storing, or analyzing your media. This engineering choice ensures that your most personal memories remain exactly where they were intended to be: under your absolute control.</p>
+        <p>Unlike traditional image enhancement services that rely on cloud-based processing, MakoRevive is architected to perform all computations directly on your hardware. When you restore or colorize a photograph, the underlying AI models execute locally within your device's secured environment. We do not operate servers that receive your photos during restoration. Your photos stay on your device unless you choose to share them or to include a preview with a report, as described below. This engineering choice ensures that your most personal memories remain exactly where they were intended to be: under your control.</p>
 
-        <h2>Zero-Data Architecture</h2>
-        <p>We have intentionally omitted any tracking, analytics, or crash-reporting SDKs from the MakoRevive codebase. Our development team does not receive session logs, feature usage statistics, or device identifiers. Because we do not collect this information, we have no database to secure and no personal data to share with third parties. We treat privacy not as a legal checkbox, but as a core technical constraint that dictates how we build our software.</p>
+        <h2>Minimal Data Architecture</h2>
+        <p>We have intentionally omitted any tracking, analytics, or crash-reporting SDKs from the MakoRevive codebase. In normal use, our development team does not receive session logs, feature usage statistics, or device identifiers. The only information we ever receive is what you choose to send when you submit a report about AI-generated content, as described in the Reporting section below. We treat privacy not as a legal checkbox, but as a core technical constraint that dictates how we build our software.</p>
 
         <h2>Network Communication</h2>
-        <p>While MakoRevive is a non-tracking application, it utilizes your network connection in two specific, user-transparent instances. To keep the initial application download efficient, the app must connect to our distribution servers on first launch to retrieve the necessary neural network models. Additionally, if you choose to export your results through the system share menu, the selected third-party service will utilize your internet connection to transmit that file. Outside of these two scenarios, MakoRevive remains entirely self-contained and operates without any requirement for external communication.</p>
+        <p>MakoRevive is a non-tracking application, and it uses your network connection in three specific, user-transparent instances. To keep the initial application download efficient, the app connects to our distribution servers on first launch to retrieve the necessary neural network models. If you choose to export your results through the system share menu, the selected third-party service will use your internet connection to transmit that file. And if you submit a report about AI-generated content, the app sends that report to us over an encrypted (HTTPS) connection. Outside of these three scenarios, MakoRevive operates without any requirement for external communication.</p>
+
+        <h2>Reporting AI-Generated Content</h2>
+        <p>MakoRevive lets you report AI-generated results that are offensive, harmful, distorted, or incorrect, without leaving the app. Submitting a report is entirely optional. A report contains the reason you select, your optional comment, the date and time, the app version, your Android version, your device manufacturer and model, and which restoration models and settings produced the result. If you turn on the option to include a preview, a small, reduced-size copy of the AI-generated result (never your original photo, and with location and camera metadata removed) is also sent. This option is off by default.</p>
+        <p>We use reports only to review and improve content filtering and moderation, and we do not share them with third parties for advertising or any other purpose. Reports are stored securely and kept for up to 12 months, after which they are deleted. If you are offline when you submit a report, it is saved on your device and sent when a connection is available. You can request deletion of a report you sent by contacting us at the address below. We do not include your name, email address, or any account or advertising identifier in a report, so please do not put personal details in the comment field.</p>
 
         <h2>Technical Intelligence</h2>
         <p>For specialized tasks such as face detection, we leverage high-performance runtimes like Google ML Kit. We have configured these tools to operate in a strictly localized mode, ensuring that all detection and analysis are performed on-device without data transmission. This allows us to provide professional-grade results while maintaining a firewall between your private data and the outside world.</p>
 
-        <h2>Global Compliance</h2>
-        <p>MakoRevive is designed to meet and exceed global privacy standards, including the GDPR, CCPA, and COPPA. Our compliance is not achieved through complex legal frameworks or data-access requests, but through the simple fact that we possess no user data to begin with. By removing the possibility of data collection at the source, we provide a level of security that traditional privacy policies can only promise.</p>
+        <h2>Data Protection</h2>
+        <p>MakoRevive is designed around data minimization. We collect no personal data in normal use, and the only data we receive is the optional report content described above, which you send voluntarily. If you have questions about your data or want a report you submitted deleted, contact us at the address below.</p>
 
         <h2>Contact</h2>
-        <p>If you have technical questions regarding our privacy architecture or our engineering standards, we welcome your feedback. Please reach out to our team at <a href="mailto:rekluzlabs@gmail.com">rekluzlabs@gmail.com</a>.</p>
+        <p>If you have technical questions regarding our privacy architecture or our engineering standards, or if you would like to request deletion of a report you submitted, we welcome your message. Please reach out to our team at <a href="mailto:rekluzlabs@gmail.com">rekluzlabs@gmail.com</a>.</p>
 
         <footer>
             &copy; 2026 Rekluz Labs. All rights reserved.
