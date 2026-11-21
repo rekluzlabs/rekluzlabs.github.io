@@ -1,0 +1,24 @@
+.ks-demo-card {
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  align-items: center;
+  gap: clamp(1rem, 3vw, 2rem);
+  overflow: hidden;
+  padding: clamp(1rem, 3vw, 2rem);
+  border: 1px solid #596253;
+  border-radius: .5rem;
+  background: #1d2821;
+  color: #f8f1de;
+  font: 1rem/1.55 system-ui, sans-serif;
+}
+
+.ks-demo-card img { display: block; width: 100%; height: auto; image-rendering: pixelated; }
+.ks-demo-card .ks-demo-edition { margin: 0 0 .5rem; color: #ffd486; font-size: .875rem; font-weight: 700; }
+.ks-demo-card h3 { margin: 0; font: 1.9rem/1.15 Georgia, serif; }
+.ks-demo-card a { color: #ffd486; font-weight: 700; text-underline-offset: .25em; }
+.ks-demo-card a:focus-visible { outline: 3px solid #ffd486; outline-offset: 5px; }
+
+@media (max-width: 38rem) {
+  .ks-demo-card { grid-template-columns: 1fr; }
+}

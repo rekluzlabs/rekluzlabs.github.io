@@ -1,0 +1,86 @@
+:root {
+  color-scheme: dark;
+  background: #151d19;
+  color: #f8f1de;
+  font-family: system-ui, sans-serif;
+  line-height: 1.55;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; }
+a { color: inherit; }
+a:focus-visible { outline: 3px solid #ffd486; outline-offset: 5px; }
+
+.masthead, main {
+  width: min(100% - 3rem, 78rem);
+  margin-inline: auto;
+}
+
+.masthead {
+  padding-block: 1.35rem;
+  border-bottom: 1px solid #4b5447;
+}
+
+.masthead a { text-underline-offset: .3em; }
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(17rem, .8fr) minmax(0, 1.35fr);
+  align-items: center;
+  gap: clamp(2rem, 5vw, 5rem);
+  padding-block: clamp(2.5rem, 7vw, 6rem);
+}
+
+.edition, figcaption, .launch-note { color: #d3cbb6; font-size: .875rem; }
+.edition { color: #ffd486; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+.intro > :first-child { margin-top: 0; }
+.launch-note { margin-bottom: 0; }
+
+h1, h2 {
+  margin: 0;
+  font-family: Georgia, serif;
+  font-weight: 500;
+}
+
+h1 { font-size: clamp(3.35rem, 7.4vw, 7.35rem); line-height: .94; letter-spacing: -.06em; }
+h2 { font-size: 2rem; line-height: 1.15; }
+.description { font-size: 1.15rem; max-width: 32ch; margin-block: 1.5rem; }
+
+.play {
+  display: inline-block;
+  padding: .7rem 1.45rem;
+  background: #ffd486;
+  color: #211c11;
+  font-weight: 750;
+  text-decoration: none;
+  border-radius: .25rem;
+}
+
+.play:hover { background: #ffe7ac; }
+figure { margin: 0; }
+figure img { width: 100%; height: auto; display: block; image-rendering: pixelated; }
+figcaption { margin-top: .75rem; }
+
+.details {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: clamp(2rem, 6vw, 6rem);
+  border-top: 1px solid #4b5447;
+  padding-block: 2rem 3rem;
+}
+
+.controls { margin-bottom: 0; }
+.controls div { display: grid; grid-template-columns: 8rem 1fr; gap: .6rem; padding-block: .35rem; }
+.controls dd { margin: 0; }
+kbd { background: #2c382e; border: 1px solid #687263; padding: .1em .28em; border-radius: .2em; }
+
+@media (max-width: 48rem) {
+  .hero, .details { grid-template-columns: 1fr; }
+  h1 br { display: none; }
+}
+
+@media (max-width: 24rem) {
+  .masthead, main { width: calc(100% - 2rem); }
+  h1 { font-size: 3rem; }
+  .controls div { grid-template-columns: 1fr; gap: .15rem; }
+}
