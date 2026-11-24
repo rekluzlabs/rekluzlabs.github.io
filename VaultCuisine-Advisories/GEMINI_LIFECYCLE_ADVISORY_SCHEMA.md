@@ -1,6 +1,6 @@
 # Gemini lifecycle advisory format and publication
 
-The production-format JSON is [gemini-lifecycle.json](app/src/main/assets/gemini-lifecycle.json). The same file can be bundled and published. Its only audience is the Gemini Developer API v1beta experience in VaultCuisine.
+The production-format file is [gemini-lifecycle.json](gemini-lifecycle.json). Its only audience is the Gemini Developer API v1beta experience in VaultCuisine.
 
 ## Schema version 1
 
@@ -33,10 +33,6 @@ The feed is cumulative. Preserve prior rows or supply cited corrections. A lower
 
 ## Publication and correction
 
-1. Verify exact IDs, date semantics, suggested IDs and effective routing in Google's current Developer API documentation. Capture the evidence URLs and date. Update the asset and increment the revision for any payload change. Keep cumulative rows, including documented withdrawals.
-2. Run the GeminiLifecycleTest and GeminiAdvisoriesTest suites against live source and confirm that the bundled asset parses. Exercise the exact new document with the same decoder before publishing. Review changes to access, redirect and shutdown independently.
-3. After explicit approval, create or identify an approved Rekluz Labs GitHub repository. Add the checked file at advisories/gemini-lifecycle-v1.json to its approved publication branch. Use branch protection and review for changes to the advisory file. A possible GitHub Pages URL structure is https://{approved-pages-host}/{approved-repository}/advisories/gemini-lifecycle-v1.json. This is a template and has no runtime configuration.
-4. Enable static hosting only after approval. Check the exact HTTPS URL returns the intended JSON directly, without redirects. Compare the downloaded file to the reviewed asset. Approve that exact URL before setting both production constants in GeminiAdvisories.kt. Verify a new app build against synthetic tests before release.
-5. Publish subsequent revisions to the same URL. For a rollback, publish the corrected evidence under a fresh, higher revision. Never restore an old revision or silently delete evidence. Cite the official correction or withdrawal and retain historical revisions in source control.
+Publish this document as **gemini-lifecycle.json** in the **VaultCuisine-Advisories** directory of the Rekluz Labs website repository's main branch. Revision 2 is the starting point. Validate every replacement against the shipped format and retain prior evidence or cite an explicit correction or withdrawal.
 
-Trusted TLS and an exact app-shipped allowlist protect transport. Repository access controls protect publishing. A compromised publisher account can still serve false metadata. Detached signatures are optional future work and would require an identified owner, protected signing keys, rotation and recovery procedures, and an app-trusted verification key with a migration plan. The hosting service may receive ordinary connection metadata including the IP address. The request carries no Gemini key, selected model, credential scope, user content or app identifiers.
+VaultCuisine uses a direct HTTPS GET to the exact GitHub raw URL. It rejects redirects and caches accepted data privately. GitHub receives ordinary connection metadata, including the originating IP address. HTTPS authenticates the host. A compromised publisher can serve false evidence, so restrict write access and review changes.

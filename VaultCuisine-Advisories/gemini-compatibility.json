@@ -1,0 +1,1319 @@
+{
+  "schemaVersion": 1,
+  "revision": 1,
+  "publishedAt": "2026-11-24T00:00:00Z",
+  "provider": "google",
+  "api": "gemini-developer/v1beta",
+  "kind": "COMPATIBILITY",
+  "records": [
+    {
+      "modelId": "gemini-4-neon",
+      "verifiedOn": "2026-11-24",
+      "evidence": [
+        "https://aistudio.google.com/docs/models"
+      ],
+      "purpose": "GENERAL_PURPOSE",
+      "release": "STABLE",
+      "releaseDate": "2026-11-18",
+      "capabilities": [
+        {
+          "capability": "GENERATE_CONTENT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "TEXT_INPUT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "TEXT_OUTPUT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "IMAGE_INPUT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "JSON_MIME_TYPE",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "RESPONSE_SCHEMA",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "PLAIN_TEXT_MIME_TYPE",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "MAX_OUTPUT_TOKENS",
+          "support": "UNKNOWN"
+        }
+      ]
+    },
+    {
+      "modelId": "gemini-4-hydrogen",
+      "verifiedOn": "2026-11-24",
+      "evidence": [
+        "https://aistudio.google.com/docs/models"
+      ],
+      "purpose": "GENERAL_PURPOSE",
+      "release": "STABLE",
+      "releaseDate": "2026-11-12",
+      "capabilities": [
+        {
+          "capability": "GENERATE_CONTENT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "TEXT_INPUT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "TEXT_OUTPUT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "IMAGE_INPUT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "JSON_MIME_TYPE",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "RESPONSE_SCHEMA",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "PLAIN_TEXT_MIME_TYPE",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "MAX_OUTPUT_TOKENS",
+          "support": "UNKNOWN"
+        }
+      ]
+    },
+    {
+      "modelId": "gemini-4-carbon",
+      "verifiedOn": "2026-11-24",
+      "evidence": [
+        "https://aistudio.google.com/docs/models"
+      ],
+      "purpose": "GENERAL_PURPOSE",
+      "release": "STABLE",
+      "releaseDate": "2026-11-10",
+      "capabilities": [
+        {
+          "capability": "GENERATE_CONTENT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "TEXT_INPUT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "TEXT_OUTPUT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "IMAGE_INPUT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "JSON_MIME_TYPE",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "RESPONSE_SCHEMA",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "PLAIN_TEXT_MIME_TYPE",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "MAX_OUTPUT_TOKENS",
+          "support": "UNKNOWN"
+        }
+      ]
+    },
+    {
+      "modelId": "gemini-4-argon",
+      "verifiedOn": "2026-11-24",
+      "evidence": [
+        "https://aistudio.google.com/docs/models"
+      ],
+      "purpose": "GENERAL_PURPOSE",
+      "release": "STABLE",
+      "releaseDate": "2026-10-13",
+      "capabilities": [
+        {
+          "capability": "GENERATE_CONTENT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "TEXT_INPUT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "TEXT_OUTPUT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "IMAGE_INPUT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "JSON_MIME_TYPE",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "RESPONSE_SCHEMA",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "PLAIN_TEXT_MIME_TYPE",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "MAX_OUTPUT_TOKENS",
+          "support": "UNKNOWN"
+        }
+      ]
+    },
+    {
+      "modelId": "gemini-3.8-flash",
+      "verifiedOn": "2026-11-24",
+      "evidence": [
+        "https://aistudio.google.com/docs/models",
+        "https://aistudio.google.com/docs/models/gemini-3.8-flash",
+        "https://aistudio.google.com/api-reference/generate-content/generate-content"
+      ],
+      "purpose": "GENERAL_PURPOSE",
+      "release": "STABLE",
+      "releaseDate": "2026-09-02",
+      "capabilities": [
+        {
+          "capability": "GENERATE_CONTENT",
+          "support": "SUPPORTED"
+        },
+        {
+          "capability": "TEXT_INPUT",
+          "support": "SUPPORTED"
+        },
+        {
+          "capability": "TEXT_OUTPUT",
+          "support": "SUPPORTED"
+        },
+        {
+          "capability": "IMAGE_INPUT",
+          "support": "SUPPORTED"
+        },
+        {
+          "capability": "JSON_MIME_TYPE",
+          "support": "SUPPORTED"
+        },
+        {
+          "capability": "RESPONSE_SCHEMA",
+          "support": "SUPPORTED"
+        },
+        {
+          "capability": "PLAIN_TEXT_MIME_TYPE",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "MAX_OUTPUT_TOKENS",
+          "support": "SUPPORTED"
+        }
+      ]
+    },
+    {
+      "modelId": "gemini-3.7-flash",
+      "verifiedOn": "2026-11-24",
+      "evidence": [
+        "https://aistudio.google.com/docs/models"
+      ],
+      "purpose": "GENERAL_PURPOSE",
+      "release": "UNKNOWN",
+      "releaseDate": "2026-08-13",
+      "capabilities": [
+        {
+          "capability": "GENERATE_CONTENT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "TEXT_INPUT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "TEXT_OUTPUT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "IMAGE_INPUT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "JSON_MIME_TYPE",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "RESPONSE_SCHEMA",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "PLAIN_TEXT_MIME_TYPE",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "MAX_OUTPUT_TOKENS",
+          "support": "UNKNOWN"
+        }
+      ]
+    },
+    {
+      "modelId": "gemini-3.6-flash",
+      "verifiedOn": "2026-11-24",
+      "evidence": [
+        "https://aistudio.google.com/docs/models",
+        "https://aistudio.google.com/docs/models/gemini-3.6-flash"
+      ],
+      "purpose": "GENERAL_PURPOSE",
+      "release": "STABLE",
+      "releaseDate": "2026-07-21",
+      "capabilities": [
+        {
+          "capability": "GENERATE_CONTENT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "TEXT_INPUT",
+          "support": "SUPPORTED"
+        },
+        {
+          "capability": "TEXT_OUTPUT",
+          "support": "SUPPORTED"
+        },
+        {
+          "capability": "IMAGE_INPUT",
+          "support": "SUPPORTED"
+        },
+        {
+          "capability": "JSON_MIME_TYPE",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "RESPONSE_SCHEMA",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "PLAIN_TEXT_MIME_TYPE",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "MAX_OUTPUT_TOKENS",
+          "support": "UNKNOWN"
+        }
+      ]
+    },
+    {
+      "modelId": "gemini-3.5-flash-lite",
+      "verifiedOn": "2026-11-24",
+      "evidence": [
+        "https://aistudio.google.com/docs/models",
+        "https://aistudio.google.com/docs/models/gemini-3.5-flash-lite"
+      ],
+      "purpose": "GENERAL_PURPOSE",
+      "release": "STABLE",
+      "releaseDate": "2026-07-21",
+      "capabilities": [
+        {
+          "capability": "GENERATE_CONTENT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "TEXT_INPUT",
+          "support": "SUPPORTED"
+        },
+        {
+          "capability": "TEXT_OUTPUT",
+          "support": "SUPPORTED"
+        },
+        {
+          "capability": "IMAGE_INPUT",
+          "support": "SUPPORTED"
+        },
+        {
+          "capability": "JSON_MIME_TYPE",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "RESPONSE_SCHEMA",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "PLAIN_TEXT_MIME_TYPE",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "MAX_OUTPUT_TOKENS",
+          "support": "UNKNOWN"
+        }
+      ]
+    },
+    {
+      "modelId": "gemini-3.5-flash",
+      "verifiedOn": "2026-11-24",
+      "evidence": [
+        "https://aistudio.google.com/docs/models"
+      ],
+      "purpose": "GENERAL_PURPOSE",
+      "release": "UNKNOWN",
+      "releaseDate": "2026-05-19",
+      "capabilities": [
+        {
+          "capability": "GENERATE_CONTENT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "TEXT_INPUT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "TEXT_OUTPUT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "IMAGE_INPUT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "JSON_MIME_TYPE",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "RESPONSE_SCHEMA",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "PLAIN_TEXT_MIME_TYPE",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "MAX_OUTPUT_TOKENS",
+          "support": "UNKNOWN"
+        }
+      ]
+    },
+    {
+      "modelId": "gemini-3.1-flash-lite",
+      "verifiedOn": "2026-11-24",
+      "evidence": [
+        "https://aistudio.google.com/docs/models"
+      ],
+      "purpose": "GENERAL_PURPOSE",
+      "release": "STABLE",
+      "releaseDate": "2026-05-07",
+      "capabilities": [
+        {
+          "capability": "GENERATE_CONTENT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "TEXT_INPUT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "TEXT_OUTPUT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "IMAGE_INPUT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "JSON_MIME_TYPE",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "RESPONSE_SCHEMA",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "PLAIN_TEXT_MIME_TYPE",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "MAX_OUTPUT_TOKENS",
+          "support": "UNKNOWN"
+        }
+      ]
+    },
+    {
+      "modelId": "gemini-3.1-pro-preview",
+      "verifiedOn": "2026-11-24",
+      "evidence": [
+        "https://aistudio.google.com/docs/models"
+      ],
+      "purpose": "GENERAL_PURPOSE",
+      "release": "PREVIEW",
+      "releaseDate": "2026-02-19",
+      "capabilities": [
+        {
+          "capability": "GENERATE_CONTENT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "TEXT_INPUT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "TEXT_OUTPUT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "IMAGE_INPUT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "JSON_MIME_TYPE",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "RESPONSE_SCHEMA",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "PLAIN_TEXT_MIME_TYPE",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "MAX_OUTPUT_TOKENS",
+          "support": "UNKNOWN"
+        }
+      ]
+    },
+    {
+      "modelId": "gemini-3-flash-preview",
+      "verifiedOn": "2026-11-24",
+      "evidence": [
+        "https://aistudio.google.com/docs/models"
+      ],
+      "purpose": "GENERAL_PURPOSE",
+      "release": "PREVIEW",
+      "releaseDate": "2025-12-17",
+      "capabilities": [
+        {
+          "capability": "GENERATE_CONTENT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "TEXT_INPUT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "TEXT_OUTPUT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "IMAGE_INPUT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "JSON_MIME_TYPE",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "RESPONSE_SCHEMA",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "PLAIN_TEXT_MIME_TYPE",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "MAX_OUTPUT_TOKENS",
+          "support": "UNKNOWN"
+        }
+      ]
+    },
+    {
+      "modelId": "gemini-2.5-flash-lite",
+      "verifiedOn": "2026-11-24",
+      "evidence": [
+        "https://aistudio.google.com/docs/models"
+      ],
+      "purpose": "GENERAL_PURPOSE",
+      "release": "STABLE",
+      "releaseDate": "2025-07-22",
+      "capabilities": [
+        {
+          "capability": "GENERATE_CONTENT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "TEXT_INPUT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "TEXT_OUTPUT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "IMAGE_INPUT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "JSON_MIME_TYPE",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "RESPONSE_SCHEMA",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "PLAIN_TEXT_MIME_TYPE",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "MAX_OUTPUT_TOKENS",
+          "support": "UNKNOWN"
+        }
+      ]
+    },
+    {
+      "modelId": "gemini-2.5-flash",
+      "verifiedOn": "2026-11-24",
+      "evidence": [
+        "https://aistudio.google.com/docs/models"
+      ],
+      "purpose": "GENERAL_PURPOSE",
+      "release": "UNKNOWN",
+      "releaseDate": "2025-06-17",
+      "capabilities": [
+        {
+          "capability": "GENERATE_CONTENT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "TEXT_INPUT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "TEXT_OUTPUT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "IMAGE_INPUT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "JSON_MIME_TYPE",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "RESPONSE_SCHEMA",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "PLAIN_TEXT_MIME_TYPE",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "MAX_OUTPUT_TOKENS",
+          "support": "UNKNOWN"
+        }
+      ]
+    },
+    {
+      "modelId": "gemini-2.5-pro",
+      "verifiedOn": "2026-11-24",
+      "evidence": [
+        "https://aistudio.google.com/docs/models"
+      ],
+      "purpose": "GENERAL_PURPOSE",
+      "release": "UNKNOWN",
+      "releaseDate": "2025-06-17",
+      "capabilities": [
+        {
+          "capability": "GENERATE_CONTENT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "TEXT_INPUT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "TEXT_OUTPUT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "IMAGE_INPUT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "JSON_MIME_TYPE",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "RESPONSE_SCHEMA",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "PLAIN_TEXT_MIME_TYPE",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "MAX_OUTPUT_TOKENS",
+          "support": "UNKNOWN"
+        }
+      ]
+    },
+    {
+      "modelId": "gemini-2.5-flash-image",
+      "verifiedOn": "2026-11-24",
+      "evidence": [
+        "https://aistudio.google.com/docs/models"
+      ],
+      "purpose": "SPECIALIST",
+      "release": "UNKNOWN",
+      "capabilities": [
+        {
+          "capability": "GENERATE_CONTENT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "TEXT_INPUT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "TEXT_OUTPUT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "IMAGE_INPUT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "JSON_MIME_TYPE",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "RESPONSE_SCHEMA",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "PLAIN_TEXT_MIME_TYPE",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "MAX_OUTPUT_TOKENS",
+          "support": "UNKNOWN"
+        }
+      ]
+    },
+    {
+      "modelId": "gemini-nano-banana-2.1",
+      "verifiedOn": "2026-11-24",
+      "evidence": [
+        "https://aistudio.google.com/docs/models"
+      ],
+      "purpose": "SPECIALIST",
+      "release": "UNKNOWN",
+      "capabilities": [
+        {
+          "capability": "GENERATE_CONTENT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "TEXT_INPUT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "TEXT_OUTPUT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "IMAGE_INPUT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "JSON_MIME_TYPE",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "RESPONSE_SCHEMA",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "PLAIN_TEXT_MIME_TYPE",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "MAX_OUTPUT_TOKENS",
+          "support": "UNKNOWN"
+        }
+      ]
+    },
+    {
+      "modelId": "gemini-3.1-flash-image",
+      "verifiedOn": "2026-11-24",
+      "evidence": [
+        "https://aistudio.google.com/docs/models"
+      ],
+      "purpose": "SPECIALIST",
+      "release": "UNKNOWN",
+      "capabilities": [
+        {
+          "capability": "GENERATE_CONTENT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "TEXT_INPUT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "TEXT_OUTPUT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "IMAGE_INPUT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "JSON_MIME_TYPE",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "RESPONSE_SCHEMA",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "PLAIN_TEXT_MIME_TYPE",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "MAX_OUTPUT_TOKENS",
+          "support": "UNKNOWN"
+        }
+      ]
+    },
+    {
+      "modelId": "gemini-3.1-flash-lite-image",
+      "verifiedOn": "2026-11-24",
+      "evidence": [
+        "https://aistudio.google.com/docs/models"
+      ],
+      "purpose": "SPECIALIST",
+      "release": "UNKNOWN",
+      "capabilities": [
+        {
+          "capability": "GENERATE_CONTENT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "TEXT_INPUT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "TEXT_OUTPUT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "IMAGE_INPUT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "JSON_MIME_TYPE",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "RESPONSE_SCHEMA",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "PLAIN_TEXT_MIME_TYPE",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "MAX_OUTPUT_TOKENS",
+          "support": "UNKNOWN"
+        }
+      ]
+    },
+    {
+      "modelId": "gemini-3-pro-image",
+      "verifiedOn": "2026-11-24",
+      "evidence": [
+        "https://aistudio.google.com/docs/models"
+      ],
+      "purpose": "SPECIALIST",
+      "release": "UNKNOWN",
+      "capabilities": [
+        {
+          "capability": "GENERATE_CONTENT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "TEXT_INPUT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "TEXT_OUTPUT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "IMAGE_INPUT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "JSON_MIME_TYPE",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "RESPONSE_SCHEMA",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "PLAIN_TEXT_MIME_TYPE",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "MAX_OUTPUT_TOKENS",
+          "support": "UNKNOWN"
+        }
+      ]
+    },
+    {
+      "modelId": "gemini-2.5-flash-native-audio-preview-12-2025",
+      "verifiedOn": "2026-11-24",
+      "evidence": [
+        "https://aistudio.google.com/docs/models"
+      ],
+      "purpose": "SPECIALIST",
+      "release": "UNKNOWN",
+      "capabilities": [
+        {
+          "capability": "GENERATE_CONTENT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "TEXT_INPUT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "TEXT_OUTPUT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "IMAGE_INPUT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "JSON_MIME_TYPE",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "RESPONSE_SCHEMA",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "PLAIN_TEXT_MIME_TYPE",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "MAX_OUTPUT_TOKENS",
+          "support": "UNKNOWN"
+        }
+      ]
+    },
+    {
+      "modelId": "gemini-3.8-live",
+      "verifiedOn": "2026-11-24",
+      "evidence": [
+        "https://aistudio.google.com/docs/models"
+      ],
+      "purpose": "SPECIALIST",
+      "release": "UNKNOWN",
+      "capabilities": [
+        {
+          "capability": "GENERATE_CONTENT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "TEXT_INPUT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "TEXT_OUTPUT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "IMAGE_INPUT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "JSON_MIME_TYPE",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "RESPONSE_SCHEMA",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "PLAIN_TEXT_MIME_TYPE",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "MAX_OUTPUT_TOKENS",
+          "support": "UNKNOWN"
+        }
+      ]
+    },
+    {
+      "modelId": "gemini-3.8-flash-tts",
+      "verifiedOn": "2026-11-24",
+      "evidence": [
+        "https://aistudio.google.com/docs/models"
+      ],
+      "purpose": "SPECIALIST",
+      "release": "UNKNOWN",
+      "capabilities": [
+        {
+          "capability": "GENERATE_CONTENT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "TEXT_INPUT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "TEXT_OUTPUT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "IMAGE_INPUT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "JSON_MIME_TYPE",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "RESPONSE_SCHEMA",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "PLAIN_TEXT_MIME_TYPE",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "MAX_OUTPUT_TOKENS",
+          "support": "UNKNOWN"
+        }
+      ]
+    },
+    {
+      "modelId": "gemini-3.5-transcribe",
+      "verifiedOn": "2026-11-24",
+      "evidence": [
+        "https://aistudio.google.com/docs/models"
+      ],
+      "purpose": "SPECIALIST",
+      "release": "UNKNOWN",
+      "capabilities": [
+        {
+          "capability": "GENERATE_CONTENT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "TEXT_INPUT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "TEXT_OUTPUT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "IMAGE_INPUT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "JSON_MIME_TYPE",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "RESPONSE_SCHEMA",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "PLAIN_TEXT_MIME_TYPE",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "MAX_OUTPUT_TOKENS",
+          "support": "UNKNOWN"
+        }
+      ]
+    },
+    {
+      "modelId": "gemini-omni-1.2-flash",
+      "verifiedOn": "2026-11-24",
+      "evidence": [
+        "https://aistudio.google.com/docs/models"
+      ],
+      "purpose": "SPECIALIST",
+      "release": "UNKNOWN",
+      "capabilities": [
+        {
+          "capability": "GENERATE_CONTENT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "TEXT_INPUT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "TEXT_OUTPUT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "IMAGE_INPUT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "JSON_MIME_TYPE",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "RESPONSE_SCHEMA",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "PLAIN_TEXT_MIME_TYPE",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "MAX_OUTPUT_TOKENS",
+          "support": "UNKNOWN"
+        }
+      ]
+    },
+    {
+      "modelId": "genie-4",
+      "verifiedOn": "2026-11-24",
+      "evidence": [
+        "https://aistudio.google.com/docs/models"
+      ],
+      "purpose": "SPECIALIST",
+      "release": "UNKNOWN",
+      "capabilities": [
+        {
+          "capability": "GENERATE_CONTENT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "TEXT_INPUT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "TEXT_OUTPUT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "IMAGE_INPUT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "JSON_MIME_TYPE",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "RESPONSE_SCHEMA",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "PLAIN_TEXT_MIME_TYPE",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "MAX_OUTPUT_TOKENS",
+          "support": "UNKNOWN"
+        }
+      ]
+    },
+    {
+      "modelId": "gemini-2.5-computer-use-preview-10-2025",
+      "verifiedOn": "2026-11-24",
+      "evidence": [
+        "https://aistudio.google.com/docs/models"
+      ],
+      "purpose": "SPECIALIST",
+      "release": "UNKNOWN",
+      "capabilities": [
+        {
+          "capability": "GENERATE_CONTENT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "TEXT_INPUT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "TEXT_OUTPUT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "IMAGE_INPUT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "JSON_MIME_TYPE",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "RESPONSE_SCHEMA",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "PLAIN_TEXT_MIME_TYPE",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "MAX_OUTPUT_TOKENS",
+          "support": "UNKNOWN"
+        }
+      ]
+    },
+    {
+      "modelId": "deep-research-preview-04-2026",
+      "verifiedOn": "2026-11-24",
+      "evidence": [
+        "https://aistudio.google.com/docs/models"
+      ],
+      "purpose": "SPECIALIST",
+      "release": "UNKNOWN",
+      "capabilities": [
+        {
+          "capability": "GENERATE_CONTENT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "TEXT_INPUT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "TEXT_OUTPUT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "IMAGE_INPUT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "JSON_MIME_TYPE",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "RESPONSE_SCHEMA",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "PLAIN_TEXT_MIME_TYPE",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "MAX_OUTPUT_TOKENS",
+          "support": "UNKNOWN"
+        }
+      ]
+    },
+    {
+      "modelId": "deep-research-max-preview-04-2026",
+      "verifiedOn": "2026-11-24",
+      "evidence": [
+        "https://aistudio.google.com/docs/models"
+      ],
+      "purpose": "SPECIALIST",
+      "release": "UNKNOWN",
+      "capabilities": [
+        {
+          "capability": "GENERATE_CONTENT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "TEXT_INPUT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "TEXT_OUTPUT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "IMAGE_INPUT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "JSON_MIME_TYPE",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "RESPONSE_SCHEMA",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "PLAIN_TEXT_MIME_TYPE",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "MAX_OUTPUT_TOKENS",
+          "support": "UNKNOWN"
+        }
+      ]
+    },
+    {
+      "modelId": "gemini-embedding-2",
+      "verifiedOn": "2026-11-24",
+      "evidence": [
+        "https://aistudio.google.com/docs/models"
+      ],
+      "purpose": "SPECIALIST",
+      "release": "UNKNOWN",
+      "capabilities": [
+        {
+          "capability": "GENERATE_CONTENT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "TEXT_INPUT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "TEXT_OUTPUT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "IMAGE_INPUT",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "JSON_MIME_TYPE",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "RESPONSE_SCHEMA",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "PLAIN_TEXT_MIME_TYPE",
+          "support": "UNKNOWN"
+        },
+        {
+          "capability": "MAX_OUTPUT_TOKENS",
+          "support": "UNKNOWN"
+        }
+      ]
+    }
+  ]
+}
