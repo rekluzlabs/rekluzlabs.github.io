@@ -7,6 +7,6 @@ These public documents describe exact-model Google Gemini Developer API lifecycl
 - [Pricing catalogue](gemini-pricing.json) and [schema](GEMINI_PRICING_ADVISORY_SCHEMA.md)
 - [Changelog](CHANGELOG.md)
 
-Use a direct HTTPS GET without redirects. The production lifecycle endpoint resides in the VaultCuisine-Advisories folder of the existing Rekluz Labs website repository. Compatibility and pricing retrieval require separate app allowlisting after publication verification.
+Use a direct HTTPS GET without redirects. All three production endpoints reside in the VaultCuisine-Advisories folder of the existing Rekluz Labs website repository and are individually allowlisted by VaultCuisine. The revision 2 pricing correction in this package must be manually published before it is available from the production endpoint.
 
 GitHub receives ordinary connection metadata such as originating IP addresses. Requests carry no API keys, model identifiers, user identifiers, recipes, photos or prompts. HTTPS authenticates the GitHub host. Publisher access controls and review protect document contents. A compromised publisher can still serve false evidence. Individual model entitlement and usage charges remain unknown.
