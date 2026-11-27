@@ -1,0 +1,128 @@
+{
+  "schemaVersion": 1,
+  "revision": 3,
+  "publishedAt": "2026-11-27T18:55:54Z",
+  "provider": "google",
+  "api": "gemini-developer/v1beta",
+  "kind": "PRICING",
+  "records": [
+    {
+      "modelId": "gemini-2.5-flash",
+      "verifiedOn": "2026-11-27",
+      "evidence": [
+        "https://aistudio.google.com/docs/pricing#gemini-2.5-flash"
+      ],
+      "tier": "FREE",
+      "restrictions": "Standard API free input/output; account eligibility and charges are not guaranteed."
+    },
+    {
+      "modelId": "gemini-2.5-flash-lite",
+      "verifiedOn": "2026-11-24",
+      "evidence": [
+        "https://ai.google.dev/gemini-api/docs/pricing#gemini-2.5-flash-lite",
+        "https://aistudio.google.com/docs/models/gemini-2.5-flash-lite"
+      ],
+      "tier": "RESTRICTED_FREE",
+      "restrictions": "Standard generation has a free tier. Google limits API access to users with prior active use. Batch generation and context caching require paid access."
+    },
+    {
+      "modelId": "gemini-2.5-pro",
+      "verifiedOn": "2026-11-27",
+      "evidence": [
+        "https://aistudio.google.com/docs/pricing#gemini-2.5-pro"
+      ],
+      "tier": "FREE",
+      "restrictions": "Standard API free input/output; account eligibility and charges are not guaranteed."
+    },
+    {
+      "modelId": "gemini-3-flash-preview",
+      "verifiedOn": "2026-11-24",
+      "evidence": [
+        "https://ai.google.dev/gemini-api/docs/pricing#gemini-3-flash-preview"
+      ],
+      "tier": "FREE",
+      "restrictions": "Standard generation has a free tier. Search and Maps grounding require paid API access."
+    },
+    {
+      "modelId": "gemini-3.1-flash-lite",
+      "verifiedOn": "2026-11-24",
+      "evidence": [
+        "https://ai.google.dev/gemini-api/docs/pricing#gemini-3.1-flash-lite"
+      ],
+      "tier": "FREE",
+      "restrictions": "Standard generation has a free tier. Context caching and Search and Maps grounding require paid access."
+    },
+    {
+      "modelId": "gemini-3.1-pro-preview",
+      "verifiedOn": "2026-11-24",
+      "evidence": [
+        "https://ai.google.dev/gemini-api/docs/pricing#gemini-3.1-pro-preview"
+      ],
+      "tier": "PAID_ONLY",
+      "restrictions": "Google lists paid generation and no free API tier."
+    },
+    {
+      "modelId": "gemini-3.5-flash-lite",
+      "verifiedOn": "2026-11-24",
+      "evidence": [
+        "https://ai.google.dev/gemini-api/docs/pricing#gemini-3.5-flash-lite"
+      ],
+      "tier": "FREE",
+      "restrictions": "Standard generation has a free tier. Context caching and Search and Maps grounding require paid access."
+    },
+    {
+      "tier": "FREE",
+      "restrictions": "Standard generation lists free input and output; Batch and Priority tiers are paid, and free-tier grounding is unavailable.",
+      "evidence": [
+        "https://aistudio.google.com/docs/pricing#gemini-3.6-flash"
+      ],
+      "modelId": "gemini-3.6-flash",
+      "verifiedOn": "2026-11-24"
+    },
+    {
+      "modelId": "gemini-3.8-flash",
+      "verifiedOn": "2026-11-24",
+      "evidence": [
+        "https://ai.google.dev/gemini-api/docs/pricing#gemini-3.8-flash"
+      ],
+      "tier": "FREE",
+      "restrictions": "Standard generation has a free tier. Batch generation and Search and Maps grounding require paid access."
+    },
+    {
+      "tier": "PAID_ONLY",
+      "restrictions": "Google lists no free tier; generation is billed on paid access.",
+      "evidence": [
+        "https://aistudio.google.com/docs/pricing#gemini-4-argon"
+      ],
+      "modelId": "gemini-4-argon",
+      "verifiedOn": "2026-11-24"
+    },
+    {
+      "modelId": "gemini-4-carbon",
+      "verifiedOn": "2026-11-24",
+      "evidence": [
+        "https://ai.google.dev/gemini-api/docs/pricing#gemini-4-carbon"
+      ],
+      "tier": "PAID_ONLY",
+      "restrictions": "Google lists paid generation and no free API tier."
+    },
+    {
+      "tier": "FREE",
+      "restrictions": "Standard generation lists free input and output; Batch and Flex tiers are paid, and free-tier grounding is unavailable.",
+      "evidence": [
+        "https://aistudio.google.com/docs/pricing#gemini-4-hydrogen"
+      ],
+      "modelId": "gemini-4-hydrogen",
+      "verifiedOn": "2026-11-24"
+    },
+    {
+      "tier": "PAID_ONLY",
+      "restrictions": "Google lists no free tier; generation is billed on paid access.",
+      "evidence": [
+        "https://aistudio.google.com/docs/pricing#gemini-4-neon"
+      ],
+      "modelId": "gemini-4-neon",
+      "verifiedOn": "2026-11-24"
+    }
+  ]
+}

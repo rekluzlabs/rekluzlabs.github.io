@@ -15,7 +15,7 @@ from extract import api_notices, capabilities, detail_capabilities, generate_con
 from check_paths import check
 from notify import issue_plan, notify
 from sources import approved, fetch
-from update import run, propose_pricing, same_semantics
+from update import run, propose_pricing, pricing_conflicts, same_semantics
 from validate import validate
 
 FIX = Path(__file__).parent / "fixtures"
@@ -237,8 +237,52 @@ class ValidationTests(unittest.TestCase):
         self.assertEqual(next(r for r in proposed["records"] if r["modelId"] == "gemini-4-test")["tier"], "FREE")
         self.assertEqual(len(old["records"]), 1)
 
+    def test_second_dry_run_documents_validate_and_preserve_prior_evidence(self):
+        for kind in ("LIFECYCLE", "PRICING"):
+            candidate = json.loads((FIX / f"second-dry-run-gemini-{kind.lower()}.json").read_text(encoding="utf-8"))
+            self.assertTrue(validate(candidate, kind, previous=self.docs[kind],
+                                     now=dt.datetime(2026, 11, 27, 19, tzinfo=dt.timezone.utc)))
+        lifecycle_doc = json.loads((FIX / "second-dry-run-gemini-lifecycle.json").read_text(encoding="utf-8"))
+        pricing_doc = json.loads((FIX / "second-dry-run-gemini-pricing.json").read_text(encoding="utf-8"))
+        self.assertEqual(set(pricing_conflicts(pricing_doc, lifecycle_doc)), {
+            "gemini-2.5-flash: FREE pricing conflicts with lifecycle ACCESS_RESTRICTED",
+            "gemini-2.5-pro: FREE pricing conflicts with lifecycle ACCESS_RESTRICTED"})
+
+    def test_restricted_free_proposal_preserves_access_and_redirection_warning(self):
+        lifecycle_doc = self.docs["LIFECYCLE"]
+        observed = prices((FIX / "current-pricing-2.5.md").read_text(encoding="utf-8"))
+        current = copy.deepcopy(self.docs["PRICING"])
+        current["records"] = [row for row in current["records"] if row["modelId"] == "gemini-2.5-flash-lite"]
+        proposed, review, changes = propose_pricing(current, observed,
+            {"gemini-2.5-flash", "gemini-2.5-pro"}, {"gemini-2.5-flash", "gemini-2.5-pro"},
+            "2026-11-27", lifecycle_doc)
+        self.assertEqual(set(changes), {"gemini-2.5-flash", "gemini-2.5-pro"})
+        self.assertFalse(review)
+        self.assertFalse(pricing_conflicts(proposed, lifecycle_doc))
+        for model in changes:
+            row = next(r for r in proposed["records"] if r["modelId"] == model)
+            self.assertEqual(row["tier"], "RESTRICTED_FREE")
+            self.assertIn("existing active users", row["restrictions"])
+            self.assertIn("2026-12-01", row["restrictions"])
+            self.assertIn("billed at replacement rates", row["restrictions"])
+            self.assertEqual(len(row["evidence"]), 2)
+
 
 class RunTests(unittest.TestCase):
+    def test_publish_with_coverage_blocker_never_writes_even_with_gates(self):
+        with tempfile.TemporaryDirectory(dir=TEMP_ROOT) as directory:
+            root = Path(directory) / "VaultCuisine-Advisories"
+            (root / "scripts").mkdir(parents=True)
+            (root / "scripts" / "update.py").write_text("fixture", encoding="utf-8")
+            for kind in ("lifecycle", "compatibility", "pricing"):
+                (root / f"gemini-{kind}.json").write_bytes((ROOT / f"gemini-{kind}.json").read_bytes())
+            prior = {kind: (root / f"gemini-{kind}.json").read_bytes()
+                     for kind in ("lifecycle", "compatibility", "pricing")}
+            with patch.dict(os.environ, {"VC_ADVISORY_PUBLISH": "true", "VC_LIVE_SYNC_VERIFIED": "true"}):
+                with self.assertRaisesRegex(ValueError, "publication blocked"):
+                    run(root, Path(directory) / "out", DOCS, publish=True, today=NOW)
+            self.assertEqual(prior, {kind: (root / f"gemini-{kind}.json").read_bytes()
+                                     for kind in prior})
     def test_dry_run_preserves_existing_and_reports(self):
         with tempfile.TemporaryDirectory(dir=TEMP_ROOT) as directory:
             out = Path(directory) / "out"

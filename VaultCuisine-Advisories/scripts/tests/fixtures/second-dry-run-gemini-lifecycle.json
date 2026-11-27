@@ -1,0 +1,228 @@
+{
+  "schemaVersion": 1,
+  "revision": 3,
+  "publishedAt": "2026-11-27T18:55:54Z",
+  "provider": "google",
+  "api": "gemini-developer/v1beta",
+  "records": [
+    {
+      "modelId": "gemini-2.0-flash",
+      "verifiedOn": "2026-11-23",
+      "facts": [
+        "SHUT_DOWN"
+      ],
+      "evidence": [
+        "https://ai.google.dev/gemini-api/docs/deprecations#gemini-2.0-models",
+        "https://ai.google.dev/gemini-api/docs/changelog#06-01-2026"
+      ],
+      "shutdownOn": "2026-06-01",
+      "replacements": [
+        "gemini-3.6-flash"
+      ]
+    },
+    {
+      "modelId": "gemini-2.0-flash-lite",
+      "verifiedOn": "2026-11-23",
+      "facts": [
+        "SHUT_DOWN"
+      ],
+      "evidence": [
+        "https://ai.google.dev/gemini-api/docs/deprecations#gemini-2.0-models",
+        "https://ai.google.dev/gemini-api/docs/changelog#06-01-2026"
+      ],
+      "shutdownOn": "2026-06-01",
+      "replacements": [
+        "gemini-3.1-flash-lite"
+      ]
+    },
+    {
+      "modelId": "gemini-2.5-flash",
+      "verifiedOn": "2026-11-23",
+      "facts": [
+        "DEPRECATED",
+        "REDIRECTION_ANNOUNCED",
+        "ACCESS_RESTRICTED"
+      ],
+      "evidence": [
+        "https://ai.google.dev/gemini-api/docs/deprecations"
+      ],
+      "redirectOn": "2026-12-01",
+      "redirectTargets": [
+        "gemini-3.5-flash-lite"
+      ],
+      "replacements": [
+        "gemini-3.5-flash-lite"
+      ],
+      "restriction": "EXISTING_ACTIVE_API_USERS"
+    },
+    {
+      "modelId": "gemini-2.5-flash-lite",
+      "verifiedOn": "2026-11-24",
+      "facts": [
+        "NO_SHUTDOWN_ANNOUNCED",
+        "ACCESS_RESTRICTED"
+      ],
+      "evidence": [
+        "https://ai.google.dev/gemini-api/docs/deprecations",
+        "https://aistudio.google.com/docs/models#gemini-25-flash-lite"
+      ],
+      "restriction": "EXISTING_ACTIVE_API_USERS"
+    },
+    {
+      "modelId": "gemini-2.5-pro",
+      "verifiedOn": "2026-11-23",
+      "facts": [
+        "DEPRECATED",
+        "REDIRECTION_ANNOUNCED",
+        "ACCESS_RESTRICTED"
+      ],
+      "evidence": [
+        "https://ai.google.dev/gemini-api/docs/deprecations"
+      ],
+      "redirectOn": "2026-12-01",
+      "redirectTargets": [
+        "gemini-3.8-flash"
+      ],
+      "replacements": [
+        "gemini-3.8-flash"
+      ],
+      "restriction": "EXISTING_ACTIVE_API_USERS"
+    },
+    {
+      "modelId": "gemini-3-flash-preview",
+      "verifiedOn": "2026-11-27",
+      "facts": [
+        "NO_SHUTDOWN_ANNOUNCED"
+      ],
+      "evidence": [
+        "https://aistudio.google.com/docs/deprecations"
+      ]
+    },
+    {
+      "modelId": "gemini-3.1-flash-lite",
+      "verifiedOn": "2026-11-23",
+      "facts": [
+        "EARLIEST_SHUTDOWN"
+      ],
+      "evidence": [
+        "https://ai.google.dev/gemini-api/docs/deprecations"
+      ],
+      "shutdownOn": "2027-05-07",
+      "replacements": [
+        "gemini-3.5-flash-lite"
+      ]
+    },
+    {
+      "modelId": "gemini-3.1-pro-preview",
+      "verifiedOn": "2026-11-27",
+      "facts": [
+        "NO_SHUTDOWN_ANNOUNCED"
+      ],
+      "evidence": [
+        "https://aistudio.google.com/docs/deprecations"
+      ]
+    },
+    {
+      "modelId": "gemini-3.5-flash",
+      "verifiedOn": "2026-11-23",
+      "facts": [
+        "REDIRECTION_ACTIVE"
+      ],
+      "evidence": [
+        "https://ai.google.dev/gemini-api/docs/deprecations"
+      ],
+      "redirectTargets": [
+        "gemini-3.6-flash"
+      ],
+      "replacements": [
+        "gemini-3.6-flash"
+      ]
+    },
+    {
+      "modelId": "gemini-3.5-flash-lite",
+      "verifiedOn": "2026-11-23",
+      "facts": [
+        "NO_SHUTDOWN_ANNOUNCED"
+      ],
+      "evidence": [
+        "https://ai.google.dev/gemini-api/docs/deprecations"
+      ]
+    },
+    {
+      "modelId": "gemini-3.6-flash",
+      "verifiedOn": "2026-11-23",
+      "facts": [
+        "NO_SHUTDOWN_ANNOUNCED"
+      ],
+      "evidence": [
+        "https://ai.google.dev/gemini-api/docs/deprecations"
+      ]
+    },
+    {
+      "modelId": "gemini-3.7-flash",
+      "verifiedOn": "2026-11-23",
+      "facts": [
+        "REDIRECTION_ACTIVE"
+      ],
+      "evidence": [
+        "https://ai.google.dev/gemini-api/docs/deprecations"
+      ],
+      "redirectTargets": [
+        "gemini-3.8-flash"
+      ],
+      "replacements": [
+        "gemini-3.8-flash"
+      ]
+    },
+    {
+      "modelId": "gemini-3.8-flash",
+      "verifiedOn": "2026-11-23",
+      "facts": [
+        "NO_SHUTDOWN_ANNOUNCED"
+      ],
+      "evidence": [
+        "https://ai.google.dev/gemini-api/docs/deprecations"
+      ]
+    },
+    {
+      "modelId": "gemini-4-argon",
+      "verifiedOn": "2026-11-27",
+      "facts": [
+        "NO_SHUTDOWN_ANNOUNCED"
+      ],
+      "evidence": [
+        "https://aistudio.google.com/docs/deprecations"
+      ]
+    },
+    {
+      "modelId": "gemini-4-carbon",
+      "verifiedOn": "2026-11-27",
+      "facts": [
+        "NO_SHUTDOWN_ANNOUNCED"
+      ],
+      "evidence": [
+        "https://aistudio.google.com/docs/deprecations"
+      ]
+    },
+    {
+      "modelId": "gemini-4-hydrogen",
+      "verifiedOn": "2026-11-27",
+      "facts": [
+        "NO_SHUTDOWN_ANNOUNCED"
+      ],
+      "evidence": [
+        "https://aistudio.google.com/docs/deprecations"
+      ]
+    },
+    {
+      "modelId": "gemini-4-neon",
+      "verifiedOn": "2026-11-27",
+      "facts": [
+        "NO_SHUTDOWN_ANNOUNCED"
+      ],
+      "evidence": [
+        "https://aistudio.google.com/docs/deprecations"
+      ]
+    }
+  ]
+}

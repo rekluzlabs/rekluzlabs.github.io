@@ -44,10 +44,19 @@ def semantic_changes(before, after):
     return result
 
 
-def propose_pricing(current, observed, model_ids, eligible_ids, today):
+def pricing_conflicts(pricing, lifecycle):
+    """A free label must not contradict established restricted access."""
+    life = {row["modelId"]: row for row in lifecycle["records"]}
+    return [f"{row['modelId']}: FREE pricing conflicts with lifecycle ACCESS_RESTRICTED"
+            for row in pricing["records"] if row.get("tier") == "FREE" and
+            "ACCESS_RESTRICTED" in life.get(row["modelId"], {}).get("facts", [])]
+
+
+def propose_pricing(current, observed, model_ids, eligible_ids, today, lifecycle=None):
     proposed = copy.deepcopy(current)
     review, changes = [], []
     known = {r["modelId"]: r for r in proposed["records"]}
+    life = {r["modelId"]: r for r in lifecycle["records"]} if lifecycle else {}
     if not observed or not model_ids or len(observed) < max(1, len(known) // 2):
         return proposed, ["Pricing extraction incomplete; retained last valid document."], []
     for model in sorted((model_ids & eligible_ids) | set(known)):
@@ -67,9 +76,29 @@ def propose_pricing(current, observed, model_ids, eligible_ids, today):
             continue
         if not old:
             if model in eligible_ids and evidence.tier == "FREE":
+                status = life.get(model, {})
+                restricted = "ACCESS_RESTRICTED" in status.get("facts", [])
+                tier = "RESTRICTED_FREE" if restricted else "FREE"
+                restrictions = evidence.caveat
+                urls = [f"https://aistudio.google.com/docs/pricing#{model}"]
+                if restricted:
+                    if status.get("restriction") != "EXISTING_ACTIVE_API_USERS":
+                        review.append(f"{model}: unsupported lifecycle access restriction requires review")
+                        continue
+                    restrictions += " API access is limited to existing active users."
+                    urls += status["evidence"]
+                    if "REDIRECTION_ANNOUNCED" in status.get("facts", []):
+                        if not status.get("redirectOn") or not status.get("redirectTargets"):
+                            review.append(f"{model}: incomplete announced redirection requires review")
+                            continue
+                        restrictions += (f" Requests redirect on {status['redirectOn']} to "
+                                         f"{', '.join(status['redirectTargets'])} and will be billed at replacement rates.")
+                    if len(restrictions) > 320 or len(set(urls)) > 6:
+                        review.append(f"{model}: restricted pricing evidence exceeds schema limits")
+                        continue
                 row = {"modelId": model, "verifiedOn": today,
-                       "evidence": [f"https://aistudio.google.com/docs/pricing#{model}"],
-                       "tier": evidence.tier, "restrictions": evidence.caveat}
+                       "evidence": list(dict.fromkeys(urls)),
+                       "tier": tier, "restrictions": restrictions}
                 proposed["records"].append(row)
                 changes.append(model)
             else:
@@ -122,7 +151,7 @@ def run(root, output, documents, publish=False, today=None):
     if not life_ok:
         coverage.append("Lifecycle table extraction incomplete; lifecycle retained.")
     if roster_ok and pricing_ok:
-        proposed["PRICING"], items, _ = propose_pricing(current["PRICING"], pricing, found_models, eligible, today.date().isoformat())
+        proposed["PRICING"], items, _ = propose_pricing(current["PRICING"], pricing, found_models, eligible, today.date().isoformat(), current["LIFECYCLE"])
         for item in items:
             model = item.split(":", 1)[0]
             old = next((r for r in current["PRICING"]["records"] if r["modelId"] == model), None)
@@ -242,6 +271,10 @@ def run(root, output, documents, publish=False, today=None):
         report.append(f"- {kind}: validated proposal; revision {current[kind]['revision']} -> {proposed[kind]['revision']}")
         report.extend(f"  - {line}" for line in semantic_changes(current[kind], proposed[kind]))
     validation_findings = [item for item in review if "proposed document rejected" in item]
+    cross_conflicts = pricing_conflicts(proposed["PRICING"], proposed["LIFECYCLE"])
+    review.extend(cross_conflicts)
+    if cross_conflicts:
+        report += ["", "## Cross-catalogue conflicts", ""] + [f"- {item}" for item in cross_conflicts]
     if validation_findings:
         report += ["", "## Validation findings", ""] + [f"- {item}" for item in validation_findings]
     report += ["", "## Publication blockers", ""]
@@ -252,6 +285,9 @@ def run(root, output, documents, publish=False, today=None):
         report.append(f"- New actionable findings: {len(review)} require developer review.")
     if not failures and not coverage and not review:
         report.append("- No extraction or review blockers detected.")
+    if publish and (failures or coverage or review):
+        raise ValueError("publication blocked by source, coverage, or review findings: " +
+                         "; ".join([*failures, *coverage, *review]))
     output.mkdir(parents=True, exist_ok=True)
     (output / "report.md").write_text("\n".join(report) + "\n", encoding="utf-8")
     (output / "notices.json").write_text(json.dumps({"review": review, "known": known_findings,
@@ -260,8 +296,10 @@ def run(root, output, documents, publish=False, today=None):
         name = FILES[kind]
         payload = json.dumps(proposed[kind], ensure_ascii=False, indent=2) + "\n"
         (output / name).write_text(payload, encoding="utf-8")
-        if publish:
-            (root / name).write_text(payload, encoding="utf-8")
+    if publish:
+        for kind in changes:
+            name = FILES[kind]
+            (root / name).write_bytes((output / name).read_bytes())
     return {"failures": failures, "review": review, "known": known_findings,
             "coverage": coverage, "changes": changes, "api": notices}
 
