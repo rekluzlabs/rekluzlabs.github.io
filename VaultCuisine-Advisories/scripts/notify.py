@@ -22,7 +22,7 @@ def api(method, url, token, payload=None):
 
 def issue_plan(notices):
     planned = []
-    for group in ("failures", "review"):
+    for group in ("failures", "coverage", "review"):
         if notices.get(group):
             planned.append((f"VaultCuisine advisory {group} require attention", "\n".join("- " + x for x in notices[group][:100])))
     for announcement in notices.get("api", [])[:50]:
@@ -55,8 +55,6 @@ def notify(path, token):
             break
     by_title = {x["title"]: x for x in existing}
     failure_title = "VaultCuisine advisory failures require attention"
-    if not notices.get("failures") and failure_title in by_title and by_title[failure_title]["state"] == "open":
-        api("PATCH", by_title[failure_title]["url"], token, {"state": "closed", "body": "Recovered on a later successful documentation check."})
     for title, body in issue_plan(notices):
         if title == failure_title:
             old = by_title.get(title)
@@ -65,10 +63,7 @@ def notify(path, token):
             body += f"\nOccurrences in current failure streak: {count}\n"
         if title in by_title:
             old = by_title[title]
-            if old["state"] == "closed" and title == failure_title:
-                api("PATCH", old["url"], token, {"state": "open", "body": body})
-                continue
-            if old["state"] == "open" and old["body"] != body and title.endswith("require attention"):
+            if old["state"] == "open" and old.get("user", {}).get("login") == "github-actions[bot]" and old["body"] != body and title.endswith("require attention"):
                 api("PATCH", old["url"], token, {"body": body})
                 if title == failure_title and count == 3:
                     api("POST", old["url"] + "/comments", token, {"body": "Three consecutive advisory workflow or extraction failures; investigate the official source and workflow logs."})

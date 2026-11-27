@@ -7,7 +7,7 @@ import os
 import time
 from pathlib import Path
 
-from extract import api_notices, capabilities, detail_capabilities, lifecycle, lifecycle_notices, migration_risks, prices, roster
+from extract import api_notices, detail_capabilities, generate_content_applicable, lifecycle, lifecycle_notices, migration_risks, prices, roster
 from sources import URLS, fetch
 from validate import validate
 
@@ -15,7 +15,19 @@ FILES = {"LIFECYCLE": "gemini-lifecycle.json", "COMPATIBILITY": "gemini-compatib
 
 
 def material(row):
-    return {k: v for k, v in row.items() if k not in {"verifiedOn", "evidence", "correction"}}
+    value = {k: v for k, v in row.items() if k not in {"verifiedOn", "evidence"}}
+    for key in ("facts", "redirectTargets", "replacements"):
+        if key in value:
+            value[key] = sorted(value[key])
+    if "capabilities" in value:
+        value["capabilities"] = sorted(value["capabilities"], key=lambda entry: entry["capability"])
+    return value
+
+
+def same_semantics(before, after):
+    """Ordering, publication time, source URLs and check dates are not facts."""
+    return ({r["modelId"]: material(r) for r in before["records"]} ==
+            {r["modelId"]: material(r) for r in after["records"]})
 
 
 def semantic_changes(before, after):
@@ -38,11 +50,11 @@ def propose_pricing(current, observed, model_ids, eligible_ids, today):
     known = {r["modelId"]: r for r in proposed["records"]}
     if not observed or not model_ids or len(observed) < max(1, len(known) // 2):
         return proposed, ["Pricing extraction incomplete; retained last valid document."], []
-    for model in sorted(model_ids | set(known)):
+    for model in sorted((model_ids & eligible_ids) | set(known)):
         evidence = observed.get(model)
         old = known.get(model)
         if evidence is None:
-            review.append(f"{model}: no exact Standard pricing evidence")
+            # Absence is not a pricing change or a reason to erase old evidence.
             continue
         if not evidence.confident:
             review.append(f"{model}: ambiguous or conflicting pricing ({evidence.caveat})")
@@ -85,94 +97,136 @@ def run(root, output, documents, publish=False, today=None):
             sources[name] = documents[name] if documents is not None else fetch(URLS[name])[0]
             if not isinstance(sources[name], str) or len(sources[name]) < 100:
                 raise ValueError("empty or incomplete source")
-            report.append(f"- {name}: retrieved and parsed from {URLS[name]}")
+            report.append(f"- {name}: retrieved from {URLS[name]}")
         except (KeyError, OSError, UnicodeError, ValueError) as error:
             failures.append(f"{name}: {type(error).__name__}: {error}")
-    report += ["", "## Extraction failures", ""] + ([f"- {v}" for v in failures] if failures else ["- None"]) + [""]
+    report += ["", "## Retrieval failures", ""] + ([f"- {v}" for v in failures] if failures else ["- None"]) + [""]
     found_models = roster(sources.get("models", ""))
     pricing = prices(sources.get("pricing", ""))
     life = lifecycle(sources.get("deprecations", ""))
-    compat = capabilities(sources.get("models", ""))
     notices = api_notices(sources.get("changelog", "")) + migration_risks(sources.get("migration", ""))
     proposed = copy.deepcopy(current)
-    review = []
-    if found_models and pricing:
-        eligible = {r["modelId"] for r in current["COMPATIBILITY"]["records"] if r.get("purpose") == "GENERAL_PURPOSE"}
+    review, known_findings, coverage = [], [], []
+    known_compat = {r["modelId"]: r for r in current["COMPATIBILITY"]["records"]}
+    eligible = {model for model, row in known_compat.items() if row.get("purpose") == "GENERAL_PURPOSE"}
+    known_life = {r["modelId"]: r for r in current["LIFECYCLE"]["records"]}
+    prior_roster = {model for model in known_compat if model.startswith("gemini-")}
+    roster_ok = ("models" in sources and len(found_models) >= max(8, len(prior_roster) // 2)
+                 and len(found_models & prior_roster) >= max(4, len(prior_roster) // 2))
+    pricing_ok = "pricing" in sources and len(pricing) >= max(1, len(current["PRICING"]["records"]) // 2)
+    life_ok = "deprecations" in sources and len(life) >= max(1, len(known_life) // 2)
+    if not roster_ok:
+        coverage.append("Model roster semantic extraction incomplete; compatibility and new-model pricing retained.")
+    if not pricing_ok:
+        coverage.append("Exact Standard pricing extraction incomplete; pricing retained.")
+    if not life_ok:
+        coverage.append("Lifecycle table extraction incomplete; lifecycle retained.")
+    if roster_ok and pricing_ok:
         proposed["PRICING"], items, _ = propose_pricing(current["PRICING"], pricing, found_models, eligible, today.date().isoformat())
-        review.extend(items)
-    else:
-        review.append("Pricing or model roster extraction empty; pricing retained.")
-    known_life = {r["modelId"] for r in current["LIFECYCLE"]["records"]}
-    if len(life) < max(1, len(known_life) // 2):
-        review.append("Lifecycle extraction unexpectedly incomplete; lifecycle retained.")
-    else:
+        for item in items:
+            model = item.split(":", 1)[0]
+            old = next((r for r in current["PRICING"]["records"] if r["modelId"] == model), None)
+            evidence = pricing.get(model)
+            if old and evidence and (old.get("tier") == evidence.tier and not evidence.confident or
+                    old.get("tier") == "RESTRICTED_FREE" and evidence.tier == "FREE" and
+                    "limiting access to the 2.5" in sources.get("models", "").lower()):
+                known_findings.append(item)
+            else:
+                review.append(item)
+    priced_ids = {r["modelId"] for r in current["PRICING"]["records"]}
+    unpriced_general = eligible - priced_ids
+    lifecycle_filtered = {model for model in unpriced_general if model in known_life and
+        set(known_life[model]["facts"]) & {"DEPRECATED", "REDIRECTION_ACTIVE", "REDIRECTION_ANNOUNCED", "SHUT_DOWN"}}
+    if unpriced_general - lifecycle_filtered:
+        coverage.append("General-purpose models lack exact pricing: " + ", ".join(sorted(unpriced_general - lifecycle_filtered)))
+    if life_ok:
         for model, item in sorted(life.items()):
-            if model not in known_life and item.get("facts") == ["NO_SHUTDOWN_ANNOUNCED"] and model in found_models:
-                proposed["LIFECYCLE"]["records"].append({"modelId": model, "verifiedOn": today.date().isoformat(),
-                    "facts": ["NO_SHUTDOWN_ANNOUNCED"], "evidence": ["https://aistudio.google.com/docs/deprecations"]})
-            elif model not in known_life or "review" in item:
-                review.append(f"Lifecycle {model}: {item.get('review', 'new documented model; inspect deprecation table')}")
-    review.extend(lifecycle_notices(sources.get("changelog", "")))
-    proposed["LIFECYCLE"]["records"].sort(key=lambda row: row["modelId"])
-    known_compat = {r["modelId"] for r in current["COMPATIBILITY"]["records"]}
-    if len(found_models) < max(1, len([x for x in known_compat if x.startswith("gemini-")]) // 2):
-        review.append("Model roster unexpectedly incomplete; compatibility retained.")
-        found_models = set()
-    for model in sorted(found_models - known_compat):
-        if model in compat:
-            proposed["COMPATIBILITY"]["records"].append({"modelId": model, "verifiedOn": today.date().isoformat(),
-                "evidence": ["https://aistudio.google.com/docs/models"], "purpose": "UNKNOWN", "release": "UNKNOWN",
-                "capabilities": []})
-        review.append(f"Compatibility {model}: newly listed; exact API and feature evidence required; remains UNKNOWN")
-    proposed["COMPATIBILITY"]["records"].sort(key=lambda row: row["modelId"])
-    if len(found_models) > 60:
-        review.append("Model roster exceeds the bounded per-model documentation budget; compatibility unchanged.")
-        proposed["COMPATIBILITY"] = copy.deepcopy(current["COMPATIBILITY"])
-    elif found_models:
-        for row in proposed["COMPATIBILITY"]["records"]:
-            model = row["modelId"]
-            if model not in found_models or row.get("withdrawn"):
+            old = known_life.get(model)
+            if old is None:
+                if model not in eligible or not roster_ok or model not in found_models:
+                    continue  # Specialist and unverified models never enter this selector.
+                if item.get("facts") == ["NO_SHUTDOWN_ANNOUNCED"]:
+                    proposed["LIFECYCLE"]["records"].append({"modelId": model, "verifiedOn": today.date().isoformat(),
+                        "facts": ["NO_SHUTDOWN_ANNOUNCED"], "evidence": ["https://aistudio.google.com/docs/deprecations"]})
+                else:
+                    review.append(f"Lifecycle {model}: {item.get('review', 'new documented change requires review')}")
+                continue
+            if item.get("facts") == ["NO_SHUTDOWN_ANNOUNCED"]:
+                if "NO_SHUTDOWN_ANNOUNCED" not in old["facts"]:
+                    review.append(f"Lifecycle {model}: documented no-shutdown status differs from established facts")
+                continue
+            if "review" in item:
+                if item.get("kind") == "ACTIVE_REDIRECTION" and "REDIRECTION_ACTIVE" in old["facts"] and set(item["targets"]) == set(old.get("redirectTargets", [])):
+                    continue
+                try:
+                    day = dt.datetime.strptime(item.get("date", ""), "%B %d, %Y").date().isoformat()
+                except ValueError:
+                    day = None
+                if item.get("kind") == "ANNOUNCED_REDIRECTION" and "REDIRECTION_ANNOUNCED" in old["facts"] and day == old.get("redirectOn") and set(item["targets"]) == set(old.get("redirectTargets", [])):
+                    continue
+                if item.get("kind") == "EARLIEST_SHUTDOWN" and day == old.get("shutdownOn"):
+                    continue
+                review.append(f"Lifecycle {model}: {item['review']}")
+        proposed["LIFECYCLE"]["records"].sort(key=lambda row: row["modelId"])
+    review.extend(lifecycle_notices(sources.get("changelog", ""), known_life, eligible, today.date()))
+    compatibility_candidates = 0
+    if roster_ok:
+        for model in sorted(found_models & eligible):
+            row = next(r for r in proposed["COMPATIBILITY"]["records"] if r["modelId"] == model)
+            if row.get("withdrawn"):
                 continue
             key = f"detail:{model}"
             try:
                 if documents is None:
                     time.sleep(0.3)
-                detail = documents.get(key) if documents is not None else fetch(f"https://aistudio.google.com/docs/models/{model}")[0]
-                if not detail:
-                    continue
-                found = detail_capabilities(detail, model)
-            except (OSError, UnicodeError, ValueError) as error:
-                review.append(f"Compatibility {model}: model detail unavailable ({type(error).__name__})")
-                continue
+                detail = documents.get(key) if documents is not None else fetch(f"https://aistudio.google.com/docs/models/{model}.md")[0]
+                found = detail_capabilities(detail or "", model)
+            except (OSError, UnicodeError, ValueError, KeyError):
+                continue  # A detail-page failure never modifies an existing row.
             if not found:
-                review.append(f"Compatibility {model}: no exact input/output evidence in model detail")
+                continue
+            compatibility_candidates += 1
+            # Input/output on a model page does not establish GenerateContent
+            # applicability. Interactions-only claims must remain unknown.
+            if not generate_content_applicable(detail):
                 continue
             prior = {v["capability"]: v["support"] for v in row["capabilities"]}
             conflicts = [cap for cap, support in found.items() if prior.get(cap) not in (None, "UNKNOWN", support)]
             if conflicts:
-                review.append(f"Compatibility {model}: conflicting explicit capability evidence: {', '.join(conflicts)}")
+                review.append(f"Compatibility {model}: conflicting exact capability evidence: {', '.join(conflicts)}")
                 continue
             changed_caps = [cap for cap, support in found.items() if prior.get(cap) != support]
             if changed_caps:
                 if row["verifiedOn"] >= today.date().isoformat():
-                    review.append(f"Compatibility {model}: same-day material change needs explicit correction review")
+                    review.append(f"Compatibility {model}: same-day material change requires correction review")
                     continue
                 url = f"https://aistudio.google.com/docs/models/{model}"
                 if url not in row["evidence"] and len(row["evidence"]) >= 6:
-                    review.append(f"Compatibility {model}: evidence URL limit needs review")
+                    review.append(f"Compatibility {model}: evidence URL limit requires review")
                     continue
                 prior.update(found)
                 row["capabilities"] = [{"capability": cap, "support": prior[cap]} for cap in sorted(prior)]
                 row["verifiedOn"] = today.date().isoformat()
                 row["evidence"] = list(dict.fromkeys([*row["evidence"], url]))
-    report += ["## Coverage", "", f"- Explicit model codes: {len(found_models)}", f"- Exact pricing sections: {len(pricing)}", f"- Lifecycle rows: {len(life)}", f"- Compatibility candidates: {len(compat)}", ""]
-    report += ["## Human review", ""] + ([f"- {v}" for v in review] if review else ["- None"]) + [""]
+    report += ["## Source retrieval", "", f"- Successful: {len(sources)}/5", f"- Failed: {len(failures)}", ""]
+    report += ["## Semantic extraction and coverage", "", f"- Exact roster IDs: {len(found_models)} ({'complete' if roster_ok else 'blocked'})",
+        f"- Exact pricing sections: {len(pricing)} ({'complete' if pricing_ok else 'blocked'})",
+        f"- Existing general-purpose roster: {len(eligible)}; priced: {len(eligible & priced_ids)}; lifecycle-filtered without pricing: {len(lifecycle_filtered)}",
+        f"- Lifecycle table models: {len(life)} ({'complete' if life_ok else 'blocked'})",
+        f"- Exact capability candidates: {compatibility_candidates}; API-family evidence required", ""]
+    report += ["## Coverage blockers", ""] + ([f"- {v}" for v in coverage] if coverage else ["- None"]) + [""]
+    report += ["## Previously known findings", "", f"- {len(known_findings)} unchanged pricing caveats or access restrictions (details in notices.json)", ""]
+    report += ["## New actionable review", ""] + ([f"- {v}" for v in review[:20]] if review else ["- None"])
+    if len(review) > 20:
+        report.append(f"- {len(review) - 20} additional findings in notices.json")
+    report.append("")
     report += ["## Potential API changes", ""]
     report += [f"- {n['date']}: {n['summary']} — {n.get('source', URLS['changelog'])}" for n in notices] or ["- None detected"]
     report += ["", "## Publication decision", ""]
     changes = []
     for kind in FILES:
-        if proposed[kind] == current[kind]:
+        if same_semantics(proposed[kind], current[kind]):
+            proposed[kind] = copy.deepcopy(current[kind])
             report.append(f"- {kind}: no safe semantic change; no revision or commit")
             continue
         proposed[kind]["revision"] += 1
@@ -185,23 +239,31 @@ def run(root, output, documents, publish=False, today=None):
             report.append(f"- {kind}: validation failed; no proposal published")
             continue
         changes.append(kind)
-        report.append(f"- {kind}: validated proposal")
+        report.append(f"- {kind}: validated proposal; revision {current[kind]['revision']} -> {proposed[kind]['revision']}")
         report.extend(f"  - {line}" for line in semantic_changes(current[kind], proposed[kind]))
     validation_findings = [item for item in review if "proposed document rejected" in item]
     if validation_findings:
         report += ["", "## Validation findings", ""] + [f"- {item}" for item in validation_findings]
-    if failures or review:
-        report.append("- Human review required for listed findings; existing files preserved.")
+    report += ["", "## Publication blockers", ""]
+    report.append("- Automatic publication is disabled for this dry run." if not publish else "- Publication gates were explicitly enabled for this run.")
+    if failures or coverage:
+        report.append(f"- Source/coverage blockers: {len(failures) + len(coverage)} (see above and notices.json).")
+    if review:
+        report.append(f"- New actionable findings: {len(review)} require developer review.")
+    if not failures and not coverage and not review:
+        report.append("- No extraction or review blockers detected.")
     output.mkdir(parents=True, exist_ok=True)
     (output / "report.md").write_text("\n".join(report) + "\n", encoding="utf-8")
-    (output / "notices.json").write_text(json.dumps({"review": review, "failures": failures, "api": notices}, indent=2) + "\n", encoding="utf-8")
+    (output / "notices.json").write_text(json.dumps({"review": review, "known": known_findings,
+        "coverage": coverage, "failures": failures, "api": notices}, indent=2) + "\n", encoding="utf-8")
     for kind in changes:
         name = FILES[kind]
         payload = json.dumps(proposed[kind], ensure_ascii=False, indent=2) + "\n"
         (output / name).write_text(payload, encoding="utf-8")
         if publish:
             (root / name).write_text(payload, encoding="utf-8")
-    return {"failures": failures, "review": review, "changes": changes, "api": notices}
+    return {"failures": failures, "review": review, "known": known_findings,
+            "coverage": coverage, "changes": changes, "api": notices}
 
 
 if __name__ == "__main__":

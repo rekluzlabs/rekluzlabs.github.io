@@ -14,8 +14,22 @@ def sections(markdown):
 
 
 def roster(markdown):
-    # Model code is an explicit Google field; incidental model mentions do not qualify.
-    return set(re.findall(r"\*Model code\*\s*\*\*(gemini-[a-z0-9][a-z0-9.-]{1,126})\*\*", markdown))
+    # Google's current page has four model-code cards, then explicit Endpoint
+    # columns in model tables. Links and prose alone are not model identifiers.
+    codes = set(re.findall(r"\*Model code\*\s*\*\*(gemini-[a-z0-9][a-z0-9.-]{1,126})\*\*", markdown))
+    for block in re.findall(r"\{% table\b[^%]*variant=\"model\"[^%]*%\}([\s\S]*?)\{% /table %\}", markdown):
+        header = block.split("---", 1)[0]
+        if not re.search(r"(?m)^\s*\*\s*Endpoint\s*$", header):
+            continue
+        for row in re.split(r"(?m)^\s*---\s*$", block)[1:]:
+            # Only the last table cell is the Endpoint cell. It may contain
+            # more than one exact code (for example the Omni model row).
+            cells = re.split(r"(?m)^\s*\*\s+", row.strip())
+            if len(cells) < 3:
+                continue
+            endpoint = cells[-1]
+            codes.update(re.findall(r"`(gemini-[a-z0-9][a-z0-9.-]{1,126})`", endpoint))
+    return codes
 
 
 @dataclass(frozen=True)
@@ -82,35 +96,78 @@ def detail_capabilities(markdown, model):
     return result
 
 
+def generate_content_applicable(markdown):
+    """Require an affirmative API-family statement, not an incidental mention."""
+    return bool(re.search(r"(?:Supported APIs?|API interfaces?)\s*[:|]\s*[^\n]{0,100}\bgenerateContent\b|\bgenerateContent\b\s+API\s+(?:is\s+)?supported\b",
+                          markdown, re.I)) and not bool(re.search(r"\bgenerateContent\b\s+API\s+(?:is\s+)?not supported\b", markdown, re.I))
+
+
 def lifecycle(markdown):
-    # Deprecation tables say earliest possible dates. Never promote them to confirmed shutdown.
+    # Deprecation-table dates are earliest possible unless a separate exact
+    # announcement confirms shutdown. Repeated identical specialist rows merge.
     records = {}
-    rows = re.findall(r"^\s*\* `(gemini-[a-z0-9][a-z0-9.-]{1,126})`\n\s*\* ([^\n]*)\n\s*\* ([^\n]*)\n\s*\* ?([^\n]*)", markdown, re.M)
-    for model, _, date, replacement in rows:
-        if model in records:
-            records[model] = {"review": "duplicate lifecycle row"}
+    for table in re.findall(r"\{% table\b[^%]*%\}([\s\S]*?)\{% /table %\}", markdown):
+        header = table.split("---", 1)[0]
+        if not all(re.search(r"(?m)^\s*\*\s*" + column + r"\s*$", header)
+                   for column in ("Model", "Shutdown date", "Recommended replacement")):
             continue
-        if "No shutdown date announced" in date:
-            records[model] = {"facts": ["NO_SHUTDOWN_ANNOUNCED"]}
-        else:
-            records[model] = {"review": f"Review earliest possible shutdown: {date}; replacement: {replacement}"}
+        for block in re.split(r"(?m)^\s*---\s*$", table)[1:]:
+            parts = re.split(r"(?m)^\s*\*\s*", block.strip())
+            cells = [" ".join(cell.split()) for cell in (parts[1:] if parts[0] == "" else parts)]
+            if len(cells) != 4:
+                continue
+            match = re.fullmatch(r"`(gemini-[a-z0-9][a-z0-9.-]{1,126})`", cells[0])
+            if not match:
+                continue
+            model, date, replacement = match.group(1), cells[2], cells[3]
+            targets = sorted(set(re.findall(r"`(gemini-[a-z0-9][a-z0-9.-]{1,126})`", replacement)) - {model})
+            if date == "No shutdown date announced":
+                item = {"facts": ["NO_SHUTDOWN_ANNOUNCED"]}
+            elif date == "N/A" and re.search(r"(?:automatically route|automatically routes)", replacement, re.I):
+                item = {"kind": "ACTIVE_REDIRECTION", "targets": targets,
+                        "review": f"Review active provider redirection: {replacement}"}
+            elif re.search(r"(?:automatically route|automatically routes)", replacement, re.I):
+                item = {"kind": "ANNOUNCED_REDIRECTION", "date": date, "targets": targets,
+                        "review": f"Review announced provider redirection on {date}: {replacement}"}
+            else:
+                item = {"kind": "EARLIEST_SHUTDOWN", "date": date, "targets": targets,
+                        "review": f"Review earliest possible shutdown: {date}; replacement: {replacement}"}
+            if model in records and records[model] != item:
+                records[model] = {"review": "conflicting lifecycle table rows"}
+            else:
+                records[model] = item
     return records
 
 
-def lifecycle_notices(markdown):
+def lifecycle_notices(markdown, known=None, eligible=None, today=None):
+    known = known or {}
+    eligible = eligible or set()
+    today = today or dt.datetime.now(dt.timezone.utc).date()
     found = []
     for title, body in sections(markdown):
-        if not re.search(r"\d{4}", title):
+        dated = re.match(r"([A-Z][a-z]+ \d{1,2}, \d{4})", title)
+        if not dated:
+            continue
+        try:
+            announced = dt.datetime.strptime(dated.group(1), "%B %d, %Y").date()
+        except ValueError:
+            continue
+        if not 0 <= (today - announced).days <= 45:
             continue
         for line in re.split(r"\n\s*\*\s+", body):
             if re.search(r"deprecat|retir|shutdown|redirec|correct|replac", line, re.I):
                 for model in sorted(set(ID.findall(line))):
+                    if model not in eligible and model not in known:
+                        continue
+                    prior = known.get(model)
+                    if prior and prior.get("verifiedOn", "") >= announced.isoformat():
+                        continue
                     found.append(f"{title}: {model}: inspect official announcement/correction and exact deadline")
-    return found[:100]
+    return sorted(set(found))[:100]
 
 
-API_TERMS = re.compile(r"generateContent|Interactions API|models\.list|model.list|authentication|API key|v1beta|structured output|response schema|image input|error response|API endpoint|API version", re.I)
-BREAK_TERMS = re.compile(r"breaking|must migrate|no longer|sunset|retire|shut down|removed|deprecated|legacy|deadline", re.I)
+API_TERMS = re.compile(r"generateContent|models\.list|model.list|Model List API|authentication|API key|v1beta|structured output|response schema|image input|error response|API endpoint|API version", re.I)
+BREAK_TERMS = re.compile(r"breaking|must migrate|must use|now requires|requires migration|no longer (?:supported|accepted)|will stop working|sunset|retir(?:e|ed|ement)|shut down|remov(?:e|ed|al)|deprecat|migration (?:required|deadline)", re.I)
 DEADLINE = re.compile(r"\b(?:by|on|effective|starting)\s+([A-Z][a-z]+ \d{1,2}, \d{4})", re.I)
 
 
@@ -146,7 +203,7 @@ def api_notices(markdown):
 
 
 def migration_risks(markdown):
-    introduction = markdown[:1200]
-    if re.search(r"generateContent", introduction, re.I) and re.search(r"Interactions API", introduction, re.I) and re.search(r"legacy|deprecat|sunset|no longer|must migrate", introduction, re.I):
+    introduction = markdown[:3000]
+    if re.search(r"generateContent.{0,100}(?:deprecated|no longer supported|must migrate|sunset)", introduction, re.I | re.S):
         return [{"date": "undated migration guide", "summary": "Google documents migration from GenerateContent to the Interactions API; inspect continued availability and deadlines.", "source": "https://aistudio.google.com/docs/migrate-to-interactions"}]
     return []
