@@ -1,0 +1,71 @@
+name: VaultCuisine advisory maintenance
+
+on:
+  schedule:
+    - cron: '17 5 * * *'
+  workflow_dispatch:
+
+concurrency:
+  group: vaultcuisine-advisory-maintenance
+  cancel-in-progress: false
+
+jobs:
+  monitor:
+    if: github.event_name == 'workflow_dispatch' || vars.VC_ADVISORY_SCHEDULE_ENABLED == 'true'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    permissions:
+      contents: read
+      issues: write
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+      - name: Test and monitor official documentation
+        run: |
+          python3 -m unittest discover -s VaultCuisine-Advisories/scripts/tests -v
+          python3 VaultCuisine-Advisories/scripts/update.py --output "$RUNNER_TEMP/vc-advisory-report"
+          cat "$RUNNER_TEMP/vc-advisory-report/report.md" >> "$GITHUB_STEP_SUMMARY"
+      - name: Save dry-run report and proposals
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: vaultcuisine-advisory-dry-run
+          path: ${{ runner.temp }}/vc-advisory-report/
+          retention-days: 14
+      - name: Notify maintainers through issues
+        if: success()
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python3 VaultCuisine-Advisories/scripts/notify.py "$RUNNER_TEMP/vc-advisory-report/notices.json"
+      - name: Notify maintainers about workflow failure
+        if: failure()
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python3 VaultCuisine-Advisories/scripts/notify.py
+
+  publish:
+    if: github.ref == 'refs/heads/main' && vars.VC_ADVISORY_PUBLISH == 'true' && vars.VC_LIVE_SYNC_VERIFIED == 'true'
+    needs: monitor
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: true
+      - name: Recheck sources and validate approved advisory paths
+        env:
+          VC_ADVISORY_PUBLISH: 'true'
+          VC_LIVE_SYNC_VERIFIED: 'true'
+        run: |
+          python3 VaultCuisine-Advisories/scripts/update.py --output "$RUNNER_TEMP/vc-advisory-publish" --publish
+          python3 VaultCuisine-Advisories/scripts/check_paths.py
+      - name: Commit only changed validated advisories
+        run: |
+          git add -- VaultCuisine-Advisories/gemini-lifecycle.json VaultCuisine-Advisories/gemini-compatibility.json VaultCuisine-Advisories/gemini-pricing.json
+          if git diff --cached --quiet; then exit 0; fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'Update validated VaultCuisine Gemini advisories'
+          git push origin HEAD:main
